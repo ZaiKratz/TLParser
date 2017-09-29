@@ -1,4 +1,5 @@
 #pragma once
+#pragma warning(disable:4946)
 #include "Engine.h"
 #include "../Public/extensions/BinaryReader.h"
 #include "../Public/extensions/BinaryWriter.h"
@@ -25,14 +26,14 @@ public:
 
 	}
 
-public:
+protected:
 	uint32 _ConstructorID;
 	bool _ContentRelated;
 	bool _Responded;
 
-public:
+private:
 	bool _Sent;
-	long long  _RequestMessageId;
+	long _RequestMessageId;
 	bool _Dirty;
 	FDateTime _SendTime;
 	bool _ConfirmReceived;

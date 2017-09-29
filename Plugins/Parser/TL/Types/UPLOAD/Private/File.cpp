@@ -7,12 +7,12 @@ namespace UPLOAD
 
 File::File()
 {
-	this->_ConstructorID = 64;
+	this->_ConstructorID = 157948117;
 }
 
-File::File(PRIVATE::FileType* type, int32 mtime, TArray<uint8> bytes)
+File::File(PRIVATE::storage::FileType*  type, int32 mtime, TArray<uint8>  bytes)
 {
-	this->_ConstructorID = 64;
+	this->_ConstructorID = 157948117;
 	this->type = type;
 	this->mtime = mtime;
 	this->bytes = bytes;
@@ -28,9 +28,10 @@ void File::OnSend(BinaryWriter& Writer)
 
 void File::OnResponce(BinaryReader& Reader)
 {
-	type = reinterpret_cast<PRIVATE::FileType*>(Reader.TGReadObject());
+	type = reinterpret_cast<PRIVATE::storage::FileType* >(Reader.TGReadObject());
 	mtime = Reader.ReadInt();
 	bytes = Reader.TGReadBytes();
+	this->_Responded = true;
 }
 File::~File()
 {

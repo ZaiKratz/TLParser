@@ -1,7 +1,8 @@
 #include "TlObject.h"
 #include "Regex.h"
 #include "Parse.h"
-
+#include <string>
+#include <iomanip>
 
 TLObject::TLObject()
 {
@@ -16,7 +17,7 @@ TLObject::TLObject()
 FString ToCamalCase(FString ClassName)
 {
 	FRegexPattern Pattern(
-		TEXT("((?i)[a-z]+)_*")
+		TEXT("((?i)[a-z]+\\d?)_*")
 	);
 	FRegexMatcher Match(Pattern, ClassName);
 
@@ -85,15 +86,14 @@ TLObject::TLObject(FString FullName, FString ObjectId, TArray<TLArg> Args, FStri
 
 	this->_IsFunction = IsFunction; 
 
-	uint8 Dest[4];
-	ObjectId.ToHexBlob(ObjectId, Dest, 4);
+	ObjectId.InsertAt(0, "0x");
 
-	int32 result = 0;
-	for (int n = 3; n >= 0; n--)
-		result = (result << 8) + Dest[n];
+	std::string StdString(TCHAR_TO_UTF8(*ObjectId));
 
-	/*little endian*/
-	this->_Id = result;
+	uint32 x = strtoul(StdString.c_str(), NULL, 16);
+	
+	/*big endian*/
+	this->_Id = x;
 }
 
 

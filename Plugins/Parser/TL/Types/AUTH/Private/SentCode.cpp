@@ -7,12 +7,12 @@ namespace AUTH
 
 SentCode::SentCode()
 {
-	this->_ConstructorID = 35979358;
+	this->_ConstructorID = 1577067778;
 }
 
-SentCode::SentCode(bool phone_registered, PRIVATE::SentCodeType* type, FString phone_code_hash, PRIVATE::CodeType* next_type, int32 timeout)
+SentCode::SentCode(bool phone_registered, PRIVATE::auth::SentCodeType*  type, FString phone_code_hash, PRIVATE::auth::CodeType*  next_type, int32 timeout)
 {
-	this->_ConstructorID = 35979358;
+	this->_ConstructorID = 1577067778;
 	this->phone_registered = phone_registered;
 	this->type = type;
 	this->phone_code_hash = phone_code_hash;
@@ -24,7 +24,7 @@ void SentCode::OnSend(BinaryWriter& Writer)
 	Writer.WriteInt(this->_ConstructorID);
 	//Calculate the flags. This equals to those flag arguments which are NOT None
 	int32 Flags = 0;
-	if(!phone_registered)
+	if(phone_registered)
 	{
 		Flags |= (1 << 0);
 	}
@@ -32,7 +32,7 @@ void SentCode::OnSend(BinaryWriter& Writer)
 	{
 		Flags |= 0;
 	}
-	if(!next_type)
+	if(next_type)
 	{
 		Flags |= (1 << 1);
 	}
@@ -40,7 +40,7 @@ void SentCode::OnSend(BinaryWriter& Writer)
 	{
 		Flags |= 0;
 	}
-	if(!timeout)
+	if(timeout)
 	{
 		Flags |= (1 << 2);
 	}
@@ -71,16 +71,17 @@ void SentCode::OnResponce(BinaryReader& Reader)
 	{
 		phone_registered = true;
 	}
-	type = reinterpret_cast<PRIVATE::SentCodeType*>(Reader.TGReadObject());
+	type = reinterpret_cast<PRIVATE::auth::SentCodeType* >(Reader.TGReadObject());
 	phone_code_hash = Reader.TGReadString();
 	if((Flags & (1 << 1)) != 0) 
 	{
-	next_type = reinterpret_cast<PRIVATE::CodeType*>(Reader.TGReadObject());
+	next_type = reinterpret_cast<PRIVATE::auth::CodeType* >(Reader.TGReadObject());
 	}
 	if((Flags & (1 << 2)) != 0) 
 	{
 	timeout = Reader.ReadInt();
 	}
+	this->_Responded = true;
 }
 SentCode::~SentCode()
 {

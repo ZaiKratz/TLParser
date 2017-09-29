@@ -54,7 +54,7 @@ public:
 	{
 		return TArray<FString> 
 		{ 
-			"FString", "int32", "long", "double", "bool",
+			"FString", "int32", "long", "double", "bool", "uint8",
 				"unsigned long long", "TBigInt<128>", "TBigInt<256>", "FDateTime",
 				"delete", "public", "private", "static"
 		};
@@ -84,7 +84,7 @@ public:
 		return _Name;
 	}
 
-	void Name(FString NewName) 
+	void SetName(FString NewName) 
 	{
 		_Name = NewName;
 	}
@@ -129,7 +129,7 @@ public:
 		return _Type;
 	}
 
-	void Type(FString NewType) 
+	void SetType(FString NewType) 
 	{
 		_Type = NewType;
 	}
@@ -143,7 +143,7 @@ public:
 	{
 		return TArray<FString>
 		{
-			"FString", "int32", "long", "double", "bool",
+			"FString", "int32", "long", "double", "bool", "uint8",
 				"unsigned long long", "TBigInt<128>", "TBigInt<256>", "FDateTime",
 				"delete", "public", "private", "static"
 		};

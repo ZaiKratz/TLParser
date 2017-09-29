@@ -17,6 +17,32 @@ public:
 	~SentCode();
 	virtual void OnSend(BinaryWriter& Writer) override;
 	virtual void OnResponce(BinaryReader& Reader) override;
+
+	bool GetPhoneRegistered() const
+	{
+		 return this->phone_registered;
+	}
+
+	PRIVATE::auth::SentCodeType*  Gettype() const
+	{
+		 return this->type;
+	}
+
+	FString GetPhoneCodeHash() const
+	{
+		 return this->phone_code_hash;
+	}
+
+	PRIVATE::auth::CodeType*  GetNextType() const
+	{
+		 return this->next_type;
+	}
+
+	int32 Gettimeout() const
+	{
+		 return this->timeout;
+	}
+
 private:
 	bool phone_registered;
 	 PRIVATE::SentCodeType* type;

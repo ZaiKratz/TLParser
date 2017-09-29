@@ -16,6 +16,22 @@ public:
 	~File();
 	virtual void OnSend(BinaryWriter& Writer) override;
 	virtual void OnResponce(BinaryReader& Reader) override;
+
+	PRIVATE::storage::FileType*  Gettype() const
+	{
+		 return this->type;
+	}
+
+	int32 Getmtime() const
+	{
+		 return this->mtime;
+	}
+
+	TArray<uint8>  Getbytes() const
+	{
+		 return this->bytes;
+	}
+
 private:
 	PRIVATE::FileType* type;
 	 int32 mtime;
