@@ -75,4 +75,4 @@ Intermediate/*
 DerivedDataCache/*
 
 # Generated classes
-Plugins/*
+Plugins/Parser/*
