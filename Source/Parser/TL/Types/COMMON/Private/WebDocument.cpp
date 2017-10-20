@@ -10,7 +10,7 @@ WebDocument::WebDocument()
 	this->_ConstructorID = -971322408;
 }
 
-WebDocument::WebDocument(FString url, unsigned long long access_hash, int32 size, FString mime_type, TArray<PRIVATE::DocumentAttribute*>  attributes, int32 dc_id)
+WebDocument::WebDocument(FString url, unsigned long long access_hash, int32 size, FString mime_type, TArray<TLBaseObject*>  attributes, int32 dc_id)
 {
 	this->_ConstructorID = -971322408;
 	this->url = url;
@@ -46,10 +46,10 @@ void WebDocument::OnResponce(BinaryReader& Reader)
 	Reader.ReadInt();
 
 	//Len concatenated with rand number to get rid of confusions with redefinition
-	int32 Len29376 = Reader.ReadInt();
-	for(int32 i = 0; i < Len29376; i++)
+	int32 Len4385 = Reader.ReadInt();
+	for(int32 i = 0; i < Len4385; i++)
 	{
-	auto X = reinterpret_cast<PRIVATE::DocumentAttribute*>(Reader.TGReadObject());
+	auto X = reinterpret_cast<TLBaseObject*>(Reader.TGReadObject());
 	attributes.Add(X);
 	}
 	dc_id = Reader.ReadInt();
@@ -57,6 +57,5 @@ void WebDocument::OnResponce(BinaryReader& Reader)
 }
 WebDocument::~WebDocument()
 {
-
 }
 }//end namespace block

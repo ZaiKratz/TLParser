@@ -36,6 +36,5 @@ void DeleteContacts::OnResponce(BinaryReader& Reader)
 }
 DeleteContacts::~DeleteContacts()
 {
-
 }
 }//end namespace block

@@ -29,6 +29,5 @@ void PasswordRecovery::OnResponce(BinaryReader& Reader)
 }
 PasswordRecovery::~PasswordRecovery()
 {
-
 }
 }//end namespace block

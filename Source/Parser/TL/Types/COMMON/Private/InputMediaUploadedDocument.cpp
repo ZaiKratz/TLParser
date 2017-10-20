@@ -10,7 +10,7 @@ InputMediaUploadedDocument::InputMediaUploadedDocument()
 	this->_ConstructorID = -476700163;
 }
 
-InputMediaUploadedDocument::InputMediaUploadedDocument(COMMON::InputFile*  file, COMMON::InputFile*  thumb, FString mime_type, TArray<PRIVATE::DocumentAttribute*>  attributes, FString caption, TArray<COMMON::InputDocument*>  stickers, int32 ttl_seconds)
+InputMediaUploadedDocument::InputMediaUploadedDocument(COMMON::InputFile*  file, COMMON::InputFile*  thumb, FString mime_type, TArray<TLBaseObject*>  attributes, FString caption, TArray<COMMON::InputDocument*>  stickers, int32 ttl_seconds)
 {
 	this->_ConstructorID = -476700163;
 	this->file = file;
@@ -53,7 +53,7 @@ void InputMediaUploadedDocument::OnSend(BinaryWriter& Writer)
 	Writer.WriteInt(Flags);
 
 	this->file->OnSend(Writer);
-	if(!this->thumb)
+	if(this->thumb)
 	{
 	this->thumb->OnSend(Writer);
 	}
@@ -71,13 +71,13 @@ void InputMediaUploadedDocument::OnSend(BinaryWriter& Writer)
 	Writer.WriteInt(this->stickers.Num());
 	for(auto X : this->stickers)
 	{
-	if(!X)
+	if(X)
 	{
 	X->OnSend(Writer);
 	}
 	}
 	}
-	if(!this->ttl_seconds)
+	if(this->ttl_seconds)
 	{
 	Writer.WriteInt(this->ttl_seconds);
 	}
@@ -97,10 +97,10 @@ void InputMediaUploadedDocument::OnResponce(BinaryReader& Reader)
 	Reader.ReadInt();
 
 	//Len concatenated with rand number to get rid of confusions with redefinition
-	int32 Len4865 = Reader.ReadInt();
-	for(int32 i = 0; i < Len4865; i++)
+	int32 Len8982 = Reader.ReadInt();
+	for(int32 i = 0; i < Len8982; i++)
 	{
-	auto X = reinterpret_cast<PRIVATE::DocumentAttribute*>(Reader.TGReadObject());
+	auto X = reinterpret_cast<TLBaseObject*>(Reader.TGReadObject());
 	attributes.Add(X);
 	}
 	caption = Reader.TGReadString();
@@ -109,8 +109,8 @@ void InputMediaUploadedDocument::OnResponce(BinaryReader& Reader)
 	Reader.ReadInt();
 
 	//Len concatenated with rand number to get rid of confusions with redefinition
-	int32 Len23917 = Reader.ReadInt();
-	for(int32 i = 0; i < Len23917; i++)
+	int32 Len5870 = Reader.ReadInt();
+	for(int32 i = 0; i < Len5870; i++)
 	{
 	auto X = reinterpret_cast<COMMON::InputDocument*>(Reader.TGReadObject());
 	stickers.Add(X);
@@ -124,6 +124,13 @@ void InputMediaUploadedDocument::OnResponce(BinaryReader& Reader)
 }
 InputMediaUploadedDocument::~InputMediaUploadedDocument()
 {
-
+	if(this->file)
+	{
+		delete this->file;
+	}
+	if(this->thumb)
+	{
+		delete this->thumb;
+	}
 }
 }//end namespace block

@@ -24,6 +24,5 @@ void UserStatusRecently::OnResponce(BinaryReader& Reader)
 }
 UserStatusRecently::~UserStatusRecently()
 {
-
 }
 }//end namespace block

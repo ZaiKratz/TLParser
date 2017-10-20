@@ -11,7 +11,7 @@ ReorderPinnedDialogs::ReorderPinnedDialogs()
 	this->_ContentRelated = true;
 }
 
-ReorderPinnedDialogs::ReorderPinnedDialogs(bool force, TArray<PRIVATE::InputPeer*>  order)
+ReorderPinnedDialogs::ReorderPinnedDialogs(bool force, TArray<TLBaseObject*>  order)
 {
 	this->_ConstructorID = -1784678844;
 	this->_ContentRelated = true;
@@ -49,6 +49,5 @@ void ReorderPinnedDialogs::OnResponce(BinaryReader& Reader)
 }
 ReorderPinnedDialogs::~ReorderPinnedDialogs()
 {
-
 }
 }//end namespace block

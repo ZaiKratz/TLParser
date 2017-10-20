@@ -31,6 +31,9 @@ void GetMaskStickers::OnResponce(BinaryReader& Reader)
 }
 GetMaskStickers::~GetMaskStickers()
 {
-
+	if(this->result)
+	{
+		delete this->result;
+	}
 }
 }//end namespace block

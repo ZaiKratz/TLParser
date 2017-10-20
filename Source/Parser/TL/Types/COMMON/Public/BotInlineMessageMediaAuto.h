@@ -1,18 +1,15 @@
 #pragma once
 #include "Engine.h"
-#include "../../../Types/Private/BotInlineMessage.h"
-
-#include "../../../Types/Private/ReplyMarkup.h"
-#include "../../../Types/Private/BotInlineMessage.h"
+#include "../../../TLObjectBase.h"
 
 //begin namespace block
 namespace COMMON
 {
-class BotInlineMessageMediaAuto : public PRIVATE::BotInlineMessage
+class BotInlineMessageMediaAuto : public TLBaseObject
 {
 public:
 	BotInlineMessageMediaAuto();
-	BotInlineMessageMediaAuto(FString caption, PRIVATE::ReplyMarkup* reply_markup);
+	BotInlineMessageMediaAuto(FString caption, TLBaseObject* reply_markup);
 
 	~BotInlineMessageMediaAuto();
 	virtual void OnSend(BinaryWriter& Writer) override;
@@ -23,13 +20,13 @@ public:
 		 return this->caption;
 	}
 
-	PRIVATE::ReplyMarkup*  GetReplyMarkup() const
+	TLBaseObject*  GetReplyMarkup() const
 	{
 		 return this->reply_markup;
 	}
 
 private:
 	FString caption;
-	 PRIVATE::ReplyMarkup* reply_markup;
+	 TLBaseObject* reply_markup;
 };
 } //end namespace block

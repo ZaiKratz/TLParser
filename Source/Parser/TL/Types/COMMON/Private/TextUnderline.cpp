@@ -10,7 +10,7 @@ TextUnderline::TextUnderline()
 	this->_ConstructorID = -1054465340;
 }
 
-TextUnderline::TextUnderline(PRIVATE::RichText*  text)
+TextUnderline::TextUnderline(TLBaseObject*  text)
 {
 	this->_ConstructorID = -1054465340;
 	this->text = text;
@@ -24,11 +24,14 @@ void TextUnderline::OnSend(BinaryWriter& Writer)
 
 void TextUnderline::OnResponce(BinaryReader& Reader)
 {
-	text = reinterpret_cast<PRIVATE::RichText* >(Reader.TGReadObject());
+	text = reinterpret_cast<TLBaseObject* >(Reader.TGReadObject());
 	this->_Responded = true;
 }
 TextUnderline::~TextUnderline()
 {
-
+	if(this->text)
+	{
+		delete this->text;
+	}
 }
 }//end namespace block

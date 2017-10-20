@@ -1,15 +1,14 @@
 #pragma once
 #include "Engine.h"
-#include "../../../Types/Private/Update.h"
+#include "../../../TLObjectBase.h"
 
 #include "../../../Types/Common/Public/GeoPoint.h"
 #include "../../../Types/Common/Public/InputBotInlineMessageID.h"
-#include "../../../Types/Private/Update.h"
 
 //begin namespace block
 namespace COMMON
 {
-class UpdateBotInlineSend : public PRIVATE::Update
+class UpdateBotInlineSend : public TLBaseObject
 {
 public:
 	UpdateBotInlineSend();

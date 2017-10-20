@@ -37,6 +37,5 @@ void BindTempAuthKey::OnResponce(BinaryReader& Reader)
 }
 BindTempAuthKey::~BindTempAuthKey()
 {
-
 }
 }//end namespace block

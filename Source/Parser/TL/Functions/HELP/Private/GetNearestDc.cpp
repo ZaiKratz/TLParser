@@ -23,6 +23,9 @@ void GetNearestDc::OnResponce(BinaryReader& Reader)
 }
 GetNearestDc::~GetNearestDc()
 {
-
+	if(this->result)
+	{
+		delete this->result;
+	}
 }
 }//end namespace block

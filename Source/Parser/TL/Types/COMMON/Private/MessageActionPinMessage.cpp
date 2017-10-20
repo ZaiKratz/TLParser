@@ -24,6 +24,5 @@ void MessageActionPinMessage::OnResponce(BinaryReader& Reader)
 }
 MessageActionPinMessage::~MessageActionPinMessage()
 {
-
 }
 }//end namespace block

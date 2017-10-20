@@ -1,13 +1,11 @@
 #pragma once
 #include "Engine.h"
-#include "../../../Types/Private/ContactLink.h"
-
-#include "../../../Types/Private/ContactLink.h"
+#include "../../../TLObjectBase.h"
 
 //begin namespace block
 namespace COMMON
 {
-class ContactLinkHasPhone : public PRIVATE::ContactLink
+class ContactLinkHasPhone : public TLBaseObject
 {
 public:
 	ContactLinkHasPhone();

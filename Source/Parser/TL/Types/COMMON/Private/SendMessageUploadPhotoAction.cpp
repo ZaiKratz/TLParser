@@ -29,6 +29,5 @@ void SendMessageUploadPhotoAction::OnResponce(BinaryReader& Reader)
 }
 SendMessageUploadPhotoAction::~SendMessageUploadPhotoAction()
 {
-
 }
 }//end namespace block

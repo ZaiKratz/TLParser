@@ -29,6 +29,5 @@ void MessageActionChatDeleteUser::OnResponce(BinaryReader& Reader)
 }
 MessageActionChatDeleteUser::~MessageActionChatDeleteUser()
 {
-
 }
 }//end namespace block

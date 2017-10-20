@@ -1,13 +1,11 @@
 #pragma once
 #include "Engine.h"
-#include "../../../Types/Private/SendMessageAction.h"
-
-#include "../../../Types/Private/SendMessageAction.h"
+#include "../../../TLObjectBase.h"
 
 //begin namespace block
 namespace COMMON
 {
-class SendMessageCancelAction : public PRIVATE::SendMessageAction
+class SendMessageCancelAction : public TLBaseObject
 {
 public:
 	SendMessageCancelAction();

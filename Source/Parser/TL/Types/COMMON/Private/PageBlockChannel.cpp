@@ -29,6 +29,9 @@ void PageBlockChannel::OnResponce(BinaryReader& Reader)
 }
 PageBlockChannel::~PageBlockChannel()
 {
-
+	if(this->channel)
+	{
+		delete this->channel;
+	}
 }
 }//end namespace block

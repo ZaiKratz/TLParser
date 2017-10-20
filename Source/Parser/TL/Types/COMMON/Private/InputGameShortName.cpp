@@ -32,6 +32,9 @@ void InputGameShortName::OnResponce(BinaryReader& Reader)
 }
 InputGameShortName::~InputGameShortName()
 {
-
+	if(this->bot_id)
+	{
+		delete this->bot_id;
+	}
 }
 }//end namespace block

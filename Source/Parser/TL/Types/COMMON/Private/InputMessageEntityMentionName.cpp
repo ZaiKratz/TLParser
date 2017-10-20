@@ -35,6 +35,9 @@ void InputMessageEntityMentionName::OnResponce(BinaryReader& Reader)
 }
 InputMessageEntityMentionName::~InputMessageEntityMentionName()
 {
-
+	if(this->user_id)
+	{
+		delete this->user_id;
+	}
 }
 }//end namespace block

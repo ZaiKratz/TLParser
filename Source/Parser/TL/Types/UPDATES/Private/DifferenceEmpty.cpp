@@ -32,6 +32,5 @@ void DifferenceEmpty::OnResponce(BinaryReader& Reader)
 }
 DifferenceEmpty::~DifferenceEmpty()
 {
-
 }
 }//end namespace block

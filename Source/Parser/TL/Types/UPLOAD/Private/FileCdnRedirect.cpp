@@ -44,8 +44,8 @@ void FileCdnRedirect::OnResponce(BinaryReader& Reader)
 	Reader.ReadInt();
 
 	//Len concatenated with rand number to get rid of confusions with redefinition
-	int32 Len9016 = Reader.ReadInt();
-	for(int32 i = 0; i < Len9016; i++)
+	int32 Len30310 = Reader.ReadInt();
+	for(int32 i = 0; i < Len30310; i++)
 	{
 	auto X = reinterpret_cast<COMMON::CdnFileHash*>(Reader.TGReadObject());
 	cdn_file_hashes.Add(X);
@@ -54,6 +54,5 @@ void FileCdnRedirect::OnResponce(BinaryReader& Reader)
 }
 FileCdnRedirect::~FileCdnRedirect()
 {
-
 }
 }//end namespace block

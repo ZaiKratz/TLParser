@@ -31,6 +31,9 @@ void Block::OnResponce(BinaryReader& Reader)
 }
 Block::~Block()
 {
-
+	if(this->id)
+	{
+		delete this->id;
+	}
 }
 }//end namespace block

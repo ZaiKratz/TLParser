@@ -24,6 +24,5 @@ void FileJpeg::OnResponce(BinaryReader& Reader)
 }
 FileJpeg::~FileJpeg()
 {
-
 }
 }//end namespace block

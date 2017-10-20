@@ -35,6 +35,5 @@ void UpdateChatParticipantDelete::OnResponce(BinaryReader& Reader)
 }
 UpdateChatParticipantDelete::~UpdateChatParticipantDelete()
 {
-
 }
 }//end namespace block

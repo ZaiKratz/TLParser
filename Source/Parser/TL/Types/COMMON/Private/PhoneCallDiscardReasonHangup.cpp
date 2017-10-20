@@ -24,6 +24,5 @@ void PhoneCallDiscardReasonHangup::OnResponce(BinaryReader& Reader)
 }
 PhoneCallDiscardReasonHangup::~PhoneCallDiscardReasonHangup()
 {
-
 }
 }//end namespace block

@@ -11,7 +11,7 @@ GetPeerDialogs::GetPeerDialogs()
 	this->_ContentRelated = true;
 }
 
-GetPeerDialogs::GetPeerDialogs(TArray<PRIVATE::InputPeer*>  peers)
+GetPeerDialogs::GetPeerDialogs(TArray<TLBaseObject*>  peers)
 {
 	this->_ConstructorID = 764901049;
 	this->_ContentRelated = true;
@@ -36,6 +36,9 @@ void GetPeerDialogs::OnResponce(BinaryReader& Reader)
 }
 GetPeerDialogs::~GetPeerDialogs()
 {
-
+	if(this->result)
+	{
+		delete this->result;
+	}
 }
 }//end namespace block

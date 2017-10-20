@@ -33,6 +33,13 @@ void ChangeStickerPosition::OnResponce(BinaryReader& Reader)
 }
 ChangeStickerPosition::~ChangeStickerPosition()
 {
-
+	if(this->sticker)
+	{
+		delete this->sticker;
+	}
+	if(this->result)
+	{
+		delete this->result;
+	}
 }
 }//end namespace block

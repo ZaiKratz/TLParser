@@ -10,7 +10,7 @@ UpdateShortChatMessage::UpdateShortChatMessage()
 	this->_ConstructorID = 377562760;
 }
 
-UpdateShortChatMessage::UpdateShortChatMessage(bool out, bool mentioned, bool media_unread, bool silent, int32 id, int32 from_id, int32 chat_id, FString message, int32 pts, int32 pts_count, FDateTime date, COMMON::MessageFwdHeader*  fwd_from, int32 via_bot_id, int32 reply_to_msg_id, TArray<PRIVATE::MessageEntity*>  entities)
+UpdateShortChatMessage::UpdateShortChatMessage(bool out, bool mentioned, bool media_unread, bool silent, int32 id, int32 from_id, int32 chat_id, FString message, int32 pts, int32 pts_count, FDateTime date, COMMON::MessageFwdHeader*  fwd_from, int32 via_bot_id, int32 reply_to_msg_id, TArray<TLBaseObject*>  entities)
 {
 	this->_ConstructorID = 377562760;
 	this->out = out;
@@ -107,15 +107,15 @@ void UpdateShortChatMessage::OnSend(BinaryWriter& Writer)
 	Writer.WriteInt(this->pts);
 	Writer.WriteInt(this->pts_count);
 	Writer.TGWriteDate(this->date);
-	if(!this->fwd_from)
+	if(this->fwd_from)
 	{
 	this->fwd_from->OnSend(Writer);
 	}
-	if(!this->via_bot_id)
+	if(this->via_bot_id)
 	{
 	Writer.WriteInt(this->via_bot_id);
 	}
-	if(!this->reply_to_msg_id)
+	if(this->reply_to_msg_id)
 	{
 	Writer.WriteInt(this->reply_to_msg_id);
 	}
@@ -125,7 +125,7 @@ void UpdateShortChatMessage::OnSend(BinaryWriter& Writer)
 	Writer.WriteInt(this->entities.Num());
 	for(auto X : this->entities)
 	{
-	if(!X)
+	if(X)
 	{
 	X->OnSend(Writer);
 	}
@@ -178,10 +178,10 @@ void UpdateShortChatMessage::OnResponce(BinaryReader& Reader)
 	Reader.ReadInt();
 
 	//Len concatenated with rand number to get rid of confusions with redefinition
-	int32 Len29912 = Reader.ReadInt();
-	for(int32 i = 0; i < Len29912; i++)
+	int32 Len2485 = Reader.ReadInt();
+	for(int32 i = 0; i < Len2485; i++)
 	{
-	auto X = reinterpret_cast<PRIVATE::MessageEntity*>(Reader.TGReadObject());
+	auto X = reinterpret_cast<TLBaseObject*>(Reader.TGReadObject());
 	entities.Add(X);
 	}
 	}
@@ -189,6 +189,9 @@ void UpdateShortChatMessage::OnResponce(BinaryReader& Reader)
 }
 UpdateShortChatMessage::~UpdateShortChatMessage()
 {
-
+	if(this->fwd_from)
+	{
+		delete this->fwd_from;
+	}
 }
 }//end namespace block

@@ -35,6 +35,5 @@ void InputFileBig::OnResponce(BinaryReader& Reader)
 }
 InputFileBig::~InputFileBig()
 {
-
 }
 }//end namespace block

@@ -10,7 +10,7 @@ InputBotInlineMessageText::InputBotInlineMessageText()
 	this->_ConstructorID = 1036876423;
 }
 
-InputBotInlineMessageText::InputBotInlineMessageText(bool no_webpage, FString message, TArray<PRIVATE::MessageEntity*>  entities, PRIVATE::ReplyMarkup*  reply_markup)
+InputBotInlineMessageText::InputBotInlineMessageText(bool no_webpage, FString message, TArray<TLBaseObject*>  entities, TLBaseObject*  reply_markup)
 {
 	this->_ConstructorID = 1036876423;
 	this->no_webpage = no_webpage;
@@ -56,13 +56,13 @@ void InputBotInlineMessageText::OnSend(BinaryWriter& Writer)
 	Writer.WriteInt(this->entities.Num());
 	for(auto X : this->entities)
 	{
-	if(!X)
+	if(X)
 	{
 	X->OnSend(Writer);
 	}
 	}
 	}
-	if(!this->reply_markup)
+	if(this->reply_markup)
 	{
 	this->reply_markup->OnSend(Writer);
 	}
@@ -83,21 +83,24 @@ void InputBotInlineMessageText::OnResponce(BinaryReader& Reader)
 	Reader.ReadInt();
 
 	//Len concatenated with rand number to get rid of confusions with redefinition
-	int32 Len26387 = Reader.ReadInt();
-	for(int32 i = 0; i < Len26387; i++)
+	int32 Len9060 = Reader.ReadInt();
+	for(int32 i = 0; i < Len9060; i++)
 	{
-	auto X = reinterpret_cast<PRIVATE::MessageEntity*>(Reader.TGReadObject());
+	auto X = reinterpret_cast<TLBaseObject*>(Reader.TGReadObject());
 	entities.Add(X);
 	}
 	}
 	if((Flags & (1 << 2)) != 0) 
 	{
-	reply_markup = reinterpret_cast<PRIVATE::ReplyMarkup* >(Reader.TGReadObject());
+	reply_markup = reinterpret_cast<TLBaseObject* >(Reader.TGReadObject());
 	}
 	this->_Responded = true;
 }
 InputBotInlineMessageText::~InputBotInlineMessageText()
 {
-
+	if(this->reply_markup)
+	{
+		delete this->reply_markup;
+	}
 }
 }//end namespace block

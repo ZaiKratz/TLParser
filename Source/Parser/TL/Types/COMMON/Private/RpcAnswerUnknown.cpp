@@ -24,6 +24,5 @@ void RpcAnswerUnknown::OnResponce(BinaryReader& Reader)
 }
 RpcAnswerUnknown::~RpcAnswerUnknown()
 {
-
 }
 }//end namespace block

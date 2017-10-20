@@ -35,8 +35,8 @@ void RecentStickers::OnResponce(BinaryReader& Reader)
 	Reader.ReadInt();
 
 	//Len concatenated with rand number to get rid of confusions with redefinition
-	int32 Len14191 = Reader.ReadInt();
-	for(int32 i = 0; i < Len14191; i++)
+	int32 Len15163 = Reader.ReadInt();
+	for(int32 i = 0; i < Len15163; i++)
 	{
 	auto X = reinterpret_cast<COMMON::Document*>(Reader.TGReadObject());
 	stickers.Add(X);
@@ -45,6 +45,5 @@ void RecentStickers::OnResponce(BinaryReader& Reader)
 }
 RecentStickers::~RecentStickers()
 {
-
 }
 }//end namespace block

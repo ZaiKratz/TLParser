@@ -32,6 +32,5 @@ void UpdateUserPhone::OnResponce(BinaryReader& Reader)
 }
 UpdateUserPhone::~UpdateUserPhone()
 {
-
 }
 }//end namespace block

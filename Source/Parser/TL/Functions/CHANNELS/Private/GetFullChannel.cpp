@@ -31,6 +31,13 @@ void GetFullChannel::OnResponce(BinaryReader& Reader)
 }
 GetFullChannel::~GetFullChannel()
 {
-
+	if(this->channel)
+	{
+		delete this->channel;
+	}
+	if(this->result)
+	{
+		delete this->result;
+	}
 }
 }//end namespace block

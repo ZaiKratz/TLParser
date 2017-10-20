@@ -32,6 +32,5 @@ void MsgsStateInfo::OnResponce(BinaryReader& Reader)
 }
 MsgsStateInfo::~MsgsStateInfo()
 {
-
 }
 }//end namespace block

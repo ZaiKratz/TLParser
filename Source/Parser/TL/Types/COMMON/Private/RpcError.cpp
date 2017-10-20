@@ -32,6 +32,5 @@ void RpcError::OnResponce(BinaryReader& Reader)
 }
 RpcError::~RpcError()
 {
-
 }
 }//end namespace block

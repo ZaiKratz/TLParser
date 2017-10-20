@@ -29,6 +29,5 @@ void SendMessageUploadAudioAction::OnResponce(BinaryReader& Reader)
 }
 SendMessageUploadAudioAction::~SendMessageUploadAudioAction()
 {
-
 }
 }//end namespace block

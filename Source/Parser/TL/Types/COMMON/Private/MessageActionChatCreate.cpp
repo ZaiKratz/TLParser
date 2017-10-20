@@ -35,8 +35,8 @@ void MessageActionChatCreate::OnResponce(BinaryReader& Reader)
 	Reader.ReadInt();
 
 	//Len concatenated with rand number to get rid of confusions with redefinition
-	int32 Len14850 = Reader.ReadInt();
-	for(int32 i = 0; i < Len14850; i++)
+	int32 Len23371 = Reader.ReadInt();
+	for(int32 i = 0; i < Len23371; i++)
 	{
 	auto X = Reader.ReadInt();
 	users.Add(X);
@@ -45,6 +45,5 @@ void MessageActionChatCreate::OnResponce(BinaryReader& Reader)
 }
 MessageActionChatCreate::~MessageActionChatCreate()
 {
-
 }
 }//end namespace block

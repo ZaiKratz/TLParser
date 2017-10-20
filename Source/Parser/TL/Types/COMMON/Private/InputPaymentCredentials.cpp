@@ -48,6 +48,9 @@ void InputPaymentCredentials::OnResponce(BinaryReader& Reader)
 }
 InputPaymentCredentials::~InputPaymentCredentials()
 {
-
+	if(this->data)
+	{
+		delete this->data;
+	}
 }
 }//end namespace block

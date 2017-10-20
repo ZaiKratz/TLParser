@@ -32,8 +32,8 @@ void KeyboardButtonRow::OnResponce(BinaryReader& Reader)
 	Reader.ReadInt();
 
 	//Len concatenated with rand number to get rid of confusions with redefinition
-	int32 Len23170 = Reader.ReadInt();
-	for(int32 i = 0; i < Len23170; i++)
+	int32 Len8433 = Reader.ReadInt();
+	for(int32 i = 0; i < Len8433; i++)
 	{
 	auto X = reinterpret_cast<COMMON::KeyboardButton*>(Reader.TGReadObject());
 	buttons.Add(X);
@@ -42,6 +42,5 @@ void KeyboardButtonRow::OnResponce(BinaryReader& Reader)
 }
 KeyboardButtonRow::~KeyboardButtonRow()
 {
-
 }
 }//end namespace block

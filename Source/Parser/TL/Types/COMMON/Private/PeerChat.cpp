@@ -29,6 +29,5 @@ void PeerChat::OnResponce(BinaryReader& Reader)
 }
 PeerChat::~PeerChat()
 {
-
 }
 }//end namespace block

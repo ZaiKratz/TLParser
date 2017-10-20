@@ -11,7 +11,7 @@ SetGameScore::SetGameScore()
 	this->_ContentRelated = true;
 }
 
-SetGameScore::SetGameScore(bool edit_message, bool force, PRIVATE::InputPeer*  peer, int32 id, COMMON::InputUser*  user_id, int32 score)
+SetGameScore::SetGameScore(bool edit_message, bool force, TLBaseObject*  peer, int32 id, COMMON::InputUser*  user_id, int32 score)
 {
 	this->_ConstructorID = -1896289088;
 	this->_ContentRelated = true;
@@ -59,6 +59,17 @@ void SetGameScore::OnResponce(BinaryReader& Reader)
 }
 SetGameScore::~SetGameScore()
 {
-
+	if(this->peer)
+	{
+		delete this->peer;
+	}
+	if(this->user_id)
+	{
+		delete this->user_id;
+	}
+	if(this->result)
+	{
+		delete this->result;
+	}
 }
 }//end namespace block

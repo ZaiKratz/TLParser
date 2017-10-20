@@ -33,6 +33,9 @@ void UpdatePasswordSettings::OnResponce(BinaryReader& Reader)
 }
 UpdatePasswordSettings::~UpdatePasswordSettings()
 {
-
+	if(this->new_settings)
+	{
+		delete this->new_settings;
+	}
 }
 }//end namespace block

@@ -35,6 +35,13 @@ void AddChatUser::OnResponce(BinaryReader& Reader)
 }
 AddChatUser::~AddChatUser()
 {
-
+	if(this->user_id)
+	{
+		delete this->user_id;
+	}
+	if(this->result)
+	{
+		delete this->result;
+	}
 }
 }//end namespace block

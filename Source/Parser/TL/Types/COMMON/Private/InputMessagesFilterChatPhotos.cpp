@@ -24,6 +24,5 @@ void InputMessagesFilterChatPhotos::OnResponce(BinaryReader& Reader)
 }
 InputMessagesFilterChatPhotos::~InputMessagesFilterChatPhotos()
 {
-
 }
 }//end namespace block

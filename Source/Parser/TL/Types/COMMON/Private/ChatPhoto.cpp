@@ -32,6 +32,13 @@ void ChatPhoto::OnResponce(BinaryReader& Reader)
 }
 ChatPhoto::~ChatPhoto()
 {
-
+	if(this->photo_small)
+	{
+		delete this->photo_small;
+	}
+	if(this->photo_big)
+	{
+		delete this->photo_big;
+	}
 }
 }//end namespace block

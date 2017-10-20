@@ -1,12 +1,11 @@
 #pragma once
 #include "Engine.h"
-
-#include "../../../Types/Private/FileType.h"
+#include "../../../TLObjectBase.h"
 
 //begin namespace block
 namespace STORAGE
 {
-class FileMp3 : public PRIVATE::FileType
+class FileMp3 : public TLBaseObject
 {
 public:
 	FileMp3();

@@ -44,6 +44,5 @@ void ServerDHInnerData::OnResponce(BinaryReader& Reader)
 }
 ServerDHInnerData::~ServerDHInnerData()
 {
-
 }
 }//end namespace block

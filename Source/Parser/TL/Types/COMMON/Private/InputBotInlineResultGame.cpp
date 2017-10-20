@@ -10,7 +10,7 @@ InputBotInlineResultGame::InputBotInlineResultGame()
 	this->_ConstructorID = 1336154098;
 }
 
-InputBotInlineResultGame::InputBotInlineResultGame(FString id, FString short_name, PRIVATE::InputBotInlineMessage*  send_message)
+InputBotInlineResultGame::InputBotInlineResultGame(FString id, FString short_name, TLBaseObject*  send_message)
 {
 	this->_ConstructorID = 1336154098;
 	this->id = id;
@@ -30,11 +30,14 @@ void InputBotInlineResultGame::OnResponce(BinaryReader& Reader)
 {
 	id = Reader.TGReadString();
 	short_name = Reader.TGReadString();
-	send_message = reinterpret_cast<PRIVATE::InputBotInlineMessage* >(Reader.TGReadObject());
+	send_message = reinterpret_cast<TLBaseObject* >(Reader.TGReadObject());
 	this->_Responded = true;
 }
 InputBotInlineResultGame::~InputBotInlineResultGame()
 {
-
+	if(this->send_message)
+	{
+		delete this->send_message;
+	}
 }
 }//end namespace block

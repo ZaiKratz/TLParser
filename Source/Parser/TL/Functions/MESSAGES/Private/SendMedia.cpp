@@ -11,7 +11,7 @@ SendMedia::SendMedia()
 	this->_ContentRelated = true;
 }
 
-SendMedia::SendMedia(bool silent, bool background, bool clear_draft, PRIVATE::InputPeer*  peer, int32 reply_to_msg_id, PRIVATE::InputMedia*  media, unsigned long long random_id, PRIVATE::ReplyMarkup*  reply_markup)
+SendMedia::SendMedia(bool silent, bool background, bool clear_draft, TLBaseObject*  peer, int32 reply_to_msg_id, TLBaseObject*  media, unsigned long long random_id, TLBaseObject*  reply_markup)
 {
 	this->_ConstructorID = -923703407;
 	this->_ContentRelated = true;
@@ -72,13 +72,13 @@ void SendMedia::OnSend(BinaryWriter& Writer)
 	Writer.WriteInt(Flags);
 
 	this->peer->OnSend(Writer);
-	if(!this->reply_to_msg_id)
+	if(this->reply_to_msg_id)
 	{
 	Writer.WriteInt(this->reply_to_msg_id);
 	}
 	this->media->OnSend(Writer);
 	Writer.WriteLong(this->random_id);
-	if(!this->reply_markup)
+	if(this->reply_markup)
 	{
 	this->reply_markup->OnSend(Writer);
 	}
@@ -92,6 +92,21 @@ void SendMedia::OnResponce(BinaryReader& Reader)
 }
 SendMedia::~SendMedia()
 {
-
+	if(this->peer)
+	{
+		delete this->peer;
+	}
+	if(this->media)
+	{
+		delete this->media;
+	}
+	if(this->reply_markup)
+	{
+		delete this->reply_markup;
+	}
+	if(this->result)
+	{
+		delete this->result;
+	}
 }
 }//end namespace block

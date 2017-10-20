@@ -33,6 +33,9 @@ void ReadHistory::OnResponce(BinaryReader& Reader)
 }
 ReadHistory::~ReadHistory()
 {
-
+	if(this->channel)
+	{
+		delete this->channel;
+	}
 }
 }//end namespace block

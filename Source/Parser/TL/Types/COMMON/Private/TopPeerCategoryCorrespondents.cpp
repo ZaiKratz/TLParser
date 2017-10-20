@@ -24,6 +24,5 @@ void TopPeerCategoryCorrespondents::OnResponce(BinaryReader& Reader)
 }
 TopPeerCategoryCorrespondents::~TopPeerCategoryCorrespondents()
 {
-
 }
 }//end namespace block

@@ -32,6 +32,5 @@ void BotCommand::OnResponce(BinaryReader& Reader)
 }
 BotCommand::~BotCommand()
 {
-
 }
 }//end namespace block

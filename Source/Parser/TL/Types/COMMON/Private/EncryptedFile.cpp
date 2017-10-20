@@ -41,6 +41,5 @@ void EncryptedFile::OnResponce(BinaryReader& Reader)
 }
 EncryptedFile::~EncryptedFile()
 {
-
 }
 }//end namespace block

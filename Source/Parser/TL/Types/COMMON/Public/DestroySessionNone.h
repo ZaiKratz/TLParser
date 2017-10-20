@@ -1,13 +1,11 @@
 #pragma once
 #include "Engine.h"
-#include "../../../Types/Private/DestroySessionRes.h"
-
-#include "../../../Types/Private/DestroySessionRes.h"
+#include "../../../TLObjectBase.h"
 
 //begin namespace block
 namespace COMMON
 {
-class DestroySessionNone : public PRIVATE::DestroySessionRes
+class DestroySessionNone : public TLBaseObject
 {
 public:
 	DestroySessionNone();

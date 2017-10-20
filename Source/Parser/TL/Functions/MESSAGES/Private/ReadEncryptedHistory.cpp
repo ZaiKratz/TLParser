@@ -33,6 +33,9 @@ void ReadEncryptedHistory::OnResponce(BinaryReader& Reader)
 }
 ReadEncryptedHistory::~ReadEncryptedHistory()
 {
-
+	if(this->peer)
+	{
+		delete this->peer;
+	}
 }
 }//end namespace block

@@ -24,6 +24,5 @@ void FileMp4::OnResponce(BinaryReader& Reader)
 }
 FileMp4::~FileMp4()
 {
-
 }
 }//end namespace block

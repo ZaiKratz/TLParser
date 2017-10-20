@@ -33,6 +33,9 @@ void CheckUsername::OnResponce(BinaryReader& Reader)
 }
 CheckUsername::~CheckUsername()
 {
-
+	if(this->channel)
+	{
+		delete this->channel;
+	}
 }
 }//end namespace block

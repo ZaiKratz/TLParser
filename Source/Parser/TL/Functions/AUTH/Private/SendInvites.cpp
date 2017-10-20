@@ -38,6 +38,5 @@ void SendInvites::OnResponce(BinaryReader& Reader)
 }
 SendInvites::~SendInvites()
 {
-
 }
 }//end namespace block

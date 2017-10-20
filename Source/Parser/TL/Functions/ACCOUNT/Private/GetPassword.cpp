@@ -23,6 +23,9 @@ void GetPassword::OnResponce(BinaryReader& Reader)
 }
 GetPassword::~GetPassword()
 {
-
+	if(this->result)
+	{
+		delete this->result;
+	}
 }
 }//end namespace block

@@ -10,7 +10,7 @@ UpdateDraftMessage::UpdateDraftMessage()
 	this->_ConstructorID = -299124375;
 }
 
-UpdateDraftMessage::UpdateDraftMessage(PRIVATE::Peer*  peer, COMMON::DraftMessage*  draft)
+UpdateDraftMessage::UpdateDraftMessage(TLBaseObject*  peer, COMMON::DraftMessage*  draft)
 {
 	this->_ConstructorID = -299124375;
 	this->peer = peer;
@@ -26,12 +26,19 @@ void UpdateDraftMessage::OnSend(BinaryWriter& Writer)
 
 void UpdateDraftMessage::OnResponce(BinaryReader& Reader)
 {
-	peer = reinterpret_cast<PRIVATE::Peer* >(Reader.TGReadObject());
+	peer = reinterpret_cast<TLBaseObject* >(Reader.TGReadObject());
 	draft = reinterpret_cast<COMMON::DraftMessage* >(Reader.TGReadObject());
 	this->_Responded = true;
 }
 UpdateDraftMessage::~UpdateDraftMessage()
 {
-
+	if(this->peer)
+	{
+		delete this->peer;
+	}
+	if(this->draft)
+	{
+		delete this->draft;
+	}
 }
 }//end namespace block

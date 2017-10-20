@@ -139,6 +139,5 @@ void ChannelBannedRights::OnResponce(BinaryReader& Reader)
 }
 ChannelBannedRights::~ChannelBannedRights()
 {
-
 }
 }//end namespace block

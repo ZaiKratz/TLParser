@@ -1,14 +1,13 @@
 #pragma once
 #include "Engine.h"
-#include "../../../Types/Private/Update.h"
+#include "../../../TLObjectBase.h"
 
 #include "../../../Types/Common/Public/WebPage.h"
-#include "../../../Types/Private/Update.h"
 
 //begin namespace block
 namespace COMMON
 {
-class UpdateChannelWebPage : public PRIVATE::Update
+class UpdateChannelWebPage : public TLBaseObject
 {
 public:
 	UpdateChannelWebPage();

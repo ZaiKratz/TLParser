@@ -23,6 +23,9 @@ void GetPinnedDialogs::OnResponce(BinaryReader& Reader)
 }
 GetPinnedDialogs::~GetPinnedDialogs()
 {
-
+	if(this->result)
+	{
+		delete this->result;
+	}
 }
 }//end namespace block

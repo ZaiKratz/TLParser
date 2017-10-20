@@ -38,6 +38,5 @@ void InputAppEvent::OnResponce(BinaryReader& Reader)
 }
 InputAppEvent::~InputAppEvent()
 {
-
 }
 }//end namespace block

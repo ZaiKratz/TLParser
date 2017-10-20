@@ -1,13 +1,11 @@
 #pragma once
 #include "Engine.h"
-#include "../../../Types/Private/UserStatus.h"
-
-#include "../../../Types/Private/UserStatus.h"
+#include "../../../TLObjectBase.h"
 
 //begin namespace block
 namespace COMMON
 {
-class UserStatusOffline : public PRIVATE::UserStatus
+class UserStatusOffline : public TLBaseObject
 {
 public:
 	UserStatusOffline();

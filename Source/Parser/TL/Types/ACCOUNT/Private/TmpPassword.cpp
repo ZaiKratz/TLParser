@@ -32,6 +32,5 @@ void TmpPassword::OnResponce(BinaryReader& Reader)
 }
 TmpPassword::~TmpPassword()
 {
-
 }
 }//end namespace block

@@ -31,6 +31,9 @@ void RpcDropAnswer::OnResponce(BinaryReader& Reader)
 }
 RpcDropAnswer::~RpcDropAnswer()
 {
-
+	if(this->result)
+	{
+		delete this->result;
+	}
 }
 }//end namespace block

@@ -29,6 +29,5 @@ void ChannelParticipantsSearch::OnResponce(BinaryReader& Reader)
 }
 ChannelParticipantsSearch::~ChannelParticipantsSearch()
 {
-
 }
 }//end namespace block

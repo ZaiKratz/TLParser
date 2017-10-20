@@ -11,7 +11,7 @@ ForwardMessages::ForwardMessages()
 	this->_ContentRelated = true;
 }
 
-ForwardMessages::ForwardMessages(bool silent, bool background, bool with_my_score, PRIVATE::InputPeer*  from_peer, TArray<int32>  id, TArray<unsigned long long>  random_id, PRIVATE::InputPeer*  to_peer)
+ForwardMessages::ForwardMessages(bool silent, bool background, bool with_my_score, TLBaseObject*  from_peer, TArray<int32>  id, TArray<unsigned long long>  random_id, TLBaseObject*  to_peer)
 {
 	this->_ConstructorID = 1888354709;
 	this->_ContentRelated = true;
@@ -78,6 +78,17 @@ void ForwardMessages::OnResponce(BinaryReader& Reader)
 }
 ForwardMessages::~ForwardMessages()
 {
-
+	if(this->from_peer)
+	{
+		delete this->from_peer;
+	}
+	if(this->to_peer)
+	{
+		delete this->to_peer;
+	}
+	if(this->result)
+	{
+		delete this->result;
+	}
 }
 }//end namespace block

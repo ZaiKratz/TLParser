@@ -29,6 +29,5 @@ void CdnFileReuploadNeeded::OnResponce(BinaryReader& Reader)
 }
 CdnFileReuploadNeeded::~CdnFileReuploadNeeded()
 {
-
 }
 }//end namespace block

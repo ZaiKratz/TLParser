@@ -31,6 +31,13 @@ void RemoveStickerFromSet::OnResponce(BinaryReader& Reader)
 }
 RemoveStickerFromSet::~RemoveStickerFromSet()
 {
-
+	if(this->sticker)
+	{
+		delete this->sticker;
+	}
+	if(this->result)
+	{
+		delete this->result;
+	}
 }
 }//end namespace block

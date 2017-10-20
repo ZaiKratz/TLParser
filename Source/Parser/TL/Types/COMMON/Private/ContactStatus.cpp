@@ -10,7 +10,7 @@ ContactStatus::ContactStatus()
 	this->_ConstructorID = -748155807;
 }
 
-ContactStatus::ContactStatus(int32 user_id, PRIVATE::UserStatus*  status)
+ContactStatus::ContactStatus(int32 user_id, TLBaseObject*  status)
 {
 	this->_ConstructorID = -748155807;
 	this->user_id = user_id;
@@ -27,11 +27,14 @@ void ContactStatus::OnSend(BinaryWriter& Writer)
 void ContactStatus::OnResponce(BinaryReader& Reader)
 {
 	user_id = Reader.ReadInt();
-	status = reinterpret_cast<PRIVATE::UserStatus* >(Reader.TGReadObject());
+	status = reinterpret_cast<TLBaseObject* >(Reader.TGReadObject());
 	this->_Responded = true;
 }
 ContactStatus::~ContactStatus()
 {
-
+	if(this->status)
+	{
+		delete this->status;
+	}
 }
 }//end namespace block

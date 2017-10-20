@@ -1,18 +1,15 @@
 #pragma once
 #include "Engine.h"
-#include "../../../Types/Private/Update.h"
-
-#include "../../../Types/Private/Peer.h"
-#include "../../../Types/Private/Update.h"
+#include "../../../TLObjectBase.h"
 
 //begin namespace block
 namespace COMMON
 {
-class UpdateBotCallbackQuery : public PRIVATE::Update
+class UpdateBotCallbackQuery : public TLBaseObject
 {
 public:
 	UpdateBotCallbackQuery();
-	UpdateBotCallbackQuery(unsigned long long query_id, int32 user_id, PRIVATE::Peer* peer, int32 msg_id, unsigned long long chat_instance, TArray<uint8> data, FString game_short_name);
+	UpdateBotCallbackQuery(unsigned long long query_id, int32 user_id, TLBaseObject* peer, int32 msg_id, unsigned long long chat_instance, TArray<uint8> data, FString game_short_name);
 
 	~UpdateBotCallbackQuery();
 	virtual void OnSend(BinaryWriter& Writer) override;
@@ -28,7 +25,7 @@ public:
 		 return this->user_id;
 	}
 
-	PRIVATE::Peer*  Getpeer() const
+	TLBaseObject*  Getpeer() const
 	{
 		 return this->peer;
 	}
@@ -56,7 +53,7 @@ public:
 private:
 	unsigned long long query_id;
 	 int32 user_id;
-	 PRIVATE::Peer* peer;
+	 TLBaseObject* peer;
 	 int32 msg_id;
 	 unsigned long long chat_instance;
 	 TArray<uint8> data;

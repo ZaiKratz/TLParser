@@ -31,6 +31,5 @@ void UpdateStatus::OnResponce(BinaryReader& Reader)
 }
 UpdateStatus::~UpdateStatus()
 {
-
 }
 }//end namespace block

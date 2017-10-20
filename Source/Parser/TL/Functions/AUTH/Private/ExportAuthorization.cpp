@@ -31,6 +31,9 @@ void ExportAuthorization::OnResponce(BinaryReader& Reader)
 }
 ExportAuthorization::~ExportAuthorization()
 {
-
+	if(this->result)
+	{
+		delete this->result;
+	}
 }
 }//end namespace block

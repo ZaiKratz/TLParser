@@ -24,6 +24,5 @@ void FilePartial::OnResponce(BinaryReader& Reader)
 }
 FilePartial::~FilePartial()
 {
-
 }
 }//end namespace block

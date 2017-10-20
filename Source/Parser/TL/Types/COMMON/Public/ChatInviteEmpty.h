@@ -1,13 +1,11 @@
 #pragma once
 #include "Engine.h"
-#include "../../../Types/Private/ExportedChatInvite.h"
-
-#include "../../../Types/Private/ExportedChatInvite.h"
+#include "../../../TLObjectBase.h"
 
 //begin namespace block
 namespace COMMON
 {
-class ChatInviteEmpty : public PRIVATE::ExportedChatInvite
+class ChatInviteEmpty : public TLBaseObject
 {
 public:
 	ChatInviteEmpty();

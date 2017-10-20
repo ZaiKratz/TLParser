@@ -36,6 +36,9 @@ void GetChannels::OnResponce(BinaryReader& Reader)
 }
 GetChannels::~GetChannels()
 {
-
+	if(this->result)
+	{
+		delete this->result;
+	}
 }
 }//end namespace block

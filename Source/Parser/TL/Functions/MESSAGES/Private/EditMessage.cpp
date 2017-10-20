@@ -11,7 +11,7 @@ EditMessage::EditMessage()
 	this->_ContentRelated = true;
 }
 
-EditMessage::EditMessage(bool no_webpage, PRIVATE::InputPeer*  peer, int32 id, FString message, PRIVATE::ReplyMarkup*  reply_markup, TArray<PRIVATE::MessageEntity*>  entities)
+EditMessage::EditMessage(bool no_webpage, TLBaseObject*  peer, int32 id, FString message, TLBaseObject*  reply_markup, TArray<TLBaseObject*>  entities)
 {
 	this->_ConstructorID = -829299510;
 	this->_ContentRelated = true;
@@ -64,7 +64,7 @@ void EditMessage::OnSend(BinaryWriter& Writer)
 	this->peer->OnSend(Writer);
 	Writer.WriteInt(this->id);
 	Writer.TGWriteString(this->message);
-	if(!this->reply_markup)
+	if(this->reply_markup)
 	{
 	this->reply_markup->OnSend(Writer);
 	}
@@ -74,7 +74,7 @@ void EditMessage::OnSend(BinaryWriter& Writer)
 	Writer.WriteInt(this->entities.Num());
 	for(auto X : this->entities)
 	{
-	if(!X)
+	if(X)
 	{
 	X->OnSend(Writer);
 	}
@@ -90,6 +90,17 @@ void EditMessage::OnResponce(BinaryReader& Reader)
 }
 EditMessage::~EditMessage()
 {
-
+	if(this->peer)
+	{
+		delete this->peer;
+	}
+	if(this->reply_markup)
+	{
+		delete this->reply_markup;
+	}
+	if(this->result)
+	{
+		delete this->result;
+	}
 }
 }//end namespace block

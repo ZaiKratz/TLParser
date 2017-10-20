@@ -29,6 +29,9 @@ void UpdateLangPack::OnResponce(BinaryReader& Reader)
 }
 UpdateLangPack::~UpdateLangPack()
 {
-
+	if(this->difference)
+	{
+		delete this->difference;
+	}
 }
 }//end namespace block

@@ -34,7 +34,7 @@ void InputMediaPhoto::OnSend(BinaryWriter& Writer)
 
 	this->id->OnSend(Writer);
 	Writer.TGWriteString(this->caption);
-	if(!this->ttl_seconds)
+	if(this->ttl_seconds)
 	{
 	Writer.WriteInt(this->ttl_seconds);
 	}
@@ -55,6 +55,9 @@ void InputMediaPhoto::OnResponce(BinaryReader& Reader)
 }
 InputMediaPhoto::~InputMediaPhoto()
 {
-
+	if(this->id)
+	{
+		delete this->id;
+	}
 }
 }//end namespace block

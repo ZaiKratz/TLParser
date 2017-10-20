@@ -35,6 +35,13 @@ void AcceptEncryption::OnResponce(BinaryReader& Reader)
 }
 AcceptEncryption::~AcceptEncryption()
 {
-
+	if(this->peer)
+	{
+		delete this->peer;
+	}
+	if(this->result)
+	{
+		delete this->result;
+	}
 }
 }//end namespace block

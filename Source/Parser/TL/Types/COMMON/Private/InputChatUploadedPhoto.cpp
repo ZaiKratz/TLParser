@@ -29,6 +29,9 @@ void InputChatUploadedPhoto::OnResponce(BinaryReader& Reader)
 }
 InputChatUploadedPhoto::~InputChatUploadedPhoto()
 {
-
+	if(this->file)
+	{
+		delete this->file;
+	}
 }
 }//end namespace block

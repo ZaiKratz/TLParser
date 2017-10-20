@@ -41,6 +41,5 @@ void UpdateChatParticipantAdd::OnResponce(BinaryReader& Reader)
 }
 UpdateChatParticipantAdd::~UpdateChatParticipantAdd()
 {
-
 }
 }//end namespace block

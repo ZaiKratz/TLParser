@@ -32,6 +32,5 @@ void IpPort::OnResponce(BinaryReader& Reader)
 }
 IpPort::~IpPort()
 {
-
 }
 }//end namespace block

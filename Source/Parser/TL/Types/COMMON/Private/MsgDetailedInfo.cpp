@@ -38,6 +38,5 @@ void MsgDetailedInfo::OnResponce(BinaryReader& Reader)
 }
 MsgDetailedInfo::~MsgDetailedInfo()
 {
-
 }
 }//end namespace block

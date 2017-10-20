@@ -11,7 +11,7 @@ ReadHistory::ReadHistory()
 	this->_ContentRelated = true;
 }
 
-ReadHistory::ReadHistory(PRIVATE::InputPeer*  peer, int32 max_id)
+ReadHistory::ReadHistory(TLBaseObject*  peer, int32 max_id)
 {
 	this->_ConstructorID = 238054714;
 	this->_ContentRelated = true;
@@ -33,6 +33,13 @@ void ReadHistory::OnResponce(BinaryReader& Reader)
 }
 ReadHistory::~ReadHistory()
 {
-
+	if(this->peer)
+	{
+		delete this->peer;
+	}
+	if(this->result)
+	{
+		delete this->result;
+	}
 }
 }//end namespace block

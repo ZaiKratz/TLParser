@@ -32,8 +32,8 @@ void InputPrivacyValueAllowUsers::OnResponce(BinaryReader& Reader)
 	Reader.ReadInt();
 
 	//Len concatenated with rand number to get rid of confusions with redefinition
-	int32 Len6112 = Reader.ReadInt();
-	for(int32 i = 0; i < Len6112; i++)
+	int32 Len27434 = Reader.ReadInt();
+	for(int32 i = 0; i < Len27434; i++)
 	{
 	auto X = reinterpret_cast<COMMON::InputUser*>(Reader.TGReadObject());
 	users.Add(X);
@@ -42,6 +42,5 @@ void InputPrivacyValueAllowUsers::OnResponce(BinaryReader& Reader)
 }
 InputPrivacyValueAllowUsers::~InputPrivacyValueAllowUsers()
 {
-
 }
 }//end namespace block

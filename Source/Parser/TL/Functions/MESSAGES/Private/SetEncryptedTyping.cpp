@@ -33,6 +33,9 @@ void SetEncryptedTyping::OnResponce(BinaryReader& Reader)
 }
 SetEncryptedTyping::~SetEncryptedTyping()
 {
-
+	if(this->peer)
+	{
+		delete this->peer;
+	}
 }
 }//end namespace block

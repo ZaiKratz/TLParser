@@ -10,7 +10,7 @@ PageBlockAuthorDate::PageBlockAuthorDate()
 	this->_ConstructorID = -1162877472;
 }
 
-PageBlockAuthorDate::PageBlockAuthorDate(PRIVATE::RichText*  author, FDateTime published_date)
+PageBlockAuthorDate::PageBlockAuthorDate(TLBaseObject*  author, FDateTime published_date)
 {
 	this->_ConstructorID = -1162877472;
 	this->author = author;
@@ -26,12 +26,15 @@ void PageBlockAuthorDate::OnSend(BinaryWriter& Writer)
 
 void PageBlockAuthorDate::OnResponce(BinaryReader& Reader)
 {
-	author = reinterpret_cast<PRIVATE::RichText* >(Reader.TGReadObject());
+	author = reinterpret_cast<TLBaseObject* >(Reader.TGReadObject());
 	published_date = Reader.TGReadDate();
 	this->_Responded = true;
 }
 PageBlockAuthorDate::~PageBlockAuthorDate()
 {
-
+	if(this->author)
+	{
+		delete this->author;
+	}
 }
 }//end namespace block

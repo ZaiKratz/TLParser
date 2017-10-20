@@ -11,7 +11,7 @@ GetUnreadMentions::GetUnreadMentions()
 	this->_ContentRelated = true;
 }
 
-GetUnreadMentions::GetUnreadMentions(PRIVATE::InputPeer*  peer, int32 offset_id, int32 add_offset, int32 limit, int32 max_id, int32 min_id)
+GetUnreadMentions::GetUnreadMentions(TLBaseObject*  peer, int32 offset_id, int32 add_offset, int32 limit, int32 max_id, int32 min_id)
 {
 	this->_ConstructorID = 1180140658;
 	this->_ContentRelated = true;
@@ -41,6 +41,13 @@ void GetUnreadMentions::OnResponce(BinaryReader& Reader)
 }
 GetUnreadMentions::~GetUnreadMentions()
 {
-
+	if(this->peer)
+	{
+		delete this->peer;
+	}
+	if(this->result)
+	{
+		delete this->result;
+	}
 }
 }//end namespace block

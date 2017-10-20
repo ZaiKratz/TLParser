@@ -32,6 +32,5 @@ void InputPaymentCredentialsSaved::OnResponce(BinaryReader& Reader)
 }
 InputPaymentCredentialsSaved::~InputPaymentCredentialsSaved()
 {
-
 }
 }//end namespace block

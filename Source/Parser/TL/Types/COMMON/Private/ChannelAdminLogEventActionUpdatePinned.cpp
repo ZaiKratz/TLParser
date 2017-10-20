@@ -29,6 +29,9 @@ void ChannelAdminLogEventActionUpdatePinned::OnResponce(BinaryReader& Reader)
 }
 ChannelAdminLogEventActionUpdatePinned::~ChannelAdminLogEventActionUpdatePinned()
 {
-
+	if(this->message)
+	{
+		delete this->message;
+	}
 }
 }//end namespace block

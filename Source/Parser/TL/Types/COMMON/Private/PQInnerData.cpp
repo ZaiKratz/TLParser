@@ -44,6 +44,5 @@ void PQInnerData::OnResponce(BinaryReader& Reader)
 }
 PQInnerData::~PQInnerData()
 {
-
 }
 }//end namespace block

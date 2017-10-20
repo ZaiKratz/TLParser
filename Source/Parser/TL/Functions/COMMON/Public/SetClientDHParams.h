@@ -1,14 +1,13 @@
 #pragma once
 #include "Engine.h"
-#include "../../../Types/Private/SetClientDHParamsAnswer.h"
+#include "../../../TLObjectBase.h"
 
 #include "BigInt.h"
-#include "../../../Types/Private/SetClientDHParamsAnswer.h"
 
 //begin namespace block
 namespace COMMON
 {
-class SetClientDHParams : public PRIVATE::SetClientDHParamsAnswer
+class SetClientDHParams : public TLBaseObject
 {
 public:
 	SetClientDHParams();
@@ -33,7 +32,7 @@ public:
 		 return this->encrypted_data;
 	}
 
-	PRIVATE::SetClientDHParamsAnswer* GetResult() const
+	TLBaseObject* GetResult() const
 	{
 		 return this->result;
 	}
@@ -42,6 +41,6 @@ private:
 	TBigInt<128> nonce;
 	 TBigInt<128> server_nonce;
 	 FString encrypted_data;
-	PRIVATE::SetClientDHParamsAnswer* result;
+	TLBaseObject* result;
 };
 } //end namespace block

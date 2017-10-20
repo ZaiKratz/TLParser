@@ -35,8 +35,8 @@ void ArchivedStickers::OnResponce(BinaryReader& Reader)
 	Reader.ReadInt();
 
 	//Len concatenated with rand number to get rid of confusions with redefinition
-	int32 Len9140 = Reader.ReadInt();
-	for(int32 i = 0; i < Len9140; i++)
+	int32 Len13529 = Reader.ReadInt();
+	for(int32 i = 0; i < Len13529; i++)
 	{
 	auto X = reinterpret_cast<COMMON::StickerSetCovered*>(Reader.TGReadObject());
 	sets.Add(X);
@@ -45,6 +45,5 @@ void ArchivedStickers::OnResponce(BinaryReader& Reader)
 }
 ArchivedStickers::~ArchivedStickers()
 {
-
 }
 }//end namespace block

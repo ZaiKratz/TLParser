@@ -32,6 +32,9 @@ void UpdateEncryption::OnResponce(BinaryReader& Reader)
 }
 UpdateEncryption::~UpdateEncryption()
 {
-
+	if(this->chat)
+	{
+		delete this->chat;
+	}
 }
 }//end namespace block

@@ -1,14 +1,13 @@
 #pragma once
 #include "Engine.h"
-#include "../../../Types/Private/Update.h"
+#include "../../../TLObjectBase.h"
 
 #include "../../../Types/Common/Public/InputBotInlineMessageID.h"
-#include "../../../Types/Private/Update.h"
 
 //begin namespace block
 namespace COMMON
 {
-class UpdateInlineBotCallbackQuery : public PRIVATE::Update
+class UpdateInlineBotCallbackQuery : public TLBaseObject
 {
 public:
 	UpdateInlineBotCallbackQuery();

@@ -1,19 +1,17 @@
 #pragma once
 #include "Engine.h"
-#include "../../../Types/Private/InputBotInlineMessage.h"
+#include "../../../TLObjectBase.h"
 
 #include "../../../Types/Common/Public/InputGeoPoint.h"
-#include "../../../Types/Private/ReplyMarkup.h"
-#include "../../../Types/Private/InputBotInlineMessage.h"
 
 //begin namespace block
 namespace COMMON
 {
-class InputBotInlineMessageMediaGeo : public PRIVATE::InputBotInlineMessage
+class InputBotInlineMessageMediaGeo : public TLBaseObject
 {
 public:
 	InputBotInlineMessageMediaGeo();
-	InputBotInlineMessageMediaGeo(COMMON::InputGeoPoint* geo_point, PRIVATE::ReplyMarkup* reply_markup);
+	InputBotInlineMessageMediaGeo(COMMON::InputGeoPoint* geo_point, TLBaseObject* reply_markup);
 
 	~InputBotInlineMessageMediaGeo();
 	virtual void OnSend(BinaryWriter& Writer) override;
@@ -24,13 +22,13 @@ public:
 		 return this->geo_point;
 	}
 
-	PRIVATE::ReplyMarkup*  GetReplyMarkup() const
+	TLBaseObject*  GetReplyMarkup() const
 	{
 		 return this->reply_markup;
 	}
 
 private:
 	COMMON::InputGeoPoint* geo_point;
-	 PRIVATE::ReplyMarkup* reply_markup;
+	 TLBaseObject* reply_markup;
 };
 } //end namespace block

@@ -10,7 +10,7 @@ Link::Link()
 	this->_ConstructorID = 986597452;
 }
 
-Link::Link(PRIVATE::ContactLink*  my_link, PRIVATE::ContactLink*  foreign_link, COMMON::User*  user)
+Link::Link(TLBaseObject*  my_link, TLBaseObject*  foreign_link, COMMON::User*  user)
 {
 	this->_ConstructorID = 986597452;
 	this->my_link = my_link;
@@ -28,13 +28,24 @@ void Link::OnSend(BinaryWriter& Writer)
 
 void Link::OnResponce(BinaryReader& Reader)
 {
-	my_link = reinterpret_cast<PRIVATE::ContactLink* >(Reader.TGReadObject());
-	foreign_link = reinterpret_cast<PRIVATE::ContactLink* >(Reader.TGReadObject());
+	my_link = reinterpret_cast<TLBaseObject* >(Reader.TGReadObject());
+	foreign_link = reinterpret_cast<TLBaseObject* >(Reader.TGReadObject());
 	user = reinterpret_cast<COMMON::User* >(Reader.TGReadObject());
 	this->_Responded = true;
 }
 Link::~Link()
 {
-
+	if(this->my_link)
+	{
+		delete this->my_link;
+	}
+	if(this->foreign_link)
+	{
+		delete this->foreign_link;
+	}
+	if(this->user)
+	{
+		delete this->user;
+	}
 }
 }//end namespace block

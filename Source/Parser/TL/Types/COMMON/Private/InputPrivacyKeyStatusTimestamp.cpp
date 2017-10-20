@@ -24,6 +24,5 @@ void InputPrivacyKeyStatusTimestamp::OnResponce(BinaryReader& Reader)
 }
 InputPrivacyKeyStatusTimestamp::~InputPrivacyKeyStatusTimestamp()
 {
-
 }
 }//end namespace block

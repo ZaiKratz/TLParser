@@ -37,7 +37,7 @@ void UpdateBotInlineQuery::OnSend(BinaryWriter& Writer)
 	Writer.WriteLong(this->query_id);
 	Writer.WriteInt(this->user_id);
 	Writer.TGWriteString(this->query);
-	if(!this->geo)
+	if(this->geo)
 	{
 	this->geo->OnSend(Writer);
 	}
@@ -61,6 +61,9 @@ void UpdateBotInlineQuery::OnResponce(BinaryReader& Reader)
 }
 UpdateBotInlineQuery::~UpdateBotInlineQuery()
 {
-
+	if(this->geo)
+	{
+		delete this->geo;
+	}
 }
 }//end namespace block

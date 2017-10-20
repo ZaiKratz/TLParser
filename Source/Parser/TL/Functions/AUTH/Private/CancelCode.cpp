@@ -33,6 +33,5 @@ void CancelCode::OnResponce(BinaryReader& Reader)
 }
 CancelCode::~CancelCode()
 {
-
 }
 }//end namespace block

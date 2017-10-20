@@ -42,6 +42,5 @@ void ClearRecentStickers::OnResponce(BinaryReader& Reader)
 }
 ClearRecentStickers::~ClearRecentStickers()
 {
-
 }
 }//end namespace block

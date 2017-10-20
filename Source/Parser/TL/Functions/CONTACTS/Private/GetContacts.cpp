@@ -31,6 +31,9 @@ void GetContacts::OnResponce(BinaryReader& Reader)
 }
 GetContacts::~GetContacts()
 {
-
+	if(this->result)
+	{
+		delete this->result;
+	}
 }
 }//end namespace block

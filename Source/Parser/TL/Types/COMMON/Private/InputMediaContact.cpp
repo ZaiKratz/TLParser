@@ -35,6 +35,5 @@ void InputMediaContact::OnResponce(BinaryReader& Reader)
 }
 InputMediaContact::~InputMediaContact()
 {
-
 }
 }//end namespace block

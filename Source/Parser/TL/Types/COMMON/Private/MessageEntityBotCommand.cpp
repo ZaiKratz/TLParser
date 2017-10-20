@@ -32,6 +32,5 @@ void MessageEntityBotCommand::OnResponce(BinaryReader& Reader)
 }
 MessageEntityBotCommand::~MessageEntityBotCommand()
 {
-
 }
 }//end namespace block

@@ -46,6 +46,13 @@ void ValidateRequestedInfo::OnResponce(BinaryReader& Reader)
 }
 ValidateRequestedInfo::~ValidateRequestedInfo()
 {
-
+	if(this->info)
+	{
+		delete this->info;
+	}
+	if(this->result)
+	{
+		delete this->result;
+	}
 }
 }//end namespace block

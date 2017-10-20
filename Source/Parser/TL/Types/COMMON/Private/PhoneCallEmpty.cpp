@@ -29,6 +29,5 @@ void PhoneCallEmpty::OnResponce(BinaryReader& Reader)
 }
 PhoneCallEmpty::~PhoneCallEmpty()
 {
-
 }
 }//end namespace block

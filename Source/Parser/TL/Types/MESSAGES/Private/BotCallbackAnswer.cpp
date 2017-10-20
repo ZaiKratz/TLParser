@@ -89,6 +89,5 @@ void BotCallbackAnswer::OnResponce(BinaryReader& Reader)
 }
 BotCallbackAnswer::~BotCallbackAnswer()
 {
-
 }
 }//end namespace block

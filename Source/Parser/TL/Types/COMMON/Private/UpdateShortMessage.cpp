@@ -10,7 +10,7 @@ UpdateShortMessage::UpdateShortMessage()
 	this->_ConstructorID = -1857044719;
 }
 
-UpdateShortMessage::UpdateShortMessage(bool out, bool mentioned, bool media_unread, bool silent, int32 id, int32 user_id, FString message, int32 pts, int32 pts_count, FDateTime date, COMMON::MessageFwdHeader*  fwd_from, int32 via_bot_id, int32 reply_to_msg_id, TArray<PRIVATE::MessageEntity*>  entities)
+UpdateShortMessage::UpdateShortMessage(bool out, bool mentioned, bool media_unread, bool silent, int32 id, int32 user_id, FString message, int32 pts, int32 pts_count, FDateTime date, COMMON::MessageFwdHeader*  fwd_from, int32 via_bot_id, int32 reply_to_msg_id, TArray<TLBaseObject*>  entities)
 {
 	this->_ConstructorID = -1857044719;
 	this->out = out;
@@ -105,15 +105,15 @@ void UpdateShortMessage::OnSend(BinaryWriter& Writer)
 	Writer.WriteInt(this->pts);
 	Writer.WriteInt(this->pts_count);
 	Writer.TGWriteDate(this->date);
-	if(!this->fwd_from)
+	if(this->fwd_from)
 	{
 	this->fwd_from->OnSend(Writer);
 	}
-	if(!this->via_bot_id)
+	if(this->via_bot_id)
 	{
 	Writer.WriteInt(this->via_bot_id);
 	}
-	if(!this->reply_to_msg_id)
+	if(this->reply_to_msg_id)
 	{
 	Writer.WriteInt(this->reply_to_msg_id);
 	}
@@ -123,7 +123,7 @@ void UpdateShortMessage::OnSend(BinaryWriter& Writer)
 	Writer.WriteInt(this->entities.Num());
 	for(auto X : this->entities)
 	{
-	if(!X)
+	if(X)
 	{
 	X->OnSend(Writer);
 	}
@@ -175,10 +175,10 @@ void UpdateShortMessage::OnResponce(BinaryReader& Reader)
 	Reader.ReadInt();
 
 	//Len concatenated with rand number to get rid of confusions with redefinition
-	int32 Len29430 = Reader.ReadInt();
-	for(int32 i = 0; i < Len29430; i++)
+	int32 Len27222 = Reader.ReadInt();
+	for(int32 i = 0; i < Len27222; i++)
 	{
-	auto X = reinterpret_cast<PRIVATE::MessageEntity*>(Reader.TGReadObject());
+	auto X = reinterpret_cast<TLBaseObject*>(Reader.TGReadObject());
 	entities.Add(X);
 	}
 	}
@@ -186,6 +186,9 @@ void UpdateShortMessage::OnResponce(BinaryReader& Reader)
 }
 UpdateShortMessage::~UpdateShortMessage()
 {
-
+	if(this->fwd_from)
+	{
+		delete this->fwd_from;
+	}
 }
 }//end namespace block

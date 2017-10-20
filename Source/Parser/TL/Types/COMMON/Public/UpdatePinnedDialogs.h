@@ -1,29 +1,26 @@
 #pragma once
 #include "Engine.h"
-#include "../../../Types/Private/Update.h"
-
-#include "../../../Types/Private/Peer.h"
-#include "../../../Types/Private/Update.h"
+#include "../../../TLObjectBase.h"
 
 //begin namespace block
 namespace COMMON
 {
-class UpdatePinnedDialogs : public PRIVATE::Update
+class UpdatePinnedDialogs : public TLBaseObject
 {
 public:
 	UpdatePinnedDialogs();
-	UpdatePinnedDialogs(TArray<PRIVATE::Peer*> order);
+	UpdatePinnedDialogs(TArray<TLBaseObject*> order);
 
 	~UpdatePinnedDialogs();
 	virtual void OnSend(BinaryWriter& Writer) override;
 	virtual void OnResponce(BinaryReader& Reader) override;
 
-	TArray<PRIVATE::Peer*>  Getorder() const
+	TArray<TLBaseObject*>  Getorder() const
 	{
 		 return this->order;
 	}
 
 private:
-	TArray<PRIVATE::Peer*> order;
+	TArray<TLBaseObject*> order;
 };
 } //end namespace block

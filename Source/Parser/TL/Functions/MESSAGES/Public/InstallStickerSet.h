@@ -1,23 +1,21 @@
 #pragma once
 #include "Engine.h"
-
-#include "../../../Types/Private/InputStickerSet.h"
-#include "../../../Types/Private/StickerSetInstallResult.h"
+#include "../../../TLObjectBase.h"
 
 //begin namespace block
 namespace MESSAGES
 {
-class InstallStickerSet : public PRIVATE::StickerSetInstallResult
+class InstallStickerSet : public TLBaseObject
 {
 public:
 	InstallStickerSet();
-	InstallStickerSet(PRIVATE::InputStickerSet* stickerset, bool archived);
+	InstallStickerSet(TLBaseObject* stickerset, bool archived);
 
 	~InstallStickerSet();
 	virtual void OnSend(BinaryWriter& Writer) override;
 	virtual void OnResponce(BinaryReader& Reader) override;
 
-	PRIVATE::InputStickerSet*  Getstickerset() const
+	TLBaseObject*  Getstickerset() const
 	{
 		 return this->stickerset;
 	}
@@ -27,14 +25,14 @@ public:
 		 return this->archived;
 	}
 
-	PRIVATE::StickerSetInstallResult* GetResult() const
+	TLBaseObject* GetResult() const
 	{
 		 return this->result;
 	}
 
 private:
-	PRIVATE::InputStickerSet* stickerset;
+	TLBaseObject* stickerset;
 	 bool archived;
-	PRIVATE::StickerSetInstallResult* result;
+	TLBaseObject* result;
 };
 } //end namespace block

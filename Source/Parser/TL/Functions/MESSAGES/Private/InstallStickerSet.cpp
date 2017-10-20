@@ -11,7 +11,7 @@ InstallStickerSet::InstallStickerSet()
 	this->_ContentRelated = true;
 }
 
-InstallStickerSet::InstallStickerSet(PRIVATE::InputStickerSet*  stickerset, bool archived)
+InstallStickerSet::InstallStickerSet(TLBaseObject*  stickerset, bool archived)
 {
 	this->_ConstructorID = -946871200;
 	this->_ContentRelated = true;
@@ -28,11 +28,18 @@ void InstallStickerSet::OnSend(BinaryWriter& Writer)
 
 void InstallStickerSet::OnResponce(BinaryReader& Reader)
 {
-	this->result = reinterpret_cast<PRIVATE::StickerSetInstallResult*>(Reader.TGReadObject());
+	this->result = reinterpret_cast<TLBaseObject*>(Reader.TGReadObject());
 	this->_Responded = true;
 }
 InstallStickerSet::~InstallStickerSet()
 {
-
+	if(this->stickerset)
+	{
+		delete this->stickerset;
+	}
+	if(this->result)
+	{
+		delete this->result;
+	}
 }
 }//end namespace block

@@ -3,7 +3,6 @@
 #include "../../../TLObjectBase.h"
 
 #include "../../../Types/Common/Public/PhotoSize.h"
-#include "../../../Types/Private/DocumentAttribute.h"
 
 //begin namespace block
 namespace COMMON
@@ -12,7 +11,7 @@ class Document : public TLBaseObject
 {
 public:
 	Document();
-	Document(unsigned long long id, unsigned long long access_hash, FDateTime date, FString mime_type, int32 size, COMMON::PhotoSize* thumb, int32 dc_id, int32 version, TArray<PRIVATE::DocumentAttribute*> attributes);
+	Document(unsigned long long id, unsigned long long access_hash, FDateTime date, FString mime_type, int32 size, COMMON::PhotoSize* thumb, int32 dc_id, int32 version, TArray<TLBaseObject*> attributes);
 
 	~Document();
 	virtual void OnSend(BinaryWriter& Writer) override;
@@ -58,7 +57,7 @@ public:
 		 return this->version;
 	}
 
-	TArray<PRIVATE::DocumentAttribute*>  Getattributes() const
+	TArray<TLBaseObject*>  Getattributes() const
 	{
 		 return this->attributes;
 	}
@@ -72,6 +71,6 @@ private:
 	 COMMON::PhotoSize* thumb;
 	 int32 dc_id;
 	 int32 version;
-	 TArray<PRIVATE::DocumentAttribute*> attributes;
+	 TArray<TLBaseObject*> attributes;
 };
 } //end namespace block

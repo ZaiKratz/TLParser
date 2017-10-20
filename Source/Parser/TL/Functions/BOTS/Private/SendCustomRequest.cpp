@@ -33,6 +33,13 @@ void SendCustomRequest::OnResponce(BinaryReader& Reader)
 }
 SendCustomRequest::~SendCustomRequest()
 {
-
+	if(this->params)
+	{
+		delete this->params;
+	}
+	if(this->result)
+	{
+		delete this->result;
+	}
 }
 }//end namespace block

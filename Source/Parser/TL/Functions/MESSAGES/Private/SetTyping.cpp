@@ -11,7 +11,7 @@ SetTyping::SetTyping()
 	this->_ContentRelated = true;
 }
 
-SetTyping::SetTyping(PRIVATE::InputPeer*  peer, PRIVATE::SendMessageAction*  action)
+SetTyping::SetTyping(TLBaseObject*  peer, TLBaseObject*  action)
 {
 	this->_ConstructorID = -1551737264;
 	this->_ContentRelated = true;
@@ -33,6 +33,13 @@ void SetTyping::OnResponce(BinaryReader& Reader)
 }
 SetTyping::~SetTyping()
 {
-
+	if(this->peer)
+	{
+		delete this->peer;
+	}
+	if(this->action)
+	{
+		delete this->action;
+	}
 }
 }//end namespace block

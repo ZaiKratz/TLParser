@@ -1,13 +1,11 @@
 #pragma once
 #include "Engine.h"
-#include "../../../Types/Private/DestroyAuthKeyRes.h"
-
-#include "../../../Types/Private/DestroyAuthKeyRes.h"
+#include "../../../TLObjectBase.h"
 
 //begin namespace block
 namespace COMMON
 {
-class DestroyAuthKeyNone : public PRIVATE::DestroyAuthKeyRes
+class DestroyAuthKeyNone : public TLBaseObject
 {
 public:
 	DestroyAuthKeyNone();

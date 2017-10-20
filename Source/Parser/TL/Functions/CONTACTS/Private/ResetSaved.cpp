@@ -23,6 +23,5 @@ void ResetSaved::OnResponce(BinaryReader& Reader)
 }
 ResetSaved::~ResetSaved()
 {
-
 }
 }//end namespace block

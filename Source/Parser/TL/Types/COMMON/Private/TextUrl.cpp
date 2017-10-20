@@ -10,7 +10,7 @@ TextUrl::TextUrl()
 	this->_ConstructorID = 1009288385;
 }
 
-TextUrl::TextUrl(PRIVATE::RichText*  text, FString url, unsigned long long webpage_id)
+TextUrl::TextUrl(TLBaseObject*  text, FString url, unsigned long long webpage_id)
 {
 	this->_ConstructorID = 1009288385;
 	this->text = text;
@@ -28,13 +28,16 @@ void TextUrl::OnSend(BinaryWriter& Writer)
 
 void TextUrl::OnResponce(BinaryReader& Reader)
 {
-	text = reinterpret_cast<PRIVATE::RichText* >(Reader.TGReadObject());
+	text = reinterpret_cast<TLBaseObject* >(Reader.TGReadObject());
 	url = Reader.TGReadString();
 	webpage_id = Reader.ReadLong();
 	this->_Responded = true;
 }
 TextUrl::~TextUrl()
 {
-
+	if(this->text)
+	{
+		delete this->text;
+	}
 }
 }//end namespace block

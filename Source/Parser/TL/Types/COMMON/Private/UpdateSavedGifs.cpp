@@ -24,6 +24,5 @@ void UpdateSavedGifs::OnResponce(BinaryReader& Reader)
 }
 UpdateSavedGifs::~UpdateSavedGifs()
 {
-
 }
 }//end namespace block

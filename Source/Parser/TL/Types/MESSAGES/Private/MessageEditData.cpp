@@ -45,6 +45,5 @@ void MessageEditData::OnResponce(BinaryReader& Reader)
 }
 MessageEditData::~MessageEditData()
 {
-
 }
 }//end namespace block

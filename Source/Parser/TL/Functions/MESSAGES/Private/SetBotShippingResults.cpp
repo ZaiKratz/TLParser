@@ -50,7 +50,7 @@ void SetBotShippingResults::OnSend(BinaryWriter& Writer)
 	Writer.WriteInt(this->shipping_options.Num());
 	for(auto X : this->shipping_options)
 	{
-	if(!X)
+	if(X)
 	{
 	X->OnSend(Writer);
 	}
@@ -66,6 +66,5 @@ void SetBotShippingResults::OnResponce(BinaryReader& Reader)
 }
 SetBotShippingResults::~SetBotShippingResults()
 {
-
 }
 }//end namespace block

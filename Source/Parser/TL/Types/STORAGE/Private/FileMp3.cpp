@@ -24,6 +24,5 @@ void FileMp3::OnResponce(BinaryReader& Reader)
 }
 FileMp3::~FileMp3()
 {
-
 }
 }//end namespace block

@@ -32,6 +32,5 @@ void PaymentCharge::OnResponce(BinaryReader& Reader)
 }
 PaymentCharge::~PaymentCharge()
 {
-
 }
 }//end namespace block

@@ -35,6 +35,13 @@ void FoundGifCached::OnResponce(BinaryReader& Reader)
 }
 FoundGifCached::~FoundGifCached()
 {
-
+	if(this->photo)
+	{
+		delete this->photo;
+	}
+	if(this->document)
+	{
+		delete this->document;
+	}
 }
 }//end namespace block

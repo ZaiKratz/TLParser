@@ -32,6 +32,5 @@ void UpdateUserBlocked::OnResponce(BinaryReader& Reader)
 }
 UpdateUserBlocked::~UpdateUserBlocked()
 {
-
 }
 }//end namespace block

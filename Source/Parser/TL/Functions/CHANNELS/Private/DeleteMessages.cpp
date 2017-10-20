@@ -38,6 +38,13 @@ void DeleteMessages::OnResponce(BinaryReader& Reader)
 }
 DeleteMessages::~DeleteMessages()
 {
-
+	if(this->channel)
+	{
+		delete this->channel;
+	}
+	if(this->result)
+	{
+		delete this->result;
+	}
 }
 }//end namespace block

@@ -2,7 +2,6 @@
 #include "Engine.h"
 #include "../../../TLObjectBase.h"
 
-#include "../../../Types/Private/InputPeer.h"
 #include "../../../Types/Common/Public/Updates.h"
 
 //begin namespace block
@@ -12,7 +11,7 @@ class SendInlineBotResult : public TLBaseObject
 {
 public:
 	SendInlineBotResult();
-	SendInlineBotResult(bool silent, bool background, bool clear_draft, PRIVATE::InputPeer* peer, int32 reply_to_msg_id, unsigned long long random_id, unsigned long long query_id, FString id);
+	SendInlineBotResult(bool silent, bool background, bool clear_draft, TLBaseObject* peer, int32 reply_to_msg_id, unsigned long long random_id, unsigned long long query_id, FString id);
 
 	~SendInlineBotResult();
 	virtual void OnSend(BinaryWriter& Writer) override;
@@ -33,7 +32,7 @@ public:
 		 return this->clear_draft;
 	}
 
-	PRIVATE::InputPeer*  Getpeer() const
+	TLBaseObject*  Getpeer() const
 	{
 		 return this->peer;
 	}
@@ -67,7 +66,7 @@ private:
 	bool silent;
 	 bool background;
 	 bool clear_draft;
-	 PRIVATE::InputPeer* peer;
+	 TLBaseObject* peer;
 	 int32 reply_to_msg_id;
 	 unsigned long long random_id;
 	 unsigned long long query_id;

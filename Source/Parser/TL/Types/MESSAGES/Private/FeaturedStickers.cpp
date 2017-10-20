@@ -42,8 +42,8 @@ void FeaturedStickers::OnResponce(BinaryReader& Reader)
 	Reader.ReadInt();
 
 	//Len concatenated with rand number to get rid of confusions with redefinition
-	int32 Len5959 = Reader.ReadInt();
-	for(int32 i = 0; i < Len5959; i++)
+	int32 Len11815 = Reader.ReadInt();
+	for(int32 i = 0; i < Len11815; i++)
 	{
 	auto X = reinterpret_cast<COMMON::StickerSetCovered*>(Reader.TGReadObject());
 	sets.Add(X);
@@ -51,8 +51,8 @@ void FeaturedStickers::OnResponce(BinaryReader& Reader)
 	Reader.ReadInt();
 
 	//Len concatenated with rand number to get rid of confusions with redefinition
-	int32 Len8753 = Reader.ReadInt();
-	for(int32 i = 0; i < Len8753; i++)
+	int32 Len4231 = Reader.ReadInt();
+	for(int32 i = 0; i < Len4231; i++)
 	{
 	auto X = Reader.ReadLong();
 	unread.Add(X);
@@ -61,6 +61,5 @@ void FeaturedStickers::OnResponce(BinaryReader& Reader)
 }
 FeaturedStickers::~FeaturedStickers()
 {
-
 }
 }//end namespace block

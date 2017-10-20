@@ -24,6 +24,5 @@ void ChatInviteEmpty::OnResponce(BinaryReader& Reader)
 }
 ChatInviteEmpty::~ChatInviteEmpty()
 {
-
 }
 }//end namespace block

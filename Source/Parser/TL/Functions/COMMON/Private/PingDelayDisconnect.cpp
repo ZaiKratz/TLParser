@@ -33,6 +33,9 @@ void PingDelayDisconnect::OnResponce(BinaryReader& Reader)
 }
 PingDelayDisconnect::~PingDelayDisconnect()
 {
-
+	if(this->result)
+	{
+		delete this->result;
+	}
 }
 }//end namespace block

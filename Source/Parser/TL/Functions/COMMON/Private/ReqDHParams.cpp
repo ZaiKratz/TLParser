@@ -36,11 +36,14 @@ void ReqDHParams::OnSend(BinaryWriter& Writer)
 
 void ReqDHParams::OnResponce(BinaryReader& Reader)
 {
-	this->result = reinterpret_cast<PRIVATE::ServerDHParams*>(Reader.TGReadObject());
+	this->result = reinterpret_cast<TLBaseObject*>(Reader.TGReadObject());
 	this->_Responded = true;
 }
 ReqDHParams::~ReqDHParams()
 {
-
+	if(this->result)
+	{
+		delete this->result;
+	}
 }
 }//end namespace block

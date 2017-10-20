@@ -2,9 +2,6 @@
 #include "Engine.h"
 #include "../../../TLObjectBase.h"
 
-#include "../../../Types/Private/InputPeer.h"
-#include "../../../Types/Private/InputMedia.h"
-#include "../../../Types/Private/ReplyMarkup.h"
 #include "../../../Types/Common/Public/Updates.h"
 
 //begin namespace block
@@ -14,7 +11,7 @@ class SendMedia : public TLBaseObject
 {
 public:
 	SendMedia();
-	SendMedia(bool silent, bool background, bool clear_draft, PRIVATE::InputPeer* peer, int32 reply_to_msg_id, PRIVATE::InputMedia* media, unsigned long long random_id, PRIVATE::ReplyMarkup* reply_markup);
+	SendMedia(bool silent, bool background, bool clear_draft, TLBaseObject* peer, int32 reply_to_msg_id, TLBaseObject* media, unsigned long long random_id, TLBaseObject* reply_markup);
 
 	~SendMedia();
 	virtual void OnSend(BinaryWriter& Writer) override;
@@ -35,7 +32,7 @@ public:
 		 return this->clear_draft;
 	}
 
-	PRIVATE::InputPeer*  Getpeer() const
+	TLBaseObject*  Getpeer() const
 	{
 		 return this->peer;
 	}
@@ -45,7 +42,7 @@ public:
 		 return this->reply_to_msg_id;
 	}
 
-	PRIVATE::InputMedia*  Getmedia() const
+	TLBaseObject*  Getmedia() const
 	{
 		 return this->media;
 	}
@@ -55,7 +52,7 @@ public:
 		 return this->random_id;
 	}
 
-	PRIVATE::ReplyMarkup*  GetReplyMarkup() const
+	TLBaseObject*  GetReplyMarkup() const
 	{
 		 return this->reply_markup;
 	}
@@ -69,11 +66,11 @@ private:
 	bool silent;
 	 bool background;
 	 bool clear_draft;
-	 PRIVATE::InputPeer* peer;
+	 TLBaseObject* peer;
 	 int32 reply_to_msg_id;
-	 PRIVATE::InputMedia* media;
+	 TLBaseObject* media;
 	 unsigned long long random_id;
-	 PRIVATE::ReplyMarkup* reply_markup;
+	 TLBaseObject* reply_markup;
 	COMMON::Updates* result;
 };
 } //end namespace block

@@ -11,7 +11,7 @@ ImportContacts::ImportContacts()
 	this->_ContentRelated = true;
 }
 
-ImportContacts::ImportContacts(TArray<PRIVATE::InputContact*>  contacts)
+ImportContacts::ImportContacts(TArray<TLBaseObject*>  contacts)
 {
 	this->_ConstructorID = 746589157;
 	this->_ContentRelated = true;
@@ -36,6 +36,9 @@ void ImportContacts::OnResponce(BinaryReader& Reader)
 }
 ImportContacts::~ImportContacts()
 {
-
+	if(this->result)
+	{
+		delete this->result;
+	}
 }
 }//end namespace block

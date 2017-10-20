@@ -24,6 +24,5 @@ void DocumentAttributeAnimated::OnResponce(BinaryReader& Reader)
 }
 DocumentAttributeAnimated::~DocumentAttributeAnimated()
 {
-
 }
 }//end namespace block

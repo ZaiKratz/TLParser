@@ -10,7 +10,7 @@ PaymentForm::PaymentForm()
 	this->_ConstructorID = 1062645411;
 }
 
-PaymentForm::PaymentForm(bool can_save_credentials, bool password_missing, int32 bot_id, COMMON::Invoice*  invoice, int32 provider_id, FString url, FString native_provider, COMMON::DataJSON*  native_params, COMMON::PaymentRequestedInfo*  saved_info, PRIVATE::PaymentSavedCredentials*  saved_credentials, TArray<COMMON::User*>  users)
+PaymentForm::PaymentForm(bool can_save_credentials, bool password_missing, int32 bot_id, COMMON::Invoice*  invoice, int32 provider_id, FString url, FString native_provider, COMMON::DataJSON*  native_params, COMMON::PaymentRequestedInfo*  saved_info, TLBaseObject*  saved_credentials, TArray<COMMON::User*>  users)
 {
 	this->_ConstructorID = 1062645411;
 	this->can_save_credentials = can_save_credentials;
@@ -85,15 +85,15 @@ void PaymentForm::OnSend(BinaryWriter& Writer)
 	Writer.WriteInt(this->provider_id);
 	Writer.TGWriteString(this->url);
 	Writer.TGWriteString(this->native_provider);
-	if(!this->native_params)
+	if(this->native_params)
 	{
 	this->native_params->OnSend(Writer);
 	}
-	if(!this->saved_info)
+	if(this->saved_info)
 	{
 	this->saved_info->OnSend(Writer);
 	}
-	if(!this->saved_credentials)
+	if(this->saved_credentials)
 	{
 	this->saved_credentials->OnSend(Writer);
 	}
@@ -136,13 +136,13 @@ void PaymentForm::OnResponce(BinaryReader& Reader)
 	}
 	if((Flags & (1 << 1)) != 0) 
 	{
-	saved_credentials = reinterpret_cast<PRIVATE::PaymentSavedCredentials* >(Reader.TGReadObject());
+	saved_credentials = reinterpret_cast<TLBaseObject* >(Reader.TGReadObject());
 	}
 	Reader.ReadInt();
 
 	//Len concatenated with rand number to get rid of confusions with redefinition
-	int32 Len8309 = Reader.ReadInt();
-	for(int32 i = 0; i < Len8309; i++)
+	int32 Len4000 = Reader.ReadInt();
+	for(int32 i = 0; i < Len4000; i++)
 	{
 	auto X = reinterpret_cast<COMMON::User*>(Reader.TGReadObject());
 	users.Add(X);
@@ -151,6 +151,21 @@ void PaymentForm::OnResponce(BinaryReader& Reader)
 }
 PaymentForm::~PaymentForm()
 {
-
+	if(this->invoice)
+	{
+		delete this->invoice;
+	}
+	if(this->native_params)
+	{
+		delete this->native_params;
+	}
+	if(this->saved_info)
+	{
+		delete this->saved_info;
+	}
+	if(this->saved_credentials)
+	{
+		delete this->saved_credentials;
+	}
 }
 }//end namespace block

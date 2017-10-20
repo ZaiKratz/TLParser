@@ -53,8 +53,8 @@ void Dialogs::OnResponce(BinaryReader& Reader)
 	Reader.ReadInt();
 
 	//Len concatenated with rand number to get rid of confusions with redefinition
-	int32 Len386 = Reader.ReadInt();
-	for(int32 i = 0; i < Len386; i++)
+	int32 Len31814 = Reader.ReadInt();
+	for(int32 i = 0; i < Len31814; i++)
 	{
 	auto X = reinterpret_cast<COMMON::Dialog*>(Reader.TGReadObject());
 	dialogs.Add(X);
@@ -62,8 +62,8 @@ void Dialogs::OnResponce(BinaryReader& Reader)
 	Reader.ReadInt();
 
 	//Len concatenated with rand number to get rid of confusions with redefinition
-	int32 Len17282 = Reader.ReadInt();
-	for(int32 i = 0; i < Len17282; i++)
+	int32 Len21039 = Reader.ReadInt();
+	for(int32 i = 0; i < Len21039; i++)
 	{
 	auto X = reinterpret_cast<COMMON::Message*>(Reader.TGReadObject());
 	messages.Add(X);
@@ -71,8 +71,8 @@ void Dialogs::OnResponce(BinaryReader& Reader)
 	Reader.ReadInt();
 
 	//Len concatenated with rand number to get rid of confusions with redefinition
-	int32 Len5191 = Reader.ReadInt();
-	for(int32 i = 0; i < Len5191; i++)
+	int32 Len27331 = Reader.ReadInt();
+	for(int32 i = 0; i < Len27331; i++)
 	{
 	auto X = reinterpret_cast<COMMON::Chat*>(Reader.TGReadObject());
 	chats.Add(X);
@@ -80,8 +80,8 @@ void Dialogs::OnResponce(BinaryReader& Reader)
 	Reader.ReadInt();
 
 	//Len concatenated with rand number to get rid of confusions with redefinition
-	int32 Len26718 = Reader.ReadInt();
-	for(int32 i = 0; i < Len26718; i++)
+	int32 Len7948 = Reader.ReadInt();
+	for(int32 i = 0; i < Len7948; i++)
 	{
 	auto X = reinterpret_cast<COMMON::User*>(Reader.TGReadObject());
 	users.Add(X);
@@ -90,6 +90,5 @@ void Dialogs::OnResponce(BinaryReader& Reader)
 }
 Dialogs::~Dialogs()
 {
-
 }
 }//end namespace block

@@ -24,6 +24,5 @@ void FeaturedStickersNotModified::OnResponce(BinaryReader& Reader)
 }
 FeaturedStickersNotModified::~FeaturedStickersNotModified()
 {
-
 }
 }//end namespace block

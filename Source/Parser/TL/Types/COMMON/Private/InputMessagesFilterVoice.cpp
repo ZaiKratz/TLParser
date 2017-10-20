@@ -24,6 +24,5 @@ void InputMessagesFilterVoice::OnResponce(BinaryReader& Reader)
 }
 InputMessagesFilterVoice::~InputMessagesFilterVoice()
 {
-
 }
 }//end namespace block

@@ -57,6 +57,9 @@ void ChannelParticipantBanned::OnResponce(BinaryReader& Reader)
 }
 ChannelParticipantBanned::~ChannelParticipantBanned()
 {
-
+	if(this->banned_rights)
+	{
+		delete this->banned_rights;
+	}
 }
 }//end namespace block

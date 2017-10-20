@@ -29,6 +29,5 @@ void PageBlockAnchor::OnResponce(BinaryReader& Reader)
 }
 PageBlockAnchor::~PageBlockAnchor()
 {
-
 }
 }//end namespace block

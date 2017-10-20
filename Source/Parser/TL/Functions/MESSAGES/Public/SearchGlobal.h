@@ -2,7 +2,6 @@
 #include "Engine.h"
 #include "../../../TLObjectBase.h"
 
-#include "../../../Types/Private/InputPeer.h"
 #include "../../../Types/Messages/Public/Messages.h"
 
 //begin namespace block
@@ -12,7 +11,7 @@ class SearchGlobal : public TLBaseObject
 {
 public:
 	SearchGlobal();
-	SearchGlobal(FString q, FDateTime offset_date, PRIVATE::InputPeer* offset_peer, int32 offset_id, int32 limit);
+	SearchGlobal(FString q, FDateTime offset_date, TLBaseObject* offset_peer, int32 offset_id, int32 limit);
 
 	~SearchGlobal();
 	virtual void OnSend(BinaryWriter& Writer) override;
@@ -28,7 +27,7 @@ public:
 		 return this->offset_date;
 	}
 
-	PRIVATE::InputPeer*  GetOffsetPeer() const
+	TLBaseObject*  GetOffsetPeer() const
 	{
 		 return this->offset_peer;
 	}
@@ -51,7 +50,7 @@ public:
 private:
 	FString q;
 	 FDateTime offset_date;
-	 PRIVATE::InputPeer* offset_peer;
+	 TLBaseObject* offset_peer;
 	 int32 offset_id;
 	 int32 limit;
 	MESSAGES::Messages* result;

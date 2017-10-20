@@ -23,6 +23,9 @@ void GetTermsOfService::OnResponce(BinaryReader& Reader)
 }
 GetTermsOfService::~GetTermsOfService()
 {
-
+	if(this->result)
+	{
+		delete this->result;
+	}
 }
 }//end namespace block

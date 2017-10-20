@@ -24,6 +24,5 @@ void UpdateFavedStickers::OnResponce(BinaryReader& Reader)
 }
 UpdateFavedStickers::~UpdateFavedStickers()
 {
-
 }
 }//end namespace block

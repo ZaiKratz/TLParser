@@ -11,7 +11,7 @@ SaveDraft::SaveDraft()
 	this->_ContentRelated = true;
 }
 
-SaveDraft::SaveDraft(bool no_webpage, int32 reply_to_msg_id, PRIVATE::InputPeer*  peer, FString message, TArray<PRIVATE::MessageEntity*>  entities)
+SaveDraft::SaveDraft(bool no_webpage, int32 reply_to_msg_id, TLBaseObject*  peer, FString message, TArray<TLBaseObject*>  entities)
 {
 	this->_ConstructorID = -1137057461;
 	this->_ContentRelated = true;
@@ -52,7 +52,7 @@ void SaveDraft::OnSend(BinaryWriter& Writer)
 	}
 	Writer.WriteInt(Flags);
 
-	if(!this->reply_to_msg_id)
+	if(this->reply_to_msg_id)
 	{
 	Writer.WriteInt(this->reply_to_msg_id);
 	}
@@ -64,7 +64,7 @@ void SaveDraft::OnSend(BinaryWriter& Writer)
 	Writer.WriteInt(this->entities.Num());
 	for(auto X : this->entities)
 	{
-	if(!X)
+	if(X)
 	{
 	X->OnSend(Writer);
 	}
@@ -80,6 +80,9 @@ void SaveDraft::OnResponce(BinaryReader& Reader)
 }
 SaveDraft::~SaveDraft()
 {
-
+	if(this->peer)
+	{
+		delete this->peer;
+	}
 }
 }//end namespace block

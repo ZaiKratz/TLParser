@@ -108,6 +108,5 @@ void LangPackStringPluralized::OnResponce(BinaryReader& Reader)
 }
 LangPackStringPluralized::~LangPackStringPluralized()
 {
-
 }
 }//end namespace block

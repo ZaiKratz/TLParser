@@ -32,8 +32,8 @@ void Authorizations::OnResponce(BinaryReader& Reader)
 	Reader.ReadInt();
 
 	//Len concatenated with rand number to get rid of confusions with redefinition
-	int32 Len25979 = Reader.ReadInt();
-	for(int32 i = 0; i < Len25979; i++)
+	int32 Len27544 = Reader.ReadInt();
+	for(int32 i = 0; i < Len27544; i++)
 	{
 	auto X = reinterpret_cast<COMMON::Authorization*>(Reader.TGReadObject());
 	authorizations.Add(X);
@@ -42,6 +42,5 @@ void Authorizations::OnResponce(BinaryReader& Reader)
 }
 Authorizations::~Authorizations()
 {
-
 }
 }//end namespace block

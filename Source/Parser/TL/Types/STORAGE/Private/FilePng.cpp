@@ -24,6 +24,5 @@ void FilePng::OnResponce(BinaryReader& Reader)
 }
 FilePng::~FilePng()
 {
-
 }
 }//end namespace block

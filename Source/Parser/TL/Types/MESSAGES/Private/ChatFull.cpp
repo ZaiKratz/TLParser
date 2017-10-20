@@ -42,8 +42,8 @@ void ChatFull::OnResponce(BinaryReader& Reader)
 	Reader.ReadInt();
 
 	//Len concatenated with rand number to get rid of confusions with redefinition
-	int32 Len27888 = Reader.ReadInt();
-	for(int32 i = 0; i < Len27888; i++)
+	int32 Len29884 = Reader.ReadInt();
+	for(int32 i = 0; i < Len29884; i++)
 	{
 	auto X = reinterpret_cast<COMMON::Chat*>(Reader.TGReadObject());
 	chats.Add(X);
@@ -51,8 +51,8 @@ void ChatFull::OnResponce(BinaryReader& Reader)
 	Reader.ReadInt();
 
 	//Len concatenated with rand number to get rid of confusions with redefinition
-	int32 Len32747 = Reader.ReadInt();
-	for(int32 i = 0; i < Len32747; i++)
+	int32 Len30376 = Reader.ReadInt();
+	for(int32 i = 0; i < Len30376; i++)
 	{
 	auto X = reinterpret_cast<COMMON::User*>(Reader.TGReadObject());
 	users.Add(X);
@@ -61,6 +61,9 @@ void ChatFull::OnResponce(BinaryReader& Reader)
 }
 ChatFull::~ChatFull()
 {
-
+	if(this->full_chat)
+	{
+		delete this->full_chat;
+	}
 }
 }//end namespace block

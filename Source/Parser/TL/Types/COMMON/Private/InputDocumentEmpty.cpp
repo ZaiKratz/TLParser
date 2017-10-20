@@ -24,6 +24,5 @@ void InputDocumentEmpty::OnResponce(BinaryReader& Reader)
 }
 InputDocumentEmpty::~InputDocumentEmpty()
 {
-
 }
 }//end namespace block

@@ -29,6 +29,5 @@ void TextPlain::OnResponce(BinaryReader& Reader)
 }
 TextPlain::~TextPlain()
 {
-
 }
 }//end namespace block

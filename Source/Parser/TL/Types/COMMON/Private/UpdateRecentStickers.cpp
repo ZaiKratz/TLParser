@@ -24,6 +24,5 @@ void UpdateRecentStickers::OnResponce(BinaryReader& Reader)
 }
 UpdateRecentStickers::~UpdateRecentStickers()
 {
-
 }
 }//end namespace block

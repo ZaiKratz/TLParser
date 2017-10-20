@@ -29,6 +29,5 @@ void InputStickerSetShortName::OnResponce(BinaryReader& Reader)
 }
 InputStickerSetShortName::~InputStickerSetShortName()
 {
-
 }
 }//end namespace block

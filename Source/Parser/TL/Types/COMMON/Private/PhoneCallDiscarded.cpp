@@ -10,7 +10,7 @@ PhoneCallDiscarded::PhoneCallDiscarded()
 	this->_ConstructorID = 1355435489;
 }
 
-PhoneCallDiscarded::PhoneCallDiscarded(bool need_rating, bool need_debug, unsigned long long id, PRIVATE::PhoneCallDiscardReason*  reason, int32 duration)
+PhoneCallDiscarded::PhoneCallDiscarded(bool need_rating, bool need_debug, unsigned long long id, TLBaseObject*  reason, int32 duration)
 {
 	this->_ConstructorID = 1355435489;
 	this->need_rating = need_rating;
@@ -59,11 +59,11 @@ void PhoneCallDiscarded::OnSend(BinaryWriter& Writer)
 	Writer.WriteInt(Flags);
 
 	Writer.WriteLong(this->id);
-	if(!this->reason)
+	if(this->reason)
 	{
 	this->reason->OnSend(Writer);
 	}
-	if(!this->duration)
+	if(this->duration)
 	{
 	Writer.WriteInt(this->duration);
 	}
@@ -85,7 +85,7 @@ void PhoneCallDiscarded::OnResponce(BinaryReader& Reader)
 	id = Reader.ReadLong();
 	if((Flags & (1 << 0)) != 0) 
 	{
-	reason = reinterpret_cast<PRIVATE::PhoneCallDiscardReason* >(Reader.TGReadObject());
+	reason = reinterpret_cast<TLBaseObject* >(Reader.TGReadObject());
 	}
 	if((Flags & (1 << 1)) != 0) 
 	{
@@ -95,6 +95,9 @@ void PhoneCallDiscarded::OnResponce(BinaryReader& Reader)
 }
 PhoneCallDiscarded::~PhoneCallDiscarded()
 {
-
+	if(this->reason)
+	{
+		delete this->reason;
+	}
 }
 }//end namespace block

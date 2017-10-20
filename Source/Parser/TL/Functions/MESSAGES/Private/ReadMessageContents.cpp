@@ -36,6 +36,9 @@ void ReadMessageContents::OnResponce(BinaryReader& Reader)
 }
 ReadMessageContents::~ReadMessageContents()
 {
-
+	if(this->result)
+	{
+		delete this->result;
+	}
 }
 }//end namespace block

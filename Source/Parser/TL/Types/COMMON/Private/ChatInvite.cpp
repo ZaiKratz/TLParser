@@ -78,7 +78,7 @@ void ChatInvite::OnSend(BinaryWriter& Writer)
 	Writer.WriteInt(this->participants.Num());
 	for(auto X : this->participants)
 	{
-	if(!X)
+	if(X)
 	{
 	X->OnSend(Writer);
 	}
@@ -115,8 +115,8 @@ void ChatInvite::OnResponce(BinaryReader& Reader)
 	Reader.ReadInt();
 
 	//Len concatenated with rand number to get rid of confusions with redefinition
-	int32 Len19869 = Reader.ReadInt();
-	for(int32 i = 0; i < Len19869; i++)
+	int32 Len402 = Reader.ReadInt();
+	for(int32 i = 0; i < Len402; i++)
 	{
 	auto X = reinterpret_cast<COMMON::User*>(Reader.TGReadObject());
 	participants.Add(X);
@@ -126,6 +126,9 @@ void ChatInvite::OnResponce(BinaryReader& Reader)
 }
 ChatInvite::~ChatInvite()
 {
-
+	if(this->photo)
+	{
+		delete this->photo;
+	}
 }
 }//end namespace block

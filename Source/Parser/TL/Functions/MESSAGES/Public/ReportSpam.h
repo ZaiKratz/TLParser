@@ -2,8 +2,6 @@
 #include "Engine.h"
 #include "../../../TLObjectBase.h"
 
-#include "../../../Types/Private/InputPeer.h"
-
 //begin namespace block
 namespace MESSAGES
 {
@@ -11,13 +9,13 @@ class ReportSpam : public TLBaseObject
 {
 public:
 	ReportSpam();
-	ReportSpam(PRIVATE::InputPeer* peer);
+	ReportSpam(TLBaseObject* peer);
 
 	~ReportSpam();
 	virtual void OnSend(BinaryWriter& Writer) override;
 	virtual void OnResponce(BinaryReader& Reader) override;
 
-	PRIVATE::InputPeer*  Getpeer() const
+	TLBaseObject*  Getpeer() const
 	{
 		 return this->peer;
 	}
@@ -28,7 +26,7 @@ public:
 	}
 
 private:
-	PRIVATE::InputPeer* peer;
+	TLBaseObject* peer;
 	bool result;
 };
 } //end namespace block

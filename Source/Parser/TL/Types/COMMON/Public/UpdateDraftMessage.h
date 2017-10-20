@@ -1,25 +1,23 @@
 #pragma once
 #include "Engine.h"
-#include "../../../Types/Private/Update.h"
+#include "../../../TLObjectBase.h"
 
-#include "../../../Types/Private/Peer.h"
 #include "../../../Types/Common/Public/DraftMessage.h"
-#include "../../../Types/Private/Update.h"
 
 //begin namespace block
 namespace COMMON
 {
-class UpdateDraftMessage : public PRIVATE::Update
+class UpdateDraftMessage : public TLBaseObject
 {
 public:
 	UpdateDraftMessage();
-	UpdateDraftMessage(PRIVATE::Peer* peer, COMMON::DraftMessage* draft);
+	UpdateDraftMessage(TLBaseObject* peer, COMMON::DraftMessage* draft);
 
 	~UpdateDraftMessage();
 	virtual void OnSend(BinaryWriter& Writer) override;
 	virtual void OnResponce(BinaryReader& Reader) override;
 
-	PRIVATE::Peer*  Getpeer() const
+	TLBaseObject*  Getpeer() const
 	{
 		 return this->peer;
 	}
@@ -30,7 +28,7 @@ public:
 	}
 
 private:
-	PRIVATE::Peer* peer;
+	TLBaseObject* peer;
 	 COMMON::DraftMessage* draft;
 };
 } //end namespace block

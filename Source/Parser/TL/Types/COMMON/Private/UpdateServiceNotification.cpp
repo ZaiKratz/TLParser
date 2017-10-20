@@ -10,7 +10,7 @@ UpdateServiceNotification::UpdateServiceNotification()
 	this->_ConstructorID = -337352679;
 }
 
-UpdateServiceNotification::UpdateServiceNotification(bool popup, FDateTime inbox_date, FString type, FString message, PRIVATE::MessageMedia*  media, TArray<PRIVATE::MessageEntity*>  entities)
+UpdateServiceNotification::UpdateServiceNotification(bool popup, FDateTime inbox_date, FString type, FString message, TLBaseObject*  media, TArray<TLBaseObject*>  entities)
 {
 	this->_ConstructorID = -337352679;
 	this->popup = popup;
@@ -73,20 +73,23 @@ void UpdateServiceNotification::OnResponce(BinaryReader& Reader)
 	}
 	type = Reader.TGReadString();
 	message = Reader.TGReadString();
-	media = reinterpret_cast<PRIVATE::MessageMedia* >(Reader.TGReadObject());
+	media = reinterpret_cast<TLBaseObject* >(Reader.TGReadObject());
 	Reader.ReadInt();
 
 	//Len concatenated with rand number to get rid of confusions with redefinition
-	int32 Len6496 = Reader.ReadInt();
-	for(int32 i = 0; i < Len6496; i++)
+	int32 Len14116 = Reader.ReadInt();
+	for(int32 i = 0; i < Len14116; i++)
 	{
-	auto X = reinterpret_cast<PRIVATE::MessageEntity*>(Reader.TGReadObject());
+	auto X = reinterpret_cast<TLBaseObject*>(Reader.TGReadObject());
 	entities.Add(X);
 	}
 	this->_Responded = true;
 }
 UpdateServiceNotification::~UpdateServiceNotification()
 {
-
+	if(this->media)
+	{
+		delete this->media;
+	}
 }
 }//end namespace block

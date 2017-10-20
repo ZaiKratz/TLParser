@@ -55,6 +55,13 @@ void CreateStickerSet::OnResponce(BinaryReader& Reader)
 }
 CreateStickerSet::~CreateStickerSet()
 {
-
+	if(this->user_id)
+	{
+		delete this->user_id;
+	}
+	if(this->result)
+	{
+		delete this->result;
+	}
 }
 }//end namespace block

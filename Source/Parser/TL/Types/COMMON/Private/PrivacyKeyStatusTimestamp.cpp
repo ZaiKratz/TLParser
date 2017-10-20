@@ -24,6 +24,5 @@ void PrivacyKeyStatusTimestamp::OnResponce(BinaryReader& Reader)
 }
 PrivacyKeyStatusTimestamp::~PrivacyKeyStatusTimestamp()
 {
-
 }
 }//end namespace block

@@ -10,7 +10,7 @@ DraftMessage::DraftMessage()
 	this->_ConstructorID = -40996577;
 }
 
-DraftMessage::DraftMessage(bool no_webpage, int32 reply_to_msg_id, FString message, TArray<PRIVATE::MessageEntity*>  entities, FDateTime date)
+DraftMessage::DraftMessage(bool no_webpage, int32 reply_to_msg_id, FString message, TArray<TLBaseObject*>  entities, FDateTime date)
 {
 	this->_ConstructorID = -40996577;
 	this->no_webpage = no_webpage;
@@ -50,7 +50,7 @@ void DraftMessage::OnSend(BinaryWriter& Writer)
 	}
 	Writer.WriteInt(Flags);
 
-	if(!this->reply_to_msg_id)
+	if(this->reply_to_msg_id)
 	{
 	Writer.WriteInt(this->reply_to_msg_id);
 	}
@@ -61,7 +61,7 @@ void DraftMessage::OnSend(BinaryWriter& Writer)
 	Writer.WriteInt(this->entities.Num());
 	for(auto X : this->entities)
 	{
-	if(!X)
+	if(X)
 	{
 	X->OnSend(Writer);
 	}
@@ -89,10 +89,10 @@ void DraftMessage::OnResponce(BinaryReader& Reader)
 	Reader.ReadInt();
 
 	//Len concatenated with rand number to get rid of confusions with redefinition
-	int32 Len9772 = Reader.ReadInt();
-	for(int32 i = 0; i < Len9772; i++)
+	int32 Len3567 = Reader.ReadInt();
+	for(int32 i = 0; i < Len3567; i++)
 	{
-	auto X = reinterpret_cast<PRIVATE::MessageEntity*>(Reader.TGReadObject());
+	auto X = reinterpret_cast<TLBaseObject*>(Reader.TGReadObject());
 	entities.Add(X);
 	}
 	}
@@ -101,6 +101,5 @@ void DraftMessage::OnResponce(BinaryReader& Reader)
 }
 DraftMessage::~DraftMessage()
 {
-
 }
 }//end namespace block

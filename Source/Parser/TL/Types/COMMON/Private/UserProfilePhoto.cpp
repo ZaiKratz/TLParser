@@ -35,6 +35,13 @@ void UserProfilePhoto::OnResponce(BinaryReader& Reader)
 }
 UserProfilePhoto::~UserProfilePhoto()
 {
-
+	if(this->photo_small)
+	{
+		delete this->photo_small;
+	}
+	if(this->photo_big)
+	{
+		delete this->photo_big;
+	}
 }
 }//end namespace block

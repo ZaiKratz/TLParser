@@ -24,6 +24,5 @@ void TopPeerCategoryBotsPM::OnResponce(BinaryReader& Reader)
 }
 TopPeerCategoryBotsPM::~TopPeerCategoryBotsPM()
 {
-
 }
 }//end namespace block

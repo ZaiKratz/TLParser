@@ -1,13 +1,11 @@
 #pragma once
 #include "Engine.h"
-#include "../../../Types/Private/NewSession.h"
-
-#include "../../../Types/Private/NewSession.h"
+#include "../../../TLObjectBase.h"
 
 //begin namespace block
 namespace COMMON
 {
-class NewSessionCreated : public PRIVATE::NewSession
+class NewSessionCreated : public TLBaseObject
 {
 public:
 	NewSessionCreated();

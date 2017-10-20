@@ -46,8 +46,8 @@ void TopPeers::OnResponce(BinaryReader& Reader)
 	Reader.ReadInt();
 
 	//Len concatenated with rand number to get rid of confusions with redefinition
-	int32 Len14924 = Reader.ReadInt();
-	for(int32 i = 0; i < Len14924; i++)
+	int32 Len16654 = Reader.ReadInt();
+	for(int32 i = 0; i < Len16654; i++)
 	{
 	auto X = reinterpret_cast<COMMON::TopPeerCategoryPeers*>(Reader.TGReadObject());
 	categories.Add(X);
@@ -55,8 +55,8 @@ void TopPeers::OnResponce(BinaryReader& Reader)
 	Reader.ReadInt();
 
 	//Len concatenated with rand number to get rid of confusions with redefinition
-	int32 Len12852 = Reader.ReadInt();
-	for(int32 i = 0; i < Len12852; i++)
+	int32 Len30915 = Reader.ReadInt();
+	for(int32 i = 0; i < Len30915; i++)
 	{
 	auto X = reinterpret_cast<COMMON::Chat*>(Reader.TGReadObject());
 	chats.Add(X);
@@ -64,8 +64,8 @@ void TopPeers::OnResponce(BinaryReader& Reader)
 	Reader.ReadInt();
 
 	//Len concatenated with rand number to get rid of confusions with redefinition
-	int32 Len22262 = Reader.ReadInt();
-	for(int32 i = 0; i < Len22262; i++)
+	int32 Len9085 = Reader.ReadInt();
+	for(int32 i = 0; i < Len9085; i++)
 	{
 	auto X = reinterpret_cast<COMMON::User*>(Reader.TGReadObject());
 	users.Add(X);
@@ -74,6 +74,5 @@ void TopPeers::OnResponce(BinaryReader& Reader)
 }
 TopPeers::~TopPeers()
 {
-
 }
 }//end namespace block

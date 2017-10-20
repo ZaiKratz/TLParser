@@ -38,6 +38,5 @@ void EncryptedMessageService::OnResponce(BinaryReader& Reader)
 }
 EncryptedMessageService::~EncryptedMessageService()
 {
-
 }
 }//end namespace block

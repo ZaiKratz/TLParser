@@ -1,14 +1,13 @@
 #pragma once
 #include "Engine.h"
-#include "../../../Types/Private/ChannelAdminLogEventAction.h"
+#include "../../../TLObjectBase.h"
 
 #include "../../../Types/Common/Public/Message.h"
-#include "../../../Types/Private/ChannelAdminLogEventAction.h"
 
 //begin namespace block
 namespace COMMON
 {
-class ChannelAdminLogEventActionDeleteMessage : public PRIVATE::ChannelAdminLogEventAction
+class ChannelAdminLogEventActionDeleteMessage : public TLBaseObject
 {
 public:
 	ChannelAdminLogEventActionDeleteMessage();

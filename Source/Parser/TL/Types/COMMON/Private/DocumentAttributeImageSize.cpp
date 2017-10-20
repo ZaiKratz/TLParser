@@ -32,6 +32,5 @@ void DocumentAttributeImageSize::OnResponce(BinaryReader& Reader)
 }
 DocumentAttributeImageSize::~DocumentAttributeImageSize()
 {
-
 }
 }//end namespace block

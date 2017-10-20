@@ -35,6 +35,5 @@ void BadMsgNotification::OnResponce(BinaryReader& Reader)
 }
 BadMsgNotification::~BadMsgNotification()
 {
-
 }
 }//end namespace block

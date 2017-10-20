@@ -32,6 +32,13 @@ void StickerSetCovered::OnResponce(BinaryReader& Reader)
 }
 StickerSetCovered::~StickerSetCovered()
 {
-
+	if(this->set)
+	{
+		delete this->set;
+	}
+	if(this->cover)
+	{
+		delete this->cover;
+	}
 }
 }//end namespace block

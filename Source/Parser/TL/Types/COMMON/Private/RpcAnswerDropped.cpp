@@ -35,6 +35,5 @@ void RpcAnswerDropped::OnResponce(BinaryReader& Reader)
 }
 RpcAnswerDropped::~RpcAnswerDropped()
 {
-
 }
 }//end namespace block

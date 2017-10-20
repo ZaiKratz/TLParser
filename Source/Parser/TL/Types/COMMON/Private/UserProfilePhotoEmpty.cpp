@@ -24,6 +24,5 @@ void UserProfilePhotoEmpty::OnResponce(BinaryReader& Reader)
 }
 UserProfilePhotoEmpty::~UserProfilePhotoEmpty()
 {
-
 }
 }//end namespace block

@@ -58,6 +58,5 @@ void ReplyKeyboardForceReply::OnResponce(BinaryReader& Reader)
 }
 ReplyKeyboardForceReply::~ReplyKeyboardForceReply()
 {
-
 }
 }//end namespace block

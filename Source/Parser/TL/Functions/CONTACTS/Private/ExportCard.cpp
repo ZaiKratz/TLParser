@@ -28,6 +28,5 @@ void ExportCard::OnResponce(BinaryReader& Reader)
 }
 ExportCard::~ExportCard()
 {
-
 }
 }//end namespace block

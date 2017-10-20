@@ -11,7 +11,7 @@ SendInlineBotResult::SendInlineBotResult()
 	this->_ContentRelated = true;
 }
 
-SendInlineBotResult::SendInlineBotResult(bool silent, bool background, bool clear_draft, PRIVATE::InputPeer*  peer, int32 reply_to_msg_id, unsigned long long random_id, unsigned long long query_id, FString id)
+SendInlineBotResult::SendInlineBotResult(bool silent, bool background, bool clear_draft, TLBaseObject*  peer, int32 reply_to_msg_id, unsigned long long random_id, unsigned long long query_id, FString id)
 {
 	this->_ConstructorID = -1318189314;
 	this->_ContentRelated = true;
@@ -64,7 +64,7 @@ void SendInlineBotResult::OnSend(BinaryWriter& Writer)
 	Writer.WriteInt(Flags);
 
 	this->peer->OnSend(Writer);
-	if(!this->reply_to_msg_id)
+	if(this->reply_to_msg_id)
 	{
 	Writer.WriteInt(this->reply_to_msg_id);
 	}
@@ -81,6 +81,13 @@ void SendInlineBotResult::OnResponce(BinaryReader& Reader)
 }
 SendInlineBotResult::~SendInlineBotResult()
 {
-
+	if(this->peer)
+	{
+		delete this->peer;
+	}
+	if(this->result)
+	{
+		delete this->result;
+	}
 }
 }//end namespace block

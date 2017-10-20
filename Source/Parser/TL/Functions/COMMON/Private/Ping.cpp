@@ -31,6 +31,9 @@ void Ping::OnResponce(BinaryReader& Reader)
 }
 Ping::~Ping()
 {
-
+	if(this->result)
+	{
+		delete this->result;
+	}
 }
 }//end namespace block

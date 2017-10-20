@@ -1,13 +1,11 @@
 #pragma once
 #include "Engine.h"
-#include "../../../Types/Private/InputPeer.h"
-
-#include "../../../Types/Private/InputPeer.h"
+#include "../../../TLObjectBase.h"
 
 //begin namespace block
 namespace COMMON
 {
-class InputPeerSelf : public PRIVATE::InputPeer
+class InputPeerSelf : public TLBaseObject
 {
 public:
 	InputPeerSelf();

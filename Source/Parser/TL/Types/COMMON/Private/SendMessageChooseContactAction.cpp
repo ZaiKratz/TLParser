@@ -24,6 +24,5 @@ void SendMessageChooseContactAction::OnResponce(BinaryReader& Reader)
 }
 SendMessageChooseContactAction::~SendMessageChooseContactAction()
 {
-
 }
 }//end namespace block

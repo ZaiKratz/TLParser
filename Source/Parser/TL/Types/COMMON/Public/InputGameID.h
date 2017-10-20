@@ -1,13 +1,11 @@
 #pragma once
 #include "Engine.h"
-#include "../../../Types/Private/InputGame.h"
-
-#include "../../../Types/Private/InputGame.h"
+#include "../../../TLObjectBase.h"
 
 //begin namespace block
 namespace COMMON
 {
-class InputGameID : public PRIVATE::InputGame
+class InputGameID : public TLBaseObject
 {
 public:
 	InputGameID();

@@ -24,6 +24,5 @@ void MessageMediaUnsupported::OnResponce(BinaryReader& Reader)
 }
 MessageMediaUnsupported::~MessageMediaUnsupported()
 {
-
 }
 }//end namespace block

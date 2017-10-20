@@ -30,6 +30,5 @@ void ReceivedMessages::OnResponce(BinaryReader& Reader)
 }
 ReceivedMessages::~ReceivedMessages()
 {
-
 }
 }//end namespace block

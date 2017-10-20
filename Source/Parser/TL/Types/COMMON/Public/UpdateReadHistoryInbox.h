@@ -1,24 +1,21 @@
 #pragma once
 #include "Engine.h"
-#include "../../../Types/Private/Update.h"
-
-#include "../../../Types/Private/Peer.h"
-#include "../../../Types/Private/Update.h"
+#include "../../../TLObjectBase.h"
 
 //begin namespace block
 namespace COMMON
 {
-class UpdateReadHistoryInbox : public PRIVATE::Update
+class UpdateReadHistoryInbox : public TLBaseObject
 {
 public:
 	UpdateReadHistoryInbox();
-	UpdateReadHistoryInbox(PRIVATE::Peer* peer, int32 max_id, int32 pts, int32 pts_count);
+	UpdateReadHistoryInbox(TLBaseObject* peer, int32 max_id, int32 pts, int32 pts_count);
 
 	~UpdateReadHistoryInbox();
 	virtual void OnSend(BinaryWriter& Writer) override;
 	virtual void OnResponce(BinaryReader& Reader) override;
 
-	PRIVATE::Peer*  Getpeer() const
+	TLBaseObject*  Getpeer() const
 	{
 		 return this->peer;
 	}
@@ -39,7 +36,7 @@ public:
 	}
 
 private:
-	PRIVATE::Peer* peer;
+	TLBaseObject* peer;
 	 int32 max_id;
 	 int32 pts;
 	 int32 pts_count;

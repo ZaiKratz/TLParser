@@ -29,6 +29,9 @@ void ChannelAdminLogEventActionParticipantInvite::OnResponce(BinaryReader& Reade
 }
 ChannelAdminLogEventActionParticipantInvite::~ChannelAdminLogEventActionParticipantInvite()
 {
-
+	if(this->participant)
+	{
+		delete this->participant;
+	}
 }
 }//end namespace block

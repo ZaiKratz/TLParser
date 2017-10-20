@@ -29,6 +29,5 @@ void PasswordSettings::OnResponce(BinaryReader& Reader)
 }
 PasswordSettings::~PasswordSettings()
 {
-
 }
 }//end namespace block

@@ -35,6 +35,5 @@ void MessageEntityTextUrl::OnResponce(BinaryReader& Reader)
 }
 MessageEntityTextUrl::~MessageEntityTextUrl()
 {
-
 }
 }//end namespace block

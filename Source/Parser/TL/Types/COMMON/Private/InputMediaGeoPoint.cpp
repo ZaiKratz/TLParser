@@ -29,6 +29,9 @@ void InputMediaGeoPoint::OnResponce(BinaryReader& Reader)
 }
 InputMediaGeoPoint::~InputMediaGeoPoint()
 {
-
+	if(this->geo_point)
+	{
+		delete this->geo_point;
+	}
 }
 }//end namespace block

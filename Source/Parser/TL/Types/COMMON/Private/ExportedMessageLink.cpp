@@ -29,6 +29,5 @@ void ExportedMessageLink::OnResponce(BinaryReader& Reader)
 }
 ExportedMessageLink::~ExportedMessageLink()
 {
-
 }
 }//end namespace block

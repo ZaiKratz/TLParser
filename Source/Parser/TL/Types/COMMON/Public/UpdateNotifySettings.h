@@ -1,15 +1,14 @@
 #pragma once
 #include "Engine.h"
-#include "../../../Types/Private/Update.h"
+#include "../../../TLObjectBase.h"
 
 #include "../../../Types/Common/Public/NotifyPeer.h"
 #include "../../../Types/Common/Public/PeerNotifySettings.h"
-#include "../../../Types/Private/Update.h"
 
 //begin namespace block
 namespace COMMON
 {
-class UpdateNotifySettings : public PRIVATE::Update
+class UpdateNotifySettings : public TLBaseObject
 {
 public:
 	UpdateNotifySettings();

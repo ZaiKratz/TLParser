@@ -10,7 +10,7 @@ PageBlockEmbed::PageBlockEmbed()
 	this->_ConstructorID = -840826671;
 }
 
-PageBlockEmbed::PageBlockEmbed(bool full_width, bool allow_scrolling, FString url, FString html, unsigned long long poster_photo_id, int32 w, int32 h, PRIVATE::RichText*  caption)
+PageBlockEmbed::PageBlockEmbed(bool full_width, bool allow_scrolling, FString url, FString html, unsigned long long poster_photo_id, int32 w, int32 h, TLBaseObject*  caption)
 {
 	this->_ConstructorID = -840826671;
 	this->full_width = full_width;
@@ -71,7 +71,7 @@ void PageBlockEmbed::OnSend(BinaryWriter& Writer)
 
 	Writer.TGWriteString(this->url);
 	Writer.TGWriteString(this->html);
-	if(!this->poster_photo_id)
+	if(this->poster_photo_id)
 	{
 	Writer.WriteLong(this->poster_photo_id);
 	}
@@ -107,11 +107,14 @@ void PageBlockEmbed::OnResponce(BinaryReader& Reader)
 	}
 	w = Reader.ReadInt();
 	h = Reader.ReadInt();
-	caption = reinterpret_cast<PRIVATE::RichText* >(Reader.TGReadObject());
+	caption = reinterpret_cast<TLBaseObject* >(Reader.TGReadObject());
 	this->_Responded = true;
 }
 PageBlockEmbed::~PageBlockEmbed()
 {
-
+	if(this->caption)
+	{
+		delete this->caption;
+	}
 }
 }//end namespace block

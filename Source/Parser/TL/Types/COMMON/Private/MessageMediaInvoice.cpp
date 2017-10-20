@@ -64,11 +64,11 @@ void MessageMediaInvoice::OnSend(BinaryWriter& Writer)
 
 	Writer.TGWriteString(this->title);
 	Writer.TGWriteString(this->description);
-	if(!this->photo)
+	if(this->photo)
 	{
 	this->photo->OnSend(Writer);
 	}
-	if(!this->receipt_msg_id)
+	if(this->receipt_msg_id)
 	{
 	Writer.WriteInt(this->receipt_msg_id);
 	}
@@ -107,6 +107,9 @@ void MessageMediaInvoice::OnResponce(BinaryReader& Reader)
 }
 MessageMediaInvoice::~MessageMediaInvoice()
 {
-
+	if(this->photo)
+	{
+		delete this->photo;
+	}
 }
 }//end namespace block

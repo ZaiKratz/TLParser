@@ -35,6 +35,9 @@ void ChangePhone::OnResponce(BinaryReader& Reader)
 }
 ChangePhone::~ChangePhone()
 {
-
+	if(this->result)
+	{
+		delete this->result;
+	}
 }
 }//end namespace block

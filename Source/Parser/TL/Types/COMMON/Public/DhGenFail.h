@@ -1,14 +1,13 @@
 #pragma once
 #include "Engine.h"
-#include "../../../Types/Private/SetClientDHParamsAnswer.h"
+#include "../../../TLObjectBase.h"
 
 #include "BigInt.h"
-#include "../../../Types/Private/SetClientDHParamsAnswer.h"
 
 //begin namespace block
 namespace COMMON
 {
-class DhGenFail : public PRIVATE::SetClientDHParamsAnswer
+class DhGenFail : public TLBaseObject
 {
 public:
 	DhGenFail();

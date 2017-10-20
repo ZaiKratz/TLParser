@@ -32,6 +32,5 @@ void AffectedMessages::OnResponce(BinaryReader& Reader)
 }
 AffectedMessages::~AffectedMessages()
 {
-
 }
 }//end namespace block

@@ -1,13 +1,11 @@
 #pragma once
 #include "Engine.h"
-#include "../../../Types/Private/Peer.h"
-
-#include "../../../Types/Private/Peer.h"
+#include "../../../TLObjectBase.h"
 
 //begin namespace block
 namespace COMMON
 {
-class PeerUser : public PRIVATE::Peer
+class PeerUser : public TLBaseObject
 {
 public:
 	PeerUser();

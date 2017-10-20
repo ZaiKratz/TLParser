@@ -39,6 +39,5 @@ void SaveDeveloperInfo::OnResponce(BinaryReader& Reader)
 }
 SaveDeveloperInfo::~SaveDeveloperInfo()
 {
-
 }
 }//end namespace block

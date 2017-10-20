@@ -29,6 +29,5 @@ void ChannelAdminLogEventActionToggleInvites::OnResponce(BinaryReader& Reader)
 }
 ChannelAdminLogEventActionToggleInvites::~ChannelAdminLogEventActionToggleInvites()
 {
-
 }
 }//end namespace block

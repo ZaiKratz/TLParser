@@ -29,6 +29,9 @@ void PaymentResult::OnResponce(BinaryReader& Reader)
 }
 PaymentResult::~PaymentResult()
 {
-
+	if(this->updates)
+	{
+		delete this->updates;
+	}
 }
 }//end namespace block

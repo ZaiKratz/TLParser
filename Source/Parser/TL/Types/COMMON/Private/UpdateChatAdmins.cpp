@@ -35,6 +35,5 @@ void UpdateChatAdmins::OnResponce(BinaryReader& Reader)
 }
 UpdateChatAdmins::~UpdateChatAdmins()
 {
-
 }
 }//end namespace block

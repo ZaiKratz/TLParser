@@ -36,6 +36,9 @@ void GetMessages::OnResponce(BinaryReader& Reader)
 }
 GetMessages::~GetMessages()
 {
-
+	if(this->result)
+	{
+		delete this->result;
+	}
 }
 }//end namespace block

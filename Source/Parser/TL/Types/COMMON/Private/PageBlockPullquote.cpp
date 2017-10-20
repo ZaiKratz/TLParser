@@ -10,7 +10,7 @@ PageBlockPullquote::PageBlockPullquote()
 	this->_ConstructorID = 1329878739;
 }
 
-PageBlockPullquote::PageBlockPullquote(PRIVATE::RichText*  text, PRIVATE::RichText*  caption)
+PageBlockPullquote::PageBlockPullquote(TLBaseObject*  text, TLBaseObject*  caption)
 {
 	this->_ConstructorID = 1329878739;
 	this->text = text;
@@ -26,12 +26,19 @@ void PageBlockPullquote::OnSend(BinaryWriter& Writer)
 
 void PageBlockPullquote::OnResponce(BinaryReader& Reader)
 {
-	text = reinterpret_cast<PRIVATE::RichText* >(Reader.TGReadObject());
-	caption = reinterpret_cast<PRIVATE::RichText* >(Reader.TGReadObject());
+	text = reinterpret_cast<TLBaseObject* >(Reader.TGReadObject());
+	caption = reinterpret_cast<TLBaseObject* >(Reader.TGReadObject());
 	this->_Responded = true;
 }
 PageBlockPullquote::~PageBlockPullquote()
 {
-
+	if(this->text)
+	{
+		delete this->text;
+	}
+	if(this->caption)
+	{
+		delete this->caption;
+	}
 }
 }//end namespace block

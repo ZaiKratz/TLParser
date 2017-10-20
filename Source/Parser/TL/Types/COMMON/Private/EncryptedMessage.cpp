@@ -41,6 +41,9 @@ void EncryptedMessage::OnResponce(BinaryReader& Reader)
 }
 EncryptedMessage::~EncryptedMessage()
 {
-
+	if(this->file)
+	{
+		delete this->file;
+	}
 }
 }//end namespace block

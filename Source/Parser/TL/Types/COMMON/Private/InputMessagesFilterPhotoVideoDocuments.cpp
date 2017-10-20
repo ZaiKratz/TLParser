@@ -24,6 +24,5 @@ void InputMessagesFilterPhotoVideoDocuments::OnResponce(BinaryReader& Reader)
 }
 InputMessagesFilterPhotoVideoDocuments::~InputMessagesFilterPhotoVideoDocuments()
 {
-
 }
 }//end namespace block

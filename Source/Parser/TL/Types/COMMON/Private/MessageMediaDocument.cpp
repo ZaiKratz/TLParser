@@ -48,12 +48,12 @@ void MessageMediaDocument::OnSend(BinaryWriter& Writer)
 	}
 	Writer.WriteInt(Flags);
 
-	if(!this->document)
+	if(this->document)
 	{
 	this->document->OnSend(Writer);
 	}
 	Writer.TGWriteString(this->caption);
-	if(!this->ttl_seconds)
+	if(this->ttl_seconds)
 	{
 	Writer.WriteInt(this->ttl_seconds);
 	}
@@ -80,6 +80,9 @@ void MessageMediaDocument::OnResponce(BinaryReader& Reader)
 }
 MessageMediaDocument::~MessageMediaDocument()
 {
-
+	if(this->document)
+	{
+		delete this->document;
+	}
 }
 }//end namespace block

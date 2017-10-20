@@ -37,6 +37,17 @@ void RequestCall::OnResponce(BinaryReader& Reader)
 }
 RequestCall::~RequestCall()
 {
-
+	if(this->user_id)
+	{
+		delete this->user_id;
+	}
+	if(this->protocol)
+	{
+		delete this->protocol;
+	}
+	if(this->result)
+	{
+		delete this->result;
+	}
 }
 }//end namespace block

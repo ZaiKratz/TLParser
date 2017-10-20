@@ -32,6 +32,5 @@ void ReceivedNotifyMessage::OnResponce(BinaryReader& Reader)
 }
 ReceivedNotifyMessage::~ReceivedNotifyMessage()
 {
-
 }
 }//end namespace block

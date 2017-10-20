@@ -36,8 +36,8 @@ void UpdateDeleteMessages::OnResponce(BinaryReader& Reader)
 	Reader.ReadInt();
 
 	//Len concatenated with rand number to get rid of confusions with redefinition
-	int32 Len12998 = Reader.ReadInt();
-	for(int32 i = 0; i < Len12998; i++)
+	int32 Len3933 = Reader.ReadInt();
+	for(int32 i = 0; i < Len3933; i++)
 	{
 	auto X = Reader.ReadInt();
 	messages.Add(X);
@@ -48,6 +48,5 @@ void UpdateDeleteMessages::OnResponce(BinaryReader& Reader)
 }
 UpdateDeleteMessages::~UpdateDeleteMessages()
 {
-
 }
 }//end namespace block

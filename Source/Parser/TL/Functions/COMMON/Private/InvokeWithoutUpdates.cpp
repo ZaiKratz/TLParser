@@ -31,6 +31,13 @@ void InvokeWithoutUpdates::OnResponce(BinaryReader& Reader)
 }
 InvokeWithoutUpdates::~InvokeWithoutUpdates()
 {
-
+	if(this->query)
+	{
+		delete this->query;
+	}
+	if(this->result)
+	{
+		delete this->result;
+	}
 }
 }//end namespace block

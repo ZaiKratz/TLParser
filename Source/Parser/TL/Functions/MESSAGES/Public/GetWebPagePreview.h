@@ -1,13 +1,11 @@
 #pragma once
 #include "Engine.h"
-#include "../../../Types/Private/MessageMedia.h"
-
-#include "../../../Types/Private/MessageMedia.h"
+#include "../../../TLObjectBase.h"
 
 //begin namespace block
 namespace MESSAGES
 {
-class GetWebPagePreview : public PRIVATE::MessageMedia
+class GetWebPagePreview : public TLBaseObject
 {
 public:
 	GetWebPagePreview();
@@ -22,13 +20,13 @@ public:
 		 return this->message;
 	}
 
-	PRIVATE::MessageMedia* GetResult() const
+	TLBaseObject* GetResult() const
 	{
 		 return this->result;
 	}
 
 private:
 	FString message;
-	PRIVATE::MessageMedia* result;
+	TLBaseObject* result;
 };
 } //end namespace block

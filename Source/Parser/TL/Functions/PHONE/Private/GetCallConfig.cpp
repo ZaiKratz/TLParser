@@ -23,6 +23,9 @@ void GetCallConfig::OnResponce(BinaryReader& Reader)
 }
 GetCallConfig::~GetCallConfig()
 {
-
+	if(this->result)
+	{
+		delete this->result;
+	}
 }
 }//end namespace block

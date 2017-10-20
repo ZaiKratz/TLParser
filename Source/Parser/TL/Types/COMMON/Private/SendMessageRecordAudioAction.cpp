@@ -24,6 +24,5 @@ void SendMessageRecordAudioAction::OnResponce(BinaryReader& Reader)
 }
 SendMessageRecordAudioAction::~SendMessageRecordAudioAction()
 {
-
 }
 }//end namespace block

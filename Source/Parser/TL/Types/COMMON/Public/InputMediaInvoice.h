@@ -1,15 +1,14 @@
 #pragma once
 #include "Engine.h"
-#include "../../../Types/Private/InputMedia.h"
+#include "../../../TLObjectBase.h"
 
 #include "../../../Types/Common/Public/InputWebDocument.h"
 #include "../../../Types/Common/Public/Invoice.h"
-#include "../../../Types/Private/InputMedia.h"
 
 //begin namespace block
 namespace COMMON
 {
-class InputMediaInvoice : public PRIVATE::InputMedia
+class InputMediaInvoice : public TLBaseObject
 {
 public:
 	InputMediaInvoice();

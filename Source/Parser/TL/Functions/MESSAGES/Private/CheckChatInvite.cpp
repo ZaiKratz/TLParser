@@ -31,6 +31,9 @@ void CheckChatInvite::OnResponce(BinaryReader& Reader)
 }
 CheckChatInvite::~CheckChatInvite()
 {
-
+	if(this->result)
+	{
+		delete this->result;
+	}
 }
 }//end namespace block

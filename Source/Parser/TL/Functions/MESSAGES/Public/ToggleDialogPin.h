@@ -2,8 +2,6 @@
 #include "Engine.h"
 #include "../../../TLObjectBase.h"
 
-#include "../../../Types/Private/InputPeer.h"
-
 //begin namespace block
 namespace MESSAGES
 {
@@ -11,7 +9,7 @@ class ToggleDialogPin : public TLBaseObject
 {
 public:
 	ToggleDialogPin();
-	ToggleDialogPin(bool pinned, PRIVATE::InputPeer* peer);
+	ToggleDialogPin(bool pinned, TLBaseObject* peer);
 
 	~ToggleDialogPin();
 	virtual void OnSend(BinaryWriter& Writer) override;
@@ -22,7 +20,7 @@ public:
 		 return this->pinned;
 	}
 
-	PRIVATE::InputPeer*  Getpeer() const
+	TLBaseObject*  Getpeer() const
 	{
 		 return this->peer;
 	}
@@ -34,7 +32,7 @@ public:
 
 private:
 	bool pinned;
-	 PRIVATE::InputPeer* peer;
+	 TLBaseObject* peer;
 	bool result;
 };
 } //end namespace block

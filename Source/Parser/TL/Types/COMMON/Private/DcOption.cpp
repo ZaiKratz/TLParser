@@ -106,6 +106,5 @@ void DcOption::OnResponce(BinaryReader& Reader)
 }
 DcOption::~DcOption()
 {
-
 }
 }//end namespace block

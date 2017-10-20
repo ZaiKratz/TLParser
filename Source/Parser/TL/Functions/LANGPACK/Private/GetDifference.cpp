@@ -31,6 +31,9 @@ void GetDifference::OnResponce(BinaryReader& Reader)
 }
 GetDifference::~GetDifference()
 {
-
+	if(this->result)
+	{
+		delete this->result;
+	}
 }
 }//end namespace block

@@ -42,8 +42,8 @@ void StickerSet::OnResponce(BinaryReader& Reader)
 	Reader.ReadInt();
 
 	//Len concatenated with rand number to get rid of confusions with redefinition
-	int32 Len24261 = Reader.ReadInt();
-	for(int32 i = 0; i < Len24261; i++)
+	int32 Len1520 = Reader.ReadInt();
+	for(int32 i = 0; i < Len1520; i++)
 	{
 	auto X = reinterpret_cast<COMMON::StickerPack*>(Reader.TGReadObject());
 	packs.Add(X);
@@ -51,8 +51,8 @@ void StickerSet::OnResponce(BinaryReader& Reader)
 	Reader.ReadInt();
 
 	//Len concatenated with rand number to get rid of confusions with redefinition
-	int32 Len11731 = Reader.ReadInt();
-	for(int32 i = 0; i < Len11731; i++)
+	int32 Len28003 = Reader.ReadInt();
+	for(int32 i = 0; i < Len28003; i++)
 	{
 	auto X = reinterpret_cast<COMMON::Document*>(Reader.TGReadObject());
 	documents.Add(X);
@@ -61,6 +61,9 @@ void StickerSet::OnResponce(BinaryReader& Reader)
 }
 StickerSet::~StickerSet()
 {
-
+	if(this->set)
+	{
+		delete this->set;
+	}
 }
 }//end namespace block

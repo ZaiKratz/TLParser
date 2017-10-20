@@ -33,6 +33,5 @@ void SetBotUpdatesStatus::OnResponce(BinaryReader& Reader)
 }
 SetBotUpdatesStatus::~SetBotUpdatesStatus()
 {
-
 }
 }//end namespace block

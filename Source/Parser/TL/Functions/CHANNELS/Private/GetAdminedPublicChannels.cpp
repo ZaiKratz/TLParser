@@ -23,6 +23,9 @@ void GetAdminedPublicChannels::OnResponce(BinaryReader& Reader)
 }
 GetAdminedPublicChannels::~GetAdminedPublicChannels()
 {
-
+	if(this->result)
+	{
+		delete this->result;
+	}
 }
 }//end namespace block

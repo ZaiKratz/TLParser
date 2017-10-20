@@ -24,6 +24,5 @@ void UpdateLangPackTooLong::OnResponce(BinaryReader& Reader)
 }
 UpdateLangPackTooLong::~UpdateLangPackTooLong()
 {
-
 }
 }//end namespace block

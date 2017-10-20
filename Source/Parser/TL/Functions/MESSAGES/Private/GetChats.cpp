@@ -36,6 +36,9 @@ void GetChats::OnResponce(BinaryReader& Reader)
 }
 GetChats::~GetChats()
 {
-
+	if(this->result)
+	{
+		delete this->result;
+	}
 }
 }//end namespace block

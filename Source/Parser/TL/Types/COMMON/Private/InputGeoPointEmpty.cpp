@@ -24,6 +24,5 @@ void InputGeoPointEmpty::OnResponce(BinaryReader& Reader)
 }
 InputGeoPointEmpty::~InputGeoPointEmpty()
 {
-
 }
 }//end namespace block

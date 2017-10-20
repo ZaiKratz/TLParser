@@ -29,6 +29,5 @@ void DataJSON::OnResponce(BinaryReader& Reader)
 }
 DataJSON::~DataJSON()
 {
-
 }
 }//end namespace block

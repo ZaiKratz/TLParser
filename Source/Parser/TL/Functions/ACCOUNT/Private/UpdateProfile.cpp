@@ -63,6 +63,9 @@ void UpdateProfile::OnResponce(BinaryReader& Reader)
 }
 UpdateProfile::~UpdateProfile()
 {
-
+	if(this->result)
+	{
+		delete this->result;
+	}
 }
 }//end namespace block

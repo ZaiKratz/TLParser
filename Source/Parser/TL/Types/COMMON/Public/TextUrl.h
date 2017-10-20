@@ -1,24 +1,21 @@
 #pragma once
 #include "Engine.h"
-#include "../../../Types/Private/RichText.h"
-
-#include "../../../Types/Private/RichText.h"
-#include "../../../Types/Private/RichText.h"
+#include "../../../TLObjectBase.h"
 
 //begin namespace block
 namespace COMMON
 {
-class TextUrl : public PRIVATE::RichText
+class TextUrl : public TLBaseObject
 {
 public:
 	TextUrl();
-	TextUrl(PRIVATE::RichText* text, FString url, unsigned long long webpage_id);
+	TextUrl(TLBaseObject* text, FString url, unsigned long long webpage_id);
 
 	~TextUrl();
 	virtual void OnSend(BinaryWriter& Writer) override;
 	virtual void OnResponce(BinaryReader& Reader) override;
 
-	PRIVATE::RichText*  Gettext() const
+	TLBaseObject*  Gettext() const
 	{
 		 return this->text;
 	}
@@ -34,7 +31,7 @@ public:
 	}
 
 private:
-	PRIVATE::RichText* text;
+	TLBaseObject* text;
 	 FString url;
 	 unsigned long long webpage_id;
 };

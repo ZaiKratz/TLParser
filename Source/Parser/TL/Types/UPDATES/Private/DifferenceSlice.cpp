@@ -10,7 +10,7 @@ DifferenceSlice::DifferenceSlice()
 	this->_ConstructorID = -1459938943;
 }
 
-DifferenceSlice::DifferenceSlice(TArray<COMMON::Message*>  new_messages, TArray<COMMON::EncryptedMessage*>  new_encrypted_messages, TArray<PRIVATE::Update*>  other_updates, TArray<COMMON::Chat*>  chats, TArray<COMMON::User*>  users, UPDATES::State*  intermediate_state)
+DifferenceSlice::DifferenceSlice(TArray<COMMON::Message*>  new_messages, TArray<COMMON::EncryptedMessage*>  new_encrypted_messages, TArray<TLBaseObject*>  other_updates, TArray<COMMON::Chat*>  chats, TArray<COMMON::User*>  users, UPDATES::State*  intermediate_state)
 {
 	this->_ConstructorID = -1459938943;
 	this->new_messages = new_messages;
@@ -62,8 +62,8 @@ void DifferenceSlice::OnResponce(BinaryReader& Reader)
 	Reader.ReadInt();
 
 	//Len concatenated with rand number to get rid of confusions with redefinition
-	int32 Len31132 = Reader.ReadInt();
-	for(int32 i = 0; i < Len31132; i++)
+	int32 Len30036 = Reader.ReadInt();
+	for(int32 i = 0; i < Len30036; i++)
 	{
 	auto X = reinterpret_cast<COMMON::Message*>(Reader.TGReadObject());
 	new_messages.Add(X);
@@ -71,8 +71,8 @@ void DifferenceSlice::OnResponce(BinaryReader& Reader)
 	Reader.ReadInt();
 
 	//Len concatenated with rand number to get rid of confusions with redefinition
-	int32 Len21188 = Reader.ReadInt();
-	for(int32 i = 0; i < Len21188; i++)
+	int32 Len9747 = Reader.ReadInt();
+	for(int32 i = 0; i < Len9747; i++)
 	{
 	auto X = reinterpret_cast<COMMON::EncryptedMessage*>(Reader.TGReadObject());
 	new_encrypted_messages.Add(X);
@@ -80,17 +80,17 @@ void DifferenceSlice::OnResponce(BinaryReader& Reader)
 	Reader.ReadInt();
 
 	//Len concatenated with rand number to get rid of confusions with redefinition
-	int32 Len21668 = Reader.ReadInt();
-	for(int32 i = 0; i < Len21668; i++)
+	int32 Len3710 = Reader.ReadInt();
+	for(int32 i = 0; i < Len3710; i++)
 	{
-	auto X = reinterpret_cast<PRIVATE::Update*>(Reader.TGReadObject());
+	auto X = reinterpret_cast<TLBaseObject*>(Reader.TGReadObject());
 	other_updates.Add(X);
 	}
 	Reader.ReadInt();
 
 	//Len concatenated with rand number to get rid of confusions with redefinition
-	int32 Len7791 = Reader.ReadInt();
-	for(int32 i = 0; i < Len7791; i++)
+	int32 Len32761 = Reader.ReadInt();
+	for(int32 i = 0; i < Len32761; i++)
 	{
 	auto X = reinterpret_cast<COMMON::Chat*>(Reader.TGReadObject());
 	chats.Add(X);
@@ -98,8 +98,8 @@ void DifferenceSlice::OnResponce(BinaryReader& Reader)
 	Reader.ReadInt();
 
 	//Len concatenated with rand number to get rid of confusions with redefinition
-	int32 Len11388 = Reader.ReadInt();
-	for(int32 i = 0; i < Len11388; i++)
+	int32 Len6981 = Reader.ReadInt();
+	for(int32 i = 0; i < Len6981; i++)
 	{
 	auto X = reinterpret_cast<COMMON::User*>(Reader.TGReadObject());
 	users.Add(X);
@@ -109,6 +109,9 @@ void DifferenceSlice::OnResponce(BinaryReader& Reader)
 }
 DifferenceSlice::~DifferenceSlice()
 {
-
+	if(this->intermediate_state)
+	{
+		delete this->intermediate_state;
+	}
 }
 }//end namespace block

@@ -29,6 +29,5 @@ void MessageActionChatJoinedByLink::OnResponce(BinaryReader& Reader)
 }
 MessageActionChatJoinedByLink::~MessageActionChatJoinedByLink()
 {
-
 }
 }//end namespace block

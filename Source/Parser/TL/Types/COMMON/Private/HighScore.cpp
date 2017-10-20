@@ -35,6 +35,5 @@ void HighScore::OnResponce(BinaryReader& Reader)
 }
 HighScore::~HighScore()
 {
-
 }
 }//end namespace block

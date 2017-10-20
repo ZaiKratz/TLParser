@@ -32,6 +32,5 @@ void InputPeerUser::OnResponce(BinaryReader& Reader)
 }
 InputPeerUser::~InputPeerUser()
 {
-
 }
 }//end namespace block

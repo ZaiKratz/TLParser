@@ -32,8 +32,8 @@ void UpdateDcOptions::OnResponce(BinaryReader& Reader)
 	Reader.ReadInt();
 
 	//Len concatenated with rand number to get rid of confusions with redefinition
-	int32 Len25152 = Reader.ReadInt();
-	for(int32 i = 0; i < Len25152; i++)
+	int32 Len2181 = Reader.ReadInt();
+	for(int32 i = 0; i < Len2181; i++)
 	{
 	auto X = reinterpret_cast<COMMON::DcOption*>(Reader.TGReadObject());
 	dc_options.Add(X);
@@ -42,6 +42,5 @@ void UpdateDcOptions::OnResponce(BinaryReader& Reader)
 }
 UpdateDcOptions::~UpdateDcOptions()
 {
-
 }
 }//end namespace block

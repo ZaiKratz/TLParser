@@ -10,7 +10,7 @@ PageBlockPhoto::PageBlockPhoto()
 	this->_ConstructorID = -372860542;
 }
 
-PageBlockPhoto::PageBlockPhoto(unsigned long long photo_id, PRIVATE::RichText*  caption)
+PageBlockPhoto::PageBlockPhoto(unsigned long long photo_id, TLBaseObject*  caption)
 {
 	this->_ConstructorID = -372860542;
 	this->photo_id = photo_id;
@@ -27,11 +27,14 @@ void PageBlockPhoto::OnSend(BinaryWriter& Writer)
 void PageBlockPhoto::OnResponce(BinaryReader& Reader)
 {
 	photo_id = Reader.ReadLong();
-	caption = reinterpret_cast<PRIVATE::RichText* >(Reader.TGReadObject());
+	caption = reinterpret_cast<TLBaseObject* >(Reader.TGReadObject());
 	this->_Responded = true;
 }
 PageBlockPhoto::~PageBlockPhoto()
 {
-
+	if(this->caption)
+	{
+		delete this->caption;
+	}
 }
 }//end namespace block

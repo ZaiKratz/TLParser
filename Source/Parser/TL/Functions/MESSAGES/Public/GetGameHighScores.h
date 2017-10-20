@@ -2,7 +2,6 @@
 #include "Engine.h"
 #include "../../../TLObjectBase.h"
 
-#include "../../../Types/Private/InputPeer.h"
 #include "../../../Types/Common/Public/InputUser.h"
 #include "../../../Types/Messages/Public/HighScores.h"
 
@@ -13,13 +12,13 @@ class GetGameHighScores : public TLBaseObject
 {
 public:
 	GetGameHighScores();
-	GetGameHighScores(PRIVATE::InputPeer* peer, int32 id, COMMON::InputUser* user_id);
+	GetGameHighScores(TLBaseObject* peer, int32 id, COMMON::InputUser* user_id);
 
 	~GetGameHighScores();
 	virtual void OnSend(BinaryWriter& Writer) override;
 	virtual void OnResponce(BinaryReader& Reader) override;
 
-	PRIVATE::InputPeer*  Getpeer() const
+	TLBaseObject*  Getpeer() const
 	{
 		 return this->peer;
 	}
@@ -40,7 +39,7 @@ public:
 	}
 
 private:
-	PRIVATE::InputPeer* peer;
+	TLBaseObject* peer;
 	 int32 id;
 	 COMMON::InputUser* user_id;
 	MESSAGES::HighScores* result;

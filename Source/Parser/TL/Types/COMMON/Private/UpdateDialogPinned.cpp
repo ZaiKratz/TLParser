@@ -10,7 +10,7 @@ UpdateDialogPinned::UpdateDialogPinned()
 	this->_ConstructorID = -686710068;
 }
 
-UpdateDialogPinned::UpdateDialogPinned(bool pinned, PRIVATE::Peer*  peer)
+UpdateDialogPinned::UpdateDialogPinned(bool pinned, TLBaseObject*  peer)
 {
 	this->_ConstructorID = -686710068;
 	this->pinned = pinned;
@@ -43,11 +43,14 @@ void UpdateDialogPinned::OnResponce(BinaryReader& Reader)
 	{
 		pinned = true;
 	}
-	peer = reinterpret_cast<PRIVATE::Peer* >(Reader.TGReadObject());
+	peer = reinterpret_cast<TLBaseObject* >(Reader.TGReadObject());
 	this->_Responded = true;
 }
 UpdateDialogPinned::~UpdateDialogPinned()
 {
-
+	if(this->peer)
+	{
+		delete this->peer;
+	}
 }
 }//end namespace block

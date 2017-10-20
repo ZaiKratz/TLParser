@@ -3,7 +3,6 @@
 #include "../../../TLObjectBase.h"
 
 #include "../../../Types/Common/Public/InputUser.h"
-#include "../../../Types/Private/InputPeer.h"
 #include "../../../Types/Common/Public/Updates.h"
 
 //begin namespace block
@@ -13,7 +12,7 @@ class StartBot : public TLBaseObject
 {
 public:
 	StartBot();
-	StartBot(COMMON::InputUser* bot, PRIVATE::InputPeer* peer, unsigned long long random_id, FString start_param);
+	StartBot(COMMON::InputUser* bot, TLBaseObject* peer, unsigned long long random_id, FString start_param);
 
 	~StartBot();
 	virtual void OnSend(BinaryWriter& Writer) override;
@@ -24,7 +23,7 @@ public:
 		 return this->bot;
 	}
 
-	PRIVATE::InputPeer*  Getpeer() const
+	TLBaseObject*  Getpeer() const
 	{
 		 return this->peer;
 	}
@@ -46,7 +45,7 @@ public:
 
 private:
 	COMMON::InputUser* bot;
-	 PRIVATE::InputPeer* peer;
+	 TLBaseObject* peer;
 	 unsigned long long random_id;
 	 FString start_param;
 	COMMON::Updates* result;

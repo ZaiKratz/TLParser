@@ -24,6 +24,5 @@ void SendMessageGeoLocationAction::OnResponce(BinaryReader& Reader)
 }
 SendMessageGeoLocationAction::~SendMessageGeoLocationAction()
 {
-
 }
 }//end namespace block

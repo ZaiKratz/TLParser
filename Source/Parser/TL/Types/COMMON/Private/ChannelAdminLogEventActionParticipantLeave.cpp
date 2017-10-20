@@ -24,6 +24,5 @@ void ChannelAdminLogEventActionParticipantLeave::OnResponce(BinaryReader& Reader
 }
 ChannelAdminLogEventActionParticipantLeave::~ChannelAdminLogEventActionParticipantLeave()
 {
-
 }
 }//end namespace block

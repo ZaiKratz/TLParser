@@ -24,6 +24,5 @@ void MessageActionHistoryClear::OnResponce(BinaryReader& Reader)
 }
 MessageActionHistoryClear::~MessageActionHistoryClear()
 {
-
 }
 }//end namespace block

@@ -36,8 +36,8 @@ void FutureSalts::OnResponce(BinaryReader& Reader)
 	now = Reader.ReadInt();
 
 	//Len concatenated with rand number to get rid of confusions with redefinition
-	int32 Len2987 = Reader.ReadInt();
-	for(int32 i = 0; i < Len2987; i++)
+	int32 Len11639 = Reader.ReadInt();
+	for(int32 i = 0; i < Len11639; i++)
 	{
 	auto X = reinterpret_cast<COMMON::FutureSalt*>(Reader.TGReadObject());
 	salts.Add(X);
@@ -46,6 +46,5 @@ void FutureSalts::OnResponce(BinaryReader& Reader)
 }
 FutureSalts::~FutureSalts()
 {
-
 }
 }//end namespace block

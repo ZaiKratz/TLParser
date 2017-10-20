@@ -29,6 +29,5 @@ void DestroySessionOk::OnResponce(BinaryReader& Reader)
 }
 DestroySessionOk::~DestroySessionOk()
 {
-
 }
 }//end namespace block

@@ -24,6 +24,5 @@ void InputPhotoEmpty::OnResponce(BinaryReader& Reader)
 }
 InputPhotoEmpty::~InputPhotoEmpty()
 {
-
 }
 }//end namespace block

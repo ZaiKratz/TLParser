@@ -35,6 +35,5 @@ void ChatParticipantAdmin::OnResponce(BinaryReader& Reader)
 }
 ChatParticipantAdmin::~ChatParticipantAdmin()
 {
-
 }
 }//end namespace block

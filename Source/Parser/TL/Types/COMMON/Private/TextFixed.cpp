@@ -10,7 +10,7 @@ TextFixed::TextFixed()
 	this->_ConstructorID = 1816074681;
 }
 
-TextFixed::TextFixed(PRIVATE::RichText*  text)
+TextFixed::TextFixed(TLBaseObject*  text)
 {
 	this->_ConstructorID = 1816074681;
 	this->text = text;
@@ -24,11 +24,14 @@ void TextFixed::OnSend(BinaryWriter& Writer)
 
 void TextFixed::OnResponce(BinaryReader& Reader)
 {
-	text = reinterpret_cast<PRIVATE::RichText* >(Reader.TGReadObject());
+	text = reinterpret_cast<TLBaseObject* >(Reader.TGReadObject());
 	this->_Responded = true;
 }
 TextFixed::~TextFixed()
 {
-
+	if(this->text)
+	{
+		delete this->text;
+	}
 }
 }//end namespace block

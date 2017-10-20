@@ -32,8 +32,8 @@ void ReplyInlineMarkup::OnResponce(BinaryReader& Reader)
 	Reader.ReadInt();
 
 	//Len concatenated with rand number to get rid of confusions with redefinition
-	int32 Len24093 = Reader.ReadInt();
-	for(int32 i = 0; i < Len24093; i++)
+	int32 Len27159 = Reader.ReadInt();
+	for(int32 i = 0; i < Len27159; i++)
 	{
 	auto X = reinterpret_cast<COMMON::KeyboardButtonRow*>(Reader.TGReadObject());
 	rows.Add(X);
@@ -42,6 +42,5 @@ void ReplyInlineMarkup::OnResponce(BinaryReader& Reader)
 }
 ReplyInlineMarkup::~ReplyInlineMarkup()
 {
-
 }
 }//end namespace block

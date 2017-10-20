@@ -24,6 +24,5 @@ void UpdatePtsChanged::OnResponce(BinaryReader& Reader)
 }
 UpdatePtsChanged::~UpdatePtsChanged()
 {
-
 }
 }//end namespace block

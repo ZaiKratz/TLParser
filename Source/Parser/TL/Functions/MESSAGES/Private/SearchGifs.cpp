@@ -33,6 +33,9 @@ void SearchGifs::OnResponce(BinaryReader& Reader)
 }
 SearchGifs::~SearchGifs()
 {
-
+	if(this->result)
+	{
+		delete this->result;
+	}
 }
 }//end namespace block

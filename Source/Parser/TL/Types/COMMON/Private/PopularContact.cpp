@@ -32,6 +32,5 @@ void PopularContact::OnResponce(BinaryReader& Reader)
 }
 PopularContact::~PopularContact()
 {
-
 }
 }//end namespace block

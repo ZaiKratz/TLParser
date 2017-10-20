@@ -24,6 +24,5 @@ void ContactLinkUnknown::OnResponce(BinaryReader& Reader)
 }
 ContactLinkUnknown::~ContactLinkUnknown()
 {
-
 }
 }//end namespace block

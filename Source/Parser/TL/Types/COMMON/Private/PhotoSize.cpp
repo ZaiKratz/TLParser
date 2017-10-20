@@ -41,6 +41,9 @@ void PhotoSize::OnResponce(BinaryReader& Reader)
 }
 PhotoSize::~PhotoSize()
 {
-
+	if(this->location)
+	{
+		delete this->location;
+	}
 }
 }//end namespace block

@@ -24,6 +24,5 @@ void UpdateStickerSets::OnResponce(BinaryReader& Reader)
 }
 UpdateStickerSets::~UpdateStickerSets()
 {
-
 }
 }//end namespace block

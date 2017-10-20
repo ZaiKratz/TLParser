@@ -31,6 +31,5 @@ void ResetAuthorization::OnResponce(BinaryReader& Reader)
 }
 ResetAuthorization::~ResetAuthorization()
 {
-
 }
 }//end namespace block

@@ -35,8 +35,8 @@ void UpdateChannelReadMessagesContents::OnResponce(BinaryReader& Reader)
 	Reader.ReadInt();
 
 	//Len concatenated with rand number to get rid of confusions with redefinition
-	int32 Len4990 = Reader.ReadInt();
-	for(int32 i = 0; i < Len4990; i++)
+	int32 Len9194 = Reader.ReadInt();
+	for(int32 i = 0; i < Len9194; i++)
 	{
 	auto X = Reader.ReadInt();
 	messages.Add(X);
@@ -45,6 +45,5 @@ void UpdateChannelReadMessagesContents::OnResponce(BinaryReader& Reader)
 }
 UpdateChannelReadMessagesContents::~UpdateChannelReadMessagesContents()
 {
-
 }
 }//end namespace block

@@ -93,6 +93,9 @@ void GetTopPeers::OnResponce(BinaryReader& Reader)
 }
 GetTopPeers::~GetTopPeers()
 {
-
+	if(this->result)
+	{
+		delete this->result;
+	}
 }
 }//end namespace block

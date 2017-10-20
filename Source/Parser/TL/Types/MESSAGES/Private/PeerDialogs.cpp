@@ -55,8 +55,8 @@ void PeerDialogs::OnResponce(BinaryReader& Reader)
 	Reader.ReadInt();
 
 	//Len concatenated with rand number to get rid of confusions with redefinition
-	int32 Len12319 = Reader.ReadInt();
-	for(int32 i = 0; i < Len12319; i++)
+	int32 Len18922 = Reader.ReadInt();
+	for(int32 i = 0; i < Len18922; i++)
 	{
 	auto X = reinterpret_cast<COMMON::Dialog*>(Reader.TGReadObject());
 	dialogs.Add(X);
@@ -64,8 +64,8 @@ void PeerDialogs::OnResponce(BinaryReader& Reader)
 	Reader.ReadInt();
 
 	//Len concatenated with rand number to get rid of confusions with redefinition
-	int32 Len4468 = Reader.ReadInt();
-	for(int32 i = 0; i < Len4468; i++)
+	int32 Len7696 = Reader.ReadInt();
+	for(int32 i = 0; i < Len7696; i++)
 	{
 	auto X = reinterpret_cast<COMMON::Message*>(Reader.TGReadObject());
 	messages.Add(X);
@@ -73,8 +73,8 @@ void PeerDialogs::OnResponce(BinaryReader& Reader)
 	Reader.ReadInt();
 
 	//Len concatenated with rand number to get rid of confusions with redefinition
-	int32 Len8978 = Reader.ReadInt();
-	for(int32 i = 0; i < Len8978; i++)
+	int32 Len30400 = Reader.ReadInt();
+	for(int32 i = 0; i < Len30400; i++)
 	{
 	auto X = reinterpret_cast<COMMON::Chat*>(Reader.TGReadObject());
 	chats.Add(X);
@@ -82,8 +82,8 @@ void PeerDialogs::OnResponce(BinaryReader& Reader)
 	Reader.ReadInt();
 
 	//Len concatenated with rand number to get rid of confusions with redefinition
-	int32 Len16402 = Reader.ReadInt();
-	for(int32 i = 0; i < Len16402; i++)
+	int32 Len574 = Reader.ReadInt();
+	for(int32 i = 0; i < Len574; i++)
 	{
 	auto X = reinterpret_cast<COMMON::User*>(Reader.TGReadObject());
 	users.Add(X);
@@ -93,6 +93,9 @@ void PeerDialogs::OnResponce(BinaryReader& Reader)
 }
 PeerDialogs::~PeerDialogs()
 {
-
+	if(this->state)
+	{
+		delete this->state;
+	}
 }
 }//end namespace block

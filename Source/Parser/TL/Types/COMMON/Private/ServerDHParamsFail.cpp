@@ -35,6 +35,5 @@ void ServerDHParamsFail::OnResponce(BinaryReader& Reader)
 }
 ServerDHParamsFail::~ServerDHParamsFail()
 {
-
 }
 }//end namespace block

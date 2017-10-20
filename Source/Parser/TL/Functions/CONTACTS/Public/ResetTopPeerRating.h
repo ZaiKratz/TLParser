@@ -2,9 +2,6 @@
 #include "Engine.h"
 #include "../../../TLObjectBase.h"
 
-#include "../../../Types/Private/TopPeerCategory.h"
-#include "../../../Types/Private/InputPeer.h"
-
 //begin namespace block
 namespace CONTACTS
 {
@@ -12,18 +9,18 @@ class ResetTopPeerRating : public TLBaseObject
 {
 public:
 	ResetTopPeerRating();
-	ResetTopPeerRating(PRIVATE::TopPeerCategory* category, PRIVATE::InputPeer* peer);
+	ResetTopPeerRating(TLBaseObject* category, TLBaseObject* peer);
 
 	~ResetTopPeerRating();
 	virtual void OnSend(BinaryWriter& Writer) override;
 	virtual void OnResponce(BinaryReader& Reader) override;
 
-	PRIVATE::TopPeerCategory*  Getcategory() const
+	TLBaseObject*  Getcategory() const
 	{
 		 return this->category;
 	}
 
-	PRIVATE::InputPeer*  Getpeer() const
+	TLBaseObject*  Getpeer() const
 	{
 		 return this->peer;
 	}
@@ -34,8 +31,8 @@ public:
 	}
 
 private:
-	PRIVATE::TopPeerCategory* category;
-	 PRIVATE::InputPeer* peer;
+	TLBaseObject* category;
+	 TLBaseObject* peer;
 	bool result;
 };
 } //end namespace block

@@ -29,6 +29,5 @@ void MessageActionChatEditTitle::OnResponce(BinaryReader& Reader)
 }
 MessageActionChatEditTitle::~MessageActionChatEditTitle()
 {
-
 }
 }//end namespace block

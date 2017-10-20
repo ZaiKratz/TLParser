@@ -10,7 +10,7 @@ PagePart::PagePart()
 	this->_ConstructorID = -1908433218;
 }
 
-PagePart::PagePart(TArray<PRIVATE::PageBlock*>  blocks, TArray<COMMON::Photo*>  photos, TArray<COMMON::Document*>  documents)
+PagePart::PagePart(TArray<TLBaseObject*>  blocks, TArray<COMMON::Photo*>  photos, TArray<COMMON::Document*>  documents)
 {
 	this->_ConstructorID = -1908433218;
 	this->blocks = blocks;
@@ -46,17 +46,17 @@ void PagePart::OnResponce(BinaryReader& Reader)
 	Reader.ReadInt();
 
 	//Len concatenated with rand number to get rid of confusions with redefinition
-	int32 Len4780 = Reader.ReadInt();
-	for(int32 i = 0; i < Len4780; i++)
+	int32 Len10133 = Reader.ReadInt();
+	for(int32 i = 0; i < Len10133; i++)
 	{
-	auto X = reinterpret_cast<PRIVATE::PageBlock*>(Reader.TGReadObject());
+	auto X = reinterpret_cast<TLBaseObject*>(Reader.TGReadObject());
 	blocks.Add(X);
 	}
 	Reader.ReadInt();
 
 	//Len concatenated with rand number to get rid of confusions with redefinition
-	int32 Len13513 = Reader.ReadInt();
-	for(int32 i = 0; i < Len13513; i++)
+	int32 Len18901 = Reader.ReadInt();
+	for(int32 i = 0; i < Len18901; i++)
 	{
 	auto X = reinterpret_cast<COMMON::Photo*>(Reader.TGReadObject());
 	photos.Add(X);
@@ -64,8 +64,8 @@ void PagePart::OnResponce(BinaryReader& Reader)
 	Reader.ReadInt();
 
 	//Len concatenated with rand number to get rid of confusions with redefinition
-	int32 Len18439 = Reader.ReadInt();
-	for(int32 i = 0; i < Len18439; i++)
+	int32 Len18304 = Reader.ReadInt();
+	for(int32 i = 0; i < Len18304; i++)
 	{
 	auto X = reinterpret_cast<COMMON::Document*>(Reader.TGReadObject());
 	documents.Add(X);
@@ -74,6 +74,5 @@ void PagePart::OnResponce(BinaryReader& Reader)
 }
 PagePart::~PagePart()
 {
-
 }
 }//end namespace block

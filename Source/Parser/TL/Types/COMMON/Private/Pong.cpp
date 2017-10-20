@@ -32,6 +32,5 @@ void Pong::OnResponce(BinaryReader& Reader)
 }
 Pong::~Pong()
 {
-
 }
 }//end namespace block

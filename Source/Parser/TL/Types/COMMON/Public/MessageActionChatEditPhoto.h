@@ -1,14 +1,13 @@
 #pragma once
 #include "Engine.h"
-#include "../../../Types/Private/MessageAction.h"
+#include "../../../TLObjectBase.h"
 
 #include "../../../Types/Common/Public/Photo.h"
-#include "../../../Types/Private/MessageAction.h"
 
 //begin namespace block
 namespace COMMON
 {
-class MessageActionChatEditPhoto : public PRIVATE::MessageAction
+class MessageActionChatEditPhoto : public TLBaseObject
 {
 public:
 	MessageActionChatEditPhoto();

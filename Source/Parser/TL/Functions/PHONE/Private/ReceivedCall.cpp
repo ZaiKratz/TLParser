@@ -31,6 +31,9 @@ void ReceivedCall::OnResponce(BinaryReader& Reader)
 }
 ReceivedCall::~ReceivedCall()
 {
-
+	if(this->peer)
+	{
+		delete this->peer;
+	}
 }
 }//end namespace block

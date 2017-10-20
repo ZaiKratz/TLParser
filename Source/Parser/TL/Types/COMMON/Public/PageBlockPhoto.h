@@ -1,18 +1,15 @@
 #pragma once
 #include "Engine.h"
-#include "../../../Types/Private/PageBlock.h"
-
-#include "../../../Types/Private/RichText.h"
-#include "../../../Types/Private/PageBlock.h"
+#include "../../../TLObjectBase.h"
 
 //begin namespace block
 namespace COMMON
 {
-class PageBlockPhoto : public PRIVATE::PageBlock
+class PageBlockPhoto : public TLBaseObject
 {
 public:
 	PageBlockPhoto();
-	PageBlockPhoto(unsigned long long photo_id, PRIVATE::RichText* caption);
+	PageBlockPhoto(unsigned long long photo_id, TLBaseObject* caption);
 
 	~PageBlockPhoto();
 	virtual void OnSend(BinaryWriter& Writer) override;
@@ -23,13 +20,13 @@ public:
 		 return this->photo_id;
 	}
 
-	PRIVATE::RichText*  Getcaption() const
+	TLBaseObject*  Getcaption() const
 	{
 		 return this->caption;
 	}
 
 private:
 	unsigned long long photo_id;
-	 PRIVATE::RichText* caption;
+	 TLBaseObject* caption;
 };
 } //end namespace block

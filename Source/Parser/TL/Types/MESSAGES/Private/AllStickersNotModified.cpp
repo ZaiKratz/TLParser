@@ -24,6 +24,5 @@ void AllStickersNotModified::OnResponce(BinaryReader& Reader)
 }
 AllStickersNotModified::~AllStickersNotModified()
 {
-
 }
 }//end namespace block

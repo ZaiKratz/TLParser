@@ -35,6 +35,9 @@ void UpdateNewMessage::OnResponce(BinaryReader& Reader)
 }
 UpdateNewMessage::~UpdateNewMessage()
 {
-
+	if(this->message)
+	{
+		delete this->message;
+	}
 }
 }//end namespace block

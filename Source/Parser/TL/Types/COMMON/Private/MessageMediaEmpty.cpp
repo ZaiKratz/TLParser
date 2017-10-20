@@ -24,6 +24,5 @@ void MessageMediaEmpty::OnResponce(BinaryReader& Reader)
 }
 MessageMediaEmpty::~MessageMediaEmpty()
 {
-
 }
 }//end namespace block

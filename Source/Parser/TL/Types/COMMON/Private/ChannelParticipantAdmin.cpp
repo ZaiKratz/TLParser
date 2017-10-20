@@ -60,6 +60,9 @@ void ChannelParticipantAdmin::OnResponce(BinaryReader& Reader)
 }
 ChannelParticipantAdmin::~ChannelParticipantAdmin()
 {
-
+	if(this->admin_rights)
+	{
+		delete this->admin_rights;
+	}
 }
 }//end namespace block

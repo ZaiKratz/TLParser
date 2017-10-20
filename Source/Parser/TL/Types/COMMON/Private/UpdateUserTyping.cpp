@@ -10,7 +10,7 @@ UpdateUserTyping::UpdateUserTyping()
 	this->_ConstructorID = 1548249383;
 }
 
-UpdateUserTyping::UpdateUserTyping(int32 user_id, PRIVATE::SendMessageAction*  action)
+UpdateUserTyping::UpdateUserTyping(int32 user_id, TLBaseObject*  action)
 {
 	this->_ConstructorID = 1548249383;
 	this->user_id = user_id;
@@ -27,11 +27,14 @@ void UpdateUserTyping::OnSend(BinaryWriter& Writer)
 void UpdateUserTyping::OnResponce(BinaryReader& Reader)
 {
 	user_id = Reader.ReadInt();
-	action = reinterpret_cast<PRIVATE::SendMessageAction* >(Reader.TGReadObject());
+	action = reinterpret_cast<TLBaseObject* >(Reader.TGReadObject());
 	this->_Responded = true;
 }
 UpdateUserTyping::~UpdateUserTyping()
 {
-
+	if(this->action)
+	{
+		delete this->action;
+	}
 }
 }//end namespace block

@@ -10,7 +10,7 @@ InputWebDocument::InputWebDocument()
 	this->_ConstructorID = -1678949555;
 }
 
-InputWebDocument::InputWebDocument(FString url, int32 size, FString mime_type, TArray<PRIVATE::DocumentAttribute*>  attributes)
+InputWebDocument::InputWebDocument(FString url, int32 size, FString mime_type, TArray<TLBaseObject*>  attributes)
 {
 	this->_ConstructorID = -1678949555;
 	this->url = url;
@@ -41,16 +41,15 @@ void InputWebDocument::OnResponce(BinaryReader& Reader)
 	Reader.ReadInt();
 
 	//Len concatenated with rand number to get rid of confusions with redefinition
-	int32 Len23345 = Reader.ReadInt();
-	for(int32 i = 0; i < Len23345; i++)
+	int32 Len31968 = Reader.ReadInt();
+	for(int32 i = 0; i < Len31968; i++)
 	{
-	auto X = reinterpret_cast<PRIVATE::DocumentAttribute*>(Reader.TGReadObject());
+	auto X = reinterpret_cast<TLBaseObject*>(Reader.TGReadObject());
 	attributes.Add(X);
 	}
 	this->_Responded = true;
 }
 InputWebDocument::~InputWebDocument()
 {
-
 }
 }//end namespace block

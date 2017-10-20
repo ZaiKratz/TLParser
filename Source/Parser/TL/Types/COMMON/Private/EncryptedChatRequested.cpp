@@ -44,6 +44,5 @@ void EncryptedChatRequested::OnResponce(BinaryReader& Reader)
 }
 EncryptedChatRequested::~EncryptedChatRequested()
 {
-
 }
 }//end namespace block

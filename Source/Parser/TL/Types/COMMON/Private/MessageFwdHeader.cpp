@@ -58,16 +58,16 @@ void MessageFwdHeader::OnSend(BinaryWriter& Writer)
 	}
 	Writer.WriteInt(Flags);
 
-	if(!this->from_id)
+	if(this->from_id)
 	{
 	Writer.WriteInt(this->from_id);
 	}
 	Writer.TGWriteDate(this->date);
-	if(!this->channel_id)
+	if(this->channel_id)
 	{
 	Writer.WriteInt(this->channel_id);
 	}
-	if(!this->channel_post)
+	if(this->channel_post)
 	{
 	Writer.WriteInt(this->channel_post);
 	}
@@ -100,6 +100,5 @@ void MessageFwdHeader::OnResponce(BinaryReader& Reader)
 }
 MessageFwdHeader::~MessageFwdHeader()
 {
-
 }
 }//end namespace block

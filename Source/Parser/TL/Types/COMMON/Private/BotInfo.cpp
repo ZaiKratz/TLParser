@@ -38,8 +38,8 @@ void BotInfo::OnResponce(BinaryReader& Reader)
 	Reader.ReadInt();
 
 	//Len concatenated with rand number to get rid of confusions with redefinition
-	int32 Len23431 = Reader.ReadInt();
-	for(int32 i = 0; i < Len23431; i++)
+	int32 Len17167 = Reader.ReadInt();
+	for(int32 i = 0; i < Len17167; i++)
 	{
 	auto X = reinterpret_cast<COMMON::BotCommand*>(Reader.TGReadObject());
 	commands.Add(X);
@@ -48,6 +48,5 @@ void BotInfo::OnResponce(BinaryReader& Reader)
 }
 BotInfo::~BotInfo()
 {
-
 }
 }//end namespace block

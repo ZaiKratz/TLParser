@@ -1,14 +1,13 @@
 #pragma once
 #include "Engine.h"
-#include "../../../Types/Private/InputStickeredMedia.h"
+#include "../../../TLObjectBase.h"
 
 #include "../../../Types/Common/Public/InputDocument.h"
-#include "../../../Types/Private/InputStickeredMedia.h"
 
 //begin namespace block
 namespace COMMON
 {
-class InputStickeredMediaDocument : public PRIVATE::InputStickeredMedia
+class InputStickeredMediaDocument : public TLBaseObject
 {
 public:
 	InputStickeredMediaDocument();

@@ -38,6 +38,5 @@ void BadServerSalt::OnResponce(BinaryReader& Reader)
 }
 BadServerSalt::~BadServerSalt()
 {
-
 }
 }//end namespace block

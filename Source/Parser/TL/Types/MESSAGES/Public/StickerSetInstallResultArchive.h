@@ -1,13 +1,13 @@
 #pragma once
 #include "Engine.h"
+#include "../../../TLObjectBase.h"
 
 #include "../../../Types/Common/Public/StickerSetCovered.h"
-#include "../../../Types/Private/StickerSetInstallResult.h"
 
 //begin namespace block
 namespace MESSAGES
 {
-class StickerSetInstallResultArchive : public PRIVATE::StickerSetInstallResult
+class StickerSetInstallResultArchive : public TLBaseObject
 {
 public:
 	StickerSetInstallResultArchive();

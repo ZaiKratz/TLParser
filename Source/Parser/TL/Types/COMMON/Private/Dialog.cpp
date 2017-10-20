@@ -10,7 +10,7 @@ Dialog::Dialog()
 	this->_ConstructorID = -455150117;
 }
 
-Dialog::Dialog(bool pinned, PRIVATE::Peer*  peer, int32 top_message, int32 read_inbox_max_id, int32 read_outbox_max_id, int32 unread_count, int32 unread_mentions_count, COMMON::PeerNotifySettings*  notify_settings, int32 pts, COMMON::DraftMessage*  draft)
+Dialog::Dialog(bool pinned, TLBaseObject*  peer, int32 top_message, int32 read_inbox_max_id, int32 read_outbox_max_id, int32 unread_count, int32 unread_mentions_count, COMMON::PeerNotifySettings*  notify_settings, int32 pts, COMMON::DraftMessage*  draft)
 {
 	this->_ConstructorID = -455150117;
 	this->pinned = pinned;
@@ -62,11 +62,11 @@ void Dialog::OnSend(BinaryWriter& Writer)
 	Writer.WriteInt(this->unread_count);
 	Writer.WriteInt(this->unread_mentions_count);
 	this->notify_settings->OnSend(Writer);
-	if(!this->pts)
+	if(this->pts)
 	{
 	Writer.WriteInt(this->pts);
 	}
-	if(!this->draft)
+	if(this->draft)
 	{
 	this->draft->OnSend(Writer);
 	}
@@ -81,7 +81,7 @@ void Dialog::OnResponce(BinaryReader& Reader)
 	{
 		pinned = true;
 	}
-	peer = reinterpret_cast<PRIVATE::Peer* >(Reader.TGReadObject());
+	peer = reinterpret_cast<TLBaseObject* >(Reader.TGReadObject());
 	top_message = Reader.ReadInt();
 	read_inbox_max_id = Reader.ReadInt();
 	read_outbox_max_id = Reader.ReadInt();
@@ -100,6 +100,17 @@ void Dialog::OnResponce(BinaryReader& Reader)
 }
 Dialog::~Dialog()
 {
-
+	if(this->peer)
+	{
+		delete this->peer;
+	}
+	if(this->notify_settings)
+	{
+		delete this->notify_settings;
+	}
+	if(this->draft)
+	{
+		delete this->draft;
+	}
 }
 }//end namespace block

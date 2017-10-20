@@ -45,6 +45,13 @@ void InitConnection::OnResponce(BinaryReader& Reader)
 }
 InitConnection::~InitConnection()
 {
-
+	if(this->query)
+	{
+		delete this->query;
+	}
+	if(this->result)
+	{
+		delete this->result;
+	}
 }
 }//end namespace block

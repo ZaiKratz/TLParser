@@ -24,6 +24,5 @@ void UpdatesTooLong::OnResponce(BinaryReader& Reader)
 }
 UpdatesTooLong::~UpdatesTooLong()
 {
-
 }
 }//end namespace block

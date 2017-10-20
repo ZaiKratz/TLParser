@@ -23,6 +23,9 @@ void GetInviteText::OnResponce(BinaryReader& Reader)
 }
 GetInviteText::~GetInviteText()
 {
-
+	if(this->result)
+	{
+		delete this->result;
+	}
 }
 }//end namespace block

@@ -45,6 +45,5 @@ void InputMessagesFilterPhoneCalls::OnResponce(BinaryReader& Reader)
 }
 InputMessagesFilterPhoneCalls::~InputMessagesFilterPhoneCalls()
 {
-
 }
 }//end namespace block

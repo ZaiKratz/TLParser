@@ -24,6 +24,5 @@ void SendMessageCancelAction::OnResponce(BinaryReader& Reader)
 }
 SendMessageCancelAction::~SendMessageCancelAction()
 {
-
 }
 }//end namespace block

@@ -3,7 +3,6 @@
 #include "../../../TLObjectBase.h"
 
 #include "../../../Types/Common/Public/InputPhoto.h"
-#include "../../../Types/Private/InputBotInlineMessage.h"
 #include "../../../Types/Common/Public/InputBotInlineResult.h"
 
 //begin namespace block
@@ -13,7 +12,7 @@ class InputBotInlineResultPhoto : public TLBaseObject
 {
 public:
 	InputBotInlineResultPhoto();
-	InputBotInlineResultPhoto(FString id, FString type, COMMON::InputPhoto* photo, PRIVATE::InputBotInlineMessage* send_message);
+	InputBotInlineResultPhoto(FString id, FString type, COMMON::InputPhoto* photo, TLBaseObject* send_message);
 
 	~InputBotInlineResultPhoto();
 	virtual void OnSend(BinaryWriter& Writer) override;
@@ -34,7 +33,7 @@ public:
 		 return this->photo;
 	}
 
-	PRIVATE::InputBotInlineMessage*  GetSendMessage() const
+	TLBaseObject*  GetSendMessage() const
 	{
 		 return this->send_message;
 	}
@@ -43,6 +42,6 @@ private:
 	FString id;
 	 FString type;
 	 COMMON::InputPhoto* photo;
-	 PRIVATE::InputBotInlineMessage* send_message;
+	 TLBaseObject* send_message;
 };
 } //end namespace block

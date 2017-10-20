@@ -48,7 +48,7 @@ void GetAdminLog::OnSend(BinaryWriter& Writer)
 
 	this->channel->OnSend(Writer);
 	Writer.TGWriteString(this->q);
-	if(!this->events_filter)
+	if(this->events_filter)
 	{
 	this->events_filter->OnSend(Writer);
 	}
@@ -58,7 +58,7 @@ void GetAdminLog::OnSend(BinaryWriter& Writer)
 	Writer.WriteInt(this->admins.Num());
 	for(auto X : this->admins)
 	{
-	if(!X)
+	if(X)
 	{
 	X->OnSend(Writer);
 	}
@@ -77,6 +77,17 @@ void GetAdminLog::OnResponce(BinaryReader& Reader)
 }
 GetAdminLog::~GetAdminLog()
 {
-
+	if(this->channel)
+	{
+		delete this->channel;
+	}
+	if(this->events_filter)
+	{
+		delete this->events_filter;
+	}
+	if(this->result)
+	{
+		delete this->result;
+	}
 }
 }//end namespace block

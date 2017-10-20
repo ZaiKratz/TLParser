@@ -24,6 +24,5 @@ void SendMessageRecordRoundAction::OnResponce(BinaryReader& Reader)
 }
 SendMessageRecordRoundAction::~SendMessageRecordRoundAction()
 {
-
 }
 }//end namespace block

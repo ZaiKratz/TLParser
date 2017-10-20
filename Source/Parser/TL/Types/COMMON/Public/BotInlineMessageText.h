@@ -1,19 +1,15 @@
 #pragma once
 #include "Engine.h"
-#include "../../../Types/Private/BotInlineMessage.h"
-
-#include "../../../Types/Private/MessageEntity.h"
-#include "../../../Types/Private/ReplyMarkup.h"
-#include "../../../Types/Private/BotInlineMessage.h"
+#include "../../../TLObjectBase.h"
 
 //begin namespace block
 namespace COMMON
 {
-class BotInlineMessageText : public PRIVATE::BotInlineMessage
+class BotInlineMessageText : public TLBaseObject
 {
 public:
 	BotInlineMessageText();
-	BotInlineMessageText(bool no_webpage, FString message, TArray<PRIVATE::MessageEntity*> entities, PRIVATE::ReplyMarkup* reply_markup);
+	BotInlineMessageText(bool no_webpage, FString message, TArray<TLBaseObject*> entities, TLBaseObject* reply_markup);
 
 	~BotInlineMessageText();
 	virtual void OnSend(BinaryWriter& Writer) override;
@@ -29,12 +25,12 @@ public:
 		 return this->message;
 	}
 
-	TArray<PRIVATE::MessageEntity*>  Getentities() const
+	TArray<TLBaseObject*>  Getentities() const
 	{
 		 return this->entities;
 	}
 
-	PRIVATE::ReplyMarkup*  GetReplyMarkup() const
+	TLBaseObject*  GetReplyMarkup() const
 	{
 		 return this->reply_markup;
 	}
@@ -42,7 +38,7 @@ public:
 private:
 	bool no_webpage;
 	 FString message;
-	 TArray<PRIVATE::MessageEntity*> entities;
-	 PRIVATE::ReplyMarkup* reply_markup;
+	 TArray<TLBaseObject*> entities;
+	 TLBaseObject* reply_markup;
 };
 } //end namespace block

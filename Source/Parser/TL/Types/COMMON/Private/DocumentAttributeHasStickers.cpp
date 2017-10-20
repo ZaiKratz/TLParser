@@ -24,6 +24,5 @@ void DocumentAttributeHasStickers::OnResponce(BinaryReader& Reader)
 }
 DocumentAttributeHasStickers::~DocumentAttributeHasStickers()
 {
-
 }
 }//end namespace block

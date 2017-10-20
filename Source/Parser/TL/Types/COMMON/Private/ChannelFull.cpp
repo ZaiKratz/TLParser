@@ -10,7 +10,7 @@ ChannelFull::ChannelFull()
 	this->_ConstructorID = 401891279;
 }
 
-ChannelFull::ChannelFull(bool can_view_participants, bool can_set_username, bool can_set_stickers, int32 id, FString about, int32 participants_count, int32 admins_count, int32 kicked_count, int32 banned_count, int32 read_inbox_max_id, int32 read_outbox_max_id, int32 unread_count, COMMON::Photo*  chat_photo, COMMON::PeerNotifySettings*  notify_settings, PRIVATE::ExportedChatInvite*  exported_invite, TArray<COMMON::BotInfo*>  bot_info, int32 migrated_from_chat_id, int32 migrated_from_max_id, int32 pinned_msg_id, COMMON::StickerSet*  stickerset)
+ChannelFull::ChannelFull(bool can_view_participants, bool can_set_username, bool can_set_stickers, int32 id, FString about, int32 participants_count, int32 admins_count, int32 kicked_count, int32 banned_count, int32 read_inbox_max_id, int32 read_outbox_max_id, int32 unread_count, COMMON::Photo*  chat_photo, COMMON::PeerNotifySettings*  notify_settings, TLBaseObject*  exported_invite, TArray<COMMON::BotInfo*>  bot_info, int32 migrated_from_chat_id, int32 migrated_from_max_id, int32 pinned_msg_id, COMMON::StickerSet*  stickerset)
 {
 	this->_ConstructorID = 401891279;
 	this->can_view_participants = can_view_participants;
@@ -131,19 +131,19 @@ void ChannelFull::OnSend(BinaryWriter& Writer)
 
 	Writer.WriteInt(this->id);
 	Writer.TGWriteString(this->about);
-	if(!this->participants_count)
+	if(this->participants_count)
 	{
 	Writer.WriteInt(this->participants_count);
 	}
-	if(!this->admins_count)
+	if(this->admins_count)
 	{
 	Writer.WriteInt(this->admins_count);
 	}
-	if(!this->kicked_count)
+	if(this->kicked_count)
 	{
 	Writer.WriteInt(this->kicked_count);
 	}
-	if(!this->banned_count)
+	if(this->banned_count)
 	{
 	Writer.WriteInt(this->banned_count);
 	}
@@ -159,19 +159,19 @@ void ChannelFull::OnSend(BinaryWriter& Writer)
 	{
 	X->OnSend(Writer);
 	}
-	if(!this->migrated_from_chat_id)
+	if(this->migrated_from_chat_id)
 	{
 	Writer.WriteInt(this->migrated_from_chat_id);
 	}
-	if(!this->migrated_from_max_id)
+	if(this->migrated_from_max_id)
 	{
 	Writer.WriteInt(this->migrated_from_max_id);
 	}
-	if(!this->pinned_msg_id)
+	if(this->pinned_msg_id)
 	{
 	Writer.WriteInt(this->pinned_msg_id);
 	}
-	if(!this->stickerset)
+	if(this->stickerset)
 	{
 	this->stickerset->OnSend(Writer);
 	}
@@ -217,12 +217,12 @@ void ChannelFull::OnResponce(BinaryReader& Reader)
 	unread_count = Reader.ReadInt();
 	chat_photo = reinterpret_cast<COMMON::Photo* >(Reader.TGReadObject());
 	notify_settings = reinterpret_cast<COMMON::PeerNotifySettings* >(Reader.TGReadObject());
-	exported_invite = reinterpret_cast<PRIVATE::ExportedChatInvite* >(Reader.TGReadObject());
+	exported_invite = reinterpret_cast<TLBaseObject* >(Reader.TGReadObject());
 	Reader.ReadInt();
 
 	//Len concatenated with rand number to get rid of confusions with redefinition
-	int32 Len5671 = Reader.ReadInt();
-	for(int32 i = 0; i < Len5671; i++)
+	int32 Len22361 = Reader.ReadInt();
+	for(int32 i = 0; i < Len22361; i++)
 	{
 	auto X = reinterpret_cast<COMMON::BotInfo*>(Reader.TGReadObject());
 	bot_info.Add(X);
@@ -247,6 +247,21 @@ void ChannelFull::OnResponce(BinaryReader& Reader)
 }
 ChannelFull::~ChannelFull()
 {
-
+	if(this->chat_photo)
+	{
+		delete this->chat_photo;
+	}
+	if(this->notify_settings)
+	{
+		delete this->notify_settings;
+	}
+	if(this->exported_invite)
+	{
+		delete this->exported_invite;
+	}
+	if(this->stickerset)
+	{
+		delete this->stickerset;
+	}
 }
 }//end namespace block

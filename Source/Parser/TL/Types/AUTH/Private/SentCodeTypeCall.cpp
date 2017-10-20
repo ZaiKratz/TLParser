@@ -29,6 +29,5 @@ void SentCodeTypeCall::OnResponce(BinaryReader& Reader)
 }
 SentCodeTypeCall::~SentCodeTypeCall()
 {
-
 }
 }//end namespace block

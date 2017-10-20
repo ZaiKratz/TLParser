@@ -22,6 +22,5 @@ void GetStatuses::OnResponce(BinaryReader& Reader)
 }
 GetStatuses::~GetStatuses()
 {
-
 }
 }//end namespace block

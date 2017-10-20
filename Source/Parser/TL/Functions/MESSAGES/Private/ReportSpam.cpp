@@ -11,7 +11,7 @@ ReportSpam::ReportSpam()
 	this->_ContentRelated = true;
 }
 
-ReportSpam::ReportSpam(PRIVATE::InputPeer*  peer)
+ReportSpam::ReportSpam(TLBaseObject*  peer)
 {
 	this->_ConstructorID = -820669733;
 	this->_ContentRelated = true;
@@ -31,6 +31,9 @@ void ReportSpam::OnResponce(BinaryReader& Reader)
 }
 ReportSpam::~ReportSpam()
 {
-
+	if(this->peer)
+	{
+		delete this->peer;
+	}
 }
 }//end namespace block

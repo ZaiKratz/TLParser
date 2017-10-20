@@ -1,18 +1,15 @@
 #pragma once
 #include "Engine.h"
-#include "../../../Types/Private/PageBlock.h"
-
-#include "../../../Types/Private/RichText.h"
-#include "../../../Types/Private/PageBlock.h"
+#include "../../../TLObjectBase.h"
 
 //begin namespace block
 namespace COMMON
 {
-class PageBlockAudio : public PRIVATE::PageBlock
+class PageBlockAudio : public TLBaseObject
 {
 public:
 	PageBlockAudio();
-	PageBlockAudio(unsigned long long audio_id, PRIVATE::RichText* caption);
+	PageBlockAudio(unsigned long long audio_id, TLBaseObject* caption);
 
 	~PageBlockAudio();
 	virtual void OnSend(BinaryWriter& Writer) override;
@@ -23,13 +20,13 @@ public:
 		 return this->audio_id;
 	}
 
-	PRIVATE::RichText*  Getcaption() const
+	TLBaseObject*  Getcaption() const
 	{
 		 return this->caption;
 	}
 
 private:
 	unsigned long long audio_id;
-	 PRIVATE::RichText* caption;
+	 TLBaseObject* caption;
 };
 } //end namespace block

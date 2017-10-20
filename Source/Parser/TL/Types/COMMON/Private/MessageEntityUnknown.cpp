@@ -32,6 +32,5 @@ void MessageEntityUnknown::OnResponce(BinaryReader& Reader)
 }
 MessageEntityUnknown::~MessageEntityUnknown()
 {
-
 }
 }//end namespace block

@@ -10,7 +10,7 @@ UpdateChatUserTyping::UpdateChatUserTyping()
 	this->_ConstructorID = -1704596961;
 }
 
-UpdateChatUserTyping::UpdateChatUserTyping(int32 chat_id, int32 user_id, PRIVATE::SendMessageAction*  action)
+UpdateChatUserTyping::UpdateChatUserTyping(int32 chat_id, int32 user_id, TLBaseObject*  action)
 {
 	this->_ConstructorID = -1704596961;
 	this->chat_id = chat_id;
@@ -30,11 +30,14 @@ void UpdateChatUserTyping::OnResponce(BinaryReader& Reader)
 {
 	chat_id = Reader.ReadInt();
 	user_id = Reader.ReadInt();
-	action = reinterpret_cast<PRIVATE::SendMessageAction* >(Reader.TGReadObject());
+	action = reinterpret_cast<TLBaseObject* >(Reader.TGReadObject());
 	this->_Responded = true;
 }
 UpdateChatUserTyping::~UpdateChatUserTyping()
 {
-
+	if(this->action)
+	{
+		delete this->action;
+	}
 }
 }//end namespace block

@@ -64,6 +64,5 @@ void PhoneCallProtocol::OnResponce(BinaryReader& Reader)
 }
 PhoneCallProtocol::~PhoneCallProtocol()
 {
-
 }
 }//end namespace block

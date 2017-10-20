@@ -29,6 +29,5 @@ void KeyboardButtonGame::OnResponce(BinaryReader& Reader)
 }
 KeyboardButtonGame::~KeyboardButtonGame()
 {
-
 }
 }//end namespace block

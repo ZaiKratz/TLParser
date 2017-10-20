@@ -2,9 +2,6 @@
 #include "Engine.h"
 #include "../../../TLObjectBase.h"
 
-#include "../../../Types/Private/InputPeer.h"
-#include "../../../Types/Private/MessageEntity.h"
-
 //begin namespace block
 namespace MESSAGES
 {
@@ -12,7 +9,7 @@ class SaveDraft : public TLBaseObject
 {
 public:
 	SaveDraft();
-	SaveDraft(bool no_webpage, int32 reply_to_msg_id, PRIVATE::InputPeer* peer, FString message, TArray<PRIVATE::MessageEntity*> entities);
+	SaveDraft(bool no_webpage, int32 reply_to_msg_id, TLBaseObject* peer, FString message, TArray<TLBaseObject*> entities);
 
 	~SaveDraft();
 	virtual void OnSend(BinaryWriter& Writer) override;
@@ -28,7 +25,7 @@ public:
 		 return this->reply_to_msg_id;
 	}
 
-	PRIVATE::InputPeer*  Getpeer() const
+	TLBaseObject*  Getpeer() const
 	{
 		 return this->peer;
 	}
@@ -38,7 +35,7 @@ public:
 		 return this->message;
 	}
 
-	TArray<PRIVATE::MessageEntity*>  Getentities() const
+	TArray<TLBaseObject*>  Getentities() const
 	{
 		 return this->entities;
 	}
@@ -51,9 +48,9 @@ public:
 private:
 	bool no_webpage;
 	 int32 reply_to_msg_id;
-	 PRIVATE::InputPeer* peer;
+	 TLBaseObject* peer;
 	 FString message;
-	 TArray<PRIVATE::MessageEntity*> entities;
+	 TArray<TLBaseObject*> entities;
 	bool result;
 };
 } //end namespace block

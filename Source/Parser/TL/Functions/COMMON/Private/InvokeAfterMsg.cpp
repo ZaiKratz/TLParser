@@ -33,6 +33,13 @@ void InvokeAfterMsg::OnResponce(BinaryReader& Reader)
 }
 InvokeAfterMsg::~InvokeAfterMsg()
 {
-
+	if(this->query)
+	{
+		delete this->query;
+	}
+	if(this->result)
+	{
+		delete this->result;
+	}
 }
 }//end namespace block

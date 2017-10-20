@@ -29,6 +29,5 @@ void CdnFile::OnResponce(BinaryReader& Reader)
 }
 CdnFile::~CdnFile()
 {
-
 }
 }//end namespace block

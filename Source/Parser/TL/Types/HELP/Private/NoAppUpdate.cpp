@@ -24,6 +24,5 @@ void NoAppUpdate::OnResponce(BinaryReader& Reader)
 }
 NoAppUpdate::~NoAppUpdate()
 {
-
 }
 }//end namespace block

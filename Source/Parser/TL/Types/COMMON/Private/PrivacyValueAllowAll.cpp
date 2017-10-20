@@ -24,6 +24,5 @@ void PrivacyValueAllowAll::OnResponce(BinaryReader& Reader)
 }
 PrivacyValueAllowAll::~PrivacyValueAllowAll()
 {
-
 }
 }//end namespace block

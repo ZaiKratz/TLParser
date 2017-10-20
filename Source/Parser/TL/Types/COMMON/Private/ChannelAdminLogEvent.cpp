@@ -10,7 +10,7 @@ ChannelAdminLogEvent::ChannelAdminLogEvent()
 	this->_ConstructorID = 995769920;
 }
 
-ChannelAdminLogEvent::ChannelAdminLogEvent(unsigned long long id, FDateTime date, int32 user_id, PRIVATE::ChannelAdminLogEventAction*  action)
+ChannelAdminLogEvent::ChannelAdminLogEvent(unsigned long long id, FDateTime date, int32 user_id, TLBaseObject*  action)
 {
 	this->_ConstructorID = 995769920;
 	this->id = id;
@@ -33,11 +33,14 @@ void ChannelAdminLogEvent::OnResponce(BinaryReader& Reader)
 	id = Reader.ReadLong();
 	date = Reader.TGReadDate();
 	user_id = Reader.ReadInt();
-	action = reinterpret_cast<PRIVATE::ChannelAdminLogEventAction* >(Reader.TGReadObject());
+	action = reinterpret_cast<TLBaseObject* >(Reader.TGReadObject());
 	this->_Responded = true;
 }
 ChannelAdminLogEvent::~ChannelAdminLogEvent()
 {
-
+	if(this->action)
+	{
+		delete this->action;
+	}
 }
 }//end namespace block

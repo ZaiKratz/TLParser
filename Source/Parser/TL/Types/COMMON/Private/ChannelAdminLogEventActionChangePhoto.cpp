@@ -32,6 +32,13 @@ void ChannelAdminLogEventActionChangePhoto::OnResponce(BinaryReader& Reader)
 }
 ChannelAdminLogEventActionChangePhoto::~ChannelAdminLogEventActionChangePhoto()
 {
-
+	if(this->prev_photo)
+	{
+		delete this->prev_photo;
+	}
+	if(this->new_photo)
+	{
+		delete this->new_photo;
+	}
 }
 }//end namespace block

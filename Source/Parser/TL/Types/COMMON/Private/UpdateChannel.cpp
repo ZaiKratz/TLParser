@@ -29,6 +29,5 @@ void UpdateChannel::OnResponce(BinaryReader& Reader)
 }
 UpdateChannel::~UpdateChannel()
 {
-
 }
 }//end namespace block

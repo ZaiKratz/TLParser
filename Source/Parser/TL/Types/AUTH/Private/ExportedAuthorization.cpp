@@ -32,6 +32,5 @@ void ExportedAuthorization::OnResponce(BinaryReader& Reader)
 }
 ExportedAuthorization::~ExportedAuthorization()
 {
-
 }
 }//end namespace block

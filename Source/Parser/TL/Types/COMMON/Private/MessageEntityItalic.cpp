@@ -32,6 +32,5 @@ void MessageEntityItalic::OnResponce(BinaryReader& Reader)
 }
 MessageEntityItalic::~MessageEntityItalic()
 {
-
 }
 }//end namespace block

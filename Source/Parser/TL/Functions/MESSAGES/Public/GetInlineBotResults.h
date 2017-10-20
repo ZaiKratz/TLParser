@@ -3,7 +3,6 @@
 #include "../../../TLObjectBase.h"
 
 #include "../../../Types/Common/Public/InputUser.h"
-#include "../../../Types/Private/InputPeer.h"
 #include "../../../Types/Common/Public/InputGeoPoint.h"
 #include "../../../Types/Messages/Public/BotResults.h"
 
@@ -14,7 +13,7 @@ class GetInlineBotResults : public TLBaseObject
 {
 public:
 	GetInlineBotResults();
-	GetInlineBotResults(COMMON::InputUser* bot, PRIVATE::InputPeer* peer, COMMON::InputGeoPoint* geo_point, FString query, FString offset);
+	GetInlineBotResults(COMMON::InputUser* bot, TLBaseObject* peer, COMMON::InputGeoPoint* geo_point, FString query, FString offset);
 
 	~GetInlineBotResults();
 	virtual void OnSend(BinaryWriter& Writer) override;
@@ -25,7 +24,7 @@ public:
 		 return this->bot;
 	}
 
-	PRIVATE::InputPeer*  Getpeer() const
+	TLBaseObject*  Getpeer() const
 	{
 		 return this->peer;
 	}
@@ -52,7 +51,7 @@ public:
 
 private:
 	COMMON::InputUser* bot;
-	 PRIVATE::InputPeer* peer;
+	 TLBaseObject* peer;
 	 COMMON::InputGeoPoint* geo_point;
 	 FString query;
 	 FString offset;

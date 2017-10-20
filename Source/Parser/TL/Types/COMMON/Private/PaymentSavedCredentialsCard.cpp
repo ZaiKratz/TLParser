@@ -32,6 +32,5 @@ void PaymentSavedCredentialsCard::OnResponce(BinaryReader& Reader)
 }
 PaymentSavedCredentialsCard::~PaymentSavedCredentialsCard()
 {
-
 }
 }//end namespace block

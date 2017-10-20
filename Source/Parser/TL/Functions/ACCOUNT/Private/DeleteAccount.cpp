@@ -31,6 +31,5 @@ void DeleteAccount::OnResponce(BinaryReader& Reader)
 }
 DeleteAccount::~DeleteAccount()
 {
-
 }
 }//end namespace block

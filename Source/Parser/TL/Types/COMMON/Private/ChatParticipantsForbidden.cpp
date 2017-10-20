@@ -32,7 +32,7 @@ void ChatParticipantsForbidden::OnSend(BinaryWriter& Writer)
 	Writer.WriteInt(Flags);
 
 	Writer.WriteInt(this->chat_id);
-	if(!this->self_participant)
+	if(this->self_participant)
 	{
 	this->self_participant->OnSend(Writer);
 	}
@@ -52,6 +52,9 @@ void ChatParticipantsForbidden::OnResponce(BinaryReader& Reader)
 }
 ChatParticipantsForbidden::~ChatParticipantsForbidden()
 {
-
+	if(this->self_participant)
+	{
+		delete this->self_participant;
+	}
 }
 }//end namespace block

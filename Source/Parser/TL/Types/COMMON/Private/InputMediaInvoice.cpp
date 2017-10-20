@@ -38,7 +38,7 @@ void InputMediaInvoice::OnSend(BinaryWriter& Writer)
 
 	Writer.TGWriteString(this->title);
 	Writer.TGWriteString(this->description);
-	if(!this->photo)
+	if(this->photo)
 	{
 	this->photo->OnSend(Writer);
 	}
@@ -67,6 +67,13 @@ void InputMediaInvoice::OnResponce(BinaryReader& Reader)
 }
 InputMediaInvoice::~InputMediaInvoice()
 {
-
+	if(this->photo)
+	{
+		delete this->photo;
+	}
+	if(this->invoice)
+	{
+		delete this->invoice;
+	}
 }
 }//end namespace block

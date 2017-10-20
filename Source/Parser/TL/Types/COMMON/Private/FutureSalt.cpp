@@ -35,6 +35,5 @@ void FutureSalt::OnResponce(BinaryReader& Reader)
 }
 FutureSalt::~FutureSalt()
 {
-
 }
 }//end namespace block

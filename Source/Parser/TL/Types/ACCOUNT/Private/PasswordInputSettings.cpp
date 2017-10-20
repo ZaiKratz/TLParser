@@ -94,6 +94,5 @@ void PasswordInputSettings::OnResponce(BinaryReader& Reader)
 }
 PasswordInputSettings::~PasswordInputSettings()
 {
-
 }
 }//end namespace block

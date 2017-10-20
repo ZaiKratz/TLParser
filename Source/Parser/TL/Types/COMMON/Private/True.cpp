@@ -24,6 +24,5 @@ void True::OnResponce(BinaryReader& Reader)
 }
 True::~True()
 {
-
 }
 }//end namespace block

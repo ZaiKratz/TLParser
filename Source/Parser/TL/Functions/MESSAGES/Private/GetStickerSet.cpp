@@ -11,7 +11,7 @@ GetStickerSet::GetStickerSet()
 	this->_ContentRelated = true;
 }
 
-GetStickerSet::GetStickerSet(PRIVATE::InputStickerSet*  stickerset)
+GetStickerSet::GetStickerSet(TLBaseObject*  stickerset)
 {
 	this->_ConstructorID = 639215886;
 	this->_ContentRelated = true;
@@ -31,6 +31,13 @@ void GetStickerSet::OnResponce(BinaryReader& Reader)
 }
 GetStickerSet::~GetStickerSet()
 {
-
+	if(this->stickerset)
+	{
+		delete this->stickerset;
+	}
+	if(this->result)
+	{
+		delete this->result;
+	}
 }
 }//end namespace block

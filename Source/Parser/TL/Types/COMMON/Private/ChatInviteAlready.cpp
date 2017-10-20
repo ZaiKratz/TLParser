@@ -29,6 +29,9 @@ void ChatInviteAlready::OnResponce(BinaryReader& Reader)
 }
 ChatInviteAlready::~ChatInviteAlready()
 {
-
+	if(this->chat)
+	{
+		delete this->chat;
+	}
 }
 }//end namespace block

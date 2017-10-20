@@ -31,7 +31,7 @@ void Authorization::OnSend(BinaryWriter& Writer)
 	}
 	Writer.WriteInt(Flags);
 
-	if(!this->tmp_sessions)
+	if(this->tmp_sessions)
 	{
 	Writer.WriteInt(this->tmp_sessions);
 	}
@@ -52,6 +52,9 @@ void Authorization::OnResponce(BinaryReader& Reader)
 }
 Authorization::~Authorization()
 {
-
+	if(this->user)
+	{
+		delete this->user;
+	}
 }
 }//end namespace block

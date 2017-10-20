@@ -58,8 +58,8 @@ void ChannelMessages::OnResponce(BinaryReader& Reader)
 	Reader.ReadInt();
 
 	//Len concatenated with rand number to get rid of confusions with redefinition
-	int32 Len25815 = Reader.ReadInt();
-	for(int32 i = 0; i < Len25815; i++)
+	int32 Len3726 = Reader.ReadInt();
+	for(int32 i = 0; i < Len3726; i++)
 	{
 	auto X = reinterpret_cast<COMMON::Message*>(Reader.TGReadObject());
 	messages.Add(X);
@@ -67,8 +67,8 @@ void ChannelMessages::OnResponce(BinaryReader& Reader)
 	Reader.ReadInt();
 
 	//Len concatenated with rand number to get rid of confusions with redefinition
-	int32 Len8932 = Reader.ReadInt();
-	for(int32 i = 0; i < Len8932; i++)
+	int32 Len9617 = Reader.ReadInt();
+	for(int32 i = 0; i < Len9617; i++)
 	{
 	auto X = reinterpret_cast<COMMON::Chat*>(Reader.TGReadObject());
 	chats.Add(X);
@@ -76,8 +76,8 @@ void ChannelMessages::OnResponce(BinaryReader& Reader)
 	Reader.ReadInt();
 
 	//Len concatenated with rand number to get rid of confusions with redefinition
-	int32 Len13667 = Reader.ReadInt();
-	for(int32 i = 0; i < Len13667; i++)
+	int32 Len14804 = Reader.ReadInt();
+	for(int32 i = 0; i < Len14804; i++)
 	{
 	auto X = reinterpret_cast<COMMON::User*>(Reader.TGReadObject());
 	users.Add(X);
@@ -86,6 +86,5 @@ void ChannelMessages::OnResponce(BinaryReader& Reader)
 }
 ChannelMessages::~ChannelMessages()
 {
-
 }
 }//end namespace block

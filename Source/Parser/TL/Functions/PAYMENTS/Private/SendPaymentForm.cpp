@@ -57,6 +57,13 @@ void SendPaymentForm::OnResponce(BinaryReader& Reader)
 }
 SendPaymentForm::~SendPaymentForm()
 {
-
+	if(this->credentials)
+	{
+		delete this->credentials;
+	}
+	if(this->result)
+	{
+		delete this->result;
+	}
 }
 }//end namespace block

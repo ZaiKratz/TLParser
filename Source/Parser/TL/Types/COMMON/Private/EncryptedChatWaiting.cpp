@@ -41,6 +41,5 @@ void EncryptedChatWaiting::OnResponce(BinaryReader& Reader)
 }
 EncryptedChatWaiting::~EncryptedChatWaiting()
 {
-
 }
 }//end namespace block

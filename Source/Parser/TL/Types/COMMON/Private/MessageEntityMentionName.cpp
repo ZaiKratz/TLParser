@@ -35,6 +35,5 @@ void MessageEntityMentionName::OnResponce(BinaryReader& Reader)
 }
 MessageEntityMentionName::~MessageEntityMentionName()
 {
-
 }
 }//end namespace block

@@ -10,7 +10,7 @@ UpdatesCombined::UpdatesCombined()
 	this->_ConstructorID = 1918567619;
 }
 
-UpdatesCombined::UpdatesCombined(TArray<PRIVATE::Update*>  updates, TArray<COMMON::User*>  users, TArray<COMMON::Chat*>  chats, FDateTime date, int32 seq_start, int32 seq)
+UpdatesCombined::UpdatesCombined(TArray<TLBaseObject*>  updates, TArray<COMMON::User*>  users, TArray<COMMON::Chat*>  chats, FDateTime date, int32 seq_start, int32 seq)
 {
 	this->_ConstructorID = 1918567619;
 	this->updates = updates;
@@ -52,17 +52,17 @@ void UpdatesCombined::OnResponce(BinaryReader& Reader)
 	Reader.ReadInt();
 
 	//Len concatenated with rand number to get rid of confusions with redefinition
-	int32 Len14771 = Reader.ReadInt();
-	for(int32 i = 0; i < Len14771; i++)
+	int32 Len30615 = Reader.ReadInt();
+	for(int32 i = 0; i < Len30615; i++)
 	{
-	auto X = reinterpret_cast<PRIVATE::Update*>(Reader.TGReadObject());
+	auto X = reinterpret_cast<TLBaseObject*>(Reader.TGReadObject());
 	updates.Add(X);
 	}
 	Reader.ReadInt();
 
 	//Len concatenated with rand number to get rid of confusions with redefinition
-	int32 Len27729 = Reader.ReadInt();
-	for(int32 i = 0; i < Len27729; i++)
+	int32 Len13542 = Reader.ReadInt();
+	for(int32 i = 0; i < Len13542; i++)
 	{
 	auto X = reinterpret_cast<COMMON::User*>(Reader.TGReadObject());
 	users.Add(X);
@@ -70,8 +70,8 @@ void UpdatesCombined::OnResponce(BinaryReader& Reader)
 	Reader.ReadInt();
 
 	//Len concatenated with rand number to get rid of confusions with redefinition
-	int32 Len28377 = Reader.ReadInt();
-	for(int32 i = 0; i < Len28377; i++)
+	int32 Len26438 = Reader.ReadInt();
+	for(int32 i = 0; i < Len26438; i++)
 	{
 	auto X = reinterpret_cast<COMMON::Chat*>(Reader.TGReadObject());
 	chats.Add(X);
@@ -83,6 +83,5 @@ void UpdatesCombined::OnResponce(BinaryReader& Reader)
 }
 UpdatesCombined::~UpdatesCombined()
 {
-
 }
 }//end namespace block

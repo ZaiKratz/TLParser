@@ -82,12 +82,12 @@ void UserFull::OnSend(BinaryWriter& Writer)
 	this->user->OnSend(Writer);
 	Writer.TGWriteString(this->about);
 	this->link->OnSend(Writer);
-	if(!this->profile_photo)
+	if(this->profile_photo)
 	{
 	this->profile_photo->OnSend(Writer);
 	}
 	this->notify_settings->OnSend(Writer);
-	if(!this->bot_info)
+	if(this->bot_info)
 	{
 	this->bot_info->OnSend(Writer);
 	}
@@ -131,6 +131,25 @@ void UserFull::OnResponce(BinaryReader& Reader)
 }
 UserFull::~UserFull()
 {
-
+	if(this->user)
+	{
+		delete this->user;
+	}
+	if(this->link)
+	{
+		delete this->link;
+	}
+	if(this->profile_photo)
+	{
+		delete this->profile_photo;
+	}
+	if(this->notify_settings)
+	{
+		delete this->notify_settings;
+	}
+	if(this->bot_info)
+	{
+		delete this->bot_info;
+	}
 }
 }//end namespace block

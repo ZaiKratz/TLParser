@@ -36,6 +36,9 @@ void ImportCard::OnResponce(BinaryReader& Reader)
 }
 ImportCard::~ImportCard()
 {
-
+	if(this->result)
+	{
+		delete this->result;
+	}
 }
 }//end namespace block

@@ -1,13 +1,11 @@
 #pragma once
 #include "Engine.h"
-#include "../../../Types/Private/PhoneCallDiscardReason.h"
-
-#include "../../../Types/Private/PhoneCallDiscardReason.h"
+#include "../../../TLObjectBase.h"
 
 //begin namespace block
 namespace COMMON
 {
-class PhoneCallDiscardReasonBusy : public PRIVATE::PhoneCallDiscardReason
+class PhoneCallDiscardReasonBusy : public TLBaseObject
 {
 public:
 	PhoneCallDiscardReasonBusy();

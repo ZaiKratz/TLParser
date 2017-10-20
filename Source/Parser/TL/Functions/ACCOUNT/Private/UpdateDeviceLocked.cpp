@@ -31,6 +31,5 @@ void UpdateDeviceLocked::OnResponce(BinaryReader& Reader)
 }
 UpdateDeviceLocked::~UpdateDeviceLocked()
 {
-
 }
 }//end namespace block

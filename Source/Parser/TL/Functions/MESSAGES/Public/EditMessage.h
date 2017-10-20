@@ -2,9 +2,6 @@
 #include "Engine.h"
 #include "../../../TLObjectBase.h"
 
-#include "../../../Types/Private/InputPeer.h"
-#include "../../../Types/Private/ReplyMarkup.h"
-#include "../../../Types/Private/MessageEntity.h"
 #include "../../../Types/Common/Public/Updates.h"
 
 //begin namespace block
@@ -14,7 +11,7 @@ class EditMessage : public TLBaseObject
 {
 public:
 	EditMessage();
-	EditMessage(bool no_webpage, PRIVATE::InputPeer* peer, int32 id, FString message, PRIVATE::ReplyMarkup* reply_markup, TArray<PRIVATE::MessageEntity*> entities);
+	EditMessage(bool no_webpage, TLBaseObject* peer, int32 id, FString message, TLBaseObject* reply_markup, TArray<TLBaseObject*> entities);
 
 	~EditMessage();
 	virtual void OnSend(BinaryWriter& Writer) override;
@@ -25,7 +22,7 @@ public:
 		 return this->no_webpage;
 	}
 
-	PRIVATE::InputPeer*  Getpeer() const
+	TLBaseObject*  Getpeer() const
 	{
 		 return this->peer;
 	}
@@ -40,12 +37,12 @@ public:
 		 return this->message;
 	}
 
-	PRIVATE::ReplyMarkup*  GetReplyMarkup() const
+	TLBaseObject*  GetReplyMarkup() const
 	{
 		 return this->reply_markup;
 	}
 
-	TArray<PRIVATE::MessageEntity*>  Getentities() const
+	TArray<TLBaseObject*>  Getentities() const
 	{
 		 return this->entities;
 	}
@@ -57,11 +54,11 @@ public:
 
 private:
 	bool no_webpage;
-	 PRIVATE::InputPeer* peer;
+	 TLBaseObject* peer;
 	 int32 id;
 	 FString message;
-	 PRIVATE::ReplyMarkup* reply_markup;
-	 TArray<PRIVATE::MessageEntity*> entities;
+	 TLBaseObject* reply_markup;
+	 TArray<TLBaseObject*> entities;
 	COMMON::Updates* result;
 };
 } //end namespace block

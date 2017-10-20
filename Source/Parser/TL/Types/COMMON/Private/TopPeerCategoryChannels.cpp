@@ -24,6 +24,5 @@ void TopPeerCategoryChannels::OnResponce(BinaryReader& Reader)
 }
 TopPeerCategoryChannels::~TopPeerCategoryChannels()
 {
-
 }
 }//end namespace block

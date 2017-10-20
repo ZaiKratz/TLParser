@@ -32,6 +32,5 @@ void LangPackString::OnResponce(BinaryReader& Reader)
 }
 LangPackString::~LangPackString()
 {
-
 }
 }//end namespace block

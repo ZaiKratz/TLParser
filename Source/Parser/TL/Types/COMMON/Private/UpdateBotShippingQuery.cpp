@@ -38,6 +38,9 @@ void UpdateBotShippingQuery::OnResponce(BinaryReader& Reader)
 }
 UpdateBotShippingQuery::~UpdateBotShippingQuery()
 {
-
+	if(this->shipping_address)
+	{
+		delete this->shipping_address;
+	}
 }
 }//end namespace block

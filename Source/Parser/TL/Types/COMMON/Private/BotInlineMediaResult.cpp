@@ -10,7 +10,7 @@ BotInlineMediaResult::BotInlineMediaResult()
 	this->_ConstructorID = 400266251;
 }
 
-BotInlineMediaResult::BotInlineMediaResult(FString id, FString type, COMMON::Photo*  photo, COMMON::Document*  document, FString title, FString description, PRIVATE::BotInlineMessage*  send_message)
+BotInlineMediaResult::BotInlineMediaResult(FString id, FString type, COMMON::Photo*  photo, COMMON::Document*  document, FString title, FString description, TLBaseObject*  send_message)
 {
 	this->_ConstructorID = 400266251;
 	this->id = id;
@@ -62,11 +62,11 @@ void BotInlineMediaResult::OnSend(BinaryWriter& Writer)
 
 	Writer.TGWriteString(this->id);
 	Writer.TGWriteString(this->type);
-	if(!this->photo)
+	if(this->photo)
 	{
 	this->photo->OnSend(Writer);
 	}
-	if(!this->document)
+	if(this->document)
 	{
 	this->document->OnSend(Writer);
 	}
@@ -98,11 +98,22 @@ void BotInlineMediaResult::OnResponce(BinaryReader& Reader)
 	{
 	description = Reader.TGReadString();
 	}
-	send_message = reinterpret_cast<PRIVATE::BotInlineMessage* >(Reader.TGReadObject());
+	send_message = reinterpret_cast<TLBaseObject* >(Reader.TGReadObject());
 	this->_Responded = true;
 }
 BotInlineMediaResult::~BotInlineMediaResult()
 {
-
+	if(this->photo)
+	{
+		delete this->photo;
+	}
+	if(this->document)
+	{
+		delete this->document;
+	}
+	if(this->send_message)
+	{
+		delete this->send_message;
+	}
 }
 }//end namespace block

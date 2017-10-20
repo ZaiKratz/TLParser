@@ -32,6 +32,5 @@ void InputWebFileLocation::OnResponce(BinaryReader& Reader)
 }
 InputWebFileLocation::~InputWebFileLocation()
 {
-
 }
 }//end namespace block

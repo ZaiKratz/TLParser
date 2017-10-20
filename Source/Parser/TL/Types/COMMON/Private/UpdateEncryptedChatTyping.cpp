@@ -29,6 +29,5 @@ void UpdateEncryptedChatTyping::OnResponce(BinaryReader& Reader)
 }
 UpdateEncryptedChatTyping::~UpdateEncryptedChatTyping()
 {
-
 }
 }//end namespace block

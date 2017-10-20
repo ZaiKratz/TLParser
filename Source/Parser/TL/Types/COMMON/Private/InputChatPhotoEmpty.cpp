@@ -24,6 +24,5 @@ void InputChatPhotoEmpty::OnResponce(BinaryReader& Reader)
 }
 InputChatPhotoEmpty::~InputChatPhotoEmpty()
 {
-
 }
 }//end namespace block

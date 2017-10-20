@@ -1,29 +1,26 @@
 #pragma once
 #include "Engine.h"
-#include "../../../Types/Private/RichText.h"
-
-#include "../../../Types/Private/RichText.h"
-#include "../../../Types/Private/RichText.h"
+#include "../../../TLObjectBase.h"
 
 //begin namespace block
 namespace COMMON
 {
-class TextBold : public PRIVATE::RichText
+class TextBold : public TLBaseObject
 {
 public:
 	TextBold();
-	TextBold(PRIVATE::RichText* text);
+	TextBold(TLBaseObject* text);
 
 	~TextBold();
 	virtual void OnSend(BinaryWriter& Writer) override;
 	virtual void OnResponce(BinaryReader& Reader) override;
 
-	PRIVATE::RichText*  Gettext() const
+	TLBaseObject*  Gettext() const
 	{
 		 return this->text;
 	}
 
 private:
-	PRIVATE::RichText* text;
+	TLBaseObject* text;
 };
 } //end namespace block

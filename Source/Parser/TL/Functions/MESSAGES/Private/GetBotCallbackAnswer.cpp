@@ -11,7 +11,7 @@ GetBotCallbackAnswer::GetBotCallbackAnswer()
 	this->_ContentRelated = true;
 }
 
-GetBotCallbackAnswer::GetBotCallbackAnswer(bool game, PRIVATE::InputPeer*  peer, int32 msg_id, TArray<uint8>  data)
+GetBotCallbackAnswer::GetBotCallbackAnswer(bool game, TLBaseObject*  peer, int32 msg_id, TArray<uint8>  data)
 {
 	this->_ConstructorID = -2130010132;
 	this->_ContentRelated = true;
@@ -59,6 +59,13 @@ void GetBotCallbackAnswer::OnResponce(BinaryReader& Reader)
 }
 GetBotCallbackAnswer::~GetBotCallbackAnswer()
 {
-
+	if(this->peer)
+	{
+		delete this->peer;
+	}
+	if(this->result)
+	{
+		delete this->result;
+	}
 }
 }//end namespace block

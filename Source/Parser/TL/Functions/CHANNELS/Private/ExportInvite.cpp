@@ -26,11 +26,18 @@ void ExportInvite::OnSend(BinaryWriter& Writer)
 
 void ExportInvite::OnResponce(BinaryReader& Reader)
 {
-	this->result = reinterpret_cast<PRIVATE::ExportedChatInvite*>(Reader.TGReadObject());
+	this->result = reinterpret_cast<TLBaseObject*>(Reader.TGReadObject());
 	this->_Responded = true;
 }
 ExportInvite::~ExportInvite()
 {
-
+	if(this->channel)
+	{
+		delete this->channel;
+	}
+	if(this->result)
+	{
+		delete this->result;
+	}
 }
 }//end namespace block

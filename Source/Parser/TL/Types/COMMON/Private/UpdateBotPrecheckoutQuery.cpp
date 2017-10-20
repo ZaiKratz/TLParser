@@ -47,7 +47,7 @@ void UpdateBotPrecheckoutQuery::OnSend(BinaryWriter& Writer)
 	Writer.WriteLong(this->query_id);
 	Writer.WriteInt(this->user_id);
 	Writer.TGWriteBytes((unsigned char*)this->payload.GetData(), this->payload.Num());
-	if(!this->info)
+	if(this->info)
 	{
 	this->info->OnSend(Writer);
 	}
@@ -78,6 +78,9 @@ void UpdateBotPrecheckoutQuery::OnResponce(BinaryReader& Reader)
 }
 UpdateBotPrecheckoutQuery::~UpdateBotPrecheckoutQuery()
 {
-
+	if(this->info)
+	{
+		delete this->info;
+	}
 }
 }//end namespace block

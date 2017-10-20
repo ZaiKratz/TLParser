@@ -1,12 +1,11 @@
 #pragma once
 #include "Engine.h"
-
-#include "../../../Types/Private/CodeType.h"
+#include "../../../TLObjectBase.h"
 
 //begin namespace block
 namespace AUTH
 {
-class CodeTypeCall : public PRIVATE::CodeType
+class CodeTypeCall : public TLBaseObject
 {
 public:
 	CodeTypeCall();

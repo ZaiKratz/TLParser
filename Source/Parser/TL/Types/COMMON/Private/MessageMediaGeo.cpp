@@ -29,6 +29,9 @@ void MessageMediaGeo::OnResponce(BinaryReader& Reader)
 }
 MessageMediaGeo::~MessageMediaGeo()
 {
-
+	if(this->geo)
+	{
+		delete this->geo;
+	}
 }
 }//end namespace block

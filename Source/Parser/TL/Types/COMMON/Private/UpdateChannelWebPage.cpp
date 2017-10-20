@@ -38,6 +38,9 @@ void UpdateChannelWebPage::OnResponce(BinaryReader& Reader)
 }
 UpdateChannelWebPage::~UpdateChannelWebPage()
 {
-
+	if(this->webpage)
+	{
+		delete this->webpage;
+	}
 }
 }//end namespace block

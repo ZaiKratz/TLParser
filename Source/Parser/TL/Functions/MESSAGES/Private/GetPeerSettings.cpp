@@ -11,7 +11,7 @@ GetPeerSettings::GetPeerSettings()
 	this->_ContentRelated = true;
 }
 
-GetPeerSettings::GetPeerSettings(PRIVATE::InputPeer*  peer)
+GetPeerSettings::GetPeerSettings(TLBaseObject*  peer)
 {
 	this->_ConstructorID = 913498268;
 	this->_ContentRelated = true;
@@ -31,6 +31,13 @@ void GetPeerSettings::OnResponce(BinaryReader& Reader)
 }
 GetPeerSettings::~GetPeerSettings()
 {
-
+	if(this->peer)
+	{
+		delete this->peer;
+	}
+	if(this->result)
+	{
+		delete this->result;
+	}
 }
 }//end namespace block

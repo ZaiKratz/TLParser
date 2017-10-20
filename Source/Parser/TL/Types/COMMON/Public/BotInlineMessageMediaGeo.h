@@ -1,19 +1,17 @@
 #pragma once
 #include "Engine.h"
-#include "../../../Types/Private/BotInlineMessage.h"
+#include "../../../TLObjectBase.h"
 
 #include "../../../Types/Common/Public/GeoPoint.h"
-#include "../../../Types/Private/ReplyMarkup.h"
-#include "../../../Types/Private/BotInlineMessage.h"
 
 //begin namespace block
 namespace COMMON
 {
-class BotInlineMessageMediaGeo : public PRIVATE::BotInlineMessage
+class BotInlineMessageMediaGeo : public TLBaseObject
 {
 public:
 	BotInlineMessageMediaGeo();
-	BotInlineMessageMediaGeo(COMMON::GeoPoint* geo, PRIVATE::ReplyMarkup* reply_markup);
+	BotInlineMessageMediaGeo(COMMON::GeoPoint* geo, TLBaseObject* reply_markup);
 
 	~BotInlineMessageMediaGeo();
 	virtual void OnSend(BinaryWriter& Writer) override;
@@ -24,13 +22,13 @@ public:
 		 return this->geo;
 	}
 
-	PRIVATE::ReplyMarkup*  GetReplyMarkup() const
+	TLBaseObject*  GetReplyMarkup() const
 	{
 		 return this->reply_markup;
 	}
 
 private:
 	COMMON::GeoPoint* geo;
-	 PRIVATE::ReplyMarkup* reply_markup;
+	 TLBaseObject* reply_markup;
 };
 } //end namespace block

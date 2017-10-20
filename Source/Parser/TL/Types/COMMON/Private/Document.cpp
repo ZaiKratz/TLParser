@@ -10,7 +10,7 @@ Document::Document()
 	this->_ConstructorID = -2027738169;
 }
 
-Document::Document(unsigned long long id, unsigned long long access_hash, FDateTime date, FString mime_type, int32 size, COMMON::PhotoSize*  thumb, int32 dc_id, int32 version, TArray<PRIVATE::DocumentAttribute*>  attributes)
+Document::Document(unsigned long long id, unsigned long long access_hash, FDateTime date, FString mime_type, int32 size, COMMON::PhotoSize*  thumb, int32 dc_id, int32 version, TArray<TLBaseObject*>  attributes)
 {
 	this->_ConstructorID = -2027738169;
 	this->id = id;
@@ -56,16 +56,19 @@ void Document::OnResponce(BinaryReader& Reader)
 	Reader.ReadInt();
 
 	//Len concatenated with rand number to get rid of confusions with redefinition
-	int32 Len15377 = Reader.ReadInt();
-	for(int32 i = 0; i < Len15377; i++)
+	int32 Len7202 = Reader.ReadInt();
+	for(int32 i = 0; i < Len7202; i++)
 	{
-	auto X = reinterpret_cast<PRIVATE::DocumentAttribute*>(Reader.TGReadObject());
+	auto X = reinterpret_cast<TLBaseObject*>(Reader.TGReadObject());
 	attributes.Add(X);
 	}
 	this->_Responded = true;
 }
 Document::~Document()
 {
-
+	if(this->thumb)
+	{
+		delete this->thumb;
+	}
 }
 }//end namespace block

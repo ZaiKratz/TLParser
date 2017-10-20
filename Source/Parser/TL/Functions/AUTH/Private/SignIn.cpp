@@ -35,6 +35,9 @@ void SignIn::OnResponce(BinaryReader& Reader)
 }
 SignIn::~SignIn()
 {
-
+	if(this->result)
+	{
+		delete this->result;
+	}
 }
 }//end namespace block

@@ -1,19 +1,17 @@
 #pragma once
 #include "Engine.h"
-#include "../../../Types/Private/InputBotInlineMessage.h"
+#include "../../../TLObjectBase.h"
 
 #include "../../../Types/Common/Public/InputGeoPoint.h"
-#include "../../../Types/Private/ReplyMarkup.h"
-#include "../../../Types/Private/InputBotInlineMessage.h"
 
 //begin namespace block
 namespace COMMON
 {
-class InputBotInlineMessageMediaVenue : public PRIVATE::InputBotInlineMessage
+class InputBotInlineMessageMediaVenue : public TLBaseObject
 {
 public:
 	InputBotInlineMessageMediaVenue();
-	InputBotInlineMessageMediaVenue(COMMON::InputGeoPoint* geo_point, FString title, FString address, FString provider, FString venue_id, PRIVATE::ReplyMarkup* reply_markup);
+	InputBotInlineMessageMediaVenue(COMMON::InputGeoPoint* geo_point, FString title, FString address, FString provider, FString venue_id, TLBaseObject* reply_markup);
 
 	~InputBotInlineMessageMediaVenue();
 	virtual void OnSend(BinaryWriter& Writer) override;
@@ -44,7 +42,7 @@ public:
 		 return this->venue_id;
 	}
 
-	PRIVATE::ReplyMarkup*  GetReplyMarkup() const
+	TLBaseObject*  GetReplyMarkup() const
 	{
 		 return this->reply_markup;
 	}
@@ -55,6 +53,6 @@ private:
 	 FString address;
 	 FString provider;
 	 FString venue_id;
-	 PRIVATE::ReplyMarkup* reply_markup;
+	 TLBaseObject* reply_markup;
 };
 } //end namespace block

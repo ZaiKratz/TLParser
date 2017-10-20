@@ -35,8 +35,8 @@ void AllStickers::OnResponce(BinaryReader& Reader)
 	Reader.ReadInt();
 
 	//Len concatenated with rand number to get rid of confusions with redefinition
-	int32 Len2058 = Reader.ReadInt();
-	for(int32 i = 0; i < Len2058; i++)
+	int32 Len12071 = Reader.ReadInt();
+	for(int32 i = 0; i < Len12071; i++)
 	{
 	auto X = reinterpret_cast<COMMON::StickerSet*>(Reader.TGReadObject());
 	sets.Add(X);
@@ -45,6 +45,5 @@ void AllStickers::OnResponce(BinaryReader& Reader)
 }
 AllStickers::~AllStickers()
 {
-
 }
 }//end namespace block

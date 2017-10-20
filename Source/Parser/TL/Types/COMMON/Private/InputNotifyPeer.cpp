@@ -10,7 +10,7 @@ InputNotifyPeer::InputNotifyPeer()
 	this->_ConstructorID = -1195615476;
 }
 
-InputNotifyPeer::InputNotifyPeer(PRIVATE::InputPeer*  peer)
+InputNotifyPeer::InputNotifyPeer(TLBaseObject*  peer)
 {
 	this->_ConstructorID = -1195615476;
 	this->peer = peer;
@@ -24,11 +24,14 @@ void InputNotifyPeer::OnSend(BinaryWriter& Writer)
 
 void InputNotifyPeer::OnResponce(BinaryReader& Reader)
 {
-	peer = reinterpret_cast<PRIVATE::InputPeer* >(Reader.TGReadObject());
+	peer = reinterpret_cast<TLBaseObject* >(Reader.TGReadObject());
 	this->_Responded = true;
 }
 InputNotifyPeer::~InputNotifyPeer()
 {
-
+	if(this->peer)
+	{
+		delete this->peer;
+	}
 }
 }//end namespace block

@@ -24,6 +24,5 @@ void InputPrivacyValueDisallowAll::OnResponce(BinaryReader& Reader)
 }
 InputPrivacyValueDisallowAll::~InputPrivacyValueDisallowAll()
 {
-
 }
 }//end namespace block

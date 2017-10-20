@@ -2,7 +2,6 @@
 #include "Engine.h"
 #include "../../../TLObjectBase.h"
 
-#include "../../../Types/Private/Peer.h"
 #include "../../../Types/Common/Public/Chat.h"
 #include "../../../Types/Common/Public/User.h"
 
@@ -13,13 +12,13 @@ class ResolvedPeer : public TLBaseObject
 {
 public:
 	ResolvedPeer();
-	ResolvedPeer(PRIVATE::Peer* peer, TArray<COMMON::Chat*> chats, TArray<COMMON::User*> users);
+	ResolvedPeer(TLBaseObject* peer, TArray<COMMON::Chat*> chats, TArray<COMMON::User*> users);
 
 	~ResolvedPeer();
 	virtual void OnSend(BinaryWriter& Writer) override;
 	virtual void OnResponce(BinaryReader& Reader) override;
 
-	PRIVATE::Peer*  Getpeer() const
+	TLBaseObject*  Getpeer() const
 	{
 		 return this->peer;
 	}
@@ -35,7 +34,7 @@ public:
 	}
 
 private:
-	PRIVATE::Peer* peer;
+	TLBaseObject* peer;
 	 TArray<COMMON::Chat*> chats;
 	 TArray<COMMON::User*> users;
 };

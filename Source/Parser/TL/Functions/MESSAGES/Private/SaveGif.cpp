@@ -33,6 +33,9 @@ void SaveGif::OnResponce(BinaryReader& Reader)
 }
 SaveGif::~SaveGif()
 {
-
+	if(this->id)
+	{
+		delete this->id;
+	}
 }
 }//end namespace block

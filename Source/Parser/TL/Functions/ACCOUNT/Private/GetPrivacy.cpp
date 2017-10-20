@@ -11,7 +11,7 @@ GetPrivacy::GetPrivacy()
 	this->_ContentRelated = true;
 }
 
-GetPrivacy::GetPrivacy(PRIVATE::InputPrivacyKey*  key)
+GetPrivacy::GetPrivacy(TLBaseObject*  key)
 {
 	this->_ConstructorID = -623130288;
 	this->_ContentRelated = true;
@@ -31,6 +31,13 @@ void GetPrivacy::OnResponce(BinaryReader& Reader)
 }
 GetPrivacy::~GetPrivacy()
 {
-
+	if(this->key)
+	{
+		delete this->key;
+	}
+	if(this->result)
+	{
+		delete this->result;
+	}
 }
 }//end namespace block

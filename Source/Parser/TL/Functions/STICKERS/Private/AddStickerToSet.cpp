@@ -11,7 +11,7 @@ AddStickerToSet::AddStickerToSet()
 	this->_ContentRelated = true;
 }
 
-AddStickerToSet::AddStickerToSet(PRIVATE::InputStickerSet*  stickerset, COMMON::InputStickerSetItem*  sticker)
+AddStickerToSet::AddStickerToSet(TLBaseObject*  stickerset, COMMON::InputStickerSetItem*  sticker)
 {
 	this->_ConstructorID = -2041315650;
 	this->_ContentRelated = true;
@@ -33,6 +33,17 @@ void AddStickerToSet::OnResponce(BinaryReader& Reader)
 }
 AddStickerToSet::~AddStickerToSet()
 {
-
+	if(this->stickerset)
+	{
+		delete this->stickerset;
+	}
+	if(this->sticker)
+	{
+		delete this->sticker;
+	}
+	if(this->result)
+	{
+		delete this->result;
+	}
 }
 }//end namespace block

@@ -32,8 +32,8 @@ void MsgsAck::OnResponce(BinaryReader& Reader)
 	Reader.ReadInt();
 
 	//Len concatenated with rand number to get rid of confusions with redefinition
-	int32 Len29642 = Reader.ReadInt();
-	for(int32 i = 0; i < Len29642; i++)
+	int32 Len7871 = Reader.ReadInt();
+	for(int32 i = 0; i < Len7871; i++)
 	{
 	auto X = Reader.ReadLong();
 	msg_ids.Add(X);
@@ -42,6 +42,5 @@ void MsgsAck::OnResponce(BinaryReader& Reader)
 }
 MsgsAck::~MsgsAck()
 {
-
 }
 }//end namespace block

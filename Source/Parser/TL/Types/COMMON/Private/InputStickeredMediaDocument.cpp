@@ -29,6 +29,9 @@ void InputStickeredMediaDocument::OnResponce(BinaryReader& Reader)
 }
 InputStickeredMediaDocument::~InputStickeredMediaDocument()
 {
-
+	if(this->id)
+	{
+		delete this->id;
+	}
 }
 }//end namespace block

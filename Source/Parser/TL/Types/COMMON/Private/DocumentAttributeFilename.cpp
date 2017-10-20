@@ -29,6 +29,5 @@ void DocumentAttributeFilename::OnResponce(BinaryReader& Reader)
 }
 DocumentAttributeFilename::~DocumentAttributeFilename()
 {
-
 }
 }//end namespace block

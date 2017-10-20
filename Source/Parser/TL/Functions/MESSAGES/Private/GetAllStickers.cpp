@@ -31,6 +31,9 @@ void GetAllStickers::OnResponce(BinaryReader& Reader)
 }
 GetAllStickers::~GetAllStickers()
 {
-
+	if(this->result)
+	{
+		delete this->result;
+	}
 }
 }//end namespace block

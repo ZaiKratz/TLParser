@@ -41,8 +41,8 @@ void ResPQ::OnResponce(BinaryReader& Reader)
 	Reader.ReadInt();
 
 	//Len concatenated with rand number to get rid of confusions with redefinition
-	int32 Len7372 = Reader.ReadInt();
-	for(int32 i = 0; i < Len7372; i++)
+	int32 Len10393 = Reader.ReadInt();
+	for(int32 i = 0; i < Len10393; i++)
 	{
 	auto X = Reader.ReadLong();
 	server_public_key_fingerprints.Add(X);
@@ -51,6 +51,5 @@ void ResPQ::OnResponce(BinaryReader& Reader)
 }
 ResPQ::~ResPQ()
 {
-
 }
 }//end namespace block

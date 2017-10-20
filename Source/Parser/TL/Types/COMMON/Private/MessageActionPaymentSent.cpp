@@ -32,6 +32,5 @@ void MessageActionPaymentSent::OnResponce(BinaryReader& Reader)
 }
 MessageActionPaymentSent::~MessageActionPaymentSent()
 {
-
 }
 }//end namespace block

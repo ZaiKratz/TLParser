@@ -38,6 +38,5 @@ void AppUpdate::OnResponce(BinaryReader& Reader)
 }
 AppUpdate::~AppUpdate()
 {
-
 }
 }//end namespace block

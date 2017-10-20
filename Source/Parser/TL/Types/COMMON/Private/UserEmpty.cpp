@@ -29,6 +29,5 @@ void UserEmpty::OnResponce(BinaryReader& Reader)
 }
 UserEmpty::~UserEmpty()
 {
-
 }
 }//end namespace block

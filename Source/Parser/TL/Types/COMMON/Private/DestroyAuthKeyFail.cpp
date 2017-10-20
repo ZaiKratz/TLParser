@@ -24,6 +24,5 @@ void DestroyAuthKeyFail::OnResponce(BinaryReader& Reader)
 }
 DestroyAuthKeyFail::~DestroyAuthKeyFail()
 {
-
 }
 }//end namespace block

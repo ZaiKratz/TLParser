@@ -2,8 +2,6 @@
 #include "Engine.h"
 #include "../../../TLObjectBase.h"
 
-#include "../../../Types/Private/Peer.h"
-
 //begin namespace block
 namespace COMMON
 {
@@ -11,13 +9,13 @@ class TopPeer : public TLBaseObject
 {
 public:
 	TopPeer();
-	TopPeer(PRIVATE::Peer* peer, double rating);
+	TopPeer(TLBaseObject* peer, double rating);
 
 	~TopPeer();
 	virtual void OnSend(BinaryWriter& Writer) override;
 	virtual void OnResponce(BinaryReader& Reader) override;
 
-	PRIVATE::Peer*  Getpeer() const
+	TLBaseObject*  Getpeer() const
 	{
 		 return this->peer;
 	}
@@ -28,7 +26,7 @@ public:
 	}
 
 private:
-	PRIVATE::Peer* peer;
+	TLBaseObject* peer;
 	 double rating;
 };
 } //end namespace block

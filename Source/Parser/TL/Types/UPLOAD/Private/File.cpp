@@ -10,7 +10,7 @@ File::File()
 	this->_ConstructorID = 157948117;
 }
 
-File::File(PRIVATE::FileType*  type, int32 mtime, TArray<uint8>  bytes)
+File::File(TLBaseObject*  type, int32 mtime, TArray<uint8>  bytes)
 {
 	this->_ConstructorID = 157948117;
 	this->type = type;
@@ -28,13 +28,16 @@ void File::OnSend(BinaryWriter& Writer)
 
 void File::OnResponce(BinaryReader& Reader)
 {
-	type = reinterpret_cast<PRIVATE::FileType* >(Reader.TGReadObject());
+	type = reinterpret_cast<TLBaseObject* >(Reader.TGReadObject());
 	mtime = Reader.ReadInt();
 	bytes = Reader.TGReadBytes();
 	this->_Responded = true;
 }
 File::~File()
 {
-
+	if(this->type)
+	{
+		delete this->type;
+	}
 }
 }//end namespace block

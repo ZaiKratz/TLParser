@@ -1,13 +1,11 @@
 #pragma once
 #include "Engine.h"
-#include "../../../Types/Private/TopPeerCategory.h"
-
-#include "../../../Types/Private/TopPeerCategory.h"
+#include "../../../TLObjectBase.h"
 
 //begin namespace block
 namespace COMMON
 {
-class TopPeerCategoryCorrespondents : public PRIVATE::TopPeerCategory
+class TopPeerCategoryCorrespondents : public TLBaseObject
 {
 public:
 	TopPeerCategoryCorrespondents();

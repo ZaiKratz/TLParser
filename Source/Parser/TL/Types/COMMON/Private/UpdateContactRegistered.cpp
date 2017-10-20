@@ -32,6 +32,5 @@ void UpdateContactRegistered::OnResponce(BinaryReader& Reader)
 }
 UpdateContactRegistered::~UpdateContactRegistered()
 {
-
 }
 }//end namespace block

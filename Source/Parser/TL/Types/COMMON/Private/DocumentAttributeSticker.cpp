@@ -10,7 +10,7 @@ DocumentAttributeSticker::DocumentAttributeSticker()
 	this->_ConstructorID = 1662637586;
 }
 
-DocumentAttributeSticker::DocumentAttributeSticker(bool mask, FString alt, PRIVATE::InputStickerSet*  stickerset, COMMON::MaskCoords*  mask_coords)
+DocumentAttributeSticker::DocumentAttributeSticker(bool mask, FString alt, TLBaseObject*  stickerset, COMMON::MaskCoords*  mask_coords)
 {
 	this->_ConstructorID = 1662637586;
 	this->mask = mask;
@@ -43,7 +43,7 @@ void DocumentAttributeSticker::OnSend(BinaryWriter& Writer)
 
 	Writer.TGWriteString(this->alt);
 	this->stickerset->OnSend(Writer);
-	if(!this->mask_coords)
+	if(this->mask_coords)
 	{
 	this->mask_coords->OnSend(Writer);
 	}
@@ -59,7 +59,7 @@ void DocumentAttributeSticker::OnResponce(BinaryReader& Reader)
 		mask = true;
 	}
 	alt = Reader.TGReadString();
-	stickerset = reinterpret_cast<PRIVATE::InputStickerSet* >(Reader.TGReadObject());
+	stickerset = reinterpret_cast<TLBaseObject* >(Reader.TGReadObject());
 	if((Flags & (1 << 0)) != 0) 
 	{
 	mask_coords = reinterpret_cast<COMMON::MaskCoords* >(Reader.TGReadObject());
@@ -68,6 +68,13 @@ void DocumentAttributeSticker::OnResponce(BinaryReader& Reader)
 }
 DocumentAttributeSticker::~DocumentAttributeSticker()
 {
-
+	if(this->stickerset)
+	{
+		delete this->stickerset;
+	}
+	if(this->mask_coords)
+	{
+		delete this->mask_coords;
+	}
 }
 }//end namespace block

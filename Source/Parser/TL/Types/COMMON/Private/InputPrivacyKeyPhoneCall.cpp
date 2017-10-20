@@ -24,6 +24,5 @@ void InputPrivacyKeyPhoneCall::OnResponce(BinaryReader& Reader)
 }
 InputPrivacyKeyPhoneCall::~InputPrivacyKeyPhoneCall()
 {
-
 }
 }//end namespace block

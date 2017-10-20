@@ -23,6 +23,9 @@ void GetSupport::OnResponce(BinaryReader& Reader)
 }
 GetSupport::~GetSupport()
 {
-
+	if(this->result)
+	{
+		delete this->result;
+	}
 }
 }//end namespace block

@@ -24,6 +24,5 @@ void UserStatusLastMonth::OnResponce(BinaryReader& Reader)
 }
 UserStatusLastMonth::~UserStatusLastMonth()
 {
-
 }
 }//end namespace block

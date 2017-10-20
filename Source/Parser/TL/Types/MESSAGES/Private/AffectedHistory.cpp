@@ -35,6 +35,5 @@ void AffectedHistory::OnResponce(BinaryReader& Reader)
 }
 AffectedHistory::~AffectedHistory()
 {
-
 }
 }//end namespace block

@@ -24,6 +24,5 @@ void CodeTypeCall::OnResponce(BinaryReader& Reader)
 }
 CodeTypeCall::~CodeTypeCall()
 {
-
 }
 }//end namespace block

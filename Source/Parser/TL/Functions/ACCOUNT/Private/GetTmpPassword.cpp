@@ -33,6 +33,9 @@ void GetTmpPassword::OnResponce(BinaryReader& Reader)
 }
 GetTmpPassword::~GetTmpPassword()
 {
-
+	if(this->result)
+	{
+		delete this->result;
+	}
 }
 }//end namespace block

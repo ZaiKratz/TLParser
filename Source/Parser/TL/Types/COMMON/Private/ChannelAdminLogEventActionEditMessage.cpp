@@ -32,6 +32,13 @@ void ChannelAdminLogEventActionEditMessage::OnResponce(BinaryReader& Reader)
 }
 ChannelAdminLogEventActionEditMessage::~ChannelAdminLogEventActionEditMessage()
 {
-
+	if(this->prev_message)
+	{
+		delete this->prev_message;
+	}
+	if(this->new_message)
+	{
+		delete this->new_message;
+	}
 }
 }//end namespace block

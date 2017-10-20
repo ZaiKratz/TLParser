@@ -32,6 +32,5 @@ void InputPhoto::OnResponce(BinaryReader& Reader)
 }
 InputPhoto::~InputPhoto()
 {
-
 }
 }//end namespace block

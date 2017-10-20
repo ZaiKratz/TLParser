@@ -29,6 +29,5 @@ void PaymentVerficationNeeded::OnResponce(BinaryReader& Reader)
 }
 PaymentVerficationNeeded::~PaymentVerficationNeeded()
 {
-
 }
 }//end namespace block

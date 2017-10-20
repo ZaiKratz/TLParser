@@ -32,7 +32,7 @@ void UpdateChannelTooLong::OnSend(BinaryWriter& Writer)
 	Writer.WriteInt(Flags);
 
 	Writer.WriteInt(this->channel_id);
-	if(!this->pts)
+	if(this->pts)
 	{
 	Writer.WriteInt(this->pts);
 	}
@@ -52,6 +52,5 @@ void UpdateChannelTooLong::OnResponce(BinaryReader& Reader)
 }
 UpdateChannelTooLong::~UpdateChannelTooLong()
 {
-
 }
 }//end namespace block

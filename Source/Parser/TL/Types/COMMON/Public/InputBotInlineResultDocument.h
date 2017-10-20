@@ -3,7 +3,6 @@
 #include "../../../TLObjectBase.h"
 
 #include "../../../Types/Common/Public/InputDocument.h"
-#include "../../../Types/Private/InputBotInlineMessage.h"
 #include "../../../Types/Common/Public/InputBotInlineResult.h"
 
 //begin namespace block
@@ -13,7 +12,7 @@ class InputBotInlineResultDocument : public TLBaseObject
 {
 public:
 	InputBotInlineResultDocument();
-	InputBotInlineResultDocument(FString id, FString type, FString title, FString description, COMMON::InputDocument* document, PRIVATE::InputBotInlineMessage* send_message);
+	InputBotInlineResultDocument(FString id, FString type, FString title, FString description, COMMON::InputDocument* document, TLBaseObject* send_message);
 
 	~InputBotInlineResultDocument();
 	virtual void OnSend(BinaryWriter& Writer) override;
@@ -44,7 +43,7 @@ public:
 		 return this->document;
 	}
 
-	PRIVATE::InputBotInlineMessage*  GetSendMessage() const
+	TLBaseObject*  GetSendMessage() const
 	{
 		 return this->send_message;
 	}
@@ -55,6 +54,6 @@ private:
 	 FString title;
 	 FString description;
 	 COMMON::InputDocument* document;
-	 PRIVATE::InputBotInlineMessage* send_message;
+	 TLBaseObject* send_message;
 };
 } //end namespace block

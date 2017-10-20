@@ -1,18 +1,15 @@
 #pragma once
 #include "Engine.h"
-#include "../../../Types/Private/MessageAction.h"
-
-#include "../../../Types/Private/PhoneCallDiscardReason.h"
-#include "../../../Types/Private/MessageAction.h"
+#include "../../../TLObjectBase.h"
 
 //begin namespace block
 namespace COMMON
 {
-class MessageActionPhoneCall : public PRIVATE::MessageAction
+class MessageActionPhoneCall : public TLBaseObject
 {
 public:
 	MessageActionPhoneCall();
-	MessageActionPhoneCall(unsigned long long call_id, PRIVATE::PhoneCallDiscardReason* reason, int32 duration);
+	MessageActionPhoneCall(unsigned long long call_id, TLBaseObject* reason, int32 duration);
 
 	~MessageActionPhoneCall();
 	virtual void OnSend(BinaryWriter& Writer) override;
@@ -23,7 +20,7 @@ public:
 		 return this->call_id;
 	}
 
-	PRIVATE::PhoneCallDiscardReason*  Getreason() const
+	TLBaseObject*  Getreason() const
 	{
 		 return this->reason;
 	}
@@ -35,7 +32,7 @@ public:
 
 private:
 	unsigned long long call_id;
-	 PRIVATE::PhoneCallDiscardReason* reason;
+	 TLBaseObject* reason;
 	 int32 duration;
 };
 } //end namespace block

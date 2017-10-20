@@ -23,6 +23,5 @@ void LogOut::OnResponce(BinaryReader& Reader)
 }
 LogOut::~LogOut()
 {
-
 }
 }//end namespace block

@@ -10,7 +10,7 @@ ChannelDifference::ChannelDifference()
 	this->_ConstructorID = 543450958;
 }
 
-ChannelDifference::ChannelDifference(bool final, int32 pts, int32 timeout, TArray<COMMON::Message*>  new_messages, TArray<PRIVATE::Update*>  other_updates, TArray<COMMON::Chat*>  chats, TArray<COMMON::User*>  users)
+ChannelDifference::ChannelDifference(bool final, int32 pts, int32 timeout, TArray<COMMON::Message*>  new_messages, TArray<TLBaseObject*>  other_updates, TArray<COMMON::Chat*>  chats, TArray<COMMON::User*>  users)
 {
 	this->_ConstructorID = 543450958;
 	this->final = final;
@@ -45,7 +45,7 @@ void ChannelDifference::OnSend(BinaryWriter& Writer)
 	Writer.WriteInt(Flags);
 
 	Writer.WriteInt(this->pts);
-	if(!this->timeout)
+	if(this->timeout)
 	{
 	Writer.WriteInt(this->timeout);
 	}
@@ -92,8 +92,8 @@ void ChannelDifference::OnResponce(BinaryReader& Reader)
 	Reader.ReadInt();
 
 	//Len concatenated with rand number to get rid of confusions with redefinition
-	int32 Len15869 = Reader.ReadInt();
-	for(int32 i = 0; i < Len15869; i++)
+	int32 Len11306 = Reader.ReadInt();
+	for(int32 i = 0; i < Len11306; i++)
 	{
 	auto X = reinterpret_cast<COMMON::Message*>(Reader.TGReadObject());
 	new_messages.Add(X);
@@ -101,17 +101,17 @@ void ChannelDifference::OnResponce(BinaryReader& Reader)
 	Reader.ReadInt();
 
 	//Len concatenated with rand number to get rid of confusions with redefinition
-	int32 Len20633 = Reader.ReadInt();
-	for(int32 i = 0; i < Len20633; i++)
+	int32 Len7695 = Reader.ReadInt();
+	for(int32 i = 0; i < Len7695; i++)
 	{
-	auto X = reinterpret_cast<PRIVATE::Update*>(Reader.TGReadObject());
+	auto X = reinterpret_cast<TLBaseObject*>(Reader.TGReadObject());
 	other_updates.Add(X);
 	}
 	Reader.ReadInt();
 
 	//Len concatenated with rand number to get rid of confusions with redefinition
-	int32 Len2365 = Reader.ReadInt();
-	for(int32 i = 0; i < Len2365; i++)
+	int32 Len13330 = Reader.ReadInt();
+	for(int32 i = 0; i < Len13330; i++)
 	{
 	auto X = reinterpret_cast<COMMON::Chat*>(Reader.TGReadObject());
 	chats.Add(X);
@@ -119,8 +119,8 @@ void ChannelDifference::OnResponce(BinaryReader& Reader)
 	Reader.ReadInt();
 
 	//Len concatenated with rand number to get rid of confusions with redefinition
-	int32 Len18777 = Reader.ReadInt();
-	for(int32 i = 0; i < Len18777; i++)
+	int32 Len15774 = Reader.ReadInt();
+	for(int32 i = 0; i < Len15774; i++)
 	{
 	auto X = reinterpret_cast<COMMON::User*>(Reader.TGReadObject());
 	users.Add(X);
@@ -129,6 +129,5 @@ void ChannelDifference::OnResponce(BinaryReader& Reader)
 }
 ChannelDifference::~ChannelDifference()
 {
-
 }
 }//end namespace block

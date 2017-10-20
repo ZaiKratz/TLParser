@@ -31,6 +31,9 @@ void GetFutureSalts::OnResponce(BinaryReader& Reader)
 }
 GetFutureSalts::~GetFutureSalts()
 {
-
+	if(this->result)
+	{
+		delete this->result;
+	}
 }
 }//end namespace block

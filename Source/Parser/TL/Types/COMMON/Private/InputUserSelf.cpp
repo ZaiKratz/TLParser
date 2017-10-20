@@ -24,6 +24,5 @@ void InputUserSelf::OnResponce(BinaryReader& Reader)
 }
 InputUserSelf::~InputUserSelf()
 {
-
 }
 }//end namespace block

@@ -31,6 +31,9 @@ void ReqPq::OnResponce(BinaryReader& Reader)
 }
 ReqPq::~ReqPq()
 {
-
+	if(this->result)
+	{
+		delete this->result;
+	}
 }
 }//end namespace block

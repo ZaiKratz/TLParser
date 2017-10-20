@@ -1,15 +1,14 @@
 #pragma once
 #include "Engine.h"
-#include "../../../Types/Private/MessageAction.h"
+#include "../../../TLObjectBase.h"
 
 #include "../../../Types/Common/Public/PaymentRequestedInfo.h"
 #include "../../../Types/Common/Public/PaymentCharge.h"
-#include "../../../Types/Private/MessageAction.h"
 
 //begin namespace block
 namespace COMMON
 {
-class MessageActionPaymentSentMe : public PRIVATE::MessageAction
+class MessageActionPaymentSentMe : public TLBaseObject
 {
 public:
 	MessageActionPaymentSentMe();

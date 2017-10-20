@@ -149,6 +149,5 @@ void ChannelAdminRights::OnResponce(BinaryReader& Reader)
 }
 ChannelAdminRights::~ChannelAdminRights()
 {
-
 }
 }//end namespace block

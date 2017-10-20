@@ -42,8 +42,8 @@ void FavedStickers::OnResponce(BinaryReader& Reader)
 	Reader.ReadInt();
 
 	//Len concatenated with rand number to get rid of confusions with redefinition
-	int32 Len2105 = Reader.ReadInt();
-	for(int32 i = 0; i < Len2105; i++)
+	int32 Len27623 = Reader.ReadInt();
+	for(int32 i = 0; i < Len27623; i++)
 	{
 	auto X = reinterpret_cast<COMMON::StickerPack*>(Reader.TGReadObject());
 	packs.Add(X);
@@ -51,8 +51,8 @@ void FavedStickers::OnResponce(BinaryReader& Reader)
 	Reader.ReadInt();
 
 	//Len concatenated with rand number to get rid of confusions with redefinition
-	int32 Len13186 = Reader.ReadInt();
-	for(int32 i = 0; i < Len13186; i++)
+	int32 Len13 = Reader.ReadInt();
+	for(int32 i = 0; i < Len13; i++)
 	{
 	auto X = reinterpret_cast<COMMON::Document*>(Reader.TGReadObject());
 	stickers.Add(X);
@@ -61,6 +61,5 @@ void FavedStickers::OnResponce(BinaryReader& Reader)
 }
 FavedStickers::~FavedStickers()
 {
-
 }
 }//end namespace block

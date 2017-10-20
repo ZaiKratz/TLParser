@@ -29,6 +29,5 @@ void WebPageEmpty::OnResponce(BinaryReader& Reader)
 }
 WebPageEmpty::~WebPageEmpty()
 {
-
 }
 }//end namespace block

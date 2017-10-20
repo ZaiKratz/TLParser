@@ -35,8 +35,8 @@ void FoundGifs::OnResponce(BinaryReader& Reader)
 	Reader.ReadInt();
 
 	//Len concatenated with rand number to get rid of confusions with redefinition
-	int32 Len21106 = Reader.ReadInt();
-	for(int32 i = 0; i < Len21106; i++)
+	int32 Len20481 = Reader.ReadInt();
+	for(int32 i = 0; i < Len20481; i++)
 	{
 	auto X = reinterpret_cast<COMMON::FoundGif*>(Reader.TGReadObject());
 	results.Add(X);
@@ -45,6 +45,5 @@ void FoundGifs::OnResponce(BinaryReader& Reader)
 }
 FoundGifs::~FoundGifs()
 {
-
 }
 }//end namespace block

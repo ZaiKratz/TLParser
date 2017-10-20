@@ -96,7 +96,7 @@ void Chat::OnSend(BinaryWriter& Writer)
 	Writer.WriteInt(this->participants_count);
 	Writer.TGWriteDate(this->date);
 	Writer.WriteInt(this->version);
-	if(!this->migrated_to)
+	if(this->migrated_to)
 	{
 	this->migrated_to->OnSend(Writer);
 	}
@@ -145,6 +145,13 @@ void Chat::OnResponce(BinaryReader& Reader)
 }
 Chat::~Chat()
 {
-
+	if(this->photo)
+	{
+		delete this->photo;
+	}
+	if(this->migrated_to)
+	{
+		delete this->migrated_to;
+	}
 }
 }//end namespace block

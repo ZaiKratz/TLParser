@@ -93,6 +93,5 @@ void DocumentAttributeAudio::OnResponce(BinaryReader& Reader)
 }
 DocumentAttributeAudio::~DocumentAttributeAudio()
 {
-
 }
 }//end namespace block

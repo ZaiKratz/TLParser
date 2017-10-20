@@ -35,6 +35,5 @@ void CdnFileHash::OnResponce(BinaryReader& Reader)
 }
 CdnFileHash::~CdnFileHash()
 {
-
 }
 }//end namespace block

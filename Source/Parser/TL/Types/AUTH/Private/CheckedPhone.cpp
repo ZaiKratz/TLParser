@@ -29,6 +29,5 @@ void CheckedPhone::OnResponce(BinaryReader& Reader)
 }
 CheckedPhone::~CheckedPhone()
 {
-
 }
 }//end namespace block

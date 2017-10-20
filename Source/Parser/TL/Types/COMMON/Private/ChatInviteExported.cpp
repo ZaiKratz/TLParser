@@ -29,6 +29,5 @@ void ChatInviteExported::OnResponce(BinaryReader& Reader)
 }
 ChatInviteExported::~ChatInviteExported()
 {
-
 }
 }//end namespace block

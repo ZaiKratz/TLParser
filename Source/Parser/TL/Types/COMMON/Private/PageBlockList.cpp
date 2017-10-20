@@ -10,7 +10,7 @@ PageBlockList::PageBlockList()
 	this->_ConstructorID = 978896884;
 }
 
-PageBlockList::PageBlockList(bool ordered, TArray<PRIVATE::RichText*>  items)
+PageBlockList::PageBlockList(bool ordered, TArray<TLBaseObject*>  items)
 {
 	this->_ConstructorID = 978896884;
 	this->ordered = ordered;
@@ -35,16 +35,15 @@ void PageBlockList::OnResponce(BinaryReader& Reader)
 	Reader.ReadInt();
 
 	//Len concatenated with rand number to get rid of confusions with redefinition
-	int32 Len29572 = Reader.ReadInt();
-	for(int32 i = 0; i < Len29572; i++)
+	int32 Len12800 = Reader.ReadInt();
+	for(int32 i = 0; i < Len12800; i++)
 	{
-	auto X = reinterpret_cast<PRIVATE::RichText*>(Reader.TGReadObject());
+	auto X = reinterpret_cast<TLBaseObject*>(Reader.TGReadObject());
 	items.Add(X);
 	}
 	this->_Responded = true;
 }
 PageBlockList::~PageBlockList()
 {
-
 }
 }//end namespace block

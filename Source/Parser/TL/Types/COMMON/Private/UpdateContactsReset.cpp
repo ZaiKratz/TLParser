@@ -24,6 +24,5 @@ void UpdateContactsReset::OnResponce(BinaryReader& Reader)
 }
 UpdateContactsReset::~UpdateContactsReset()
 {
-
 }
 }//end namespace block

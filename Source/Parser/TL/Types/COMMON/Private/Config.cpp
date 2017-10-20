@@ -113,7 +113,7 @@ void Config::OnSend(BinaryWriter& Writer)
 	Writer.WriteInt(this->rating_e_decay);
 	Writer.WriteInt(this->stickers_recent_limit);
 	Writer.WriteInt(this->stickers_faved_limit);
-	if(!this->tmp_sessions)
+	if(this->tmp_sessions)
 	{
 	Writer.WriteInt(this->tmp_sessions);
 	}
@@ -124,7 +124,7 @@ void Config::OnSend(BinaryWriter& Writer)
 	Writer.WriteInt(this->call_packet_timeout_ms);
 	Writer.TGWriteString(this->me_url_prefix);
 	Writer.TGWriteString(this->suggested_lang_code);
-	if(!this->lang_pack_version)
+	if(this->lang_pack_version)
 	{
 	Writer.WriteInt(this->lang_pack_version);
 	}
@@ -152,8 +152,8 @@ void Config::OnResponce(BinaryReader& Reader)
 	Reader.ReadInt();
 
 	//Len concatenated with rand number to get rid of confusions with redefinition
-	int32 Len7196 = Reader.ReadInt();
-	for(int32 i = 0; i < Len7196; i++)
+	int32 Len25228 = Reader.ReadInt();
+	for(int32 i = 0; i < Len25228; i++)
 	{
 	auto X = reinterpret_cast<COMMON::DcOption*>(Reader.TGReadObject());
 	dc_options.Add(X);
@@ -196,8 +196,8 @@ void Config::OnResponce(BinaryReader& Reader)
 	Reader.ReadInt();
 
 	//Len concatenated with rand number to get rid of confusions with redefinition
-	int32 Len25383 = Reader.ReadInt();
-	for(int32 i = 0; i < Len25383; i++)
+	int32 Len23001 = Reader.ReadInt();
+	for(int32 i = 0; i < Len23001; i++)
 	{
 	auto X = reinterpret_cast<COMMON::DisabledFeature*>(Reader.TGReadObject());
 	disabled_features.Add(X);
@@ -206,6 +206,5 @@ void Config::OnResponce(BinaryReader& Reader)
 }
 Config::~Config()
 {
-
 }
 }//end namespace block

@@ -11,7 +11,7 @@ SetPrivacy::SetPrivacy()
 	this->_ContentRelated = true;
 }
 
-SetPrivacy::SetPrivacy(PRIVATE::InputPrivacyKey*  key, TArray<PRIVATE::InputPrivacyRule*>  rules)
+SetPrivacy::SetPrivacy(TLBaseObject*  key, TArray<TLBaseObject*>  rules)
 {
 	this->_ConstructorID = -906486552;
 	this->_ContentRelated = true;
@@ -38,6 +38,13 @@ void SetPrivacy::OnResponce(BinaryReader& Reader)
 }
 SetPrivacy::~SetPrivacy()
 {
-
+	if(this->key)
+	{
+		delete this->key;
+	}
+	if(this->result)
+	{
+		delete this->result;
+	}
 }
 }//end namespace block

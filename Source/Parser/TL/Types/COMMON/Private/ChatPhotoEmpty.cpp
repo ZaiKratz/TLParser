@@ -24,6 +24,5 @@ void ChatPhotoEmpty::OnResponce(BinaryReader& Reader)
 }
 ChatPhotoEmpty::~ChatPhotoEmpty()
 {
-
 }
 }//end namespace block

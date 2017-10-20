@@ -46,6 +46,9 @@ void SaveRecentSticker::OnResponce(BinaryReader& Reader)
 }
 SaveRecentSticker::~SaveRecentSticker()
 {
-
+	if(this->id)
+	{
+		delete this->id;
+	}
 }
 }//end namespace block

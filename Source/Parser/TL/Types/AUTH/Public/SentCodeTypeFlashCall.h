@@ -1,12 +1,11 @@
 #pragma once
 #include "Engine.h"
-
-#include "../../../Types/Private/SentCodeType.h"
+#include "../../../TLObjectBase.h"
 
 //begin namespace block
 namespace AUTH
 {
-class SentCodeTypeFlashCall : public PRIVATE::SentCodeType
+class SentCodeTypeFlashCall : public TLBaseObject
 {
 public:
 	SentCodeTypeFlashCall();

@@ -10,7 +10,7 @@ PageBlockPreformatted::PageBlockPreformatted()
 	this->_ConstructorID = -1066346178;
 }
 
-PageBlockPreformatted::PageBlockPreformatted(PRIVATE::RichText*  text, FString language)
+PageBlockPreformatted::PageBlockPreformatted(TLBaseObject*  text, FString language)
 {
 	this->_ConstructorID = -1066346178;
 	this->text = text;
@@ -26,12 +26,15 @@ void PageBlockPreformatted::OnSend(BinaryWriter& Writer)
 
 void PageBlockPreformatted::OnResponce(BinaryReader& Reader)
 {
-	text = reinterpret_cast<PRIVATE::RichText* >(Reader.TGReadObject());
+	text = reinterpret_cast<TLBaseObject* >(Reader.TGReadObject());
 	language = Reader.TGReadString();
 	this->_Responded = true;
 }
 PageBlockPreformatted::~PageBlockPreformatted()
 {
-
+	if(this->text)
+	{
+		delete this->text;
+	}
 }
 }//end namespace block

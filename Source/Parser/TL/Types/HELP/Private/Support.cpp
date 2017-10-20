@@ -32,6 +32,9 @@ void Support::OnResponce(BinaryReader& Reader)
 }
 Support::~Support()
 {
-
+	if(this->user)
+	{
+		delete this->user;
+	}
 }
 }//end namespace block

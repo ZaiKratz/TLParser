@@ -51,6 +51,5 @@ void ClearSavedInfo::OnResponce(BinaryReader& Reader)
 }
 ClearSavedInfo::~ClearSavedInfo()
 {
-
 }
 }//end namespace block

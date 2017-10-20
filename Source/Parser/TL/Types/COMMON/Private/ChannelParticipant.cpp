@@ -32,6 +32,5 @@ void ChannelParticipant::OnResponce(BinaryReader& Reader)
 }
 ChannelParticipant::~ChannelParticipant()
 {
-
 }
 }//end namespace block

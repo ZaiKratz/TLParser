@@ -39,7 +39,7 @@ void SavedInfo::OnSend(BinaryWriter& Writer)
 	}
 	Writer.WriteInt(Flags);
 
-	if(!this->saved_info)
+	if(this->saved_info)
 	{
 	this->saved_info->OnSend(Writer);
 	}
@@ -62,6 +62,9 @@ void SavedInfo::OnResponce(BinaryReader& Reader)
 }
 SavedInfo::~SavedInfo()
 {
-
+	if(this->saved_info)
+	{
+		delete this->saved_info;
+	}
 }
 }//end namespace block

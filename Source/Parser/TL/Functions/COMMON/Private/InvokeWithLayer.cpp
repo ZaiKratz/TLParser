@@ -33,6 +33,13 @@ void InvokeWithLayer::OnResponce(BinaryReader& Reader)
 }
 InvokeWithLayer::~InvokeWithLayer()
 {
-
+	if(this->query)
+	{
+		delete this->query;
+	}
+	if(this->result)
+	{
+		delete this->result;
+	}
 }
 }//end namespace block

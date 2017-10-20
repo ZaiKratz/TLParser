@@ -31,6 +31,13 @@ void LeaveChannel::OnResponce(BinaryReader& Reader)
 }
 LeaveChannel::~LeaveChannel()
 {
-
+	if(this->channel)
+	{
+		delete this->channel;
+	}
+	if(this->result)
+	{
+		delete this->result;
+	}
 }
 }//end namespace block

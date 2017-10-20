@@ -32,6 +32,5 @@ void ChatForbidden::OnResponce(BinaryReader& Reader)
 }
 ChatForbidden::~ChatForbidden()
 {
-
 }
 }//end namespace block

@@ -29,6 +29,5 @@ void SendMessageUploadRoundAction::OnResponce(BinaryReader& Reader)
 }
 SendMessageUploadRoundAction::~SendMessageUploadRoundAction()
 {
-
 }
 }//end namespace block

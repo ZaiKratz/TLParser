@@ -40,8 +40,8 @@ void WallPaper::OnResponce(BinaryReader& Reader)
 	Reader.ReadInt();
 
 	//Len concatenated with rand number to get rid of confusions with redefinition
-	int32 Len4462 = Reader.ReadInt();
-	for(int32 i = 0; i < Len4462; i++)
+	int32 Len12143 = Reader.ReadInt();
+	for(int32 i = 0; i < Len12143; i++)
 	{
 	auto X = reinterpret_cast<COMMON::PhotoSize*>(Reader.TGReadObject());
 	sizes.Add(X);
@@ -51,6 +51,5 @@ void WallPaper::OnResponce(BinaryReader& Reader)
 }
 WallPaper::~WallPaper()
 {
-
 }
 }//end namespace block

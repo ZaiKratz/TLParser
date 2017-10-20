@@ -102,6 +102,5 @@ void StickerSet::OnResponce(BinaryReader& Reader)
 }
 StickerSet::~StickerSet()
 {
-
 }
 }//end namespace block

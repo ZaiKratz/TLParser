@@ -45,6 +45,5 @@ void PeerSettings::OnResponce(BinaryReader& Reader)
 }
 PeerSettings::~PeerSettings()
 {
-
 }
 }//end namespace block

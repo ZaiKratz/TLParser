@@ -1,13 +1,11 @@
 #pragma once
 #include "Engine.h"
-#include "../../../Types/Private/RichText.h"
-
-#include "../../../Types/Private/RichText.h"
+#include "../../../TLObjectBase.h"
 
 //begin namespace block
 namespace COMMON
 {
-class TextEmpty : public PRIVATE::RichText
+class TextEmpty : public TLBaseObject
 {
 public:
 	TextEmpty();

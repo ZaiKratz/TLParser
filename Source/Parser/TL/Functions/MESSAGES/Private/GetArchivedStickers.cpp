@@ -46,6 +46,9 @@ void GetArchivedStickers::OnResponce(BinaryReader& Reader)
 }
 GetArchivedStickers::~GetArchivedStickers()
 {
-
+	if(this->result)
+	{
+		delete this->result;
+	}
 }
 }//end namespace block

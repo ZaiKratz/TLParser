@@ -31,6 +31,9 @@ void ResolveUsername::OnResponce(BinaryReader& Reader)
 }
 ResolveUsername::~ResolveUsername()
 {
-
+	if(this->result)
+	{
+		delete this->result;
+	}
 }
 }//end namespace block

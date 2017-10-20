@@ -32,6 +32,13 @@ void ChannelAdminLogEventActionParticipantToggleAdmin::OnResponce(BinaryReader& 
 }
 ChannelAdminLogEventActionParticipantToggleAdmin::~ChannelAdminLogEventActionParticipantToggleAdmin()
 {
-
+	if(this->prev_participant)
+	{
+		delete this->prev_participant;
+	}
+	if(this->new_participant)
+	{
+		delete this->new_participant;
+	}
 }
 }//end namespace block

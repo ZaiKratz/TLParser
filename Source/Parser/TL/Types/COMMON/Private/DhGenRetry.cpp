@@ -35,6 +35,5 @@ void DhGenRetry::OnResponce(BinaryReader& Reader)
 }
 DhGenRetry::~DhGenRetry()
 {
-
 }
 }//end namespace block

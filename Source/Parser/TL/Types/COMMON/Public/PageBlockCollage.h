@@ -1,36 +1,32 @@
 #pragma once
 #include "Engine.h"
-#include "../../../Types/Private/PageBlock.h"
-
-#include "../../../Types/Private/PageBlock.h"
-#include "../../../Types/Private/RichText.h"
-#include "../../../Types/Private/PageBlock.h"
+#include "../../../TLObjectBase.h"
 
 //begin namespace block
 namespace COMMON
 {
-class PageBlockCollage : public PRIVATE::PageBlock
+class PageBlockCollage : public TLBaseObject
 {
 public:
 	PageBlockCollage();
-	PageBlockCollage(TArray<PRIVATE::PageBlock*> items, PRIVATE::RichText* caption);
+	PageBlockCollage(TArray<TLBaseObject*> items, TLBaseObject* caption);
 
 	~PageBlockCollage();
 	virtual void OnSend(BinaryWriter& Writer) override;
 	virtual void OnResponce(BinaryReader& Reader) override;
 
-	TArray<PRIVATE::PageBlock*>  Getitems() const
+	TArray<TLBaseObject*>  Getitems() const
 	{
 		 return this->items;
 	}
 
-	PRIVATE::RichText*  Getcaption() const
+	TLBaseObject*  Getcaption() const
 	{
 		 return this->caption;
 	}
 
 private:
-	TArray<PRIVATE::PageBlock*> items;
-	 PRIVATE::RichText* caption;
+	TArray<TLBaseObject*> items;
+	 TLBaseObject* caption;
 };
 } //end namespace block

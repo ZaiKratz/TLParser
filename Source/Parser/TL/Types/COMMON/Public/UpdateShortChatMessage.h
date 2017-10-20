@@ -3,7 +3,6 @@
 #include "../../../TLObjectBase.h"
 
 #include "../../../Types/Common/Public/MessageFwdHeader.h"
-#include "../../../Types/Private/MessageEntity.h"
 #include "../../../Types/Common/Public/Updates.h"
 
 //begin namespace block
@@ -13,7 +12,7 @@ class UpdateShortChatMessage : public TLBaseObject
 {
 public:
 	UpdateShortChatMessage();
-	UpdateShortChatMessage(bool out, bool mentioned, bool media_unread, bool silent, int32 id, int32 from_id, int32 chat_id, FString message, int32 pts, int32 pts_count, FDateTime date, COMMON::MessageFwdHeader* fwd_from, int32 via_bot_id, int32 reply_to_msg_id, TArray<PRIVATE::MessageEntity*> entities);
+	UpdateShortChatMessage(bool out, bool mentioned, bool media_unread, bool silent, int32 id, int32 from_id, int32 chat_id, FString message, int32 pts, int32 pts_count, FDateTime date, COMMON::MessageFwdHeader* fwd_from, int32 via_bot_id, int32 reply_to_msg_id, TArray<TLBaseObject*> entities);
 
 	~UpdateShortChatMessage();
 	virtual void OnSend(BinaryWriter& Writer) override;
@@ -89,7 +88,7 @@ public:
 		 return this->reply_to_msg_id;
 	}
 
-	TArray<PRIVATE::MessageEntity*>  Getentities() const
+	TArray<TLBaseObject*>  Getentities() const
 	{
 		 return this->entities;
 	}
@@ -109,6 +108,6 @@ private:
 	 COMMON::MessageFwdHeader* fwd_from;
 	 int32 via_bot_id;
 	 int32 reply_to_msg_id;
-	 TArray<PRIVATE::MessageEntity*> entities;
+	 TArray<TLBaseObject*> entities;
 };
 } //end namespace block

@@ -2,8 +2,6 @@
 #include "Engine.h"
 #include "../../../TLObjectBase.h"
 
-#include "../../../Types/Private/BotInlineMessage.h"
-
 //begin namespace block
 namespace COMMON
 {
@@ -11,7 +9,7 @@ class BotInlineResult : public TLBaseObject
 {
 public:
 	BotInlineResult();
-	BotInlineResult(FString id, FString type, FString title, FString description, FString url, FString thumb_url, FString content_url, FString content_type, int32 w, int32 h, int32 duration, PRIVATE::BotInlineMessage* send_message);
+	BotInlineResult(FString id, FString type, FString title, FString description, FString url, FString thumb_url, FString content_url, FString content_type, int32 w, int32 h, int32 duration, TLBaseObject* send_message);
 
 	~BotInlineResult();
 	virtual void OnSend(BinaryWriter& Writer) override;
@@ -72,7 +70,7 @@ public:
 		 return this->duration;
 	}
 
-	PRIVATE::BotInlineMessage*  GetSendMessage() const
+	TLBaseObject*  GetSendMessage() const
 	{
 		 return this->send_message;
 	}
@@ -89,6 +87,6 @@ private:
 	 int32 w;
 	 int32 h;
 	 int32 duration;
-	 PRIVATE::BotInlineMessage* send_message;
+	 TLBaseObject* send_message;
 };
 } //end namespace block

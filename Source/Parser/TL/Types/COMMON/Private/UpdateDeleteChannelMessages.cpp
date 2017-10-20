@@ -39,8 +39,8 @@ void UpdateDeleteChannelMessages::OnResponce(BinaryReader& Reader)
 	Reader.ReadInt();
 
 	//Len concatenated with rand number to get rid of confusions with redefinition
-	int32 Len25734 = Reader.ReadInt();
-	for(int32 i = 0; i < Len25734; i++)
+	int32 Len2746 = Reader.ReadInt();
+	for(int32 i = 0; i < Len2746; i++)
 	{
 	auto X = Reader.ReadInt();
 	messages.Add(X);
@@ -51,6 +51,5 @@ void UpdateDeleteChannelMessages::OnResponce(BinaryReader& Reader)
 }
 UpdateDeleteChannelMessages::~UpdateDeleteChannelMessages()
 {
-
 }
 }//end namespace block

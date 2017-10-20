@@ -36,6 +36,5 @@ void ReadFeaturedStickers::OnResponce(BinaryReader& Reader)
 }
 ReadFeaturedStickers::~ReadFeaturedStickers()
 {
-
 }
 }//end namespace block

@@ -1,18 +1,15 @@
 #pragma once
 #include "Engine.h"
-#include "../../../Types/Private/PageBlock.h"
-
-#include "../../../Types/Private/RichText.h"
-#include "../../../Types/Private/PageBlock.h"
+#include "../../../TLObjectBase.h"
 
 //begin namespace block
 namespace COMMON
 {
-class PageBlockList : public PRIVATE::PageBlock
+class PageBlockList : public TLBaseObject
 {
 public:
 	PageBlockList();
-	PageBlockList(bool ordered, TArray<PRIVATE::RichText*> items);
+	PageBlockList(bool ordered, TArray<TLBaseObject*> items);
 
 	~PageBlockList();
 	virtual void OnSend(BinaryWriter& Writer) override;
@@ -23,13 +20,13 @@ public:
 		 return this->ordered;
 	}
 
-	TArray<PRIVATE::RichText*>  Getitems() const
+	TArray<TLBaseObject*>  Getitems() const
 	{
 		 return this->items;
 	}
 
 private:
 	bool ordered;
-	 TArray<PRIVATE::RichText*> items;
+	 TArray<TLBaseObject*> items;
 };
 } //end namespace block

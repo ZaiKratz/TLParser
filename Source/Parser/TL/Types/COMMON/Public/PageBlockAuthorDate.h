@@ -1,24 +1,21 @@
 #pragma once
 #include "Engine.h"
-#include "../../../Types/Private/PageBlock.h"
-
-#include "../../../Types/Private/RichText.h"
-#include "../../../Types/Private/PageBlock.h"
+#include "../../../TLObjectBase.h"
 
 //begin namespace block
 namespace COMMON
 {
-class PageBlockAuthorDate : public PRIVATE::PageBlock
+class PageBlockAuthorDate : public TLBaseObject
 {
 public:
 	PageBlockAuthorDate();
-	PageBlockAuthorDate(PRIVATE::RichText* author, FDateTime published_date);
+	PageBlockAuthorDate(TLBaseObject* author, FDateTime published_date);
 
 	~PageBlockAuthorDate();
 	virtual void OnSend(BinaryWriter& Writer) override;
 	virtual void OnResponce(BinaryReader& Reader) override;
 
-	PRIVATE::RichText*  Getauthor() const
+	TLBaseObject*  Getauthor() const
 	{
 		 return this->author;
 	}
@@ -29,7 +26,7 @@ public:
 	}
 
 private:
-	PRIVATE::RichText* author;
+	TLBaseObject* author;
 	 FDateTime published_date;
 };
 } //end namespace block

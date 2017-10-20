@@ -1,13 +1,11 @@
 #pragma once
 #include "Engine.h"
-#include "../../../Types/Private/ChannelParticipantsFilter.h"
-
-#include "../../../Types/Private/ChannelParticipantsFilter.h"
+#include "../../../TLObjectBase.h"
 
 //begin namespace block
 namespace COMMON
 {
-class ChannelParticipantsBots : public PRIVATE::ChannelParticipantsFilter
+class ChannelParticipantsBots : public TLBaseObject
 {
 public:
 	ChannelParticipantsBots();

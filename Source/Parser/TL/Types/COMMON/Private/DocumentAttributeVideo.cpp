@@ -54,6 +54,5 @@ void DocumentAttributeVideo::OnResponce(BinaryReader& Reader)
 }
 DocumentAttributeVideo::~DocumentAttributeVideo()
 {
-
 }
 }//end namespace block

@@ -23,6 +23,9 @@ void GetAccountTTL::OnResponce(BinaryReader& Reader)
 }
 GetAccountTTL::~GetAccountTTL()
 {
-
+	if(this->result)
+	{
+		delete this->result;
+	}
 }
 }//end namespace block

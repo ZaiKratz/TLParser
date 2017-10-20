@@ -22,6 +22,5 @@ void GetLanguages::OnResponce(BinaryReader& Reader)
 }
 GetLanguages::~GetLanguages()
 {
-
 }
 }//end namespace block

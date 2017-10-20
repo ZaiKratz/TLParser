@@ -11,7 +11,7 @@ UploadMedia::UploadMedia()
 	this->_ContentRelated = true;
 }
 
-UploadMedia::UploadMedia(PRIVATE::InputPeer*  peer, PRIVATE::InputMedia*  media)
+UploadMedia::UploadMedia(TLBaseObject*  peer, TLBaseObject*  media)
 {
 	this->_ConstructorID = 1369162417;
 	this->_ContentRelated = true;
@@ -28,11 +28,22 @@ void UploadMedia::OnSend(BinaryWriter& Writer)
 
 void UploadMedia::OnResponce(BinaryReader& Reader)
 {
-	this->result = reinterpret_cast<PRIVATE::MessageMedia*>(Reader.TGReadObject());
+	this->result = reinterpret_cast<TLBaseObject*>(Reader.TGReadObject());
 	this->_Responded = true;
 }
 UploadMedia::~UploadMedia()
 {
-
+	if(this->peer)
+	{
+		delete this->peer;
+	}
+	if(this->media)
+	{
+		delete this->media;
+	}
+	if(this->result)
+	{
+		delete this->result;
+	}
 }
 }//end namespace block

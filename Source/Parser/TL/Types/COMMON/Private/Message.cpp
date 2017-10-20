@@ -10,7 +10,7 @@ Message::Message()
 	this->_ConstructorID = -1864508399;
 }
 
-Message::Message(bool out, bool mentioned, bool media_unread, bool silent, bool post, int32 id, int32 from_id, PRIVATE::Peer*  to_id, COMMON::MessageFwdHeader*  fwd_from, int32 via_bot_id, int32 reply_to_msg_id, FDateTime date, FString message, PRIVATE::MessageMedia*  media, PRIVATE::ReplyMarkup*  reply_markup, TArray<PRIVATE::MessageEntity*>  entities, int32 views, FDateTime edit_date, FString post_author)
+Message::Message(bool out, bool mentioned, bool media_unread, bool silent, bool post, int32 id, int32 from_id, TLBaseObject*  to_id, COMMON::MessageFwdHeader*  fwd_from, int32 via_bot_id, int32 reply_to_msg_id, FDateTime date, FString message, TLBaseObject*  media, TLBaseObject*  reply_markup, TArray<TLBaseObject*>  entities, int32 views, FDateTime edit_date, FString post_author)
 {
 	this->_ConstructorID = -1864508399;
 	this->out = out;
@@ -161,30 +161,30 @@ void Message::OnSend(BinaryWriter& Writer)
 	Writer.WriteInt(Flags);
 
 	Writer.WriteInt(this->id);
-	if(!this->from_id)
+	if(this->from_id)
 	{
 	Writer.WriteInt(this->from_id);
 	}
 	this->to_id->OnSend(Writer);
-	if(!this->fwd_from)
+	if(this->fwd_from)
 	{
 	this->fwd_from->OnSend(Writer);
 	}
-	if(!this->via_bot_id)
+	if(this->via_bot_id)
 	{
 	Writer.WriteInt(this->via_bot_id);
 	}
-	if(!this->reply_to_msg_id)
+	if(this->reply_to_msg_id)
 	{
 	Writer.WriteInt(this->reply_to_msg_id);
 	}
 	Writer.TGWriteDate(this->date);
 	Writer.TGWriteString(this->message);
-	if(!this->media)
+	if(this->media)
 	{
 	this->media->OnSend(Writer);
 	}
-	if(!this->reply_markup)
+	if(this->reply_markup)
 	{
 	this->reply_markup->OnSend(Writer);
 	}
@@ -194,13 +194,13 @@ void Message::OnSend(BinaryWriter& Writer)
 	Writer.WriteInt(this->entities.Num());
 	for(auto X : this->entities)
 	{
-	if(!X)
+	if(X)
 	{
 	X->OnSend(Writer);
 	}
 	}
 	}
-	if(!this->views)
+	if(this->views)
 	{
 	Writer.WriteInt(this->views);
 	}
@@ -241,7 +241,7 @@ void Message::OnResponce(BinaryReader& Reader)
 	{
 	from_id = Reader.ReadInt();
 	}
-	to_id = reinterpret_cast<PRIVATE::Peer* >(Reader.TGReadObject());
+	to_id = reinterpret_cast<TLBaseObject* >(Reader.TGReadObject());
 	if((Flags & (1 << 2)) != 0) 
 	{
 	fwd_from = reinterpret_cast<COMMON::MessageFwdHeader* >(Reader.TGReadObject());
@@ -258,21 +258,21 @@ void Message::OnResponce(BinaryReader& Reader)
 	message = Reader.TGReadString();
 	if((Flags & (1 << 9)) != 0) 
 	{
-	media = reinterpret_cast<PRIVATE::MessageMedia* >(Reader.TGReadObject());
+	media = reinterpret_cast<TLBaseObject* >(Reader.TGReadObject());
 	}
 	if((Flags & (1 << 6)) != 0) 
 	{
-	reply_markup = reinterpret_cast<PRIVATE::ReplyMarkup* >(Reader.TGReadObject());
+	reply_markup = reinterpret_cast<TLBaseObject* >(Reader.TGReadObject());
 	}
 	if((Flags & (1 << 7)) != 0) 
 	{
 	Reader.ReadInt();
 
 	//Len concatenated with rand number to get rid of confusions with redefinition
-	int32 Len21773 = Reader.ReadInt();
-	for(int32 i = 0; i < Len21773; i++)
+	int32 Len18817 = Reader.ReadInt();
+	for(int32 i = 0; i < Len18817; i++)
 	{
-	auto X = reinterpret_cast<PRIVATE::MessageEntity*>(Reader.TGReadObject());
+	auto X = reinterpret_cast<TLBaseObject*>(Reader.TGReadObject());
 	entities.Add(X);
 	}
 	}
@@ -292,6 +292,21 @@ void Message::OnResponce(BinaryReader& Reader)
 }
 Message::~Message()
 {
-
+	if(this->to_id)
+	{
+		delete this->to_id;
+	}
+	if(this->fwd_from)
+	{
+		delete this->fwd_from;
+	}
+	if(this->media)
+	{
+		delete this->media;
+	}
+	if(this->reply_markup)
+	{
+		delete this->reply_markup;
+	}
 }
 }//end namespace block

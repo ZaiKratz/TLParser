@@ -2,8 +2,6 @@
 #include "Engine.h"
 #include "../../../TLObjectBase.h"
 
-#include "../../../Types/Private/InputPeer.h"
-
 //begin namespace block
 namespace MESSAGES
 {
@@ -11,7 +9,7 @@ class ReorderPinnedDialogs : public TLBaseObject
 {
 public:
 	ReorderPinnedDialogs();
-	ReorderPinnedDialogs(bool force, TArray<PRIVATE::InputPeer*> order);
+	ReorderPinnedDialogs(bool force, TArray<TLBaseObject*> order);
 
 	~ReorderPinnedDialogs();
 	virtual void OnSend(BinaryWriter& Writer) override;
@@ -22,7 +20,7 @@ public:
 		 return this->force;
 	}
 
-	TArray<PRIVATE::InputPeer*>  Getorder() const
+	TArray<TLBaseObject*>  Getorder() const
 	{
 		 return this->order;
 	}
@@ -34,7 +32,7 @@ public:
 
 private:
 	bool force;
-	 TArray<PRIVATE::InputPeer*> order;
+	 TArray<TLBaseObject*> order;
 	bool result;
 };
 } //end namespace block

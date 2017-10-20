@@ -29,6 +29,5 @@ void PeerChannel::OnResponce(BinaryReader& Reader)
 }
 PeerChannel::~PeerChannel()
 {
-
 }
 }//end namespace block

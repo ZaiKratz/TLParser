@@ -41,7 +41,7 @@ void ChannelDifferenceEmpty::OnSend(BinaryWriter& Writer)
 	Writer.WriteInt(Flags);
 
 	Writer.WriteInt(this->pts);
-	if(!this->timeout)
+	if(this->timeout)
 	{
 	Writer.WriteInt(this->timeout);
 	}
@@ -65,6 +65,5 @@ void ChannelDifferenceEmpty::OnResponce(BinaryReader& Reader)
 }
 ChannelDifferenceEmpty::~ChannelDifferenceEmpty()
 {
-
 }
 }//end namespace block

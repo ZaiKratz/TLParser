@@ -41,6 +41,5 @@ void State::OnResponce(BinaryReader& Reader)
 }
 State::~State()
 {
-
 }
 }//end namespace block

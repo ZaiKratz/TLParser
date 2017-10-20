@@ -23,6 +23,9 @@ void RequestPasswordRecovery::OnResponce(BinaryReader& Reader)
 }
 RequestPasswordRecovery::~RequestPasswordRecovery()
 {
-
+	if(this->result)
+	{
+		delete this->result;
+	}
 }
 }//end namespace block

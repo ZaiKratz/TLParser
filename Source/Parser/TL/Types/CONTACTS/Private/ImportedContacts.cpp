@@ -53,8 +53,8 @@ void ImportedContacts::OnResponce(BinaryReader& Reader)
 	Reader.ReadInt();
 
 	//Len concatenated with rand number to get rid of confusions with redefinition
-	int32 Len28183 = Reader.ReadInt();
-	for(int32 i = 0; i < Len28183; i++)
+	int32 Len31345 = Reader.ReadInt();
+	for(int32 i = 0; i < Len31345; i++)
 	{
 	auto X = reinterpret_cast<COMMON::ImportedContact*>(Reader.TGReadObject());
 	imported.Add(X);
@@ -62,8 +62,8 @@ void ImportedContacts::OnResponce(BinaryReader& Reader)
 	Reader.ReadInt();
 
 	//Len concatenated with rand number to get rid of confusions with redefinition
-	int32 Len8433 = Reader.ReadInt();
-	for(int32 i = 0; i < Len8433; i++)
+	int32 Len10717 = Reader.ReadInt();
+	for(int32 i = 0; i < Len10717; i++)
 	{
 	auto X = reinterpret_cast<COMMON::PopularContact*>(Reader.TGReadObject());
 	popular_invites.Add(X);
@@ -71,8 +71,8 @@ void ImportedContacts::OnResponce(BinaryReader& Reader)
 	Reader.ReadInt();
 
 	//Len concatenated with rand number to get rid of confusions with redefinition
-	int32 Len23029 = Reader.ReadInt();
-	for(int32 i = 0; i < Len23029; i++)
+	int32 Len24239 = Reader.ReadInt();
+	for(int32 i = 0; i < Len24239; i++)
 	{
 	auto X = Reader.ReadLong();
 	retry_contacts.Add(X);
@@ -80,8 +80,8 @@ void ImportedContacts::OnResponce(BinaryReader& Reader)
 	Reader.ReadInt();
 
 	//Len concatenated with rand number to get rid of confusions with redefinition
-	int32 Len9952 = Reader.ReadInt();
-	for(int32 i = 0; i < Len9952; i++)
+	int32 Len32232 = Reader.ReadInt();
+	for(int32 i = 0; i < Len32232; i++)
 	{
 	auto X = reinterpret_cast<COMMON::User*>(Reader.TGReadObject());
 	users.Add(X);
@@ -90,6 +90,5 @@ void ImportedContacts::OnResponce(BinaryReader& Reader)
 }
 ImportedContacts::~ImportedContacts()
 {
-
 }
 }//end namespace block

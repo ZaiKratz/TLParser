@@ -2,8 +2,6 @@
 #include "Engine.h"
 #include "../../../TLObjectBase.h"
 
-#include "../../../Types/Private/UserStatus.h"
-
 //begin namespace block
 namespace COMMON
 {
@@ -11,7 +9,7 @@ class ContactStatus : public TLBaseObject
 {
 public:
 	ContactStatus();
-	ContactStatus(int32 user_id, PRIVATE::UserStatus* status);
+	ContactStatus(int32 user_id, TLBaseObject* status);
 
 	~ContactStatus();
 	virtual void OnSend(BinaryWriter& Writer) override;
@@ -22,13 +20,13 @@ public:
 		 return this->user_id;
 	}
 
-	PRIVATE::UserStatus*  Getstatus() const
+	TLBaseObject*  Getstatus() const
 	{
 		 return this->status;
 	}
 
 private:
 	int32 user_id;
-	 PRIVATE::UserStatus* status;
+	 TLBaseObject* status;
 };
 } //end namespace block

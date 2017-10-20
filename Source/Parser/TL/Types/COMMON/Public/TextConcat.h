@@ -1,29 +1,26 @@
 #pragma once
 #include "Engine.h"
-#include "../../../Types/Private/RichText.h"
-
-#include "../../../Types/Private/RichText.h"
-#include "../../../Types/Private/RichText.h"
+#include "../../../TLObjectBase.h"
 
 //begin namespace block
 namespace COMMON
 {
-class TextConcat : public PRIVATE::RichText
+class TextConcat : public TLBaseObject
 {
 public:
 	TextConcat();
-	TextConcat(TArray<PRIVATE::RichText*> texts);
+	TextConcat(TArray<TLBaseObject*> texts);
 
 	~TextConcat();
 	virtual void OnSend(BinaryWriter& Writer) override;
 	virtual void OnResponce(BinaryReader& Reader) override;
 
-	TArray<PRIVATE::RichText*>  Gettexts() const
+	TArray<TLBaseObject*>  Gettexts() const
 	{
 		 return this->texts;
 	}
 
 private:
-	TArray<PRIVATE::RichText*> texts;
+	TArray<TLBaseObject*> texts;
 };
 } //end namespace block

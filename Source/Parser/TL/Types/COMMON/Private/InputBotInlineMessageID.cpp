@@ -35,6 +35,5 @@ void InputBotInlineMessageID::OnResponce(BinaryReader& Reader)
 }
 InputBotInlineMessageID::~InputBotInlineMessageID()
 {
-
 }
 }//end namespace block

@@ -11,7 +11,7 @@ SendScreenshotNotification::SendScreenshotNotification()
 	this->_ContentRelated = true;
 }
 
-SendScreenshotNotification::SendScreenshotNotification(PRIVATE::InputPeer*  peer, int32 reply_to_msg_id, unsigned long long random_id)
+SendScreenshotNotification::SendScreenshotNotification(TLBaseObject*  peer, int32 reply_to_msg_id, unsigned long long random_id)
 {
 	this->_ConstructorID = -914493408;
 	this->_ContentRelated = true;
@@ -35,6 +35,13 @@ void SendScreenshotNotification::OnResponce(BinaryReader& Reader)
 }
 SendScreenshotNotification::~SendScreenshotNotification()
 {
-
+	if(this->peer)
+	{
+		delete this->peer;
+	}
+	if(this->result)
+	{
+		delete this->result;
+	}
 }
 }//end namespace block

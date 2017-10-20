@@ -32,6 +32,5 @@ void MessageEntityEmail::OnResponce(BinaryReader& Reader)
 }
 MessageEntityEmail::~MessageEntityEmail()
 {
-
 }
 }//end namespace block

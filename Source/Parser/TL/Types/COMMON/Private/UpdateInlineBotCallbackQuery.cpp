@@ -75,6 +75,9 @@ void UpdateInlineBotCallbackQuery::OnResponce(BinaryReader& Reader)
 }
 UpdateInlineBotCallbackQuery::~UpdateInlineBotCallbackQuery()
 {
-
+	if(this->msg_id)
+	{
+		delete this->msg_id;
+	}
 }
 }//end namespace block

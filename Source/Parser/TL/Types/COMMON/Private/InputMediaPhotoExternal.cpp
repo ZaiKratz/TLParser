@@ -34,7 +34,7 @@ void InputMediaPhotoExternal::OnSend(BinaryWriter& Writer)
 
 	Writer.TGWriteString(this->url);
 	Writer.TGWriteString(this->caption);
-	if(!this->ttl_seconds)
+	if(this->ttl_seconds)
 	{
 	Writer.WriteInt(this->ttl_seconds);
 	}
@@ -55,6 +55,5 @@ void InputMediaPhotoExternal::OnResponce(BinaryReader& Reader)
 }
 InputMediaPhotoExternal::~InputMediaPhotoExternal()
 {
-
 }
 }//end namespace block

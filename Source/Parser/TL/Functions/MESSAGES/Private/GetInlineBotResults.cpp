@@ -11,7 +11,7 @@ GetInlineBotResults::GetInlineBotResults()
 	this->_ContentRelated = true;
 }
 
-GetInlineBotResults::GetInlineBotResults(COMMON::InputUser*  bot, PRIVATE::InputPeer*  peer, COMMON::InputGeoPoint*  geo_point, FString query, FString offset)
+GetInlineBotResults::GetInlineBotResults(COMMON::InputUser*  bot, TLBaseObject*  peer, COMMON::InputGeoPoint*  geo_point, FString query, FString offset)
 {
 	this->_ConstructorID = 1364105629;
 	this->_ContentRelated = true;
@@ -38,7 +38,7 @@ void GetInlineBotResults::OnSend(BinaryWriter& Writer)
 
 	this->bot->OnSend(Writer);
 	this->peer->OnSend(Writer);
-	if(!this->geo_point)
+	if(this->geo_point)
 	{
 	this->geo_point->OnSend(Writer);
 	}
@@ -54,6 +54,21 @@ void GetInlineBotResults::OnResponce(BinaryReader& Reader)
 }
 GetInlineBotResults::~GetInlineBotResults()
 {
-
+	if(this->bot)
+	{
+		delete this->bot;
+	}
+	if(this->peer)
+	{
+		delete this->peer;
+	}
+	if(this->geo_point)
+	{
+		delete this->geo_point;
+	}
+	if(this->result)
+	{
+		delete this->result;
+	}
 }
 }//end namespace block

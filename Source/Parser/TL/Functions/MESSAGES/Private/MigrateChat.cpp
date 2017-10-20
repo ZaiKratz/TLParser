@@ -31,6 +31,9 @@ void MigrateChat::OnResponce(BinaryReader& Reader)
 }
 MigrateChat::~MigrateChat()
 {
-
+	if(this->result)
+	{
+		delete this->result;
+	}
 }
 }//end namespace block

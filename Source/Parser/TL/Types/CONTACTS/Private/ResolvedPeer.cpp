@@ -10,7 +10,7 @@ ResolvedPeer::ResolvedPeer()
 	this->_ConstructorID = 2131196633;
 }
 
-ResolvedPeer::ResolvedPeer(PRIVATE::Peer*  peer, TArray<COMMON::Chat*>  chats, TArray<COMMON::User*>  users)
+ResolvedPeer::ResolvedPeer(TLBaseObject*  peer, TArray<COMMON::Chat*>  chats, TArray<COMMON::User*>  users)
 {
 	this->_ConstructorID = 2131196633;
 	this->peer = peer;
@@ -38,12 +38,12 @@ void ResolvedPeer::OnSend(BinaryWriter& Writer)
 
 void ResolvedPeer::OnResponce(BinaryReader& Reader)
 {
-	peer = reinterpret_cast<PRIVATE::Peer* >(Reader.TGReadObject());
+	peer = reinterpret_cast<TLBaseObject* >(Reader.TGReadObject());
 	Reader.ReadInt();
 
 	//Len concatenated with rand number to get rid of confusions with redefinition
-	int32 Len19372 = Reader.ReadInt();
-	for(int32 i = 0; i < Len19372; i++)
+	int32 Len8513 = Reader.ReadInt();
+	for(int32 i = 0; i < Len8513; i++)
 	{
 	auto X = reinterpret_cast<COMMON::Chat*>(Reader.TGReadObject());
 	chats.Add(X);
@@ -51,8 +51,8 @@ void ResolvedPeer::OnResponce(BinaryReader& Reader)
 	Reader.ReadInt();
 
 	//Len concatenated with rand number to get rid of confusions with redefinition
-	int32 Len20557 = Reader.ReadInt();
-	for(int32 i = 0; i < Len20557; i++)
+	int32 Len14764 = Reader.ReadInt();
+	for(int32 i = 0; i < Len14764; i++)
 	{
 	auto X = reinterpret_cast<COMMON::User*>(Reader.TGReadObject());
 	users.Add(X);
@@ -61,6 +61,9 @@ void ResolvedPeer::OnResponce(BinaryReader& Reader)
 }
 ResolvedPeer::~ResolvedPeer()
 {
-
+	if(this->peer)
+	{
+		delete this->peer;
+	}
 }
 }//end namespace block

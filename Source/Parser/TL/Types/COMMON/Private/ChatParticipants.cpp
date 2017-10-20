@@ -37,8 +37,8 @@ void ChatParticipants::OnResponce(BinaryReader& Reader)
 	Reader.ReadInt();
 
 	//Len concatenated with rand number to get rid of confusions with redefinition
-	int32 Len9944 = Reader.ReadInt();
-	for(int32 i = 0; i < Len9944; i++)
+	int32 Len22443 = Reader.ReadInt();
+	for(int32 i = 0; i < Len22443; i++)
 	{
 	auto X = reinterpret_cast<COMMON::ChatParticipant*>(Reader.TGReadObject());
 	participants.Add(X);
@@ -48,6 +48,5 @@ void ChatParticipants::OnResponce(BinaryReader& Reader)
 }
 ChatParticipants::~ChatParticipants()
 {
-
 }
 }//end namespace block

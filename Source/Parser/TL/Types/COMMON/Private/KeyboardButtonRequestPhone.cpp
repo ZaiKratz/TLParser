@@ -29,6 +29,5 @@ void KeyboardButtonRequestPhone::OnResponce(BinaryReader& Reader)
 }
 KeyboardButtonRequestPhone::~KeyboardButtonRequestPhone()
 {
-
 }
 }//end namespace block

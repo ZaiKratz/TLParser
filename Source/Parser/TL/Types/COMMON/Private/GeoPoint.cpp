@@ -32,6 +32,5 @@ void GeoPoint::OnResponce(BinaryReader& Reader)
 }
 GeoPoint::~GeoPoint()
 {
-
 }
 }//end namespace block

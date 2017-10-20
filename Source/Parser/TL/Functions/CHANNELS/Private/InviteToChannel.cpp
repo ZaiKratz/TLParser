@@ -38,6 +38,13 @@ void InviteToChannel::OnResponce(BinaryReader& Reader)
 }
 InviteToChannel::~InviteToChannel()
 {
-
+	if(this->channel)
+	{
+		delete this->channel;
+	}
+	if(this->result)
+	{
+		delete this->result;
+	}
 }
 }//end namespace block

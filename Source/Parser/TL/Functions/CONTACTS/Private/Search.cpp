@@ -33,6 +33,9 @@ void Search::OnResponce(BinaryReader& Reader)
 }
 Search::~Search()
 {
-
+	if(this->result)
+	{
+		delete this->result;
+	}
 }
 }//end namespace block

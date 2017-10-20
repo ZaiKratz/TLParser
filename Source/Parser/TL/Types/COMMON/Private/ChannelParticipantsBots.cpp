@@ -24,6 +24,5 @@ void ChannelParticipantsBots::OnResponce(BinaryReader& Reader)
 }
 ChannelParticipantsBots::~ChannelParticipantsBots()
 {
-
 }
 }//end namespace block

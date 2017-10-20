@@ -37,6 +37,17 @@ void ConfirmCall::OnResponce(BinaryReader& Reader)
 }
 ConfirmCall::~ConfirmCall()
 {
-
+	if(this->peer)
+	{
+		delete this->peer;
+	}
+	if(this->protocol)
+	{
+		delete this->protocol;
+	}
+	if(this->result)
+	{
+		delete this->result;
+	}
 }
 }//end namespace block

@@ -32,6 +32,5 @@ void Error::OnResponce(BinaryReader& Reader)
 }
 Error::~Error()
 {
-
 }
 }//end namespace block

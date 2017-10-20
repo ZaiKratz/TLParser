@@ -31,6 +31,9 @@ void SetAccountTTL::OnResponce(BinaryReader& Reader)
 }
 SetAccountTTL::~SetAccountTTL()
 {
-
+	if(this->ttl)
+	{
+		delete this->ttl;
+	}
 }
 }//end namespace block

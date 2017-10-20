@@ -35,6 +35,5 @@ void GetUsers::OnResponce(BinaryReader& Reader)
 }
 GetUsers::~GetUsers()
 {
-
 }
 }//end namespace block

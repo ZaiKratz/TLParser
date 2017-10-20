@@ -32,8 +32,8 @@ void PrivacyValueAllowUsers::OnResponce(BinaryReader& Reader)
 	Reader.ReadInt();
 
 	//Len concatenated with rand number to get rid of confusions with redefinition
-	int32 Len1860 = Reader.ReadInt();
-	for(int32 i = 0; i < Len1860; i++)
+	int32 Len1033 = Reader.ReadInt();
+	for(int32 i = 0; i < Len1033; i++)
 	{
 	auto X = Reader.ReadInt();
 	users.Add(X);
@@ -42,6 +42,5 @@ void PrivacyValueAllowUsers::OnResponce(BinaryReader& Reader)
 }
 PrivacyValueAllowUsers::~PrivacyValueAllowUsers()
 {
-
 }
 }//end namespace block

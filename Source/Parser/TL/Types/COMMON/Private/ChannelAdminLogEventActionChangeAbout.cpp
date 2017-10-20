@@ -32,6 +32,5 @@ void ChannelAdminLogEventActionChangeAbout::OnResponce(BinaryReader& Reader)
 }
 ChannelAdminLogEventActionChangeAbout::~ChannelAdminLogEventActionChangeAbout()
 {
-
 }
 }//end namespace block

@@ -32,6 +32,5 @@ void WebPagePending::OnResponce(BinaryReader& Reader)
 }
 WebPagePending::~WebPagePending()
 {
-
 }
 }//end namespace block

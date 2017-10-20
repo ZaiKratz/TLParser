@@ -1,14 +1,13 @@
 #pragma once
 #include "Engine.h"
-#include "../../../Types/Private/ChannelAdminLogEventAction.h"
+#include "../../../TLObjectBase.h"
 
 #include "../../../Types/Common/Public/Message.h"
-#include "../../../Types/Private/ChannelAdminLogEventAction.h"
 
 //begin namespace block
 namespace COMMON
 {
-class ChannelAdminLogEventActionUpdatePinned : public PRIVATE::ChannelAdminLogEventAction
+class ChannelAdminLogEventActionUpdatePinned : public TLBaseObject
 {
 public:
 	ChannelAdminLogEventActionUpdatePinned();

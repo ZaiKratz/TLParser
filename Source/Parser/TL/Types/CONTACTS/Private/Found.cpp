@@ -10,7 +10,7 @@ Found::Found()
 	this->_ConstructorID = 446822276;
 }
 
-Found::Found(TArray<PRIVATE::Peer*>  results, TArray<COMMON::Chat*>  chats, TArray<COMMON::User*>  users)
+Found::Found(TArray<TLBaseObject*>  results, TArray<COMMON::Chat*>  chats, TArray<COMMON::User*>  users)
 {
 	this->_ConstructorID = 446822276;
 	this->results = results;
@@ -46,17 +46,17 @@ void Found::OnResponce(BinaryReader& Reader)
 	Reader.ReadInt();
 
 	//Len concatenated with rand number to get rid of confusions with redefinition
-	int32 Len7586 = Reader.ReadInt();
-	for(int32 i = 0; i < Len7586; i++)
+	int32 Len2665 = Reader.ReadInt();
+	for(int32 i = 0; i < Len2665; i++)
 	{
-	auto X = reinterpret_cast<PRIVATE::Peer*>(Reader.TGReadObject());
+	auto X = reinterpret_cast<TLBaseObject*>(Reader.TGReadObject());
 	results.Add(X);
 	}
 	Reader.ReadInt();
 
 	//Len concatenated with rand number to get rid of confusions with redefinition
-	int32 Len4272 = Reader.ReadInt();
-	for(int32 i = 0; i < Len4272; i++)
+	int32 Len22304 = Reader.ReadInt();
+	for(int32 i = 0; i < Len22304; i++)
 	{
 	auto X = reinterpret_cast<COMMON::Chat*>(Reader.TGReadObject());
 	chats.Add(X);
@@ -64,8 +64,8 @@ void Found::OnResponce(BinaryReader& Reader)
 	Reader.ReadInt();
 
 	//Len concatenated with rand number to get rid of confusions with redefinition
-	int32 Len6705 = Reader.ReadInt();
-	for(int32 i = 0; i < Len6705; i++)
+	int32 Len17797 = Reader.ReadInt();
+	for(int32 i = 0; i < Len17797; i++)
 	{
 	auto X = reinterpret_cast<COMMON::User*>(Reader.TGReadObject());
 	users.Add(X);
@@ -74,6 +74,5 @@ void Found::OnResponce(BinaryReader& Reader)
 }
 Found::~Found()
 {
-
 }
 }//end namespace block

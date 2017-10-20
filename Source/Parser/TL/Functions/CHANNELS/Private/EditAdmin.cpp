@@ -35,6 +35,21 @@ void EditAdmin::OnResponce(BinaryReader& Reader)
 }
 EditAdmin::~EditAdmin()
 {
-
+	if(this->channel)
+	{
+		delete this->channel;
+	}
+	if(this->user_id)
+	{
+		delete this->user_id;
+	}
+	if(this->admin_rights)
+	{
+		delete this->admin_rights;
+	}
+	if(this->result)
+	{
+		delete this->result;
+	}
 }
 }//end namespace block

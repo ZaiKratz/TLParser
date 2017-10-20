@@ -32,6 +32,13 @@ void ChannelAdminLogEventActionParticipantToggleBan::OnResponce(BinaryReader& Re
 }
 ChannelAdminLogEventActionParticipantToggleBan::~ChannelAdminLogEventActionParticipantToggleBan()
 {
-
+	if(this->prev_participant)
+	{
+		delete this->prev_participant;
+	}
+	if(this->new_participant)
+	{
+		delete this->new_participant;
+	}
 }
 }//end namespace block

@@ -37,6 +37,17 @@ void SendEncryptedFile::OnResponce(BinaryReader& Reader)
 }
 SendEncryptedFile::~SendEncryptedFile()
 {
-
+	if(this->peer)
+	{
+		delete this->peer;
+	}
+	if(this->file)
+	{
+		delete this->file;
+	}
+	if(this->result)
+	{
+		delete this->result;
+	}
 }
 }//end namespace block

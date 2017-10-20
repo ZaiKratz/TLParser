@@ -11,7 +11,7 @@ StartBot::StartBot()
 	this->_ContentRelated = true;
 }
 
-StartBot::StartBot(COMMON::InputUser*  bot, PRIVATE::InputPeer*  peer, unsigned long long random_id, FString start_param)
+StartBot::StartBot(COMMON::InputUser*  bot, TLBaseObject*  peer, unsigned long long random_id, FString start_param)
 {
 	this->_ConstructorID = -421563528;
 	this->_ContentRelated = true;
@@ -37,6 +37,17 @@ void StartBot::OnResponce(BinaryReader& Reader)
 }
 StartBot::~StartBot()
 {
-
+	if(this->bot)
+	{
+		delete this->bot;
+	}
+	if(this->peer)
+	{
+		delete this->peer;
+	}
+	if(this->result)
+	{
+		delete this->result;
+	}
 }
 }//end namespace block

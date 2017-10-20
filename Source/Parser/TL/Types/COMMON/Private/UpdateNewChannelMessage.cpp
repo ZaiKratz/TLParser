@@ -35,6 +35,9 @@ void UpdateNewChannelMessage::OnResponce(BinaryReader& Reader)
 }
 UpdateNewChannelMessage::~UpdateNewChannelMessage()
 {
-
+	if(this->message)
+	{
+		delete this->message;
+	}
 }
 }//end namespace block

@@ -2,7 +2,6 @@
 #include "Engine.h"
 #include "../../../TLObjectBase.h"
 
-#include "../../../Types/Private/Peer.h"
 #include "../../../Types/Common/Public/Chat.h"
 #include "../../../Types/Common/Public/User.h"
 
@@ -13,13 +12,13 @@ class Found : public TLBaseObject
 {
 public:
 	Found();
-	Found(TArray<PRIVATE::Peer*> results, TArray<COMMON::Chat*> chats, TArray<COMMON::User*> users);
+	Found(TArray<TLBaseObject*> results, TArray<COMMON::Chat*> chats, TArray<COMMON::User*> users);
 
 	~Found();
 	virtual void OnSend(BinaryWriter& Writer) override;
 	virtual void OnResponce(BinaryReader& Reader) override;
 
-	TArray<PRIVATE::Peer*>  Getresults() const
+	TArray<TLBaseObject*>  Getresults() const
 	{
 		 return this->results;
 	}
@@ -35,7 +34,7 @@ public:
 	}
 
 private:
-	TArray<PRIVATE::Peer*> results;
+	TArray<TLBaseObject*> results;
 	 TArray<COMMON::Chat*> chats;
 	 TArray<COMMON::User*> users;
 };

@@ -35,6 +35,5 @@ void InputDocumentFileLocation::OnResponce(BinaryReader& Reader)
 }
 InputDocumentFileLocation::~InputDocumentFileLocation()
 {
-
 }
 }//end namespace block

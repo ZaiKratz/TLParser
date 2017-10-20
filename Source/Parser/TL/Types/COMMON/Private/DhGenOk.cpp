@@ -35,6 +35,5 @@ void DhGenOk::OnResponce(BinaryReader& Reader)
 }
 DhGenOk::~DhGenOk()
 {
-
 }
 }//end namespace block

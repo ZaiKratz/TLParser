@@ -33,6 +33,9 @@ void ImportAuthorization::OnResponce(BinaryReader& Reader)
 }
 ImportAuthorization::~ImportAuthorization()
 {
-
+	if(this->result)
+	{
+		delete this->result;
+	}
 }
 }//end namespace block

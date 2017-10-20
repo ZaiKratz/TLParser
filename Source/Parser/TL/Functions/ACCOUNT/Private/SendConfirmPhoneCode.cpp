@@ -43,7 +43,7 @@ void SendConfirmPhoneCode::OnSend(BinaryWriter& Writer)
 	Writer.WriteInt(Flags);
 
 	Writer.TGWriteString(this->hash);
-	if(!this->current_number)
+	if(this->current_number)
 	{
 	Writer.WriteBool(this->current_number);
 	}
@@ -57,6 +57,9 @@ void SendConfirmPhoneCode::OnResponce(BinaryReader& Reader)
 }
 SendConfirmPhoneCode::~SendConfirmPhoneCode()
 {
-
+	if(this->result)
+	{
+		delete this->result;
+	}
 }
 }//end namespace block

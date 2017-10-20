@@ -33,6 +33,5 @@ void ConfirmPhone::OnResponce(BinaryReader& Reader)
 }
 ConfirmPhone::~ConfirmPhone()
 {
-
 }
 }//end namespace block

@@ -32,6 +32,5 @@ void UpdateReadChannelOutbox::OnResponce(BinaryReader& Reader)
 }
 UpdateReadChannelOutbox::~UpdateReadChannelOutbox()
 {
-
 }
 }//end namespace block

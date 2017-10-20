@@ -1,29 +1,26 @@
 #pragma once
 #include "Engine.h"
-#include "../../../Types/Private/PageBlock.h"
-
-#include "../../../Types/Private/RichText.h"
-#include "../../../Types/Private/PageBlock.h"
+#include "../../../TLObjectBase.h"
 
 //begin namespace block
 namespace COMMON
 {
-class PageBlockFooter : public PRIVATE::PageBlock
+class PageBlockFooter : public TLBaseObject
 {
 public:
 	PageBlockFooter();
-	PageBlockFooter(PRIVATE::RichText* text);
+	PageBlockFooter(TLBaseObject* text);
 
 	~PageBlockFooter();
 	virtual void OnSend(BinaryWriter& Writer) override;
 	virtual void OnResponce(BinaryReader& Reader) override;
 
-	PRIVATE::RichText*  Gettext() const
+	TLBaseObject*  Gettext() const
 	{
 		 return this->text;
 	}
 
 private:
-	PRIVATE::RichText* text;
+	TLBaseObject* text;
 };
 } //end namespace block

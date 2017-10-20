@@ -24,6 +24,5 @@ void SendMessageGamePlayAction::OnResponce(BinaryReader& Reader)
 }
 SendMessageGamePlayAction::~SendMessageGamePlayAction()
 {
-
 }
 }//end namespace block

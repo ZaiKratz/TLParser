@@ -10,7 +10,7 @@ InputBotInlineResultDocument::InputBotInlineResultDocument()
 	this->_ConstructorID = -459324;
 }
 
-InputBotInlineResultDocument::InputBotInlineResultDocument(FString id, FString type, FString title, FString description, COMMON::InputDocument*  document, PRIVATE::InputBotInlineMessage*  send_message)
+InputBotInlineResultDocument::InputBotInlineResultDocument(FString id, FString type, FString title, FString description, COMMON::InputDocument*  document, TLBaseObject*  send_message)
 {
 	this->_ConstructorID = -459324;
 	this->id = id;
@@ -67,11 +67,18 @@ void InputBotInlineResultDocument::OnResponce(BinaryReader& Reader)
 	description = Reader.TGReadString();
 	}
 	document = reinterpret_cast<COMMON::InputDocument* >(Reader.TGReadObject());
-	send_message = reinterpret_cast<PRIVATE::InputBotInlineMessage* >(Reader.TGReadObject());
+	send_message = reinterpret_cast<TLBaseObject* >(Reader.TGReadObject());
 	this->_Responded = true;
 }
 InputBotInlineResultDocument::~InputBotInlineResultDocument()
 {
-
+	if(this->document)
+	{
+		delete this->document;
+	}
+	if(this->send_message)
+	{
+		delete this->send_message;
+	}
 }
 }//end namespace block

@@ -10,7 +10,7 @@ PageBlockCollage::PageBlockCollage()
 	this->_ConstructorID = 145955919;
 }
 
-PageBlockCollage::PageBlockCollage(TArray<PRIVATE::PageBlock*>  items, PRIVATE::RichText*  caption)
+PageBlockCollage::PageBlockCollage(TArray<TLBaseObject*>  items, TLBaseObject*  caption)
 {
 	this->_ConstructorID = 145955919;
 	this->items = items;
@@ -34,17 +34,20 @@ void PageBlockCollage::OnResponce(BinaryReader& Reader)
 	Reader.ReadInt();
 
 	//Len concatenated with rand number to get rid of confusions with redefinition
-	int32 Len14548 = Reader.ReadInt();
-	for(int32 i = 0; i < Len14548; i++)
+	int32 Len9999 = Reader.ReadInt();
+	for(int32 i = 0; i < Len9999; i++)
 	{
-	auto X = reinterpret_cast<PRIVATE::PageBlock*>(Reader.TGReadObject());
+	auto X = reinterpret_cast<TLBaseObject*>(Reader.TGReadObject());
 	items.Add(X);
 	}
-	caption = reinterpret_cast<PRIVATE::RichText* >(Reader.TGReadObject());
+	caption = reinterpret_cast<TLBaseObject* >(Reader.TGReadObject());
 	this->_Responded = true;
 }
 PageBlockCollage::~PageBlockCollage()
 {
-
+	if(this->caption)
+	{
+		delete this->caption;
+	}
 }
 }//end namespace block

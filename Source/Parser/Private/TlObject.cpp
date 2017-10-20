@@ -42,6 +42,9 @@ TLObject::TLObject(FString FullName, FString ObjectId, TArray<TLArg> Args, FStri
 
 /*	if(FullName.Contains(TEXT(""))*/
 
+	if (ObjectId == "5e2ad36e")
+		_LOG("");
+
 	if (FullName.Contains(TEXT(".")))
 	{
 		FullName.Split(TEXT("."), &this->_Namespace, &this->_Name);

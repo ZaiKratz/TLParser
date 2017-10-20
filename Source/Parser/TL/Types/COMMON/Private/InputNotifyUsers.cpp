@@ -24,6 +24,5 @@ void InputNotifyUsers::OnResponce(BinaryReader& Reader)
 }
 InputNotifyUsers::~InputNotifyUsers()
 {
-
 }
 }//end namespace block

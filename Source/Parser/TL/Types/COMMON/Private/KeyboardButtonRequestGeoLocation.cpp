@@ -29,6 +29,5 @@ void KeyboardButtonRequestGeoLocation::OnResponce(BinaryReader& Reader)
 }
 KeyboardButtonRequestGeoLocation::~KeyboardButtonRequestGeoLocation()
 {
-
 }
 }//end namespace block

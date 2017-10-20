@@ -33,6 +33,5 @@ void UnregisterDevice::OnResponce(BinaryReader& Reader)
 }
 UnregisterDevice::~UnregisterDevice()
 {
-
 }
 }//end namespace block

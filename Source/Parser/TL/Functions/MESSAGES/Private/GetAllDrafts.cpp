@@ -23,6 +23,9 @@ void GetAllDrafts::OnResponce(BinaryReader& Reader)
 }
 GetAllDrafts::~GetAllDrafts()
 {
-
+	if(this->result)
+	{
+		delete this->result;
+	}
 }
 }//end namespace block

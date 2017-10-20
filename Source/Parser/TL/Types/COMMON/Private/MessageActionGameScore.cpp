@@ -32,6 +32,5 @@ void MessageActionGameScore::OnResponce(BinaryReader& Reader)
 }
 MessageActionGameScore::~MessageActionGameScore()
 {
-
 }
 }//end namespace block

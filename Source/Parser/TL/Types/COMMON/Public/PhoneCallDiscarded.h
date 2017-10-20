@@ -2,7 +2,6 @@
 #include "Engine.h"
 #include "../../../TLObjectBase.h"
 
-#include "../../../Types/Private/PhoneCallDiscardReason.h"
 #include "../../../Types/Common/Public/PhoneCall.h"
 
 //begin namespace block
@@ -12,7 +11,7 @@ class PhoneCallDiscarded : public TLBaseObject
 {
 public:
 	PhoneCallDiscarded();
-	PhoneCallDiscarded(bool need_rating, bool need_debug, unsigned long long id, PRIVATE::PhoneCallDiscardReason* reason, int32 duration);
+	PhoneCallDiscarded(bool need_rating, bool need_debug, unsigned long long id, TLBaseObject* reason, int32 duration);
 
 	~PhoneCallDiscarded();
 	virtual void OnSend(BinaryWriter& Writer) override;
@@ -33,7 +32,7 @@ public:
 		 return this->id;
 	}
 
-	PRIVATE::PhoneCallDiscardReason*  Getreason() const
+	TLBaseObject*  Getreason() const
 	{
 		 return this->reason;
 	}
@@ -47,7 +46,7 @@ private:
 	bool need_rating;
 	 bool need_debug;
 	 unsigned long long id;
-	 PRIVATE::PhoneCallDiscardReason* reason;
+	 TLBaseObject* reason;
 	 int32 duration;
 };
 } //end namespace block

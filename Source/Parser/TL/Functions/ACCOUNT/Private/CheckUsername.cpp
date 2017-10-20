@@ -31,6 +31,5 @@ void CheckUsername::OnResponce(BinaryReader& Reader)
 }
 CheckUsername::~CheckUsername()
 {
-
 }
 }//end namespace block

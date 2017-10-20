@@ -41,6 +41,5 @@ void DeletePhotos::OnResponce(BinaryReader& Reader)
 }
 DeletePhotos::~DeletePhotos()
 {
-
 }
 }//end namespace block

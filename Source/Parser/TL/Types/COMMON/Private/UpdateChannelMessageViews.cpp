@@ -35,6 +35,5 @@ void UpdateChannelMessageViews::OnResponce(BinaryReader& Reader)
 }
 UpdateChannelMessageViews::~UpdateChannelMessageViews()
 {
-
 }
 }//end namespace block

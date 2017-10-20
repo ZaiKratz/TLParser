@@ -32,6 +32,5 @@ void InputGameID::OnResponce(BinaryReader& Reader)
 }
 InputGameID::~InputGameID()
 {
-
 }
 }//end namespace block

@@ -32,6 +32,5 @@ void InputStickerSetID::OnResponce(BinaryReader& Reader)
 }
 InputStickerSetID::~InputStickerSetID()
 {
-
 }
 }//end namespace block

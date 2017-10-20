@@ -11,7 +11,7 @@ GetParticipants::GetParticipants()
 	this->_ContentRelated = true;
 }
 
-GetParticipants::GetParticipants(COMMON::InputChannel*  channel, PRIVATE::ChannelParticipantsFilter*  filter, int32 offset, int32 limit)
+GetParticipants::GetParticipants(COMMON::InputChannel*  channel, TLBaseObject*  filter, int32 offset, int32 limit)
 {
 	this->_ConstructorID = 618237842;
 	this->_ContentRelated = true;
@@ -37,6 +37,17 @@ void GetParticipants::OnResponce(BinaryReader& Reader)
 }
 GetParticipants::~GetParticipants()
 {
-
+	if(this->channel)
+	{
+		delete this->channel;
+	}
+	if(this->filter)
+	{
+		delete this->filter;
+	}
+	if(this->result)
+	{
+		delete this->result;
+	}
 }
 }//end namespace block

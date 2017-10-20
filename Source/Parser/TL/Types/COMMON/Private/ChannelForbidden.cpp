@@ -84,6 +84,5 @@ void ChannelForbidden::OnResponce(BinaryReader& Reader)
 }
 ChannelForbidden::~ChannelForbidden()
 {
-
 }
 }//end namespace block

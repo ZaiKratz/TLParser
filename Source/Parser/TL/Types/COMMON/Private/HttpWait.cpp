@@ -35,6 +35,5 @@ void HttpWait::OnResponce(BinaryReader& Reader)
 }
 HttpWait::~HttpWait()
 {
-
 }
 }//end namespace block

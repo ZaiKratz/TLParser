@@ -10,7 +10,7 @@ InputMediaGame::InputMediaGame()
 	this->_ConstructorID = -750828557;
 }
 
-InputMediaGame::InputMediaGame(PRIVATE::InputGame*  id)
+InputMediaGame::InputMediaGame(TLBaseObject*  id)
 {
 	this->_ConstructorID = -750828557;
 	this->id = id;
@@ -24,11 +24,14 @@ void InputMediaGame::OnSend(BinaryWriter& Writer)
 
 void InputMediaGame::OnResponce(BinaryReader& Reader)
 {
-	id = reinterpret_cast<PRIVATE::InputGame* >(Reader.TGReadObject());
+	id = reinterpret_cast<TLBaseObject* >(Reader.TGReadObject());
 	this->_Responded = true;
 }
 InputMediaGame::~InputMediaGame()
 {
-
+	if(this->id)
+	{
+		delete this->id;
+	}
 }
 }//end namespace block

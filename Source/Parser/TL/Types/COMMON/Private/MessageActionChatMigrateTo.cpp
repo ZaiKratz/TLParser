@@ -29,6 +29,5 @@ void MessageActionChatMigrateTo::OnResponce(BinaryReader& Reader)
 }
 MessageActionChatMigrateTo::~MessageActionChatMigrateTo()
 {
-
 }
 }//end namespace block

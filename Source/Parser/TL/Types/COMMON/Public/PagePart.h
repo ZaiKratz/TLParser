@@ -1,26 +1,24 @@
 #pragma once
 #include "Engine.h"
-#include "../../../Types/Private/Page.h"
+#include "../../../TLObjectBase.h"
 
-#include "../../../Types/Private/PageBlock.h"
 #include "../../../Types/Common/Public/Photo.h"
 #include "../../../Types/Common/Public/Document.h"
-#include "../../../Types/Private/Page.h"
 
 //begin namespace block
 namespace COMMON
 {
-class PagePart : public PRIVATE::Page
+class PagePart : public TLBaseObject
 {
 public:
 	PagePart();
-	PagePart(TArray<PRIVATE::PageBlock*> blocks, TArray<COMMON::Photo*> photos, TArray<COMMON::Document*> documents);
+	PagePart(TArray<TLBaseObject*> blocks, TArray<COMMON::Photo*> photos, TArray<COMMON::Document*> documents);
 
 	~PagePart();
 	virtual void OnSend(BinaryWriter& Writer) override;
 	virtual void OnResponce(BinaryReader& Reader) override;
 
-	TArray<PRIVATE::PageBlock*>  Getblocks() const
+	TArray<TLBaseObject*>  Getblocks() const
 	{
 		 return this->blocks;
 	}
@@ -36,7 +34,7 @@ public:
 	}
 
 private:
-	TArray<PRIVATE::PageBlock*> blocks;
+	TArray<TLBaseObject*> blocks;
 	 TArray<COMMON::Photo*> photos;
 	 TArray<COMMON::Document*> documents;
 };

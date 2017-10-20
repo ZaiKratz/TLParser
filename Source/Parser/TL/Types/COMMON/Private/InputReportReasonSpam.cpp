@@ -24,6 +24,5 @@ void InputReportReasonSpam::OnResponce(BinaryReader& Reader)
 }
 InputReportReasonSpam::~InputReportReasonSpam()
 {
-
 }
 }//end namespace block

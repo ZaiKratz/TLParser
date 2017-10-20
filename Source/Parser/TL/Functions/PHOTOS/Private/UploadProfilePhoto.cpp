@@ -31,6 +31,13 @@ void UploadProfilePhoto::OnResponce(BinaryReader& Reader)
 }
 UploadProfilePhoto::~UploadProfilePhoto()
 {
-
+	if(this->file)
+	{
+		delete this->file;
+	}
+	if(this->result)
+	{
+		delete this->result;
+	}
 }
 }//end namespace block

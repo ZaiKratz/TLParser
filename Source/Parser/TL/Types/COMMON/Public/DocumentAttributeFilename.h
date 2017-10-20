@@ -1,13 +1,11 @@
 #pragma once
 #include "Engine.h"
-#include "../../../Types/Private/DocumentAttribute.h"
-
-#include "../../../Types/Private/DocumentAttribute.h"
+#include "../../../TLObjectBase.h"
 
 //begin namespace block
 namespace COMMON
 {
-class DocumentAttributeFilename : public PRIVATE::DocumentAttribute
+class DocumentAttributeFilename : public TLBaseObject
 {
 public:
 	DocumentAttributeFilename();

@@ -2,7 +2,6 @@
 #include "Engine.h"
 #include "../../../TLObjectBase.h"
 
-#include "../../../Types/Private/InputPeer.h"
 #include "../../../Types/Common/Public/PeerSettings.h"
 
 //begin namespace block
@@ -12,13 +11,13 @@ class GetPeerSettings : public TLBaseObject
 {
 public:
 	GetPeerSettings();
-	GetPeerSettings(PRIVATE::InputPeer* peer);
+	GetPeerSettings(TLBaseObject* peer);
 
 	~GetPeerSettings();
 	virtual void OnSend(BinaryWriter& Writer) override;
 	virtual void OnResponce(BinaryReader& Reader) override;
 
-	PRIVATE::InputPeer*  Getpeer() const
+	TLBaseObject*  Getpeer() const
 	{
 		 return this->peer;
 	}
@@ -29,7 +28,7 @@ public:
 	}
 
 private:
-	PRIVATE::InputPeer* peer;
+	TLBaseObject* peer;
 	COMMON::PeerSettings* result;
 };
 } //end namespace block

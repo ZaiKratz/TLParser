@@ -31,6 +31,9 @@ void RecoverPassword::OnResponce(BinaryReader& Reader)
 }
 RecoverPassword::~RecoverPassword()
 {
-
+	if(this->result)
+	{
+		delete this->result;
+	}
 }
 }//end namespace block

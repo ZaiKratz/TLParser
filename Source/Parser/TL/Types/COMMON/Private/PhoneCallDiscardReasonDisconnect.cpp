@@ -24,6 +24,5 @@ void PhoneCallDiscardReasonDisconnect::OnResponce(BinaryReader& Reader)
 }
 PhoneCallDiscardReasonDisconnect::~PhoneCallDiscardReasonDisconnect()
 {
-
 }
 }//end namespace block

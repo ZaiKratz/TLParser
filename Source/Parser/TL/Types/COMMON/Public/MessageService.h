@@ -2,8 +2,6 @@
 #include "Engine.h"
 #include "../../../TLObjectBase.h"
 
-#include "../../../Types/Private/Peer.h"
-#include "../../../Types/Private/MessageAction.h"
 #include "../../../Types/Common/Public/Message.h"
 
 //begin namespace block
@@ -13,7 +11,7 @@ class MessageService : public TLBaseObject
 {
 public:
 	MessageService();
-	MessageService(bool out, bool mentioned, bool media_unread, bool silent, bool post, int32 id, int32 from_id, PRIVATE::Peer* to_id, int32 reply_to_msg_id, FDateTime date, PRIVATE::MessageAction* action);
+	MessageService(bool out, bool mentioned, bool media_unread, bool silent, bool post, int32 id, int32 from_id, TLBaseObject* to_id, int32 reply_to_msg_id, FDateTime date, TLBaseObject* action);
 
 	~MessageService();
 	virtual void OnSend(BinaryWriter& Writer) override;
@@ -54,7 +52,7 @@ public:
 		 return this->from_id;
 	}
 
-	PRIVATE::Peer*  GetToId() const
+	TLBaseObject*  GetToId() const
 	{
 		 return this->to_id;
 	}
@@ -69,7 +67,7 @@ public:
 		 return this->date;
 	}
 
-	PRIVATE::MessageAction*  Getaction() const
+	TLBaseObject*  Getaction() const
 	{
 		 return this->action;
 	}
@@ -82,9 +80,9 @@ private:
 	 bool post;
 	 int32 id;
 	 int32 from_id;
-	 PRIVATE::Peer* to_id;
+	 TLBaseObject* to_id;
 	 int32 reply_to_msg_id;
 	 FDateTime date;
-	 PRIVATE::MessageAction* action;
+	 TLBaseObject* action;
 };
 } //end namespace block

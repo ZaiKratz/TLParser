@@ -24,6 +24,5 @@ void FilePdf::OnResponce(BinaryReader& Reader)
 }
 FilePdf::~FilePdf()
 {
-
 }
 }//end namespace block

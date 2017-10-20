@@ -2,8 +2,6 @@
 #include "Engine.h"
 #include "../../../TLObjectBase.h"
 
-#include "../../../Types/Private/MessageEntity.h"
-
 //begin namespace block
 namespace COMMON
 {
@@ -11,7 +9,7 @@ class DraftMessage : public TLBaseObject
 {
 public:
 	DraftMessage();
-	DraftMessage(bool no_webpage, int32 reply_to_msg_id, FString message, TArray<PRIVATE::MessageEntity*> entities, FDateTime date);
+	DraftMessage(bool no_webpage, int32 reply_to_msg_id, FString message, TArray<TLBaseObject*> entities, FDateTime date);
 
 	~DraftMessage();
 	virtual void OnSend(BinaryWriter& Writer) override;
@@ -32,7 +30,7 @@ public:
 		 return this->message;
 	}
 
-	TArray<PRIVATE::MessageEntity*>  Getentities() const
+	TArray<TLBaseObject*>  Getentities() const
 	{
 		 return this->entities;
 	}
@@ -46,7 +44,7 @@ private:
 	bool no_webpage;
 	 int32 reply_to_msg_id;
 	 FString message;
-	 TArray<PRIVATE::MessageEntity*> entities;
+	 TArray<TLBaseObject*> entities;
 	 FDateTime date;
 };
 } //end namespace block

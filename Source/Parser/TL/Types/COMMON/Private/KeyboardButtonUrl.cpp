@@ -32,6 +32,5 @@ void KeyboardButtonUrl::OnResponce(BinaryReader& Reader)
 }
 KeyboardButtonUrl::~KeyboardButtonUrl()
 {
-
 }
 }//end namespace block

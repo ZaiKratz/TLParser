@@ -36,6 +36,5 @@ void ReceivedQueue::OnResponce(BinaryReader& Reader)
 }
 ReceivedQueue::~ReceivedQueue()
 {
-
 }
 }//end namespace block

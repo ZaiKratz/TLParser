@@ -11,7 +11,7 @@ SendMessage::SendMessage()
 	this->_ContentRelated = true;
 }
 
-SendMessage::SendMessage(bool no_webpage, bool silent, bool background, bool clear_draft, PRIVATE::InputPeer*  peer, int32 reply_to_msg_id, FString message, unsigned long long random_id, PRIVATE::ReplyMarkup*  reply_markup, TArray<PRIVATE::MessageEntity*>  entities)
+SendMessage::SendMessage(bool no_webpage, bool silent, bool background, bool clear_draft, TLBaseObject*  peer, int32 reply_to_msg_id, FString message, unsigned long long random_id, TLBaseObject*  reply_markup, TArray<TLBaseObject*>  entities)
 {
 	this->_ConstructorID = -91733382;
 	this->_ContentRelated = true;
@@ -90,13 +90,13 @@ void SendMessage::OnSend(BinaryWriter& Writer)
 	Writer.WriteInt(Flags);
 
 	this->peer->OnSend(Writer);
-	if(!this->reply_to_msg_id)
+	if(this->reply_to_msg_id)
 	{
 	Writer.WriteInt(this->reply_to_msg_id);
 	}
 	Writer.TGWriteString(this->message);
 	Writer.WriteLong(this->random_id);
-	if(!this->reply_markup)
+	if(this->reply_markup)
 	{
 	this->reply_markup->OnSend(Writer);
 	}
@@ -106,7 +106,7 @@ void SendMessage::OnSend(BinaryWriter& Writer)
 	Writer.WriteInt(this->entities.Num());
 	for(auto X : this->entities)
 	{
-	if(!X)
+	if(X)
 	{
 	X->OnSend(Writer);
 	}
@@ -122,6 +122,17 @@ void SendMessage::OnResponce(BinaryReader& Reader)
 }
 SendMessage::~SendMessage()
 {
-
+	if(this->peer)
+	{
+		delete this->peer;
+	}
+	if(this->reply_markup)
+	{
+		delete this->reply_markup;
+	}
+	if(this->result)
+	{
+		delete this->result;
+	}
 }
 }//end namespace block

@@ -29,6 +29,9 @@ void MessageActionChatEditPhoto::OnResponce(BinaryReader& Reader)
 }
 MessageActionChatEditPhoto::~MessageActionChatEditPhoto()
 {
-
+	if(this->photo)
+	{
+		delete this->photo;
+	}
 }
 }//end namespace block

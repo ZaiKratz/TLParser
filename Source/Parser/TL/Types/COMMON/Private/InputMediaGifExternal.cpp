@@ -32,6 +32,5 @@ void InputMediaGifExternal::OnResponce(BinaryReader& Reader)
 }
 InputMediaGifExternal::~InputMediaGifExternal()
 {
-
 }
 }//end namespace block

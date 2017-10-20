@@ -10,7 +10,7 @@ PageBlockTitle::PageBlockTitle()
 	this->_ConstructorID = 1890305021;
 }
 
-PageBlockTitle::PageBlockTitle(PRIVATE::RichText*  text)
+PageBlockTitle::PageBlockTitle(TLBaseObject*  text)
 {
 	this->_ConstructorID = 1890305021;
 	this->text = text;
@@ -24,11 +24,14 @@ void PageBlockTitle::OnSend(BinaryWriter& Writer)
 
 void PageBlockTitle::OnResponce(BinaryReader& Reader)
 {
-	text = reinterpret_cast<PRIVATE::RichText* >(Reader.TGReadObject());
+	text = reinterpret_cast<TLBaseObject* >(Reader.TGReadObject());
 	this->_Responded = true;
 }
 PageBlockTitle::~PageBlockTitle()
 {
-
+	if(this->text)
+	{
+		delete this->text;
+	}
 }
 }//end namespace block

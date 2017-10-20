@@ -22,6 +22,5 @@ void GetWallPapers::OnResponce(BinaryReader& Reader)
 }
 GetWallPapers::~GetWallPapers()
 {
-
 }
 }//end namespace block

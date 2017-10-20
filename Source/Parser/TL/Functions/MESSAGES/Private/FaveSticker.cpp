@@ -33,6 +33,9 @@ void FaveSticker::OnResponce(BinaryReader& Reader)
 }
 FaveSticker::~FaveSticker()
 {
-
+	if(this->id)
+	{
+		delete this->id;
+	}
 }
 }//end namespace block

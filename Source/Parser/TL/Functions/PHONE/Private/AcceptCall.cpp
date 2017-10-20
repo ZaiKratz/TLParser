@@ -35,6 +35,17 @@ void AcceptCall::OnResponce(BinaryReader& Reader)
 }
 AcceptCall::~AcceptCall()
 {
-
+	if(this->peer)
+	{
+		delete this->peer;
+	}
+	if(this->protocol)
+	{
+		delete this->protocol;
+	}
+	if(this->result)
+	{
+		delete this->result;
+	}
 }
 }//end namespace block

@@ -50,6 +50,17 @@ void GetChannelDifference::OnResponce(BinaryReader& Reader)
 }
 GetChannelDifference::~GetChannelDifference()
 {
-
+	if(this->channel)
+	{
+		delete this->channel;
+	}
+	if(this->filter)
+	{
+		delete this->filter;
+	}
+	if(this->result)
+	{
+		delete this->result;
+	}
 }
 }//end namespace block

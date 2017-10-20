@@ -67,6 +67,9 @@ void PhoneCallWaiting::OnResponce(BinaryReader& Reader)
 }
 PhoneCallWaiting::~PhoneCallWaiting()
 {
-
+	if(this->protocol)
+	{
+		delete this->protocol;
+	}
 }
 }//end namespace block

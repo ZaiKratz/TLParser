@@ -41,6 +41,5 @@ void Password::OnResponce(BinaryReader& Reader)
 }
 Password::~Password()
 {
-
 }
 }//end namespace block

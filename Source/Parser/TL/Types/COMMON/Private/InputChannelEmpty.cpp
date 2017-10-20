@@ -24,6 +24,5 @@ void InputChannelEmpty::OnResponce(BinaryReader& Reader)
 }
 InputChannelEmpty::~InputChannelEmpty()
 {
-
 }
 }//end namespace block

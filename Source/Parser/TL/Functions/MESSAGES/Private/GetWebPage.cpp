@@ -33,6 +33,9 @@ void GetWebPage::OnResponce(BinaryReader& Reader)
 }
 GetWebPage::~GetWebPage()
 {
-
+	if(this->result)
+	{
+		delete this->result;
+	}
 }
 }//end namespace block

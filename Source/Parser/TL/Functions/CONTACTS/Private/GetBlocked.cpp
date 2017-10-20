@@ -33,6 +33,9 @@ void GetBlocked::OnResponce(BinaryReader& Reader)
 }
 GetBlocked::~GetBlocked()
 {
-
+	if(this->result)
+	{
+		delete this->result;
+	}
 }
 }//end namespace block

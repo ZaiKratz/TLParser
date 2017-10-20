@@ -33,6 +33,9 @@ void EditChatTitle::OnResponce(BinaryReader& Reader)
 }
 EditChatTitle::~EditChatTitle()
 {
-
+	if(this->result)
+	{
+		delete this->result;
+	}
 }
 }//end namespace block

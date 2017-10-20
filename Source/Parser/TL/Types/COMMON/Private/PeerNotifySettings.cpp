@@ -64,6 +64,5 @@ void PeerNotifySettings::OnResponce(BinaryReader& Reader)
 }
 PeerNotifySettings::~PeerNotifySettings()
 {
-
 }
 }//end namespace block

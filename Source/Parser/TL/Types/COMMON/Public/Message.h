@@ -2,11 +2,7 @@
 #include "Engine.h"
 #include "../../../TLObjectBase.h"
 
-#include "../../../Types/Private/Peer.h"
 #include "../../../Types/Common/Public/MessageFwdHeader.h"
-#include "../../../Types/Private/MessageMedia.h"
-#include "../../../Types/Private/ReplyMarkup.h"
-#include "../../../Types/Private/MessageEntity.h"
 
 //begin namespace block
 namespace COMMON
@@ -15,7 +11,7 @@ class Message : public TLBaseObject
 {
 public:
 	Message();
-	Message(bool out, bool mentioned, bool media_unread, bool silent, bool post, int32 id, int32 from_id, PRIVATE::Peer* to_id, COMMON::MessageFwdHeader* fwd_from, int32 via_bot_id, int32 reply_to_msg_id, FDateTime date, FString message, PRIVATE::MessageMedia* media, PRIVATE::ReplyMarkup* reply_markup, TArray<PRIVATE::MessageEntity*> entities, int32 views, FDateTime edit_date, FString post_author);
+	Message(bool out, bool mentioned, bool media_unread, bool silent, bool post, int32 id, int32 from_id, TLBaseObject* to_id, COMMON::MessageFwdHeader* fwd_from, int32 via_bot_id, int32 reply_to_msg_id, FDateTime date, FString message, TLBaseObject* media, TLBaseObject* reply_markup, TArray<TLBaseObject*> entities, int32 views, FDateTime edit_date, FString post_author);
 
 	~Message();
 	virtual void OnSend(BinaryWriter& Writer) override;
@@ -56,7 +52,7 @@ public:
 		 return this->from_id;
 	}
 
-	PRIVATE::Peer*  GetToId() const
+	TLBaseObject*  GetToId() const
 	{
 		 return this->to_id;
 	}
@@ -86,17 +82,17 @@ public:
 		 return this->message;
 	}
 
-	PRIVATE::MessageMedia*  Getmedia() const
+	TLBaseObject*  Getmedia() const
 	{
 		 return this->media;
 	}
 
-	PRIVATE::ReplyMarkup*  GetReplyMarkup() const
+	TLBaseObject*  GetReplyMarkup() const
 	{
 		 return this->reply_markup;
 	}
 
-	TArray<PRIVATE::MessageEntity*>  Getentities() const
+	TArray<TLBaseObject*>  Getentities() const
 	{
 		 return this->entities;
 	}
@@ -124,15 +120,15 @@ private:
 	 bool post;
 	 int32 id;
 	 int32 from_id;
-	 PRIVATE::Peer* to_id;
+	 TLBaseObject* to_id;
 	 COMMON::MessageFwdHeader* fwd_from;
 	 int32 via_bot_id;
 	 int32 reply_to_msg_id;
 	 FDateTime date;
 	 FString message;
-	 PRIVATE::MessageMedia* media;
-	 PRIVATE::ReplyMarkup* reply_markup;
-	 TArray<PRIVATE::MessageEntity*> entities;
+	 TLBaseObject* media;
+	 TLBaseObject* reply_markup;
+	 TArray<TLBaseObject*> entities;
 	 int32 views;
 	 FDateTime edit_date;
 	 FString post_author;

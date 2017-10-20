@@ -29,6 +29,9 @@ void UpdatePhoneCall::OnResponce(BinaryReader& Reader)
 }
 UpdatePhoneCall::~UpdatePhoneCall()
 {
-
+	if(this->phone_call)
+	{
+		delete this->phone_call;
+	}
 }
 }//end namespace block

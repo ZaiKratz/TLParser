@@ -24,6 +24,5 @@ void FileUnknown::OnResponce(BinaryReader& Reader)
 }
 FileUnknown::~FileUnknown()
 {
-
 }
 }//end namespace block

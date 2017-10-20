@@ -29,6 +29,5 @@ void UserStatusOnline::OnResponce(BinaryReader& Reader)
 }
 UserStatusOnline::~UserStatusOnline()
 {
-
 }
 }//end namespace block

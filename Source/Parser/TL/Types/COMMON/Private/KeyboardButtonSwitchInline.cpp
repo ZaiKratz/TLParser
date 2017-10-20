@@ -51,6 +51,5 @@ void KeyboardButtonSwitchInline::OnResponce(BinaryReader& Reader)
 }
 KeyboardButtonSwitchInline::~KeyboardButtonSwitchInline()
 {
-
 }
 }//end namespace block

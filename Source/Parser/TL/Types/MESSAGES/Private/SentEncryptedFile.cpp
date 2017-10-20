@@ -32,6 +32,9 @@ void SentEncryptedFile::OnResponce(BinaryReader& Reader)
 }
 SentEncryptedFile::~SentEncryptedFile()
 {
-
+	if(this->file)
+	{
+		delete this->file;
+	}
 }
 }//end namespace block

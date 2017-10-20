@@ -162,7 +162,7 @@ void Channel::OnSend(BinaryWriter& Writer)
 	Writer.WriteInt(Flags);
 
 	Writer.WriteInt(this->id);
-	if(!this->access_hash)
+	if(this->access_hash)
 	{
 	Writer.WriteLong(this->access_hash);
 	}
@@ -172,11 +172,11 @@ void Channel::OnSend(BinaryWriter& Writer)
 	Writer.TGWriteDate(this->date);
 	Writer.WriteInt(this->version);
 	Writer.TGWriteString(this->restriction_reason);
-	if(!this->admin_rights)
+	if(this->admin_rights)
 	{
 	this->admin_rights->OnSend(Writer);
 	}
-	if(!this->banned_rights)
+	if(this->banned_rights)
 	{
 	this->banned_rights->OnSend(Writer);
 	}
@@ -256,6 +256,17 @@ void Channel::OnResponce(BinaryReader& Reader)
 }
 Channel::~Channel()
 {
-
+	if(this->photo)
+	{
+		delete this->photo;
+	}
+	if(this->admin_rights)
+	{
+		delete this->admin_rights;
+	}
+	if(this->banned_rights)
+	{
+		delete this->banned_rights;
+	}
 }
 }//end namespace block

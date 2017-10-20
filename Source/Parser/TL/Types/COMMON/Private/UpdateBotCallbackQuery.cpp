@@ -10,7 +10,7 @@ UpdateBotCallbackQuery::UpdateBotCallbackQuery()
 	this->_ConstructorID = -415938591;
 }
 
-UpdateBotCallbackQuery::UpdateBotCallbackQuery(unsigned long long query_id, int32 user_id, PRIVATE::Peer*  peer, int32 msg_id, unsigned long long chat_instance, TArray<uint8>  data, FString game_short_name)
+UpdateBotCallbackQuery::UpdateBotCallbackQuery(unsigned long long query_id, int32 user_id, TLBaseObject*  peer, int32 msg_id, unsigned long long chat_instance, TArray<uint8>  data, FString game_short_name)
 {
 	this->_ConstructorID = -415938591;
 	this->query_id = query_id;
@@ -63,7 +63,7 @@ void UpdateBotCallbackQuery::OnResponce(BinaryReader& Reader)
 
 	query_id = Reader.ReadLong();
 	user_id = Reader.ReadInt();
-	peer = reinterpret_cast<PRIVATE::Peer* >(Reader.TGReadObject());
+	peer = reinterpret_cast<TLBaseObject* >(Reader.TGReadObject());
 	msg_id = Reader.ReadInt();
 	chat_instance = Reader.ReadLong();
 	if((Flags & (1 << 0)) != 0) 
@@ -78,6 +78,9 @@ void UpdateBotCallbackQuery::OnResponce(BinaryReader& Reader)
 }
 UpdateBotCallbackQuery::~UpdateBotCallbackQuery()
 {
-
+	if(this->peer)
+	{
+		delete this->peer;
+	}
 }
 }//end namespace block

@@ -2,7 +2,6 @@
 #include "Engine.h"
 #include "../../../TLObjectBase.h"
 
-#include "../../../Types/Private/InputStickerSet.h"
 #include "../../../Types/Common/Public/InputStickerSetItem.h"
 #include "../../../Types/Messages/Public/StickerSet.h"
 
@@ -13,13 +12,13 @@ class AddStickerToSet : public TLBaseObject
 {
 public:
 	AddStickerToSet();
-	AddStickerToSet(PRIVATE::InputStickerSet* stickerset, COMMON::InputStickerSetItem* sticker);
+	AddStickerToSet(TLBaseObject* stickerset, COMMON::InputStickerSetItem* sticker);
 
 	~AddStickerToSet();
 	virtual void OnSend(BinaryWriter& Writer) override;
 	virtual void OnResponce(BinaryReader& Reader) override;
 
-	PRIVATE::InputStickerSet*  Getstickerset() const
+	TLBaseObject*  Getstickerset() const
 	{
 		 return this->stickerset;
 	}
@@ -35,7 +34,7 @@ public:
 	}
 
 private:
-	PRIVATE::InputStickerSet* stickerset;
+	TLBaseObject* stickerset;
 	 COMMON::InputStickerSetItem* sticker;
 	MESSAGES::StickerSet* result;
 };

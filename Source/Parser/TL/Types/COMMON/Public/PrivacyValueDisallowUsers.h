@@ -1,13 +1,11 @@
 #pragma once
 #include "Engine.h"
-#include "../../../Types/Private/PrivacyRule.h"
-
-#include "../../../Types/Private/PrivacyRule.h"
+#include "../../../TLObjectBase.h"
 
 //begin namespace block
 namespace COMMON
 {
-class PrivacyValueDisallowUsers : public PRIVATE::PrivacyRule
+class PrivacyValueDisallowUsers : public TLBaseObject
 {
 public:
 	PrivacyValueDisallowUsers();

@@ -2,8 +2,6 @@
 #include "Engine.h"
 #include "../../../TLObjectBase.h"
 
-#include "../../../Types/Private/InputPrivacyKey.h"
-#include "../../../Types/Private/InputPrivacyRule.h"
 #include "../../../Types/Account/Public/PrivacyRules.h"
 
 //begin namespace block
@@ -13,18 +11,18 @@ class SetPrivacy : public TLBaseObject
 {
 public:
 	SetPrivacy();
-	SetPrivacy(PRIVATE::InputPrivacyKey* key, TArray<PRIVATE::InputPrivacyRule*> rules);
+	SetPrivacy(TLBaseObject* key, TArray<TLBaseObject*> rules);
 
 	~SetPrivacy();
 	virtual void OnSend(BinaryWriter& Writer) override;
 	virtual void OnResponce(BinaryReader& Reader) override;
 
-	PRIVATE::InputPrivacyKey*  Getkey() const
+	TLBaseObject*  Getkey() const
 	{
 		 return this->key;
 	}
 
-	TArray<PRIVATE::InputPrivacyRule*>  Getrules() const
+	TArray<TLBaseObject*>  Getrules() const
 	{
 		 return this->rules;
 	}
@@ -35,8 +33,8 @@ public:
 	}
 
 private:
-	PRIVATE::InputPrivacyKey* key;
-	 TArray<PRIVATE::InputPrivacyRule*> rules;
+	TLBaseObject* key;
+	 TArray<TLBaseObject*> rules;
 	ACCOUNT::PrivacyRules* result;
 };
 } //end namespace block

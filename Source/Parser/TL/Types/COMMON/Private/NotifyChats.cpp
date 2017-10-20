@@ -24,6 +24,5 @@ void NotifyChats::OnResponce(BinaryReader& Reader)
 }
 NotifyChats::~NotifyChats()
 {
-
 }
 }//end namespace block

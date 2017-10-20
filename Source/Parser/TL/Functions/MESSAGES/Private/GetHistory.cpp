@@ -11,7 +11,7 @@ GetHistory::GetHistory()
 	this->_ContentRelated = true;
 }
 
-GetHistory::GetHistory(PRIVATE::InputPeer*  peer, int32 offset_id, FDateTime offset_date, int32 add_offset, int32 limit, int32 max_id, int32 min_id)
+GetHistory::GetHistory(TLBaseObject*  peer, int32 offset_id, FDateTime offset_date, int32 add_offset, int32 limit, int32 max_id, int32 min_id)
 {
 	this->_ConstructorID = -1347868602;
 	this->_ContentRelated = true;
@@ -43,6 +43,13 @@ void GetHistory::OnResponce(BinaryReader& Reader)
 }
 GetHistory::~GetHistory()
 {
-
+	if(this->peer)
+	{
+		delete this->peer;
+	}
+	if(this->result)
+	{
+		delete this->result;
+	}
 }
 }//end namespace block

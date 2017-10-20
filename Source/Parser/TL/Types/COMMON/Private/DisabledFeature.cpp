@@ -32,6 +32,5 @@ void DisabledFeature::OnResponce(BinaryReader& Reader)
 }
 DisabledFeature::~DisabledFeature()
 {
-
 }
 }//end namespace block

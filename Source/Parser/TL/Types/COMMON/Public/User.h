@@ -3,7 +3,6 @@
 #include "../../../TLObjectBase.h"
 
 #include "../../../Types/Common/Public/UserProfilePhoto.h"
-#include "../../../Types/Private/UserStatus.h"
 
 //begin namespace block
 namespace COMMON
@@ -12,7 +11,7 @@ class User : public TLBaseObject
 {
 public:
 	User();
-	User(bool self, bool contact, bool mutual_contact, bool deleted, bool bot, bool bot_chat_history, bool bot_nochats, bool verified, bool restricted, bool min, bool bot_inline_geo, int32 id, unsigned long long access_hash, FString first_name, FString last_name, FString username, FString phone, COMMON::UserProfilePhoto* photo, PRIVATE::UserStatus* status, int32 bot_info_version, FString restriction_reason, FString bot_inline_placeholder, FString lang_code);
+	User(bool self, bool contact, bool mutual_contact, bool deleted, bool bot, bool bot_chat_history, bool bot_nochats, bool verified, bool restricted, bool min, bool bot_inline_geo, int32 id, unsigned long long access_hash, FString first_name, FString last_name, FString username, FString phone, COMMON::UserProfilePhoto* photo, TLBaseObject* status, int32 bot_info_version, FString restriction_reason, FString bot_inline_placeholder, FString lang_code);
 
 	~User();
 	virtual void OnSend(BinaryWriter& Writer) override;
@@ -108,7 +107,7 @@ public:
 		 return this->photo;
 	}
 
-	PRIVATE::UserStatus*  Getstatus() const
+	TLBaseObject*  Getstatus() const
 	{
 		 return this->status;
 	}
@@ -152,7 +151,7 @@ private:
 	 FString username;
 	 FString phone;
 	 COMMON::UserProfilePhoto* photo;
-	 PRIVATE::UserStatus* status;
+	 TLBaseObject* status;
 	 int32 bot_info_version;
 	 FString restriction_reason;
 	 FString bot_inline_placeholder;

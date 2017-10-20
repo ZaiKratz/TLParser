@@ -33,6 +33,9 @@ void ResendCode::OnResponce(BinaryReader& Reader)
 }
 ResendCode::~ResendCode()
 {
-
+	if(this->result)
+	{
+		delete this->result;
+	}
 }
 }//end namespace block

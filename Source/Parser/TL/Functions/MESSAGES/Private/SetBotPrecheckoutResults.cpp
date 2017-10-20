@@ -54,6 +54,5 @@ void SetBotPrecheckoutResults::OnResponce(BinaryReader& Reader)
 }
 SetBotPrecheckoutResults::~SetBotPrecheckoutResults()
 {
-
 }
 }//end namespace block

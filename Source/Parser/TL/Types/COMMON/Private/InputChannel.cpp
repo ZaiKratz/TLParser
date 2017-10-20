@@ -32,6 +32,5 @@ void InputChannel::OnResponce(BinaryReader& Reader)
 }
 InputChannel::~InputChannel()
 {
-
 }
 }//end namespace block

@@ -10,7 +10,7 @@ PageBlockVideo::PageBlockVideo()
 	this->_ConstructorID = -640214938;
 }
 
-PageBlockVideo::PageBlockVideo(bool autoplay, bool loop, unsigned long long video_id, PRIVATE::RichText*  caption)
+PageBlockVideo::PageBlockVideo(bool autoplay, bool loop, unsigned long long video_id, TLBaseObject*  caption)
 {
 	this->_ConstructorID = -640214938;
 	this->autoplay = autoplay;
@@ -59,11 +59,14 @@ void PageBlockVideo::OnResponce(BinaryReader& Reader)
 		loop = true;
 	}
 	video_id = Reader.ReadLong();
-	caption = reinterpret_cast<PRIVATE::RichText* >(Reader.TGReadObject());
+	caption = reinterpret_cast<TLBaseObject* >(Reader.TGReadObject());
 	this->_Responded = true;
 }
 PageBlockVideo::~PageBlockVideo()
 {
-
+	if(this->caption)
+	{
+		delete this->caption;
+	}
 }
 }//end namespace block

@@ -10,7 +10,7 @@ UpdatePinnedDialogs::UpdatePinnedDialogs()
 	this->_ConstructorID = -657787251;
 }
 
-UpdatePinnedDialogs::UpdatePinnedDialogs(TArray<PRIVATE::Peer*>  order)
+UpdatePinnedDialogs::UpdatePinnedDialogs(TArray<TLBaseObject*>  order)
 {
 	this->_ConstructorID = -657787251;
 	this->order = order;
@@ -36,7 +36,7 @@ void UpdatePinnedDialogs::OnSend(BinaryWriter& Writer)
 	Writer.WriteInt(this->order.Num());
 	for(auto X : this->order)
 	{
-	if(!X)
+	if(X)
 	{
 	X->OnSend(Writer);
 	}
@@ -54,10 +54,10 @@ void UpdatePinnedDialogs::OnResponce(BinaryReader& Reader)
 	Reader.ReadInt();
 
 	//Len concatenated with rand number to get rid of confusions with redefinition
-	int32 Len27777 = Reader.ReadInt();
-	for(int32 i = 0; i < Len27777; i++)
+	int32 Len16462 = Reader.ReadInt();
+	for(int32 i = 0; i < Len16462; i++)
 	{
-	auto X = reinterpret_cast<PRIVATE::Peer*>(Reader.TGReadObject());
+	auto X = reinterpret_cast<TLBaseObject*>(Reader.TGReadObject());
 	order.Add(X);
 	}
 	}
@@ -65,6 +65,5 @@ void UpdatePinnedDialogs::OnResponce(BinaryReader& Reader)
 }
 UpdatePinnedDialogs::~UpdatePinnedDialogs()
 {
-
 }
 }//end namespace block

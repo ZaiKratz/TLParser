@@ -10,7 +10,7 @@ BotInlineMessageMediaAuto::BotInlineMessageMediaAuto()
 	this->_ConstructorID = 175419739;
 }
 
-BotInlineMessageMediaAuto::BotInlineMessageMediaAuto(FString caption, PRIVATE::ReplyMarkup*  reply_markup)
+BotInlineMessageMediaAuto::BotInlineMessageMediaAuto(FString caption, TLBaseObject*  reply_markup)
 {
 	this->_ConstructorID = 175419739;
 	this->caption = caption;
@@ -32,7 +32,7 @@ void BotInlineMessageMediaAuto::OnSend(BinaryWriter& Writer)
 	Writer.WriteInt(Flags);
 
 	Writer.TGWriteString(this->caption);
-	if(!this->reply_markup)
+	if(this->reply_markup)
 	{
 	this->reply_markup->OnSend(Writer);
 	}
@@ -46,12 +46,15 @@ void BotInlineMessageMediaAuto::OnResponce(BinaryReader& Reader)
 	caption = Reader.TGReadString();
 	if((Flags & (1 << 2)) != 0) 
 	{
-	reply_markup = reinterpret_cast<PRIVATE::ReplyMarkup* >(Reader.TGReadObject());
+	reply_markup = reinterpret_cast<TLBaseObject* >(Reader.TGReadObject());
 	}
 	this->_Responded = true;
 }
 BotInlineMessageMediaAuto::~BotInlineMessageMediaAuto()
 {
-
+	if(this->reply_markup)
+	{
+		delete this->reply_markup;
+	}
 }
 }//end namespace block

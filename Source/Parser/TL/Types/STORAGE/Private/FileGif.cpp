@@ -24,6 +24,5 @@ void FileGif::OnResponce(BinaryReader& Reader)
 }
 FileGif::~FileGif()
 {
-
 }
 }//end namespace block

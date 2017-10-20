@@ -11,7 +11,7 @@ Search::Search()
 	this->_ContentRelated = true;
 }
 
-Search::Search(PRIVATE::InputPeer*  peer, FString q, COMMON::InputUser*  from_id, PRIVATE::MessagesFilter*  filter, FDateTime min_date, FDateTime max_date, int32 offset_id, int32 add_offset, int32 limit, int32 max_id, int32 min_id)
+Search::Search(TLBaseObject*  peer, FString q, COMMON::InputUser*  from_id, TLBaseObject*  filter, FDateTime min_date, FDateTime max_date, int32 offset_id, int32 add_offset, int32 limit, int32 max_id, int32 min_id)
 {
 	this->_ConstructorID = 60726944;
 	this->_ContentRelated = true;
@@ -44,7 +44,7 @@ void Search::OnSend(BinaryWriter& Writer)
 
 	this->peer->OnSend(Writer);
 	Writer.TGWriteString(this->q);
-	if(!this->from_id)
+	if(this->from_id)
 	{
 	this->from_id->OnSend(Writer);
 	}
@@ -66,6 +66,21 @@ void Search::OnResponce(BinaryReader& Reader)
 }
 Search::~Search()
 {
-
+	if(this->peer)
+	{
+		delete this->peer;
+	}
+	if(this->from_id)
+	{
+		delete this->from_id;
+	}
+	if(this->filter)
+	{
+		delete this->filter;
+	}
+	if(this->result)
+	{
+		delete this->result;
+	}
 }
 }//end namespace block

@@ -1,13 +1,11 @@
 #pragma once
 #include "Engine.h"
-#include "../../../Types/Private/PageBlock.h"
-
-#include "../../../Types/Private/PageBlock.h"
+#include "../../../TLObjectBase.h"
 
 //begin namespace block
 namespace COMMON
 {
-class PageBlockAnchor : public PRIVATE::PageBlock
+class PageBlockAnchor : public TLBaseObject
 {
 public:
 	PageBlockAnchor();

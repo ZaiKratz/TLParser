@@ -24,6 +24,5 @@ void MessageActionEmpty::OnResponce(BinaryReader& Reader)
 }
 MessageActionEmpty::~MessageActionEmpty()
 {
-
 }
 }//end namespace block

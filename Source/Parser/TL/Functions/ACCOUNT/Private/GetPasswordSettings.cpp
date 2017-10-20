@@ -31,6 +31,9 @@ void GetPasswordSettings::OnResponce(BinaryReader& Reader)
 }
 GetPasswordSettings::~GetPasswordSettings()
 {
-
+	if(this->result)
+	{
+		delete this->result;
+	}
 }
 }//end namespace block

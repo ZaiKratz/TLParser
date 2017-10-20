@@ -2,7 +2,6 @@
 #include "Engine.h"
 #include "../../../TLObjectBase.h"
 
-#include "../../../Types/Private/InputPeer.h"
 #include "../../../Types/Messages/Public/AffectedHistory.h"
 
 //begin namespace block
@@ -12,7 +11,7 @@ class DeleteHistory : public TLBaseObject
 {
 public:
 	DeleteHistory();
-	DeleteHistory(bool just_clear, PRIVATE::InputPeer* peer, int32 max_id);
+	DeleteHistory(bool just_clear, TLBaseObject* peer, int32 max_id);
 
 	~DeleteHistory();
 	virtual void OnSend(BinaryWriter& Writer) override;
@@ -23,7 +22,7 @@ public:
 		 return this->just_clear;
 	}
 
-	PRIVATE::InputPeer*  Getpeer() const
+	TLBaseObject*  Getpeer() const
 	{
 		 return this->peer;
 	}
@@ -40,7 +39,7 @@ public:
 
 private:
 	bool just_clear;
-	 PRIVATE::InputPeer* peer;
+	 TLBaseObject* peer;
 	 int32 max_id;
 	MESSAGES::AffectedHistory* result;
 };

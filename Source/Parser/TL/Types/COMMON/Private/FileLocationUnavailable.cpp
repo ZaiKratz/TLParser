@@ -35,6 +35,5 @@ void FileLocationUnavailable::OnResponce(BinaryReader& Reader)
 }
 FileLocationUnavailable::~FileLocationUnavailable()
 {
-
 }
 }//end namespace block

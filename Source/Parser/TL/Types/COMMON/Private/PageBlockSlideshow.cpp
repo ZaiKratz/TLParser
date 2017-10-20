@@ -10,7 +10,7 @@ PageBlockSlideshow::PageBlockSlideshow()
 	this->_ConstructorID = 319588707;
 }
 
-PageBlockSlideshow::PageBlockSlideshow(TArray<PRIVATE::PageBlock*>  items, PRIVATE::RichText*  caption)
+PageBlockSlideshow::PageBlockSlideshow(TArray<TLBaseObject*>  items, TLBaseObject*  caption)
 {
 	this->_ConstructorID = 319588707;
 	this->items = items;
@@ -34,17 +34,20 @@ void PageBlockSlideshow::OnResponce(BinaryReader& Reader)
 	Reader.ReadInt();
 
 	//Len concatenated with rand number to get rid of confusions with redefinition
-	int32 Len31659 = Reader.ReadInt();
-	for(int32 i = 0; i < Len31659; i++)
+	int32 Len21482 = Reader.ReadInt();
+	for(int32 i = 0; i < Len21482; i++)
 	{
-	auto X = reinterpret_cast<PRIVATE::PageBlock*>(Reader.TGReadObject());
+	auto X = reinterpret_cast<TLBaseObject*>(Reader.TGReadObject());
 	items.Add(X);
 	}
-	caption = reinterpret_cast<PRIVATE::RichText* >(Reader.TGReadObject());
+	caption = reinterpret_cast<TLBaseObject* >(Reader.TGReadObject());
 	this->_Responded = true;
 }
 PageBlockSlideshow::~PageBlockSlideshow()
 {
-
+	if(this->caption)
+	{
+		delete this->caption;
+	}
 }
 }//end namespace block

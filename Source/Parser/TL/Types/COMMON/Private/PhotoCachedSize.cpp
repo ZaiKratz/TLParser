@@ -41,6 +41,9 @@ void PhotoCachedSize::OnResponce(BinaryReader& Reader)
 }
 PhotoCachedSize::~PhotoCachedSize()
 {
-
+	if(this->location)
+	{
+		delete this->location;
+	}
 }
 }//end namespace block

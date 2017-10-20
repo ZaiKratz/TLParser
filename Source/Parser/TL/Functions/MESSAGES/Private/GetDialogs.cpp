@@ -11,7 +11,7 @@ GetDialogs::GetDialogs()
 	this->_ContentRelated = true;
 }
 
-GetDialogs::GetDialogs(bool exclude_pinned, FDateTime offset_date, int32 offset_id, PRIVATE::InputPeer*  offset_peer, int32 limit)
+GetDialogs::GetDialogs(bool exclude_pinned, FDateTime offset_date, int32 offset_id, TLBaseObject*  offset_peer, int32 limit)
 {
 	this->_ConstructorID = 421243333;
 	this->_ContentRelated = true;
@@ -50,6 +50,13 @@ void GetDialogs::OnResponce(BinaryReader& Reader)
 }
 GetDialogs::~GetDialogs()
 {
-
+	if(this->offset_peer)
+	{
+		delete this->offset_peer;
+	}
+	if(this->result)
+	{
+		delete this->result;
+	}
 }
 }//end namespace block

@@ -11,7 +11,7 @@ ResetTopPeerRating::ResetTopPeerRating()
 	this->_ContentRelated = true;
 }
 
-ResetTopPeerRating::ResetTopPeerRating(PRIVATE::TopPeerCategory*  category, PRIVATE::InputPeer*  peer)
+ResetTopPeerRating::ResetTopPeerRating(TLBaseObject*  category, TLBaseObject*  peer)
 {
 	this->_ConstructorID = 451113900;
 	this->_ContentRelated = true;
@@ -33,6 +33,13 @@ void ResetTopPeerRating::OnResponce(BinaryReader& Reader)
 }
 ResetTopPeerRating::~ResetTopPeerRating()
 {
-
+	if(this->category)
+	{
+		delete this->category;
+	}
+	if(this->peer)
+	{
+		delete this->peer;
+	}
 }
 }//end namespace block

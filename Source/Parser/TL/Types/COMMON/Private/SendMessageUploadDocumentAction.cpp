@@ -29,6 +29,5 @@ void SendMessageUploadDocumentAction::OnResponce(BinaryReader& Reader)
 }
 SendMessageUploadDocumentAction::~SendMessageUploadDocumentAction()
 {
-
 }
 }//end namespace block

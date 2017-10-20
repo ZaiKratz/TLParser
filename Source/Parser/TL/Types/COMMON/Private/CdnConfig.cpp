@@ -32,8 +32,8 @@ void CdnConfig::OnResponce(BinaryReader& Reader)
 	Reader.ReadInt();
 
 	//Len concatenated with rand number to get rid of confusions with redefinition
-	int32 Len19985 = Reader.ReadInt();
-	for(int32 i = 0; i < Len19985; i++)
+	int32 Len9656 = Reader.ReadInt();
+	for(int32 i = 0; i < Len9656; i++)
 	{
 	auto X = reinterpret_cast<COMMON::CdnPublicKey*>(Reader.TGReadObject());
 	public_keys.Add(X);
@@ -42,6 +42,5 @@ void CdnConfig::OnResponce(BinaryReader& Reader)
 }
 CdnConfig::~CdnConfig()
 {
-
 }
 }//end namespace block

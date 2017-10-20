@@ -2,7 +2,6 @@
 #include "Engine.h"
 #include "../../../TLObjectBase.h"
 
-#include "../../../Types/Private/InputStickeredMedia.h"
 #include "../../../Types/Common/Public/StickerSetCovered.h"
 
 //begin namespace block
@@ -12,13 +11,13 @@ class GetAttachedStickers : public TLBaseObject
 {
 public:
 	GetAttachedStickers();
-	GetAttachedStickers(PRIVATE::InputStickeredMedia* media);
+	GetAttachedStickers(TLBaseObject* media);
 
 	~GetAttachedStickers();
 	virtual void OnSend(BinaryWriter& Writer) override;
 	virtual void OnResponce(BinaryReader& Reader) override;
 
-	PRIVATE::InputStickeredMedia*  Getmedia() const
+	TLBaseObject*  Getmedia() const
 	{
 		 return this->media;
 	}
@@ -29,7 +28,7 @@ public:
 	}
 
 private:
-	PRIVATE::InputStickeredMedia* media;
+	TLBaseObject* media;
 	TArray<COMMON::StickerSetCovered*> result;
 };
 } //end namespace block

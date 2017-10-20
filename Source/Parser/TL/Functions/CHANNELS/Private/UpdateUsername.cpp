@@ -33,6 +33,9 @@ void UpdateUsername::OnResponce(BinaryReader& Reader)
 }
 UpdateUsername::~UpdateUsername()
 {
-
+	if(this->channel)
+	{
+		delete this->channel;
+	}
 }
 }//end namespace block

@@ -33,6 +33,9 @@ void AnswerWebhookJSONQuery::OnResponce(BinaryReader& Reader)
 }
 AnswerWebhookJSONQuery::~AnswerWebhookJSONQuery()
 {
-
+	if(this->data)
+	{
+		delete this->data;
+	}
 }
 }//end namespace block

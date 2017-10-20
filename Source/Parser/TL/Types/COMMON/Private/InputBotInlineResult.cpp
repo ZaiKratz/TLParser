@@ -10,7 +10,7 @@ InputBotInlineResult::InputBotInlineResult()
 	this->_ConstructorID = 750510426;
 }
 
-InputBotInlineResult::InputBotInlineResult(FString id, FString type, FString title, FString description, FString url, FString thumb_url, FString content_url, FString content_type, int32 w, int32 h, int32 duration, PRIVATE::InputBotInlineMessage*  send_message)
+InputBotInlineResult::InputBotInlineResult(FString id, FString type, FString title, FString description, FString url, FString thumb_url, FString content_url, FString content_type, int32 w, int32 h, int32 duration, TLBaseObject*  send_message)
 {
 	this->_ConstructorID = 750510426;
 	this->id = id;
@@ -113,15 +113,15 @@ void InputBotInlineResult::OnSend(BinaryWriter& Writer)
 	Writer.TGWriteString(this->thumb_url);
 	Writer.TGWriteString(this->content_url);
 	Writer.TGWriteString(this->content_type);
-	if(!this->w)
+	if(this->w)
 	{
 	Writer.WriteInt(this->w);
 	}
-	if(!this->h)
+	if(this->h)
 	{
 	Writer.WriteInt(this->h);
 	}
-	if(!this->duration)
+	if(this->duration)
 	{
 	Writer.WriteInt(this->duration);
 	}
@@ -171,11 +171,14 @@ void InputBotInlineResult::OnResponce(BinaryReader& Reader)
 	{
 	duration = Reader.ReadInt();
 	}
-	send_message = reinterpret_cast<PRIVATE::InputBotInlineMessage* >(Reader.TGReadObject());
+	send_message = reinterpret_cast<TLBaseObject* >(Reader.TGReadObject());
 	this->_Responded = true;
 }
 InputBotInlineResult::~InputBotInlineResult()
 {
-
+	if(this->send_message)
+	{
+		delete this->send_message;
+	}
 }
 }//end namespace block

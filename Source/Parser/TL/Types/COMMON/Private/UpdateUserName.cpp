@@ -38,6 +38,5 @@ void UpdateUserName::OnResponce(BinaryReader& Reader)
 }
 UpdateUserName::~UpdateUserName()
 {
-
 }
 }//end namespace block

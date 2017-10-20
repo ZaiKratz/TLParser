@@ -31,6 +31,9 @@ void CheckPassword::OnResponce(BinaryReader& Reader)
 }
 CheckPassword::~CheckPassword()
 {
-
+	if(this->result)
+	{
+		delete this->result;
+	}
 }
 }//end namespace block

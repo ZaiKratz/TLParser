@@ -24,6 +24,5 @@ void Null::OnResponce(BinaryReader& Reader)
 }
 Null::~Null()
 {
-
 }
 }//end namespace block

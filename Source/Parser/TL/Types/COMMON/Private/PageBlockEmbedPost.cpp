@@ -10,7 +10,7 @@ PageBlockEmbedPost::PageBlockEmbedPost()
 	this->_ConstructorID = 690781161;
 }
 
-PageBlockEmbedPost::PageBlockEmbedPost(FString url, unsigned long long webpage_id, unsigned long long author_photo_id, FString author, FDateTime date, TArray<PRIVATE::PageBlock*>  blocks, PRIVATE::RichText*  caption)
+PageBlockEmbedPost::PageBlockEmbedPost(FString url, unsigned long long webpage_id, unsigned long long author_photo_id, FString author, FDateTime date, TArray<TLBaseObject*>  blocks, TLBaseObject*  caption)
 {
 	this->_ConstructorID = 690781161;
 	this->url = url;
@@ -49,17 +49,20 @@ void PageBlockEmbedPost::OnResponce(BinaryReader& Reader)
 	Reader.ReadInt();
 
 	//Len concatenated with rand number to get rid of confusions with redefinition
-	int32 Len29698 = Reader.ReadInt();
-	for(int32 i = 0; i < Len29698; i++)
+	int32 Len1639 = Reader.ReadInt();
+	for(int32 i = 0; i < Len1639; i++)
 	{
-	auto X = reinterpret_cast<PRIVATE::PageBlock*>(Reader.TGReadObject());
+	auto X = reinterpret_cast<TLBaseObject*>(Reader.TGReadObject());
 	blocks.Add(X);
 	}
-	caption = reinterpret_cast<PRIVATE::RichText* >(Reader.TGReadObject());
+	caption = reinterpret_cast<TLBaseObject* >(Reader.TGReadObject());
 	this->_Responded = true;
 }
 PageBlockEmbedPost::~PageBlockEmbedPost()
 {
-
+	if(this->caption)
+	{
+		delete this->caption;
+	}
 }
 }//end namespace block

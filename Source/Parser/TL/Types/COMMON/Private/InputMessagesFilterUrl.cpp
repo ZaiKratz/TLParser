@@ -24,6 +24,5 @@ void InputMessagesFilterUrl::OnResponce(BinaryReader& Reader)
 }
 InputMessagesFilterUrl::~InputMessagesFilterUrl()
 {
-
 }
 }//end namespace block

@@ -31,6 +31,9 @@ void GetPaymentReceipt::OnResponce(BinaryReader& Reader)
 }
 GetPaymentReceipt::~GetPaymentReceipt()
 {
-
+	if(this->result)
+	{
+		delete this->result;
+	}
 }
 }//end namespace block

@@ -46,7 +46,7 @@ void ValidatedRequestedInfo::OnSend(BinaryWriter& Writer)
 	Writer.WriteInt(this->shipping_options.Num());
 	for(auto X : this->shipping_options)
 	{
-	if(!X)
+	if(X)
 	{
 	X->OnSend(Writer);
 	}
@@ -68,8 +68,8 @@ void ValidatedRequestedInfo::OnResponce(BinaryReader& Reader)
 	Reader.ReadInt();
 
 	//Len concatenated with rand number to get rid of confusions with redefinition
-	int32 Len18895 = Reader.ReadInt();
-	for(int32 i = 0; i < Len18895; i++)
+	int32 Len24473 = Reader.ReadInt();
+	for(int32 i = 0; i < Len24473; i++)
 	{
 	auto X = reinterpret_cast<COMMON::ShippingOption*>(Reader.TGReadObject());
 	shipping_options.Add(X);
@@ -79,6 +79,5 @@ void ValidatedRequestedInfo::OnResponce(BinaryReader& Reader)
 }
 ValidatedRequestedInfo::~ValidatedRequestedInfo()
 {
-
 }
 }//end namespace block

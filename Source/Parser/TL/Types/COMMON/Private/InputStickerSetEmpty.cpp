@@ -24,6 +24,5 @@ void InputStickerSetEmpty::OnResponce(BinaryReader& Reader)
 }
 InputStickerSetEmpty::~InputStickerSetEmpty()
 {
-
 }
 }//end namespace block

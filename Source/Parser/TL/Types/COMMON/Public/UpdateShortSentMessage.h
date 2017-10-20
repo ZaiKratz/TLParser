@@ -2,8 +2,6 @@
 #include "Engine.h"
 #include "../../../TLObjectBase.h"
 
-#include "../../../Types/Private/MessageMedia.h"
-#include "../../../Types/Private/MessageEntity.h"
 #include "../../../Types/Common/Public/Updates.h"
 
 //begin namespace block
@@ -13,7 +11,7 @@ class UpdateShortSentMessage : public TLBaseObject
 {
 public:
 	UpdateShortSentMessage();
-	UpdateShortSentMessage(bool out, int32 id, int32 pts, int32 pts_count, FDateTime date, PRIVATE::MessageMedia* media, TArray<PRIVATE::MessageEntity*> entities);
+	UpdateShortSentMessage(bool out, int32 id, int32 pts, int32 pts_count, FDateTime date, TLBaseObject* media, TArray<TLBaseObject*> entities);
 
 	~UpdateShortSentMessage();
 	virtual void OnSend(BinaryWriter& Writer) override;
@@ -44,12 +42,12 @@ public:
 		 return this->date;
 	}
 
-	PRIVATE::MessageMedia*  Getmedia() const
+	TLBaseObject*  Getmedia() const
 	{
 		 return this->media;
 	}
 
-	TArray<PRIVATE::MessageEntity*>  Getentities() const
+	TArray<TLBaseObject*>  Getentities() const
 	{
 		 return this->entities;
 	}
@@ -60,7 +58,7 @@ private:
 	 int32 pts;
 	 int32 pts_count;
 	 FDateTime date;
-	 PRIVATE::MessageMedia* media;
-	 TArray<PRIVATE::MessageEntity*> entities;
+	 TLBaseObject* media;
+	 TArray<TLBaseObject*> entities;
 };
 } //end namespace block

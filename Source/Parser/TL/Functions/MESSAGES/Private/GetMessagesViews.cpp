@@ -11,7 +11,7 @@ GetMessagesViews::GetMessagesViews()
 	this->_ContentRelated = true;
 }
 
-GetMessagesViews::GetMessagesViews(PRIVATE::InputPeer*  peer, TArray<int32>  id, bool increment)
+GetMessagesViews::GetMessagesViews(TLBaseObject*  peer, TArray<int32>  id, bool increment)
 {
 	this->_ConstructorID = -993483427;
 	this->_ContentRelated = true;
@@ -45,6 +45,9 @@ void GetMessagesViews::OnResponce(BinaryReader& Reader)
 }
 GetMessagesViews::~GetMessagesViews()
 {
-
+	if(this->peer)
+	{
+		delete this->peer;
+	}
 }
 }//end namespace block

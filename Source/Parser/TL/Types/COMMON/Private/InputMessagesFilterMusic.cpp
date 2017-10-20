@@ -24,6 +24,5 @@ void InputMessagesFilterMusic::OnResponce(BinaryReader& Reader)
 }
 InputMessagesFilterMusic::~InputMessagesFilterMusic()
 {
-
 }
 }//end namespace block

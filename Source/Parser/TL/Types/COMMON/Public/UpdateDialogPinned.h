@@ -1,18 +1,15 @@
 #pragma once
 #include "Engine.h"
-#include "../../../Types/Private/Update.h"
-
-#include "../../../Types/Private/Peer.h"
-#include "../../../Types/Private/Update.h"
+#include "../../../TLObjectBase.h"
 
 //begin namespace block
 namespace COMMON
 {
-class UpdateDialogPinned : public PRIVATE::Update
+class UpdateDialogPinned : public TLBaseObject
 {
 public:
 	UpdateDialogPinned();
-	UpdateDialogPinned(bool pinned, PRIVATE::Peer* peer);
+	UpdateDialogPinned(bool pinned, TLBaseObject* peer);
 
 	~UpdateDialogPinned();
 	virtual void OnSend(BinaryWriter& Writer) override;
@@ -23,13 +20,13 @@ public:
 		 return this->pinned;
 	}
 
-	PRIVATE::Peer*  Getpeer() const
+	TLBaseObject*  Getpeer() const
 	{
 		 return this->peer;
 	}
 
 private:
 	bool pinned;
-	 PRIVATE::Peer* peer;
+	 TLBaseObject* peer;
 };
 } //end namespace block

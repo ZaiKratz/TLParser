@@ -24,6 +24,5 @@ void SendMessageTypingAction::OnResponce(BinaryReader& Reader)
 }
 SendMessageTypingAction::~SendMessageTypingAction()
 {
-
 }
 }//end namespace block

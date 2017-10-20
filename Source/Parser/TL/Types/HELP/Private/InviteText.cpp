@@ -29,6 +29,5 @@ void InviteText::OnResponce(BinaryReader& Reader)
 }
 InviteText::~InviteText()
 {
-
 }
 }//end namespace block

@@ -39,8 +39,8 @@ void HighScores::OnResponce(BinaryReader& Reader)
 	Reader.ReadInt();
 
 	//Len concatenated with rand number to get rid of confusions with redefinition
-	int32 Len9928 = Reader.ReadInt();
-	for(int32 i = 0; i < Len9928; i++)
+	int32 Len10526 = Reader.ReadInt();
+	for(int32 i = 0; i < Len10526; i++)
 	{
 	auto X = reinterpret_cast<COMMON::HighScore*>(Reader.TGReadObject());
 	scores.Add(X);
@@ -48,8 +48,8 @@ void HighScores::OnResponce(BinaryReader& Reader)
 	Reader.ReadInt();
 
 	//Len concatenated with rand number to get rid of confusions with redefinition
-	int32 Len12669 = Reader.ReadInt();
-	for(int32 i = 0; i < Len12669; i++)
+	int32 Len287 = Reader.ReadInt();
+	for(int32 i = 0; i < Len287; i++)
 	{
 	auto X = reinterpret_cast<COMMON::User*>(Reader.TGReadObject());
 	users.Add(X);
@@ -58,6 +58,5 @@ void HighScores::OnResponce(BinaryReader& Reader)
 }
 HighScores::~HighScores()
 {
-
 }
 }//end namespace block

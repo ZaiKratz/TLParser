@@ -11,7 +11,7 @@ EditInlineBotMessage::EditInlineBotMessage()
 	this->_ContentRelated = true;
 }
 
-EditInlineBotMessage::EditInlineBotMessage(bool no_webpage, COMMON::InputBotInlineMessageID*  id, FString message, PRIVATE::ReplyMarkup*  reply_markup, TArray<PRIVATE::MessageEntity*>  entities)
+EditInlineBotMessage::EditInlineBotMessage(bool no_webpage, COMMON::InputBotInlineMessageID*  id, FString message, TLBaseObject*  reply_markup, TArray<TLBaseObject*>  entities)
 {
 	this->_ConstructorID = 319564933;
 	this->_ContentRelated = true;
@@ -62,7 +62,7 @@ void EditInlineBotMessage::OnSend(BinaryWriter& Writer)
 
 	this->id->OnSend(Writer);
 	Writer.TGWriteString(this->message);
-	if(!this->reply_markup)
+	if(this->reply_markup)
 	{
 	this->reply_markup->OnSend(Writer);
 	}
@@ -72,7 +72,7 @@ void EditInlineBotMessage::OnSend(BinaryWriter& Writer)
 	Writer.WriteInt(this->entities.Num());
 	for(auto X : this->entities)
 	{
-	if(!X)
+	if(X)
 	{
 	X->OnSend(Writer);
 	}
@@ -88,6 +88,13 @@ void EditInlineBotMessage::OnResponce(BinaryReader& Reader)
 }
 EditInlineBotMessage::~EditInlineBotMessage()
 {
-
+	if(this->id)
+	{
+		delete this->id;
+	}
+	if(this->reply_markup)
+	{
+		delete this->reply_markup;
+	}
 }
 }//end namespace block

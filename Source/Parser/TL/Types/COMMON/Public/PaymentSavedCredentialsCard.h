@@ -1,13 +1,11 @@
 #pragma once
 #include "Engine.h"
-#include "../../../Types/Private/PaymentSavedCredentials.h"
-
-#include "../../../Types/Private/PaymentSavedCredentials.h"
+#include "../../../TLObjectBase.h"
 
 //begin namespace block
 namespace COMMON
 {
-class PaymentSavedCredentialsCard : public PRIVATE::PaymentSavedCredentials
+class PaymentSavedCredentialsCard : public TLBaseObject
 {
 public:
 	PaymentSavedCredentialsCard();

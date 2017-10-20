@@ -31,6 +31,9 @@ void GetLangPack::OnResponce(BinaryReader& Reader)
 }
 GetLangPack::~GetLangPack()
 {
-
+	if(this->result)
+	{
+		delete this->result;
+	}
 }
 }//end namespace block

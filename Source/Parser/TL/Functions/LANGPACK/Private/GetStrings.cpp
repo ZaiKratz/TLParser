@@ -37,6 +37,5 @@ void GetStrings::OnResponce(BinaryReader& Reader)
 }
 GetStrings::~GetStrings()
 {
-
 }
 }//end namespace block

@@ -1,14 +1,13 @@
 #pragma once
 #include "Engine.h"
-#include "../../../Types/Private/Update.h"
+#include "../../../TLObjectBase.h"
 
 #include "../../../Types/Common/Public/DataJSON.h"
-#include "../../../Types/Private/Update.h"
 
 //begin namespace block
 namespace COMMON
 {
-class UpdateBotWebhookJSONQuery : public PRIVATE::Update
+class UpdateBotWebhookJSONQuery : public TLBaseObject
 {
 public:
 	UpdateBotWebhookJSONQuery();

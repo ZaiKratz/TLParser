@@ -24,6 +24,5 @@ void InputPeerEmpty::OnResponce(BinaryReader& Reader)
 }
 InputPeerEmpty::~InputPeerEmpty()
 {
-
 }
 }//end namespace block

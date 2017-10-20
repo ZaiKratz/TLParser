@@ -31,6 +31,13 @@ void JoinChannel::OnResponce(BinaryReader& Reader)
 }
 JoinChannel::~JoinChannel()
 {
-
+	if(this->channel)
+	{
+		delete this->channel;
+	}
+	if(this->result)
+	{
+		delete this->result;
+	}
 }
 }//end namespace block

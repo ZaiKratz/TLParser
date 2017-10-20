@@ -11,7 +11,7 @@ ToggleDialogPin::ToggleDialogPin()
 	this->_ContentRelated = true;
 }
 
-ToggleDialogPin::ToggleDialogPin(bool pinned, PRIVATE::InputPeer*  peer)
+ToggleDialogPin::ToggleDialogPin(bool pinned, TLBaseObject*  peer)
 {
 	this->_ConstructorID = 847887978;
 	this->_ContentRelated = true;
@@ -44,6 +44,9 @@ void ToggleDialogPin::OnResponce(BinaryReader& Reader)
 }
 ToggleDialogPin::~ToggleDialogPin()
 {
-
+	if(this->peer)
+	{
+		delete this->peer;
+	}
 }
 }//end namespace block

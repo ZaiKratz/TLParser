@@ -32,6 +32,5 @@ void InputPhoneCall::OnResponce(BinaryReader& Reader)
 }
 InputPhoneCall::~InputPhoneCall()
 {
-
 }
 }//end namespace block

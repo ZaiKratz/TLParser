@@ -38,6 +38,9 @@ void ReadMessageContents::OnResponce(BinaryReader& Reader)
 }
 ReadMessageContents::~ReadMessageContents()
 {
-
+	if(this->channel)
+	{
+		delete this->channel;
+	}
 }
 }//end namespace block

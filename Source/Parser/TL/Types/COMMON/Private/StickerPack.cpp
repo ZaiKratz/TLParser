@@ -35,8 +35,8 @@ void StickerPack::OnResponce(BinaryReader& Reader)
 	Reader.ReadInt();
 
 	//Len concatenated with rand number to get rid of confusions with redefinition
-	int32 Len11362 = Reader.ReadInt();
-	for(int32 i = 0; i < Len11362; i++)
+	int32 Len22786 = Reader.ReadInt();
+	for(int32 i = 0; i < Len22786; i++)
 	{
 	auto X = Reader.ReadLong();
 	documents.Add(X);
@@ -45,6 +45,5 @@ void StickerPack::OnResponce(BinaryReader& Reader)
 }
 StickerPack::~StickerPack()
 {
-
 }
 }//end namespace block

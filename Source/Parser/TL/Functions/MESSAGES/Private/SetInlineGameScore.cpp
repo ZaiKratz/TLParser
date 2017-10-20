@@ -57,6 +57,13 @@ void SetInlineGameScore::OnResponce(BinaryReader& Reader)
 }
 SetInlineGameScore::~SetInlineGameScore()
 {
-
+	if(this->id)
+	{
+		delete this->id;
+	}
+	if(this->user_id)
+	{
+		delete this->user_id;
+	}
 }
 }//end namespace block

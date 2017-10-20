@@ -35,8 +35,8 @@ void SavedGifs::OnResponce(BinaryReader& Reader)
 	Reader.ReadInt();
 
 	//Len concatenated with rand number to get rid of confusions with redefinition
-	int32 Len27653 = Reader.ReadInt();
-	for(int32 i = 0; i < Len27653; i++)
+	int32 Len10025 = Reader.ReadInt();
+	for(int32 i = 0; i < Len10025; i++)
 	{
 	auto X = reinterpret_cast<COMMON::Document*>(Reader.TGReadObject());
 	gifs.Add(X);
@@ -45,6 +45,5 @@ void SavedGifs::OnResponce(BinaryReader& Reader)
 }
 SavedGifs::~SavedGifs()
 {
-
 }
 }//end namespace block

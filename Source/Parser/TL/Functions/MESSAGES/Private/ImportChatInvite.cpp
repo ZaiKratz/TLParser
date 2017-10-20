@@ -31,6 +31,9 @@ void ImportChatInvite::OnResponce(BinaryReader& Reader)
 }
 ImportChatInvite::~ImportChatInvite()
 {
-
+	if(this->result)
+	{
+		delete this->result;
+	}
 }
 }//end namespace block

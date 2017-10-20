@@ -38,6 +38,5 @@ void MaskCoords::OnResponce(BinaryReader& Reader)
 }
 MaskCoords::~MaskCoords()
 {
-
 }
 }//end namespace block

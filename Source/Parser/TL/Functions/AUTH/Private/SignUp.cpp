@@ -39,6 +39,9 @@ void SignUp::OnResponce(BinaryReader& Reader)
 }
 SignUp::~SignUp()
 {
-
+	if(this->result)
+	{
+		delete this->result;
+	}
 }
 }//end namespace block

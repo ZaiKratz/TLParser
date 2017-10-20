@@ -1,14 +1,13 @@
 #pragma once
 #include "Engine.h"
-#include "../../../Types/Private/MessageMedia.h"
+#include "../../../TLObjectBase.h"
 
 #include "../../../Types/Common/Public/Document.h"
-#include "../../../Types/Private/MessageMedia.h"
 
 //begin namespace block
 namespace COMMON
 {
-class MessageMediaDocument : public PRIVATE::MessageMedia
+class MessageMediaDocument : public TLBaseObject
 {
 public:
 	MessageMediaDocument();

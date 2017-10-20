@@ -41,6 +41,5 @@ void PhoneConnection::OnResponce(BinaryReader& Reader)
 }
 PhoneConnection::~PhoneConnection()
 {
-
 }
 }//end namespace block

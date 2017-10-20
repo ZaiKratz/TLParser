@@ -10,7 +10,7 @@ MessageService::MessageService()
 	this->_ConstructorID = -1642487306;
 }
 
-MessageService::MessageService(bool out, bool mentioned, bool media_unread, bool silent, bool post, int32 id, int32 from_id, PRIVATE::Peer*  to_id, int32 reply_to_msg_id, FDateTime date, PRIVATE::MessageAction*  action)
+MessageService::MessageService(bool out, bool mentioned, bool media_unread, bool silent, bool post, int32 id, int32 from_id, TLBaseObject*  to_id, int32 reply_to_msg_id, FDateTime date, TLBaseObject*  action)
 {
 	this->_ConstructorID = -1642487306;
 	this->out = out;
@@ -89,12 +89,12 @@ void MessageService::OnSend(BinaryWriter& Writer)
 	Writer.WriteInt(Flags);
 
 	Writer.WriteInt(this->id);
-	if(!this->from_id)
+	if(this->from_id)
 	{
 	Writer.WriteInt(this->from_id);
 	}
 	this->to_id->OnSend(Writer);
-	if(!this->reply_to_msg_id)
+	if(this->reply_to_msg_id)
 	{
 	Writer.WriteInt(this->reply_to_msg_id);
 	}
@@ -132,17 +132,24 @@ void MessageService::OnResponce(BinaryReader& Reader)
 	{
 	from_id = Reader.ReadInt();
 	}
-	to_id = reinterpret_cast<PRIVATE::Peer* >(Reader.TGReadObject());
+	to_id = reinterpret_cast<TLBaseObject* >(Reader.TGReadObject());
 	if((Flags & (1 << 3)) != 0) 
 	{
 	reply_to_msg_id = Reader.ReadInt();
 	}
 	date = Reader.TGReadDate();
-	action = reinterpret_cast<PRIVATE::MessageAction* >(Reader.TGReadObject());
+	action = reinterpret_cast<TLBaseObject* >(Reader.TGReadObject());
 	this->_Responded = true;
 }
 MessageService::~MessageService()
 {
-
+	if(this->to_id)
+	{
+		delete this->to_id;
+	}
+	if(this->action)
+	{
+		delete this->action;
+	}
 }
 }//end namespace block

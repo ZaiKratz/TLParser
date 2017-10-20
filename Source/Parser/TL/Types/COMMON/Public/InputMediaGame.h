@@ -1,29 +1,26 @@
 #pragma once
 #include "Engine.h"
-#include "../../../Types/Private/InputMedia.h"
-
-#include "../../../Types/Private/InputGame.h"
-#include "../../../Types/Private/InputMedia.h"
+#include "../../../TLObjectBase.h"
 
 //begin namespace block
 namespace COMMON
 {
-class InputMediaGame : public PRIVATE::InputMedia
+class InputMediaGame : public TLBaseObject
 {
 public:
 	InputMediaGame();
-	InputMediaGame(PRIVATE::InputGame* id);
+	InputMediaGame(TLBaseObject* id);
 
 	~InputMediaGame();
 	virtual void OnSend(BinaryWriter& Writer) override;
 	virtual void OnResponce(BinaryReader& Reader) override;
 
-	PRIVATE::InputGame*  Getid() const
+	TLBaseObject*  Getid() const
 	{
 		 return this->id;
 	}
 
 private:
-	PRIVATE::InputGame* id;
+	TLBaseObject* id;
 };
 } //end namespace block

@@ -29,6 +29,5 @@ void LangPackStringDeleted::OnResponce(BinaryReader& Reader)
 }
 LangPackStringDeleted::~LangPackStringDeleted()
 {
-
 }
 }//end namespace block

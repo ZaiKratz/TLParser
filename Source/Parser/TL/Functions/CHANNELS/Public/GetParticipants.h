@@ -3,7 +3,6 @@
 #include "../../../TLObjectBase.h"
 
 #include "../../../Types/Common/Public/InputChannel.h"
-#include "../../../Types/Private/ChannelParticipantsFilter.h"
 #include "../../../Types/Channels/Public/ChannelParticipants.h"
 
 //begin namespace block
@@ -13,7 +12,7 @@ class GetParticipants : public TLBaseObject
 {
 public:
 	GetParticipants();
-	GetParticipants(COMMON::InputChannel* channel, PRIVATE::ChannelParticipantsFilter* filter, int32 offset, int32 limit);
+	GetParticipants(COMMON::InputChannel* channel, TLBaseObject* filter, int32 offset, int32 limit);
 
 	~GetParticipants();
 	virtual void OnSend(BinaryWriter& Writer) override;
@@ -24,7 +23,7 @@ public:
 		 return this->channel;
 	}
 
-	PRIVATE::ChannelParticipantsFilter*  Getfilter() const
+	TLBaseObject*  Getfilter() const
 	{
 		 return this->filter;
 	}
@@ -46,7 +45,7 @@ public:
 
 private:
 	COMMON::InputChannel* channel;
-	 PRIVATE::ChannelParticipantsFilter* filter;
+	 TLBaseObject* filter;
 	 int32 offset;
 	 int32 limit;
 	CHANNELS::ChannelParticipants* result;

@@ -38,6 +38,5 @@ void InputEncryptedFileUploaded::OnResponce(BinaryReader& Reader)
 }
 InputEncryptedFileUploaded::~InputEncryptedFileUploaded()
 {
-
 }
 }//end namespace block

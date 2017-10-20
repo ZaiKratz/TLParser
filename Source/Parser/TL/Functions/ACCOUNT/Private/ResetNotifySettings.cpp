@@ -23,6 +23,5 @@ void ResetNotifySettings::OnResponce(BinaryReader& Reader)
 }
 ResetNotifySettings::~ResetNotifySettings()
 {
-
 }
 }//end namespace block

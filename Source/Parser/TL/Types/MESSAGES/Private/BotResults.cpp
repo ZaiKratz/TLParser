@@ -53,7 +53,7 @@ void BotResults::OnSend(BinaryWriter& Writer)
 
 	Writer.WriteLong(this->query_id);
 	Writer.TGWriteString(this->next_offset);
-	if(!this->switch_pm)
+	if(this->switch_pm)
 	{
 	this->switch_pm->OnSend(Writer);
 	}
@@ -87,8 +87,8 @@ void BotResults::OnResponce(BinaryReader& Reader)
 	Reader.ReadInt();
 
 	//Len concatenated with rand number to get rid of confusions with redefinition
-	int32 Len12922 = Reader.ReadInt();
-	for(int32 i = 0; i < Len12922; i++)
+	int32 Len202 = Reader.ReadInt();
+	for(int32 i = 0; i < Len202; i++)
 	{
 	auto X = reinterpret_cast<COMMON::BotInlineResult*>(Reader.TGReadObject());
 	results.Add(X);
@@ -98,6 +98,9 @@ void BotResults::OnResponce(BinaryReader& Reader)
 }
 BotResults::~BotResults()
 {
-
+	if(this->switch_pm)
+	{
+		delete this->switch_pm;
+	}
 }
 }//end namespace block

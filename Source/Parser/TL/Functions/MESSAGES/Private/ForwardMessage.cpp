@@ -11,7 +11,7 @@ ForwardMessage::ForwardMessage()
 	this->_ContentRelated = true;
 }
 
-ForwardMessage::ForwardMessage(PRIVATE::InputPeer*  peer, int32 id, unsigned long long random_id)
+ForwardMessage::ForwardMessage(TLBaseObject*  peer, int32 id, unsigned long long random_id)
 {
 	this->_ConstructorID = 865483769;
 	this->_ContentRelated = true;
@@ -35,6 +35,13 @@ void ForwardMessage::OnResponce(BinaryReader& Reader)
 }
 ForwardMessage::~ForwardMessage()
 {
-
+	if(this->peer)
+	{
+		delete this->peer;
+	}
+	if(this->result)
+	{
+		delete this->result;
+	}
 }
 }//end namespace block

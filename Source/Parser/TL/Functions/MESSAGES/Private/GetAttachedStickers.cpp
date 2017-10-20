@@ -11,7 +11,7 @@ GetAttachedStickers::GetAttachedStickers()
 	this->_ContentRelated = true;
 }
 
-GetAttachedStickers::GetAttachedStickers(PRIVATE::InputStickeredMedia*  media)
+GetAttachedStickers::GetAttachedStickers(TLBaseObject*  media)
 {
 	this->_ConstructorID = -866424884;
 	this->_ContentRelated = true;
@@ -30,6 +30,9 @@ void GetAttachedStickers::OnResponce(BinaryReader& Reader)
 }
 GetAttachedStickers::~GetAttachedStickers()
 {
-
+	if(this->media)
+	{
+		delete this->media;
+	}
 }
 }//end namespace block

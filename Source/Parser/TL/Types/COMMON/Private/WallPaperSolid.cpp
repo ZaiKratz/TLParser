@@ -38,6 +38,5 @@ void WallPaperSolid::OnResponce(BinaryReader& Reader)
 }
 WallPaperSolid::~WallPaperSolid()
 {
-
 }
 }//end namespace block

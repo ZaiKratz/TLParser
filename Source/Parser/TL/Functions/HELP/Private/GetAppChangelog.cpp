@@ -31,6 +31,9 @@ void GetAppChangelog::OnResponce(BinaryReader& Reader)
 }
 GetAppChangelog::~GetAppChangelog()
 {
-
+	if(this->result)
+	{
+		delete this->result;
+	}
 }
 }//end namespace block

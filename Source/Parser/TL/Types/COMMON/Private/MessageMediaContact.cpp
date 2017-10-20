@@ -38,6 +38,5 @@ void MessageMediaContact::OnResponce(BinaryReader& Reader)
 }
 MessageMediaContact::~MessageMediaContact()
 {
-
 }
 }//end namespace block

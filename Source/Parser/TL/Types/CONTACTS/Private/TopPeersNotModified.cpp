@@ -24,6 +24,5 @@ void TopPeersNotModified::OnResponce(BinaryReader& Reader)
 }
 TopPeersNotModified::~TopPeersNotModified()
 {
-
 }
 }//end namespace block

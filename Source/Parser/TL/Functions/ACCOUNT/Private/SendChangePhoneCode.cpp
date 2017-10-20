@@ -43,7 +43,7 @@ void SendChangePhoneCode::OnSend(BinaryWriter& Writer)
 	Writer.WriteInt(Flags);
 
 	Writer.TGWriteString(this->phone_number);
-	if(!this->current_number)
+	if(this->current_number)
 	{
 	Writer.WriteBool(this->current_number);
 	}
@@ -57,6 +57,9 @@ void SendChangePhoneCode::OnResponce(BinaryReader& Reader)
 }
 SendChangePhoneCode::~SendChangePhoneCode()
 {
-
+	if(this->result)
+	{
+		delete this->result;
+	}
 }
 }//end namespace block

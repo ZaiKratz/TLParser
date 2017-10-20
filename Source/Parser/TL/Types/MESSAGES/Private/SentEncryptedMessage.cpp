@@ -29,6 +29,5 @@ void SentEncryptedMessage::OnResponce(BinaryReader& Reader)
 }
 SentEncryptedMessage::~SentEncryptedMessage()
 {
-
 }
 }//end namespace block

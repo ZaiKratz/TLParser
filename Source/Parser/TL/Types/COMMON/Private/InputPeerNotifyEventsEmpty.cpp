@@ -24,6 +24,5 @@ void InputPeerNotifyEventsEmpty::OnResponce(BinaryReader& Reader)
 }
 InputPeerNotifyEventsEmpty::~InputPeerNotifyEventsEmpty()
 {
-
 }
 }//end namespace block

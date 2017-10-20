@@ -29,6 +29,5 @@ void DifferenceTooLong::OnResponce(BinaryReader& Reader)
 }
 DifferenceTooLong::~DifferenceTooLong()
 {
-
 }
 }//end namespace block

@@ -32,6 +32,5 @@ void CdnPublicKey::OnResponce(BinaryReader& Reader)
 }
 CdnPublicKey::~CdnPublicKey()
 {
-
 }
 }//end namespace block

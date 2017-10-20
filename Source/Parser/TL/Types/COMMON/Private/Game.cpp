@@ -42,7 +42,7 @@ void Game::OnSend(BinaryWriter& Writer)
 	Writer.TGWriteString(this->title);
 	Writer.TGWriteString(this->description);
 	this->photo->OnSend(Writer);
-	if(!this->document)
+	if(this->document)
 	{
 	this->document->OnSend(Writer);
 	}
@@ -67,6 +67,13 @@ void Game::OnResponce(BinaryReader& Reader)
 }
 Game::~Game()
 {
-
+	if(this->photo)
+	{
+		delete this->photo;
+	}
+	if(this->document)
+	{
+		delete this->document;
+	}
 }
 }//end namespace block

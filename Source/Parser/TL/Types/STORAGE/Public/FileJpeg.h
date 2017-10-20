@@ -1,12 +1,11 @@
 #pragma once
 #include "Engine.h"
-
-#include "../../../Types/Private/FileType.h"
+#include "../../../TLObjectBase.h"
 
 //begin namespace block
 namespace STORAGE
 {
-class FileJpeg : public PRIVATE::FileType
+class FileJpeg : public TLBaseObject
 {
 public:
 	FileJpeg();

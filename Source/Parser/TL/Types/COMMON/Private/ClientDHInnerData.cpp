@@ -38,6 +38,5 @@ void ClientDHInnerData::OnResponce(BinaryReader& Reader)
 }
 ClientDHInnerData::~ClientDHInnerData()
 {
-
 }
 }//end namespace block

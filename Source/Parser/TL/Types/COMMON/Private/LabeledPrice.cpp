@@ -32,6 +32,5 @@ void LabeledPrice::OnResponce(BinaryReader& Reader)
 }
 LabeledPrice::~LabeledPrice()
 {
-
 }
 }//end namespace block

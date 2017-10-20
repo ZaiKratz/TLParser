@@ -33,6 +33,17 @@ void EditPhoto::OnResponce(BinaryReader& Reader)
 }
 EditPhoto::~EditPhoto()
 {
-
+	if(this->channel)
+	{
+		delete this->channel;
+	}
+	if(this->photo)
+	{
+		delete this->photo;
+	}
+	if(this->result)
+	{
+		delete this->result;
+	}
 }
 }//end namespace block

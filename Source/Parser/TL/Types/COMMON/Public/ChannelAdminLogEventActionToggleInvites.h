@@ -1,13 +1,11 @@
 #pragma once
 #include "Engine.h"
-#include "../../../Types/Private/ChannelAdminLogEventAction.h"
-
-#include "../../../Types/Private/ChannelAdminLogEventAction.h"
+#include "../../../TLObjectBase.h"
 
 //begin namespace block
 namespace COMMON
 {
-class ChannelAdminLogEventActionToggleInvites : public PRIVATE::ChannelAdminLogEventAction
+class ChannelAdminLogEventActionToggleInvites : public TLBaseObject
 {
 public:
 	ChannelAdminLogEventActionToggleInvites();

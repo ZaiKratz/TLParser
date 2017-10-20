@@ -44,6 +44,9 @@ void GetRecentStickers::OnResponce(BinaryReader& Reader)
 }
 GetRecentStickers::~GetRecentStickers()
 {
-
+	if(this->result)
+	{
+		delete this->result;
+	}
 }
 }//end namespace block

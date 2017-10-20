@@ -35,6 +35,13 @@ void GetWebFile::OnResponce(BinaryReader& Reader)
 }
 GetWebFile::~GetWebFile()
 {
-
+	if(this->location)
+	{
+		delete this->location;
+	}
+	if(this->result)
+	{
+		delete this->result;
+	}
 }
 }//end namespace block

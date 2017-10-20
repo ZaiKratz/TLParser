@@ -1,13 +1,11 @@
 #pragma once
 #include "Engine.h"
-#include "../../../Types/Private/InputStickerSet.h"
-
-#include "../../../Types/Private/InputStickerSet.h"
+#include "../../../TLObjectBase.h"
 
 //begin namespace block
 namespace COMMON
 {
-class InputStickerSetShortName : public PRIVATE::InputStickerSet
+class InputStickerSetShortName : public TLBaseObject
 {
 public:
 	InputStickerSetShortName();

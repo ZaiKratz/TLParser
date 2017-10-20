@@ -11,7 +11,7 @@ GetMessageEditData::GetMessageEditData()
 	this->_ContentRelated = true;
 }
 
-GetMessageEditData::GetMessageEditData(PRIVATE::InputPeer*  peer, int32 id)
+GetMessageEditData::GetMessageEditData(TLBaseObject*  peer, int32 id)
 {
 	this->_ConstructorID = -39416522;
 	this->_ContentRelated = true;
@@ -33,6 +33,13 @@ void GetMessageEditData::OnResponce(BinaryReader& Reader)
 }
 GetMessageEditData::~GetMessageEditData()
 {
-
+	if(this->peer)
+	{
+		delete this->peer;
+	}
+	if(this->result)
+	{
+		delete this->result;
+	}
 }
 }//end namespace block

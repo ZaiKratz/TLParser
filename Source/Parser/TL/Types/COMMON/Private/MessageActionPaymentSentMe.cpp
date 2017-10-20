@@ -46,7 +46,7 @@ void MessageActionPaymentSentMe::OnSend(BinaryWriter& Writer)
 	Writer.TGWriteString(this->currency);
 	Writer.WriteLong(this->total_amount);
 	Writer.TGWriteBytes((unsigned char*)this->payload.GetData(), this->payload.Num());
-	if(!this->info)
+	if(this->info)
 	{
 	this->info->OnSend(Writer);
 	}
@@ -75,6 +75,13 @@ void MessageActionPaymentSentMe::OnResponce(BinaryReader& Reader)
 }
 MessageActionPaymentSentMe::~MessageActionPaymentSentMe()
 {
-
+	if(this->info)
+	{
+		delete this->info;
+	}
+	if(this->charge)
+	{
+		delete this->charge;
+	}
 }
 }//end namespace block

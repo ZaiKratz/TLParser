@@ -34,7 +34,7 @@ void InputStickerSetItem::OnSend(BinaryWriter& Writer)
 
 	this->document->OnSend(Writer);
 	Writer.TGWriteString(this->emoji);
-	if(!this->mask_coords)
+	if(this->mask_coords)
 	{
 	this->mask_coords->OnSend(Writer);
 	}
@@ -55,6 +55,13 @@ void InputStickerSetItem::OnResponce(BinaryReader& Reader)
 }
 InputStickerSetItem::~InputStickerSetItem()
 {
-
+	if(this->document)
+	{
+		delete this->document;
+	}
+	if(this->mask_coords)
+	{
+		delete this->mask_coords;
+	}
 }
 }//end namespace block

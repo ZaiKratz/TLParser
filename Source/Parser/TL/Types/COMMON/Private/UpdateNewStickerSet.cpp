@@ -29,6 +29,9 @@ void UpdateNewStickerSet::OnResponce(BinaryReader& Reader)
 }
 UpdateNewStickerSet::~UpdateNewStickerSet()
 {
-
+	if(this->stickerset)
+	{
+		delete this->stickerset;
+	}
 }
 }//end namespace block

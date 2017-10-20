@@ -24,6 +24,5 @@ void UpdateReadFeaturedStickers::OnResponce(BinaryReader& Reader)
 }
 UpdateReadFeaturedStickers::~UpdateReadFeaturedStickers()
 {
-
 }
 }//end namespace block

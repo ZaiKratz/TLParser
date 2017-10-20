@@ -24,6 +24,5 @@ void TopPeerCategoryPhoneCalls::OnResponce(BinaryReader& Reader)
 }
 TopPeerCategoryPhoneCalls::~TopPeerCategoryPhoneCalls()
 {
-
 }
 }//end namespace block

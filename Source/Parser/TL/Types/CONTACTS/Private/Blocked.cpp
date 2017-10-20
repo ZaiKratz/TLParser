@@ -39,8 +39,8 @@ void Blocked::OnResponce(BinaryReader& Reader)
 	Reader.ReadInt();
 
 	//Len concatenated with rand number to get rid of confusions with redefinition
-	int32 Len21038 = Reader.ReadInt();
-	for(int32 i = 0; i < Len21038; i++)
+	int32 Len4699 = Reader.ReadInt();
+	for(int32 i = 0; i < Len4699; i++)
 	{
 	auto X = reinterpret_cast<COMMON::ContactBlocked*>(Reader.TGReadObject());
 	blocked.Add(X);
@@ -48,8 +48,8 @@ void Blocked::OnResponce(BinaryReader& Reader)
 	Reader.ReadInt();
 
 	//Len concatenated with rand number to get rid of confusions with redefinition
-	int32 Len27718 = Reader.ReadInt();
-	for(int32 i = 0; i < Len27718; i++)
+	int32 Len15645 = Reader.ReadInt();
+	for(int32 i = 0; i < Len15645; i++)
 	{
 	auto X = reinterpret_cast<COMMON::User*>(Reader.TGReadObject());
 	users.Add(X);
@@ -58,6 +58,5 @@ void Blocked::OnResponce(BinaryReader& Reader)
 }
 Blocked::~Blocked()
 {
-
 }
 }//end namespace block

@@ -11,7 +11,7 @@ UninstallStickerSet::UninstallStickerSet()
 	this->_ContentRelated = true;
 }
 
-UninstallStickerSet::UninstallStickerSet(PRIVATE::InputStickerSet*  stickerset)
+UninstallStickerSet::UninstallStickerSet(TLBaseObject*  stickerset)
 {
 	this->_ConstructorID = -110209570;
 	this->_ContentRelated = true;
@@ -31,6 +31,9 @@ void UninstallStickerSet::OnResponce(BinaryReader& Reader)
 }
 UninstallStickerSet::~UninstallStickerSet()
 {
-
+	if(this->stickerset)
+	{
+		delete this->stickerset;
+	}
 }
 }//end namespace block

@@ -10,7 +10,7 @@ User::User()
 	this->_ConstructorID = 773059779;
 }
 
-User::User(bool self, bool contact, bool mutual_contact, bool deleted, bool bot, bool bot_chat_history, bool bot_nochats, bool verified, bool restricted, bool min, bool bot_inline_geo, int32 id, unsigned long long access_hash, FString first_name, FString last_name, FString username, FString phone, COMMON::UserProfilePhoto*  photo, PRIVATE::UserStatus*  status, int32 bot_info_version, FString restriction_reason, FString bot_inline_placeholder, FString lang_code)
+User::User(bool self, bool contact, bool mutual_contact, bool deleted, bool bot, bool bot_chat_history, bool bot_nochats, bool verified, bool restricted, bool min, bool bot_inline_geo, int32 id, unsigned long long access_hash, FString first_name, FString last_name, FString username, FString phone, COMMON::UserProfilePhoto*  photo, TLBaseObject*  status, int32 bot_info_version, FString restriction_reason, FString bot_inline_placeholder, FString lang_code)
 {
 	this->_ConstructorID = 773059779;
 	this->self = self;
@@ -221,7 +221,7 @@ void User::OnSend(BinaryWriter& Writer)
 	Writer.WriteInt(Flags);
 
 	Writer.WriteInt(this->id);
-	if(!this->access_hash)
+	if(this->access_hash)
 	{
 	Writer.WriteLong(this->access_hash);
 	}
@@ -229,15 +229,15 @@ void User::OnSend(BinaryWriter& Writer)
 	Writer.TGWriteString(this->last_name);
 	Writer.TGWriteString(this->username);
 	Writer.TGWriteString(this->phone);
-	if(!this->photo)
+	if(this->photo)
 	{
 	this->photo->OnSend(Writer);
 	}
-	if(!this->status)
+	if(this->status)
 	{
 	this->status->OnSend(Writer);
 	}
-	if(!this->bot_info_version)
+	if(this->bot_info_version)
 	{
 	Writer.WriteInt(this->bot_info_version);
 	}
@@ -322,7 +322,7 @@ void User::OnResponce(BinaryReader& Reader)
 	}
 	if((Flags & (1 << 6)) != 0) 
 	{
-	status = reinterpret_cast<PRIVATE::UserStatus* >(Reader.TGReadObject());
+	status = reinterpret_cast<TLBaseObject* >(Reader.TGReadObject());
 	}
 	if((Flags & (1 << 14)) != 0) 
 	{
@@ -344,6 +344,13 @@ void User::OnResponce(BinaryReader& Reader)
 }
 User::~User()
 {
-
+	if(this->photo)
+	{
+		delete this->photo;
+	}
+	if(this->status)
+	{
+		delete this->status;
+	}
 }
 }//end namespace block

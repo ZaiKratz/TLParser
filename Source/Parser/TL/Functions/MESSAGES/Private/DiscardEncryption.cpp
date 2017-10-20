@@ -31,6 +31,5 @@ void DiscardEncryption::OnResponce(BinaryReader& Reader)
 }
 DiscardEncryption::~DiscardEncryption()
 {
-
 }
 }//end namespace block

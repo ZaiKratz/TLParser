@@ -1,14 +1,13 @@
 #pragma once
 #include "Engine.h"
-#include "../../../Types/Private/MessageEntity.h"
+#include "../../../TLObjectBase.h"
 
 #include "../../../Types/Common/Public/InputUser.h"
-#include "../../../Types/Private/MessageEntity.h"
 
 //begin namespace block
 namespace COMMON
 {
-class InputMessageEntityMentionName : public PRIVATE::MessageEntity
+class InputMessageEntityMentionName : public TLBaseObject
 {
 public:
 	InputMessageEntityMentionName();

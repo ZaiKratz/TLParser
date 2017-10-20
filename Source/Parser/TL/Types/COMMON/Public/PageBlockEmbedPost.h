@@ -1,19 +1,15 @@
 #pragma once
 #include "Engine.h"
-#include "../../../Types/Private/PageBlock.h"
-
-#include "../../../Types/Private/PageBlock.h"
-#include "../../../Types/Private/RichText.h"
-#include "../../../Types/Private/PageBlock.h"
+#include "../../../TLObjectBase.h"
 
 //begin namespace block
 namespace COMMON
 {
-class PageBlockEmbedPost : public PRIVATE::PageBlock
+class PageBlockEmbedPost : public TLBaseObject
 {
 public:
 	PageBlockEmbedPost();
-	PageBlockEmbedPost(FString url, unsigned long long webpage_id, unsigned long long author_photo_id, FString author, FDateTime date, TArray<PRIVATE::PageBlock*> blocks, PRIVATE::RichText* caption);
+	PageBlockEmbedPost(FString url, unsigned long long webpage_id, unsigned long long author_photo_id, FString author, FDateTime date, TArray<TLBaseObject*> blocks, TLBaseObject* caption);
 
 	~PageBlockEmbedPost();
 	virtual void OnSend(BinaryWriter& Writer) override;
@@ -44,12 +40,12 @@ public:
 		 return this->date;
 	}
 
-	TArray<PRIVATE::PageBlock*>  Getblocks() const
+	TArray<TLBaseObject*>  Getblocks() const
 	{
 		 return this->blocks;
 	}
 
-	PRIVATE::RichText*  Getcaption() const
+	TLBaseObject*  Getcaption() const
 	{
 		 return this->caption;
 	}
@@ -60,7 +56,7 @@ private:
 	 unsigned long long author_photo_id;
 	 FString author;
 	 FDateTime date;
-	 TArray<PRIVATE::PageBlock*> blocks;
-	 PRIVATE::RichText* caption;
+	 TArray<TLBaseObject*> blocks;
+	 TLBaseObject* caption;
 };
 } //end namespace block

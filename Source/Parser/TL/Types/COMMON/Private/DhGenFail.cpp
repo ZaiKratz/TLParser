@@ -35,6 +35,5 @@ void DhGenFail::OnResponce(BinaryReader& Reader)
 }
 DhGenFail::~DhGenFail()
 {
-
 }
 }//end namespace block

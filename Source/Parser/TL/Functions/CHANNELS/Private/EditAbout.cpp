@@ -33,6 +33,9 @@ void EditAbout::OnResponce(BinaryReader& Reader)
 }
 EditAbout::~EditAbout()
 {
-
+	if(this->channel)
+	{
+		delete this->channel;
+	}
 }
 }//end namespace block

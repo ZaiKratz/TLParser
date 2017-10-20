@@ -32,6 +32,5 @@ void MessageActionChannelMigrateFrom::OnResponce(BinaryReader& Reader)
 }
 MessageActionChannelMigrateFrom::~MessageActionChannelMigrateFrom()
 {
-
 }
 }//end namespace block

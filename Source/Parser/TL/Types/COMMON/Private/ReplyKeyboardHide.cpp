@@ -45,6 +45,5 @@ void ReplyKeyboardHide::OnResponce(BinaryReader& Reader)
 }
 ReplyKeyboardHide::~ReplyKeyboardHide()
 {
-
 }
 }//end namespace block

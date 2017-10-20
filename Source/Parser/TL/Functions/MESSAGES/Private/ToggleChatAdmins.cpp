@@ -33,6 +33,9 @@ void ToggleChatAdmins::OnResponce(BinaryReader& Reader)
 }
 ToggleChatAdmins::~ToggleChatAdmins()
 {
-
+	if(this->result)
+	{
+		delete this->result;
+	}
 }
 }//end namespace block

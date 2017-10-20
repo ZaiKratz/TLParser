@@ -41,8 +41,8 @@ void Contacts::OnResponce(BinaryReader& Reader)
 	Reader.ReadInt();
 
 	//Len concatenated with rand number to get rid of confusions with redefinition
-	int32 Len15465 = Reader.ReadInt();
-	for(int32 i = 0; i < Len15465; i++)
+	int32 Len3731 = Reader.ReadInt();
+	for(int32 i = 0; i < Len3731; i++)
 	{
 	auto X = reinterpret_cast<COMMON::Contact*>(Reader.TGReadObject());
 	contacts.Add(X);
@@ -51,8 +51,8 @@ void Contacts::OnResponce(BinaryReader& Reader)
 	Reader.ReadInt();
 
 	//Len concatenated with rand number to get rid of confusions with redefinition
-	int32 Len3712 = Reader.ReadInt();
-	for(int32 i = 0; i < Len3712; i++)
+	int32 Len24623 = Reader.ReadInt();
+	for(int32 i = 0; i < Len24623; i++)
 	{
 	auto X = reinterpret_cast<COMMON::User*>(Reader.TGReadObject());
 	users.Add(X);
@@ -61,6 +61,5 @@ void Contacts::OnResponce(BinaryReader& Reader)
 }
 Contacts::~Contacts()
 {
-
 }
 }//end namespace block

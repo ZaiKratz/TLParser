@@ -1,13 +1,11 @@
 #pragma once
 #include "Engine.h"
-#include "../../../Types/Private/MessagesFilter.h"
-
-#include "../../../Types/Private/MessagesFilter.h"
+#include "../../../TLObjectBase.h"
 
 //begin namespace block
 namespace COMMON
 {
-class InputMessagesFilterPhotos : public PRIVATE::MessagesFilter
+class InputMessagesFilterPhotos : public TLBaseObject
 {
 public:
 	InputMessagesFilterPhotos();

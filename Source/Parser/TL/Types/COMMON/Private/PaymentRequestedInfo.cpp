@@ -60,7 +60,7 @@ void PaymentRequestedInfo::OnSend(BinaryWriter& Writer)
 	Writer.TGWriteString(this->name);
 	Writer.TGWriteString(this->phone);
 	Writer.TGWriteString(this->email);
-	if(!this->shipping_address)
+	if(this->shipping_address)
 	{
 	this->shipping_address->OnSend(Writer);
 	}
@@ -91,6 +91,9 @@ void PaymentRequestedInfo::OnResponce(BinaryReader& Reader)
 }
 PaymentRequestedInfo::~PaymentRequestedInfo()
 {
-
+	if(this->shipping_address)
+	{
+		delete this->shipping_address;
+	}
 }
 }//end namespace block

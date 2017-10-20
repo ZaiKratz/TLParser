@@ -24,6 +24,5 @@ void PhoneCallDiscardReasonMissed::OnResponce(BinaryReader& Reader)
 }
 PhoneCallDiscardReasonMissed::~PhoneCallDiscardReasonMissed()
 {
-
 }
 }//end namespace block

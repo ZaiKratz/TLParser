@@ -24,6 +24,5 @@ void MessageActionScreenshotTaken::OnResponce(BinaryReader& Reader)
 }
 MessageActionScreenshotTaken::~MessageActionScreenshotTaken()
 {
-
 }
 }//end namespace block

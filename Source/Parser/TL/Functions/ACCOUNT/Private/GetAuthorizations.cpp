@@ -23,6 +23,9 @@ void GetAuthorizations::OnResponce(BinaryReader& Reader)
 }
 GetAuthorizations::~GetAuthorizations()
 {
-
+	if(this->result)
+	{
+		delete this->result;
+	}
 }
 }//end namespace block

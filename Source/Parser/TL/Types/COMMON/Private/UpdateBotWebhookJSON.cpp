@@ -29,6 +29,9 @@ void UpdateBotWebhookJSON::OnResponce(BinaryReader& Reader)
 }
 UpdateBotWebhookJSON::~UpdateBotWebhookJSON()
 {
-
+	if(this->data)
+	{
+		delete this->data;
+	}
 }
 }//end namespace block

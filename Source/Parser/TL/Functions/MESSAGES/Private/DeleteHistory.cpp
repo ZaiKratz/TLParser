@@ -11,7 +11,7 @@ DeleteHistory::DeleteHistory()
 	this->_ContentRelated = true;
 }
 
-DeleteHistory::DeleteHistory(bool just_clear, PRIVATE::InputPeer*  peer, int32 max_id)
+DeleteHistory::DeleteHistory(bool just_clear, TLBaseObject*  peer, int32 max_id)
 {
 	this->_ConstructorID = 469850889;
 	this->_ContentRelated = true;
@@ -46,6 +46,13 @@ void DeleteHistory::OnResponce(BinaryReader& Reader)
 }
 DeleteHistory::~DeleteHistory()
 {
-
+	if(this->peer)
+	{
+		delete this->peer;
+	}
+	if(this->result)
+	{
+		delete this->result;
+	}
 }
 }//end namespace block

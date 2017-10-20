@@ -41,6 +41,9 @@ void MessageMediaVenue::OnResponce(BinaryReader& Reader)
 }
 MessageMediaVenue::~MessageMediaVenue()
 {
-
+	if(this->geo)
+	{
+		delete this->geo;
+	}
 }
 }//end namespace block

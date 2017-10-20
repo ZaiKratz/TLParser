@@ -11,7 +11,7 @@ SetStickers::SetStickers()
 	this->_ContentRelated = true;
 }
 
-SetStickers::SetStickers(COMMON::InputChannel*  channel, PRIVATE::InputStickerSet*  stickerset)
+SetStickers::SetStickers(COMMON::InputChannel*  channel, TLBaseObject*  stickerset)
 {
 	this->_ConstructorID = -359881479;
 	this->_ContentRelated = true;
@@ -33,6 +33,13 @@ void SetStickers::OnResponce(BinaryReader& Reader)
 }
 SetStickers::~SetStickers()
 {
-
+	if(this->channel)
+	{
+		delete this->channel;
+	}
+	if(this->stickerset)
+	{
+		delete this->stickerset;
+	}
 }
 }//end namespace block

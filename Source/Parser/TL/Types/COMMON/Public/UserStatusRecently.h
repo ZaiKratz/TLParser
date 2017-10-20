@@ -1,13 +1,11 @@
 #pragma once
 #include "Engine.h"
-#include "../../../Types/Private/UserStatus.h"
-
-#include "../../../Types/Private/UserStatus.h"
+#include "../../../TLObjectBase.h"
 
 //begin namespace block
 namespace COMMON
 {
-class UserStatusRecently : public PRIVATE::UserStatus
+class UserStatusRecently : public TLBaseObject
 {
 public:
 	UserStatusRecently();

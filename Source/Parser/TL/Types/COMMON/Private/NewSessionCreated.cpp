@@ -35,6 +35,5 @@ void NewSessionCreated::OnResponce(BinaryReader& Reader)
 }
 NewSessionCreated::~NewSessionCreated()
 {
-
 }
 }//end namespace block

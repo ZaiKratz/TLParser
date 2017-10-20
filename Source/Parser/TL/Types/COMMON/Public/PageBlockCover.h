@@ -1,29 +1,26 @@
 #pragma once
 #include "Engine.h"
-#include "../../../Types/Private/PageBlock.h"
-
-#include "../../../Types/Private/PageBlock.h"
-#include "../../../Types/Private/PageBlock.h"
+#include "../../../TLObjectBase.h"
 
 //begin namespace block
 namespace COMMON
 {
-class PageBlockCover : public PRIVATE::PageBlock
+class PageBlockCover : public TLBaseObject
 {
 public:
 	PageBlockCover();
-	PageBlockCover(PRIVATE::PageBlock* cover);
+	PageBlockCover(TLBaseObject* cover);
 
 	~PageBlockCover();
 	virtual void OnSend(BinaryWriter& Writer) override;
 	virtual void OnResponce(BinaryReader& Reader) override;
 
-	PRIVATE::PageBlock*  Getcover() const
+	TLBaseObject*  Getcover() const
 	{
 		 return this->cover;
 	}
 
 private:
-	PRIVATE::PageBlock* cover;
+	TLBaseObject* cover;
 };
 } //end namespace block

@@ -32,6 +32,5 @@ void KeyboardButtonCallback::OnResponce(BinaryReader& Reader)
 }
 KeyboardButtonCallback::~KeyboardButtonCallback()
 {
-
 }
 }//end namespace block

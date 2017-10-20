@@ -32,6 +32,5 @@ void MessageEntityCode::OnResponce(BinaryReader& Reader)
 }
 MessageEntityCode::~MessageEntityCode()
 {
-
 }
 }//end namespace block

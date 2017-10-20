@@ -26,11 +26,14 @@ void GetWebPagePreview::OnSend(BinaryWriter& Writer)
 
 void GetWebPagePreview::OnResponce(BinaryReader& Reader)
 {
-	this->result = reinterpret_cast<PRIVATE::MessageMedia*>(Reader.TGReadObject());
+	this->result = reinterpret_cast<TLBaseObject*>(Reader.TGReadObject());
 	this->_Responded = true;
 }
 GetWebPagePreview::~GetWebPagePreview()
 {
-
+	if(this->result)
+	{
+		delete this->result;
+	}
 }
 }//end namespace block

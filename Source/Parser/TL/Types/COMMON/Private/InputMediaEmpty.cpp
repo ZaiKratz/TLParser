@@ -24,6 +24,5 @@ void InputMediaEmpty::OnResponce(BinaryReader& Reader)
 }
 InputMediaEmpty::~InputMediaEmpty()
 {
-
 }
 }//end namespace block

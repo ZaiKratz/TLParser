@@ -1,13 +1,11 @@
 #pragma once
 #include "Engine.h"
-#include "../../../Types/Private/InputPrivacyKey.h"
-
-#include "../../../Types/Private/InputPrivacyKey.h"
+#include "../../../TLObjectBase.h"
 
 //begin namespace block
 namespace COMMON
 {
-class InputPrivacyKeyPhoneCall : public PRIVATE::InputPrivacyKey
+class InputPrivacyKeyPhoneCall : public TLBaseObject
 {
 public:
 	InputPrivacyKeyPhoneCall();

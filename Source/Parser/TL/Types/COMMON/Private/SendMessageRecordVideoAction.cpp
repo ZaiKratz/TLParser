@@ -24,6 +24,5 @@ void SendMessageRecordVideoAction::OnResponce(BinaryReader& Reader)
 }
 SendMessageRecordVideoAction::~SendMessageRecordVideoAction()
 {
-
 }
 }//end namespace block

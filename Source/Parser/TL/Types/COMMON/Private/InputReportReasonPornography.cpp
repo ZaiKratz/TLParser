@@ -24,6 +24,5 @@ void InputReportReasonPornography::OnResponce(BinaryReader& Reader)
 }
 InputReportReasonPornography::~InputReportReasonPornography()
 {
-
 }
 }//end namespace block

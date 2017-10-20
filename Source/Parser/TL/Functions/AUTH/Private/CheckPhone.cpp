@@ -31,6 +31,9 @@ void CheckPhone::OnResponce(BinaryReader& Reader)
 }
 CheckPhone::~CheckPhone()
 {
-
+	if(this->result)
+	{
+		delete this->result;
+	}
 }
 }//end namespace block

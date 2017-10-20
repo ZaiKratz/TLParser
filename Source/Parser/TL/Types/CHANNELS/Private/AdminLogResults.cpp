@@ -46,8 +46,8 @@ void AdminLogResults::OnResponce(BinaryReader& Reader)
 	Reader.ReadInt();
 
 	//Len concatenated with rand number to get rid of confusions with redefinition
-	int32 Len112 = Reader.ReadInt();
-	for(int32 i = 0; i < Len112; i++)
+	int32 Len11984 = Reader.ReadInt();
+	for(int32 i = 0; i < Len11984; i++)
 	{
 	auto X = reinterpret_cast<COMMON::ChannelAdminLogEvent*>(Reader.TGReadObject());
 	events.Add(X);
@@ -55,8 +55,8 @@ void AdminLogResults::OnResponce(BinaryReader& Reader)
 	Reader.ReadInt();
 
 	//Len concatenated with rand number to get rid of confusions with redefinition
-	int32 Len16754 = Reader.ReadInt();
-	for(int32 i = 0; i < Len16754; i++)
+	int32 Len6392 = Reader.ReadInt();
+	for(int32 i = 0; i < Len6392; i++)
 	{
 	auto X = reinterpret_cast<COMMON::Chat*>(Reader.TGReadObject());
 	chats.Add(X);
@@ -64,8 +64,8 @@ void AdminLogResults::OnResponce(BinaryReader& Reader)
 	Reader.ReadInt();
 
 	//Len concatenated with rand number to get rid of confusions with redefinition
-	int32 Len26716 = Reader.ReadInt();
-	for(int32 i = 0; i < Len26716; i++)
+	int32 Len10249 = Reader.ReadInt();
+	for(int32 i = 0; i < Len10249; i++)
 	{
 	auto X = reinterpret_cast<COMMON::User*>(Reader.TGReadObject());
 	users.Add(X);
@@ -74,6 +74,5 @@ void AdminLogResults::OnResponce(BinaryReader& Reader)
 }
 AdminLogResults::~AdminLogResults()
 {
-
 }
 }//end namespace block

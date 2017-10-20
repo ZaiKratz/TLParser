@@ -32,6 +32,5 @@ void NoPassword::OnResponce(BinaryReader& Reader)
 }
 NoPassword::~NoPassword()
 {
-
 }
 }//end namespace block

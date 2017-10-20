@@ -1,18 +1,15 @@
 #pragma once
 #include "Engine.h"
-#include "../../../Types/Private/Update.h"
-
-#include "../../../Types/Private/SendMessageAction.h"
-#include "../../../Types/Private/Update.h"
+#include "../../../TLObjectBase.h"
 
 //begin namespace block
 namespace COMMON
 {
-class UpdateChatUserTyping : public PRIVATE::Update
+class UpdateChatUserTyping : public TLBaseObject
 {
 public:
 	UpdateChatUserTyping();
-	UpdateChatUserTyping(int32 chat_id, int32 user_id, PRIVATE::SendMessageAction* action);
+	UpdateChatUserTyping(int32 chat_id, int32 user_id, TLBaseObject* action);
 
 	~UpdateChatUserTyping();
 	virtual void OnSend(BinaryWriter& Writer) override;
@@ -28,7 +25,7 @@ public:
 		 return this->user_id;
 	}
 
-	PRIVATE::SendMessageAction*  Getaction() const
+	TLBaseObject*  Getaction() const
 	{
 		 return this->action;
 	}
@@ -36,6 +33,6 @@ public:
 private:
 	int32 chat_id;
 	 int32 user_id;
-	 PRIVATE::SendMessageAction* action;
+	 TLBaseObject* action;
 };
 } //end namespace block

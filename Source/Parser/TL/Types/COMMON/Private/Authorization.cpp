@@ -65,6 +65,5 @@ void Authorization::OnResponce(BinaryReader& Reader)
 }
 Authorization::~Authorization()
 {
-
 }
 }//end namespace block

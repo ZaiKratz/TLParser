@@ -51,11 +51,11 @@ void PaymentReceipt::OnSend(BinaryWriter& Writer)
 	Writer.WriteInt(this->bot_id);
 	this->invoice->OnSend(Writer);
 	Writer.WriteInt(this->provider_id);
-	if(!this->info)
+	if(this->info)
 	{
 	this->info->OnSend(Writer);
 	}
-	if(!this->shipping)
+	if(this->shipping)
 	{
 	this->shipping->OnSend(Writer);
 	}
@@ -93,8 +93,8 @@ void PaymentReceipt::OnResponce(BinaryReader& Reader)
 	Reader.ReadInt();
 
 	//Len concatenated with rand number to get rid of confusions with redefinition
-	int32 Len17277 = Reader.ReadInt();
-	for(int32 i = 0; i < Len17277; i++)
+	int32 Len30833 = Reader.ReadInt();
+	for(int32 i = 0; i < Len30833; i++)
 	{
 	auto X = reinterpret_cast<COMMON::User*>(Reader.TGReadObject());
 	users.Add(X);
@@ -103,6 +103,17 @@ void PaymentReceipt::OnResponce(BinaryReader& Reader)
 }
 PaymentReceipt::~PaymentReceipt()
 {
-
+	if(this->invoice)
+	{
+		delete this->invoice;
+	}
+	if(this->info)
+	{
+		delete this->info;
+	}
+	if(this->shipping)
+	{
+		delete this->shipping;
+	}
 }
 }//end namespace block

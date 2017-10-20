@@ -29,6 +29,5 @@ void AccountDaysTTL::OnResponce(BinaryReader& Reader)
 }
 AccountDaysTTL::~AccountDaysTTL()
 {
-
 }
 }//end namespace block

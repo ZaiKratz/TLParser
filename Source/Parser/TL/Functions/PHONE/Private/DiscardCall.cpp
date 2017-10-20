@@ -11,7 +11,7 @@ DiscardCall::DiscardCall()
 	this->_ContentRelated = true;
 }
 
-DiscardCall::DiscardCall(COMMON::InputPhoneCall*  peer, int32 duration, PRIVATE::PhoneCallDiscardReason*  reason, unsigned long long connection_id)
+DiscardCall::DiscardCall(COMMON::InputPhoneCall*  peer, int32 duration, TLBaseObject*  reason, unsigned long long connection_id)
 {
 	this->_ConstructorID = 2027164582;
 	this->_ContentRelated = true;
@@ -37,6 +37,17 @@ void DiscardCall::OnResponce(BinaryReader& Reader)
 }
 DiscardCall::~DiscardCall()
 {
-
+	if(this->peer)
+	{
+		delete this->peer;
+	}
+	if(this->reason)
+	{
+		delete this->reason;
+	}
+	if(this->result)
+	{
+		delete this->result;
+	}
 }
 }//end namespace block

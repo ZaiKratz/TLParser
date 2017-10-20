@@ -24,6 +24,5 @@ void ChannelParticipantsRecent::OnResponce(BinaryReader& Reader)
 }
 ChannelParticipantsRecent::~ChannelParticipantsRecent()
 {
-
 }
 }//end namespace block

@@ -29,6 +29,9 @@ void ChannelAdminLogEventActionDeleteMessage::OnResponce(BinaryReader& Reader)
 }
 ChannelAdminLogEventActionDeleteMessage::~ChannelAdminLogEventActionDeleteMessage()
 {
-
+	if(this->message)
+	{
+		delete this->message;
+	}
 }
 }//end namespace block

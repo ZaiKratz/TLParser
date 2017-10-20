@@ -32,6 +32,5 @@ void ImportedContact::OnResponce(BinaryReader& Reader)
 }
 ImportedContact::~ImportedContact()
 {
-
 }
 }//end namespace block

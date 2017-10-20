@@ -1,14 +1,13 @@
 #pragma once
 #include "Engine.h"
-#include "../../../Types/Private/ExportedChatInvite.h"
+#include "../../../TLObjectBase.h"
 
 #include "../../../Types/Common/Public/InputChannel.h"
-#include "../../../Types/Private/ExportedChatInvite.h"
 
 //begin namespace block
 namespace CHANNELS
 {
-class ExportInvite : public PRIVATE::ExportedChatInvite
+class ExportInvite : public TLBaseObject
 {
 public:
 	ExportInvite();
@@ -23,13 +22,13 @@ public:
 		 return this->channel;
 	}
 
-	PRIVATE::ExportedChatInvite* GetResult() const
+	TLBaseObject* GetResult() const
 	{
 		 return this->result;
 	}
 
 private:
 	COMMON::InputChannel* channel;
-	PRIVATE::ExportedChatInvite* result;
+	TLBaseObject* result;
 };
 } //end namespace block

@@ -36,6 +36,5 @@ void DropTempAuthKeys::OnResponce(BinaryReader& Reader)
 }
 DropTempAuthKeys::~DropTempAuthKeys()
 {
-
 }
 }//end namespace block

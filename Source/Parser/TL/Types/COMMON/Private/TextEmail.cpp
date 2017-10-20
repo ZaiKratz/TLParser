@@ -10,7 +10,7 @@ TextEmail::TextEmail()
 	this->_ConstructorID = -564523562;
 }
 
-TextEmail::TextEmail(PRIVATE::RichText*  text, FString email)
+TextEmail::TextEmail(TLBaseObject*  text, FString email)
 {
 	this->_ConstructorID = -564523562;
 	this->text = text;
@@ -26,12 +26,15 @@ void TextEmail::OnSend(BinaryWriter& Writer)
 
 void TextEmail::OnResponce(BinaryReader& Reader)
 {
-	text = reinterpret_cast<PRIVATE::RichText* >(Reader.TGReadObject());
+	text = reinterpret_cast<TLBaseObject* >(Reader.TGReadObject());
 	email = Reader.TGReadString();
 	this->_Responded = true;
 }
 TextEmail::~TextEmail()
 {
-
+	if(this->text)
+	{
+		delete this->text;
+	}
 }
 }//end namespace block

@@ -29,6 +29,5 @@ void ChannelAdminLogEventActionToggleSignatures::OnResponce(BinaryReader& Reader
 }
 ChannelAdminLogEventActionToggleSignatures::~ChannelAdminLogEventActionToggleSignatures()
 {
-
 }
 }//end namespace block

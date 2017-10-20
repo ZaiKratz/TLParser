@@ -23,6 +23,9 @@ void GetState::OnResponce(BinaryReader& Reader)
 }
 GetState::~GetState()
 {
-
+	if(this->result)
+	{
+		delete this->result;
+	}
 }
 }//end namespace block

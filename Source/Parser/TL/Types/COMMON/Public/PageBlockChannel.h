@@ -1,14 +1,13 @@
 #pragma once
 #include "Engine.h"
-#include "../../../Types/Private/PageBlock.h"
+#include "../../../TLObjectBase.h"
 
 #include "../../../Types/Common/Public/Chat.h"
-#include "../../../Types/Private/PageBlock.h"
 
 //begin namespace block
 namespace COMMON
 {
-class PageBlockChannel : public PRIVATE::PageBlock
+class PageBlockChannel : public TLBaseObject
 {
 public:
 	PageBlockChannel();

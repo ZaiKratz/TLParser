@@ -49,6 +49,5 @@ void ReorderStickerSets::OnResponce(BinaryReader& Reader)
 }
 ReorderStickerSets::~ReorderStickerSets()
 {
-
 }
 }//end namespace block

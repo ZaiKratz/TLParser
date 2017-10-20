@@ -29,6 +29,5 @@ void PeerUser::OnResponce(BinaryReader& Reader)
 }
 PeerUser::~PeerUser()
 {
-
 }
 }//end namespace block

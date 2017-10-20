@@ -3,7 +3,6 @@
 #include "../../../TLObjectBase.h"
 
 #include "../../../Types/Common/Public/InputChannel.h"
-#include "../../../Types/Private/InputStickerSet.h"
 
 //begin namespace block
 namespace CHANNELS
@@ -12,7 +11,7 @@ class SetStickers : public TLBaseObject
 {
 public:
 	SetStickers();
-	SetStickers(COMMON::InputChannel* channel, PRIVATE::InputStickerSet* stickerset);
+	SetStickers(COMMON::InputChannel* channel, TLBaseObject* stickerset);
 
 	~SetStickers();
 	virtual void OnSend(BinaryWriter& Writer) override;
@@ -23,7 +22,7 @@ public:
 		 return this->channel;
 	}
 
-	PRIVATE::InputStickerSet*  Getstickerset() const
+	TLBaseObject*  Getstickerset() const
 	{
 		 return this->stickerset;
 	}
@@ -35,7 +34,7 @@ public:
 
 private:
 	COMMON::InputChannel* channel;
-	 PRIVATE::InputStickerSet* stickerset;
+	 TLBaseObject* stickerset;
 	bool result;
 };
 } //end namespace block

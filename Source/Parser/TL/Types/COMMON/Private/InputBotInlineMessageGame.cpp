@@ -10,7 +10,7 @@ InputBotInlineMessageGame::InputBotInlineMessageGame()
 	this->_ConstructorID = 1262639204;
 }
 
-InputBotInlineMessageGame::InputBotInlineMessageGame(PRIVATE::ReplyMarkup*  reply_markup)
+InputBotInlineMessageGame::InputBotInlineMessageGame(TLBaseObject*  reply_markup)
 {
 	this->_ConstructorID = 1262639204;
 	this->reply_markup = reply_markup;
@@ -30,7 +30,7 @@ void InputBotInlineMessageGame::OnSend(BinaryWriter& Writer)
 	}
 	Writer.WriteInt(Flags);
 
-	if(!this->reply_markup)
+	if(this->reply_markup)
 	{
 	this->reply_markup->OnSend(Writer);
 	}
@@ -43,12 +43,15 @@ void InputBotInlineMessageGame::OnResponce(BinaryReader& Reader)
 
 	if((Flags & (1 << 2)) != 0) 
 	{
-	reply_markup = reinterpret_cast<PRIVATE::ReplyMarkup* >(Reader.TGReadObject());
+	reply_markup = reinterpret_cast<TLBaseObject* >(Reader.TGReadObject());
 	}
 	this->_Responded = true;
 }
 InputBotInlineMessageGame::~InputBotInlineMessageGame()
 {
-
+	if(this->reply_markup)
+	{
+		delete this->reply_markup;
+	}
 }
 }//end namespace block

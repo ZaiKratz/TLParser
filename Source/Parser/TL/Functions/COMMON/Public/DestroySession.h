@@ -1,13 +1,11 @@
 #pragma once
 #include "Engine.h"
-#include "../../../Types/Private/DestroySessionRes.h"
-
-#include "../../../Types/Private/DestroySessionRes.h"
+#include "../../../TLObjectBase.h"
 
 //begin namespace block
 namespace COMMON
 {
-class DestroySession : public PRIVATE::DestroySessionRes
+class DestroySession : public TLBaseObject
 {
 public:
 	DestroySession();
@@ -22,13 +20,13 @@ public:
 		 return this->session_id;
 	}
 
-	PRIVATE::DestroySessionRes* GetResult() const
+	TLBaseObject* GetResult() const
 	{
 		 return this->result;
 	}
 
 private:
 	unsigned long long session_id;
-	PRIVATE::DestroySessionRes* result;
+	TLBaseObject* result;
 };
 } //end namespace block

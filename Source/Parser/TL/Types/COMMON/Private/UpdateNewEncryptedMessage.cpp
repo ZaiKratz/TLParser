@@ -32,6 +32,9 @@ void UpdateNewEncryptedMessage::OnResponce(BinaryReader& Reader)
 }
 UpdateNewEncryptedMessage::~UpdateNewEncryptedMessage()
 {
-
+	if(this->message)
+	{
+		delete this->message;
+	}
 }
 }//end namespace block

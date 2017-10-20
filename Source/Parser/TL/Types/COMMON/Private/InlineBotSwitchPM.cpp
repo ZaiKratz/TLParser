@@ -32,6 +32,5 @@ void InlineBotSwitchPM::OnResponce(BinaryReader& Reader)
 }
 InlineBotSwitchPM::~InlineBotSwitchPM()
 {
-
 }
 }//end namespace block

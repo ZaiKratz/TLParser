@@ -35,6 +35,9 @@ void GetCdnFile::OnResponce(BinaryReader& Reader)
 }
 GetCdnFile::~GetCdnFile()
 {
-
+	if(this->result)
+	{
+		delete this->result;
+	}
 }
 }//end namespace block

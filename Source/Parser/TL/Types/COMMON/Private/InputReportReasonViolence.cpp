@@ -24,6 +24,5 @@ void InputReportReasonViolence::OnResponce(BinaryReader& Reader)
 }
 InputReportReasonViolence::~InputReportReasonViolence()
 {
-
 }
 }//end namespace block

@@ -49,13 +49,13 @@ void InputMediaUploadedPhoto::OnSend(BinaryWriter& Writer)
 	Writer.WriteInt(this->stickers.Num());
 	for(auto X : this->stickers)
 	{
-	if(!X)
+	if(X)
 	{
 	X->OnSend(Writer);
 	}
 	}
 	}
-	if(!this->ttl_seconds)
+	if(this->ttl_seconds)
 	{
 	Writer.WriteInt(this->ttl_seconds);
 	}
@@ -73,8 +73,8 @@ void InputMediaUploadedPhoto::OnResponce(BinaryReader& Reader)
 	Reader.ReadInt();
 
 	//Len concatenated with rand number to get rid of confusions with redefinition
-	int32 Len3720 = Reader.ReadInt();
-	for(int32 i = 0; i < Len3720; i++)
+	int32 Len23152 = Reader.ReadInt();
+	for(int32 i = 0; i < Len23152; i++)
 	{
 	auto X = reinterpret_cast<COMMON::InputDocument*>(Reader.TGReadObject());
 	stickers.Add(X);
@@ -88,6 +88,9 @@ void InputMediaUploadedPhoto::OnResponce(BinaryReader& Reader)
 }
 InputMediaUploadedPhoto::~InputMediaUploadedPhoto()
 {
-
+	if(this->file)
+	{
+		delete this->file;
+	}
 }
 }//end namespace block

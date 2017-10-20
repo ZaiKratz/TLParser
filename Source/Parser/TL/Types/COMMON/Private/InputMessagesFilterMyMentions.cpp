@@ -24,6 +24,5 @@ void InputMessagesFilterMyMentions::OnResponce(BinaryReader& Reader)
 }
 InputMessagesFilterMyMentions::~InputMessagesFilterMyMentions()
 {
-
 }
 }//end namespace block

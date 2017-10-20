@@ -24,6 +24,5 @@ void ChannelAdminLogEventActionParticipantJoin::OnResponce(BinaryReader& Reader)
 }
 ChannelAdminLogEventActionParticipantJoin::~ChannelAdminLogEventActionParticipantJoin()
 {
-
 }
 }//end namespace block

@@ -1,19 +1,15 @@
 #pragma once
 #include "Engine.h"
-#include "../../../Types/Private/Update.h"
-
-#include "../../../Types/Private/MessageMedia.h"
-#include "../../../Types/Private/MessageEntity.h"
-#include "../../../Types/Private/Update.h"
+#include "../../../TLObjectBase.h"
 
 //begin namespace block
 namespace COMMON
 {
-class UpdateServiceNotification : public PRIVATE::Update
+class UpdateServiceNotification : public TLBaseObject
 {
 public:
 	UpdateServiceNotification();
-	UpdateServiceNotification(bool popup, FDateTime inbox_date, FString type, FString message, PRIVATE::MessageMedia* media, TArray<PRIVATE::MessageEntity*> entities);
+	UpdateServiceNotification(bool popup, FDateTime inbox_date, FString type, FString message, TLBaseObject* media, TArray<TLBaseObject*> entities);
 
 	~UpdateServiceNotification();
 	virtual void OnSend(BinaryWriter& Writer) override;
@@ -39,12 +35,12 @@ public:
 		 return this->message;
 	}
 
-	PRIVATE::MessageMedia*  Getmedia() const
+	TLBaseObject*  Getmedia() const
 	{
 		 return this->media;
 	}
 
-	TArray<PRIVATE::MessageEntity*>  Getentities() const
+	TArray<TLBaseObject*>  Getentities() const
 	{
 		 return this->entities;
 	}
@@ -54,7 +50,7 @@ private:
 	 FDateTime inbox_date;
 	 FString type;
 	 FString message;
-	 PRIVATE::MessageMedia* media;
-	 TArray<PRIVATE::MessageEntity*> entities;
+	 TLBaseObject* media;
+	 TArray<TLBaseObject*> entities;
 };
 } //end namespace block

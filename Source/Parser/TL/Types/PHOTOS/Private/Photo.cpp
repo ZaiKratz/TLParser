@@ -35,8 +35,8 @@ void Photo::OnResponce(BinaryReader& Reader)
 	Reader.ReadInt();
 
 	//Len concatenated with rand number to get rid of confusions with redefinition
-	int32 Len9854 = Reader.ReadInt();
-	for(int32 i = 0; i < Len9854; i++)
+	int32 Len24508 = Reader.ReadInt();
+	for(int32 i = 0; i < Len24508; i++)
 	{
 	auto X = reinterpret_cast<COMMON::User*>(Reader.TGReadObject());
 	users.Add(X);
@@ -45,6 +45,9 @@ void Photo::OnResponce(BinaryReader& Reader)
 }
 Photo::~Photo()
 {
-
+	if(this->photo)
+	{
+		delete this->photo;
+	}
 }
 }//end namespace block

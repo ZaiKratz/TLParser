@@ -5,7 +5,6 @@
 #include "../../../Types/Common/Public/ChatParticipants.h"
 #include "../../../Types/Common/Public/Photo.h"
 #include "../../../Types/Common/Public/PeerNotifySettings.h"
-#include "../../../Types/Private/ExportedChatInvite.h"
 #include "../../../Types/Common/Public/BotInfo.h"
 
 //begin namespace block
@@ -15,7 +14,7 @@ class ChatFull : public TLBaseObject
 {
 public:
 	ChatFull();
-	ChatFull(int32 id, COMMON::ChatParticipants* participants, COMMON::Photo* chat_photo, COMMON::PeerNotifySettings* notify_settings, PRIVATE::ExportedChatInvite* exported_invite, TArray<COMMON::BotInfo*> bot_info);
+	ChatFull(int32 id, COMMON::ChatParticipants* participants, COMMON::Photo* chat_photo, COMMON::PeerNotifySettings* notify_settings, TLBaseObject* exported_invite, TArray<COMMON::BotInfo*> bot_info);
 
 	~ChatFull();
 	virtual void OnSend(BinaryWriter& Writer) override;
@@ -41,7 +40,7 @@ public:
 		 return this->notify_settings;
 	}
 
-	PRIVATE::ExportedChatInvite*  GetExportedInvite() const
+	TLBaseObject*  GetExportedInvite() const
 	{
 		 return this->exported_invite;
 	}
@@ -56,7 +55,7 @@ private:
 	 COMMON::ChatParticipants* participants;
 	 COMMON::Photo* chat_photo;
 	 COMMON::PeerNotifySettings* notify_settings;
-	 PRIVATE::ExportedChatInvite* exported_invite;
+	 TLBaseObject* exported_invite;
 	 TArray<COMMON::BotInfo*> bot_info;
 };
 } //end namespace block

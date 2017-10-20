@@ -1,14 +1,13 @@
 #pragma once
 #include "Engine.h"
-#include "../../../Types/Private/ServerDHParams.h"
+#include "../../../TLObjectBase.h"
 
 #include "BigInt.h"
-#include "../../../Types/Private/ServerDHParams.h"
 
 //begin namespace block
 namespace COMMON
 {
-class ReqDHParams : public PRIVATE::ServerDHParams
+class ReqDHParams : public TLBaseObject
 {
 public:
 	ReqDHParams();
@@ -48,7 +47,7 @@ public:
 		 return this->encrypted_data;
 	}
 
-	PRIVATE::ServerDHParams* GetResult() const
+	TLBaseObject* GetResult() const
 	{
 		 return this->result;
 	}
@@ -60,6 +59,6 @@ private:
 	 FString q;
 	 unsigned long long public_key_fingerprint;
 	 FString encrypted_data;
-	PRIVATE::ServerDHParams* result;
+	TLBaseObject* result;
 };
 } //end namespace block

@@ -31,6 +31,9 @@ void GetFeaturedStickers::OnResponce(BinaryReader& Reader)
 }
 GetFeaturedStickers::~GetFeaturedStickers()
 {
-
+	if(this->result)
+	{
+		delete this->result;
+	}
 }
 }//end namespace block

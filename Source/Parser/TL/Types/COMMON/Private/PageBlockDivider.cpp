@@ -24,6 +24,5 @@ void PageBlockDivider::OnResponce(BinaryReader& Reader)
 }
 PageBlockDivider::~PageBlockDivider()
 {
-
 }
 }//end namespace block

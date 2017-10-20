@@ -1,13 +1,11 @@
 #pragma once
 #include "Engine.h"
-#include "../../../Types/Private/Update.h"
-
-#include "../../../Types/Private/Update.h"
+#include "../../../TLObjectBase.h"
 
 //begin namespace block
 namespace COMMON
 {
-class UpdateContactsReset : public PRIVATE::Update
+class UpdateContactsReset : public TLBaseObject
 {
 public:
 	UpdateContactsReset();

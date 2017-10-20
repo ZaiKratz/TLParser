@@ -24,6 +24,5 @@ void InputMessagesFilterVideo::OnResponce(BinaryReader& Reader)
 }
 InputMessagesFilterVideo::~InputMessagesFilterVideo()
 {
-
 }
 }//end namespace block

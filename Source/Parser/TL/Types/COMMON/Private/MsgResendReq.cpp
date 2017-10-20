@@ -32,8 +32,8 @@ void MsgResendReq::OnResponce(BinaryReader& Reader)
 	Reader.ReadInt();
 
 	//Len concatenated with rand number to get rid of confusions with redefinition
-	int32 Len12543 = Reader.ReadInt();
-	for(int32 i = 0; i < Len12543; i++)
+	int32 Len12716 = Reader.ReadInt();
+	for(int32 i = 0; i < Len12716; i++)
 	{
 	auto X = Reader.ReadLong();
 	msg_ids.Add(X);
@@ -42,6 +42,5 @@ void MsgResendReq::OnResponce(BinaryReader& Reader)
 }
 MsgResendReq::~MsgResendReq()
 {
-
 }
 }//end namespace block

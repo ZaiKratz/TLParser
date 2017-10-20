@@ -29,6 +29,9 @@ void InputStickeredMediaPhoto::OnResponce(BinaryReader& Reader)
 }
 InputStickeredMediaPhoto::~InputStickeredMediaPhoto()
 {
-
+	if(this->id)
+	{
+		delete this->id;
+	}
 }
 }//end namespace block

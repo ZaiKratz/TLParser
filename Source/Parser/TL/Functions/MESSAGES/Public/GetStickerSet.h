@@ -2,7 +2,6 @@
 #include "Engine.h"
 #include "../../../TLObjectBase.h"
 
-#include "../../../Types/Private/InputStickerSet.h"
 #include "../../../Types/Messages/Public/StickerSet.h"
 
 //begin namespace block
@@ -12,13 +11,13 @@ class GetStickerSet : public TLBaseObject
 {
 public:
 	GetStickerSet();
-	GetStickerSet(PRIVATE::InputStickerSet* stickerset);
+	GetStickerSet(TLBaseObject* stickerset);
 
 	~GetStickerSet();
 	virtual void OnSend(BinaryWriter& Writer) override;
 	virtual void OnResponce(BinaryReader& Reader) override;
 
-	PRIVATE::InputStickerSet*  Getstickerset() const
+	TLBaseObject*  Getstickerset() const
 	{
 		 return this->stickerset;
 	}
@@ -29,7 +28,7 @@ public:
 	}
 
 private:
-	PRIVATE::InputStickerSet* stickerset;
+	TLBaseObject* stickerset;
 	MESSAGES::StickerSet* result;
 };
 } //end namespace block

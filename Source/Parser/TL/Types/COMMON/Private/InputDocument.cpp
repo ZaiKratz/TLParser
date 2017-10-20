@@ -32,6 +32,5 @@ void InputDocument::OnResponce(BinaryReader& Reader)
 }
 InputDocument::~InputDocument()
 {
-
 }
 }//end namespace block

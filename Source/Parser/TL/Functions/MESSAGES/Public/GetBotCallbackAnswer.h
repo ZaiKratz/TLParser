@@ -2,7 +2,6 @@
 #include "Engine.h"
 #include "../../../TLObjectBase.h"
 
-#include "../../../Types/Private/InputPeer.h"
 #include "../../../Types/Messages/Public/BotCallbackAnswer.h"
 
 //begin namespace block
@@ -12,7 +11,7 @@ class GetBotCallbackAnswer : public TLBaseObject
 {
 public:
 	GetBotCallbackAnswer();
-	GetBotCallbackAnswer(bool game, PRIVATE::InputPeer* peer, int32 msg_id, TArray<uint8> data);
+	GetBotCallbackAnswer(bool game, TLBaseObject* peer, int32 msg_id, TArray<uint8> data);
 
 	~GetBotCallbackAnswer();
 	virtual void OnSend(BinaryWriter& Writer) override;
@@ -23,7 +22,7 @@ public:
 		 return this->game;
 	}
 
-	PRIVATE::InputPeer*  Getpeer() const
+	TLBaseObject*  Getpeer() const
 	{
 		 return this->peer;
 	}
@@ -45,7 +44,7 @@ public:
 
 private:
 	bool game;
-	 PRIVATE::InputPeer* peer;
+	 TLBaseObject* peer;
 	 int32 msg_id;
 	 TArray<uint8> data;
 	MESSAGES::BotCallbackAnswer* result;

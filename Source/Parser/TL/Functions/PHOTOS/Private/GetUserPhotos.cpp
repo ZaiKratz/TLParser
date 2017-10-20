@@ -37,6 +37,13 @@ void GetUserPhotos::OnResponce(BinaryReader& Reader)
 }
 GetUserPhotos::~GetUserPhotos()
 {
-
+	if(this->user_id)
+	{
+		delete this->user_id;
+	}
+	if(this->result)
+	{
+		delete this->result;
+	}
 }
 }//end namespace block

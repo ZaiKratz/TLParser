@@ -37,6 +37,5 @@ void SaveBigFilePart::OnResponce(BinaryReader& Reader)
 }
 SaveBigFilePart::~SaveBigFilePart()
 {
-
 }
 }//end namespace block

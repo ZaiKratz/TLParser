@@ -10,7 +10,7 @@ ChannelAdminLogEventActionChangeStickerSet::ChannelAdminLogEventActionChangeStic
 	this->_ConstructorID = -1312568665;
 }
 
-ChannelAdminLogEventActionChangeStickerSet::ChannelAdminLogEventActionChangeStickerSet(PRIVATE::InputStickerSet*  prev_stickerset, PRIVATE::InputStickerSet*  new_stickerset)
+ChannelAdminLogEventActionChangeStickerSet::ChannelAdminLogEventActionChangeStickerSet(TLBaseObject*  prev_stickerset, TLBaseObject*  new_stickerset)
 {
 	this->_ConstructorID = -1312568665;
 	this->prev_stickerset = prev_stickerset;
@@ -26,12 +26,19 @@ void ChannelAdminLogEventActionChangeStickerSet::OnSend(BinaryWriter& Writer)
 
 void ChannelAdminLogEventActionChangeStickerSet::OnResponce(BinaryReader& Reader)
 {
-	prev_stickerset = reinterpret_cast<PRIVATE::InputStickerSet* >(Reader.TGReadObject());
-	new_stickerset = reinterpret_cast<PRIVATE::InputStickerSet* >(Reader.TGReadObject());
+	prev_stickerset = reinterpret_cast<TLBaseObject* >(Reader.TGReadObject());
+	new_stickerset = reinterpret_cast<TLBaseObject* >(Reader.TGReadObject());
 	this->_Responded = true;
 }
 ChannelAdminLogEventActionChangeStickerSet::~ChannelAdminLogEventActionChangeStickerSet()
 {
-
+	if(this->prev_stickerset)
+	{
+		delete this->prev_stickerset;
+	}
+	if(this->new_stickerset)
+	{
+		delete this->new_stickerset;
+	}
 }
 }//end namespace block

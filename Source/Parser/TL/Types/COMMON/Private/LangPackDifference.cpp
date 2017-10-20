@@ -41,8 +41,8 @@ void LangPackDifference::OnResponce(BinaryReader& Reader)
 	Reader.ReadInt();
 
 	//Len concatenated with rand number to get rid of confusions with redefinition
-	int32 Len31907 = Reader.ReadInt();
-	for(int32 i = 0; i < Len31907; i++)
+	int32 Len8928 = Reader.ReadInt();
+	for(int32 i = 0; i < Len8928; i++)
 	{
 	auto X = reinterpret_cast<COMMON::LangPackString*>(Reader.TGReadObject());
 	strings.Add(X);
@@ -51,6 +51,5 @@ void LangPackDifference::OnResponce(BinaryReader& Reader)
 }
 LangPackDifference::~LangPackDifference()
 {
-
 }
 }//end namespace block

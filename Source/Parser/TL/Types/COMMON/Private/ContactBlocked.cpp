@@ -32,6 +32,5 @@ void ContactBlocked::OnResponce(BinaryReader& Reader)
 }
 ContactBlocked::~ContactBlocked()
 {
-
 }
 }//end namespace block

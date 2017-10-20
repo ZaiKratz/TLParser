@@ -35,8 +35,8 @@ void StickerSetMultiCovered::OnResponce(BinaryReader& Reader)
 	Reader.ReadInt();
 
 	//Len concatenated with rand number to get rid of confusions with redefinition
-	int32 Len20426 = Reader.ReadInt();
-	for(int32 i = 0; i < Len20426; i++)
+	int32 Len23791 = Reader.ReadInt();
+	for(int32 i = 0; i < Len23791; i++)
 	{
 	auto X = reinterpret_cast<COMMON::Document*>(Reader.TGReadObject());
 	covers.Add(X);
@@ -45,6 +45,9 @@ void StickerSetMultiCovered::OnResponce(BinaryReader& Reader)
 }
 StickerSetMultiCovered::~StickerSetMultiCovered()
 {
-
+	if(this->set)
+	{
+		delete this->set;
+	}
 }
 }//end namespace block

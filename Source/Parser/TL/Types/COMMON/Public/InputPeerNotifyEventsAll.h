@@ -1,13 +1,11 @@
 #pragma once
 #include "Engine.h"
-#include "../../../Types/Private/InputPeerNotifyEvents.h"
-
-#include "../../../Types/Private/InputPeerNotifyEvents.h"
+#include "../../../TLObjectBase.h"
 
 //begin namespace block
 namespace COMMON
 {
-class InputPeerNotifyEventsAll : public PRIVATE::InputPeerNotifyEvents
+class InputPeerNotifyEventsAll : public TLBaseObject
 {
 public:
 	InputPeerNotifyEventsAll();

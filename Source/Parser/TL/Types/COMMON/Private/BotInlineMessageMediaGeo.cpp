@@ -10,7 +10,7 @@ BotInlineMessageMediaGeo::BotInlineMessageMediaGeo()
 	this->_ConstructorID = 982505656;
 }
 
-BotInlineMessageMediaGeo::BotInlineMessageMediaGeo(COMMON::GeoPoint*  geo, PRIVATE::ReplyMarkup*  reply_markup)
+BotInlineMessageMediaGeo::BotInlineMessageMediaGeo(COMMON::GeoPoint*  geo, TLBaseObject*  reply_markup)
 {
 	this->_ConstructorID = 982505656;
 	this->geo = geo;
@@ -32,7 +32,7 @@ void BotInlineMessageMediaGeo::OnSend(BinaryWriter& Writer)
 	Writer.WriteInt(Flags);
 
 	this->geo->OnSend(Writer);
-	if(!this->reply_markup)
+	if(this->reply_markup)
 	{
 	this->reply_markup->OnSend(Writer);
 	}
@@ -46,12 +46,19 @@ void BotInlineMessageMediaGeo::OnResponce(BinaryReader& Reader)
 	geo = reinterpret_cast<COMMON::GeoPoint* >(Reader.TGReadObject());
 	if((Flags & (1 << 2)) != 0) 
 	{
-	reply_markup = reinterpret_cast<PRIVATE::ReplyMarkup* >(Reader.TGReadObject());
+	reply_markup = reinterpret_cast<TLBaseObject* >(Reader.TGReadObject());
 	}
 	this->_Responded = true;
 }
 BotInlineMessageMediaGeo::~BotInlineMessageMediaGeo()
 {
-
+	if(this->geo)
+	{
+		delete this->geo;
+	}
+	if(this->reply_markup)
+	{
+		delete this->reply_markup;
+	}
 }
 }//end namespace block

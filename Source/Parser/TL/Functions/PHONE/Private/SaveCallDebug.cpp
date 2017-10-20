@@ -33,6 +33,13 @@ void SaveCallDebug::OnResponce(BinaryReader& Reader)
 }
 SaveCallDebug::~SaveCallDebug()
 {
-
+	if(this->peer)
+	{
+		delete this->peer;
+	}
+	if(this->debug)
+	{
+		delete this->debug;
+	}
 }
 }//end namespace block

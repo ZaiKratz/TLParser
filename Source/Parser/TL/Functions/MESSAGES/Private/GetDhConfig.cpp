@@ -33,6 +33,9 @@ void GetDhConfig::OnResponce(BinaryReader& Reader)
 }
 GetDhConfig::~GetDhConfig()
 {
-
+	if(this->result)
+	{
+		delete this->result;
+	}
 }
 }//end namespace block

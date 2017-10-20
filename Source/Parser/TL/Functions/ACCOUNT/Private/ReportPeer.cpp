@@ -11,7 +11,7 @@ ReportPeer::ReportPeer()
 	this->_ContentRelated = true;
 }
 
-ReportPeer::ReportPeer(PRIVATE::InputPeer*  peer, PRIVATE::ReportReason*  reason)
+ReportPeer::ReportPeer(TLBaseObject*  peer, TLBaseObject*  reason)
 {
 	this->_ConstructorID = -1374118561;
 	this->_ContentRelated = true;
@@ -33,6 +33,13 @@ void ReportPeer::OnResponce(BinaryReader& Reader)
 }
 ReportPeer::~ReportPeer()
 {
-
+	if(this->peer)
+	{
+		delete this->peer;
+	}
+	if(this->reason)
+	{
+		delete this->reason;
+	}
 }
 }//end namespace block

@@ -44,12 +44,12 @@ void UpdateBotInlineSend::OnSend(BinaryWriter& Writer)
 
 	Writer.WriteInt(this->user_id);
 	Writer.TGWriteString(this->query);
-	if(!this->geo)
+	if(this->geo)
 	{
 	this->geo->OnSend(Writer);
 	}
 	Writer.TGWriteString(this->id);
-	if(!this->msg_id)
+	if(this->msg_id)
 	{
 	this->msg_id->OnSend(Writer);
 	}
@@ -75,6 +75,13 @@ void UpdateBotInlineSend::OnResponce(BinaryReader& Reader)
 }
 UpdateBotInlineSend::~UpdateBotInlineSend()
 {
-
+	if(this->geo)
+	{
+		delete this->geo;
+	}
+	if(this->msg_id)
+	{
+		delete this->msg_id;
+	}
 }
 }//end namespace block

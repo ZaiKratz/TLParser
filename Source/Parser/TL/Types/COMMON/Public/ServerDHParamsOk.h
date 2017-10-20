@@ -1,14 +1,13 @@
 #pragma once
 #include "Engine.h"
-#include "../../../Types/Private/ServerDHParams.h"
+#include "../../../TLObjectBase.h"
 
 #include "BigInt.h"
-#include "../../../Types/Private/ServerDHParams.h"
 
 //begin namespace block
 namespace COMMON
 {
-class ServerDHParamsOk : public PRIVATE::ServerDHParams
+class ServerDHParamsOk : public TLBaseObject
 {
 public:
 	ServerDHParamsOk();

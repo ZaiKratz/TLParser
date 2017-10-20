@@ -35,6 +35,5 @@ void UpdateEncryptedMessagesRead::OnResponce(BinaryReader& Reader)
 }
 UpdateEncryptedMessagesRead::~UpdateEncryptedMessagesRead()
 {
-
 }
 }//end namespace block

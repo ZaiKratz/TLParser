@@ -35,6 +35,9 @@ void EditChatAdmin::OnResponce(BinaryReader& Reader)
 }
 EditChatAdmin::~EditChatAdmin()
 {
-
+	if(this->user_id)
+	{
+		delete this->user_id;
+	}
 }
 }//end namespace block

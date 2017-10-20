@@ -29,6 +29,9 @@ void MessageMediaGame::OnResponce(BinaryReader& Reader)
 }
 MessageMediaGame::~MessageMediaGame()
 {
-
+	if(this->game)
+	{
+		delete this->game;
+	}
 }
 }//end namespace block

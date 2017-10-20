@@ -24,6 +24,5 @@ void CodeTypeSms::OnResponce(BinaryReader& Reader)
 }
 CodeTypeSms::~CodeTypeSms()
 {
-
 }
 }//end namespace block

@@ -24,6 +24,5 @@ void InputMessagesFilterDocument::OnResponce(BinaryReader& Reader)
 }
 InputMessagesFilterDocument::~InputMessagesFilterDocument()
 {
-
 }
 }//end namespace block

@@ -24,6 +24,5 @@ void InputMessagesFilterGif::OnResponce(BinaryReader& Reader)
 }
 InputMessagesFilterGif::~InputMessagesFilterGif()
 {
-
 }
 }//end namespace block

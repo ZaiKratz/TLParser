@@ -10,7 +10,7 @@ WebPage::WebPage()
 	this->_ConstructorID = 1594340540;
 }
 
-WebPage::WebPage(unsigned long long id, FString url, FString display_url, int32 hash, FString type, FString site_name, FString title, FString description, COMMON::Photo*  photo, FString embed_url, FString embed_type, int32 embed_width, int32 embed_height, int32 duration, FString author, COMMON::Document*  document, PRIVATE::Page*  cached_page)
+WebPage::WebPage(unsigned long long id, FString url, FString display_url, int32 hash, FString type, FString site_name, FString title, FString description, COMMON::Photo*  photo, FString embed_url, FString embed_type, int32 embed_width, int32 embed_height, int32 duration, FString author, COMMON::Document*  document, TLBaseObject*  cached_page)
 {
 	this->_ConstructorID = 1594340540;
 	this->id = id;
@@ -150,30 +150,30 @@ void WebPage::OnSend(BinaryWriter& Writer)
 	Writer.TGWriteString(this->site_name);
 	Writer.TGWriteString(this->title);
 	Writer.TGWriteString(this->description);
-	if(!this->photo)
+	if(this->photo)
 	{
 	this->photo->OnSend(Writer);
 	}
 	Writer.TGWriteString(this->embed_url);
 	Writer.TGWriteString(this->embed_type);
-	if(!this->embed_width)
+	if(this->embed_width)
 	{
 	Writer.WriteInt(this->embed_width);
 	}
-	if(!this->embed_height)
+	if(this->embed_height)
 	{
 	Writer.WriteInt(this->embed_height);
 	}
-	if(!this->duration)
+	if(this->duration)
 	{
 	Writer.WriteInt(this->duration);
 	}
 	Writer.TGWriteString(this->author);
-	if(!this->document)
+	if(this->document)
 	{
 	this->document->OnSend(Writer);
 	}
-	if(!this->cached_page)
+	if(this->cached_page)
 	{
 	this->cached_page->OnSend(Writer);
 	}
@@ -238,12 +238,23 @@ void WebPage::OnResponce(BinaryReader& Reader)
 	}
 	if((Flags & (1 << 10)) != 0) 
 	{
-	cached_page = reinterpret_cast<PRIVATE::Page* >(Reader.TGReadObject());
+	cached_page = reinterpret_cast<TLBaseObject* >(Reader.TGReadObject());
 	}
 	this->_Responded = true;
 }
 WebPage::~WebPage()
 {
-
+	if(this->photo)
+	{
+		delete this->photo;
+	}
+	if(this->document)
+	{
+		delete this->document;
+	}
+	if(this->cached_page)
+	{
+		delete this->cached_page;
+	}
 }
 }//end namespace block

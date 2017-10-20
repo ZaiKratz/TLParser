@@ -23,6 +23,9 @@ void GetCdnConfig::OnResponce(BinaryReader& Reader)
 }
 GetCdnConfig::~GetCdnConfig()
 {
-
+	if(this->result)
+	{
+		delete this->result;
+	}
 }
 }//end namespace block

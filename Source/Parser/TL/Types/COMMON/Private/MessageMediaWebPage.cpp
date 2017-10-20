@@ -29,6 +29,9 @@ void MessageMediaWebPage::OnResponce(BinaryReader& Reader)
 }
 MessageMediaWebPage::~MessageMediaWebPage()
 {
-
+	if(this->webpage)
+	{
+		delete this->webpage;
+	}
 }
 }//end namespace block

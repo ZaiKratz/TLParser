@@ -1,13 +1,11 @@
 #pragma once
 #include "Engine.h"
-#include "../../../Types/Private/PeerNotifyEvents.h"
-
-#include "../../../Types/Private/PeerNotifyEvents.h"
+#include "../../../TLObjectBase.h"
 
 //begin namespace block
 namespace COMMON
 {
-class PeerNotifyEventsEmpty : public PRIVATE::PeerNotifyEvents
+class PeerNotifyEventsEmpty : public TLBaseObject
 {
 public:
 	PeerNotifyEventsEmpty();

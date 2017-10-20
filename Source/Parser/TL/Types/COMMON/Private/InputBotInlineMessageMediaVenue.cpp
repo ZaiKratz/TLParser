@@ -10,7 +10,7 @@ InputBotInlineMessageMediaVenue::InputBotInlineMessageMediaVenue()
 	this->_ConstructorID = -1431327288;
 }
 
-InputBotInlineMessageMediaVenue::InputBotInlineMessageMediaVenue(COMMON::InputGeoPoint*  geo_point, FString title, FString address, FString provider, FString venue_id, PRIVATE::ReplyMarkup*  reply_markup)
+InputBotInlineMessageMediaVenue::InputBotInlineMessageMediaVenue(COMMON::InputGeoPoint*  geo_point, FString title, FString address, FString provider, FString venue_id, TLBaseObject*  reply_markup)
 {
 	this->_ConstructorID = -1431327288;
 	this->geo_point = geo_point;
@@ -40,7 +40,7 @@ void InputBotInlineMessageMediaVenue::OnSend(BinaryWriter& Writer)
 	Writer.TGWriteString(this->address);
 	Writer.TGWriteString(this->provider);
 	Writer.TGWriteString(this->venue_id);
-	if(!this->reply_markup)
+	if(this->reply_markup)
 	{
 	this->reply_markup->OnSend(Writer);
 	}
@@ -58,12 +58,19 @@ void InputBotInlineMessageMediaVenue::OnResponce(BinaryReader& Reader)
 	venue_id = Reader.TGReadString();
 	if((Flags & (1 << 2)) != 0) 
 	{
-	reply_markup = reinterpret_cast<PRIVATE::ReplyMarkup* >(Reader.TGReadObject());
+	reply_markup = reinterpret_cast<TLBaseObject* >(Reader.TGReadObject());
 	}
 	this->_Responded = true;
 }
 InputBotInlineMessageMediaVenue::~InputBotInlineMessageMediaVenue()
 {
-
+	if(this->geo_point)
+	{
+		delete this->geo_point;
+	}
+	if(this->reply_markup)
+	{
+		delete this->reply_markup;
+	}
 }
 }//end namespace block

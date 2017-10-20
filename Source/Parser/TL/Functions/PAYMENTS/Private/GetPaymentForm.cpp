@@ -31,6 +31,9 @@ void GetPaymentForm::OnResponce(BinaryReader& Reader)
 }
 GetPaymentForm::~GetPaymentForm()
 {
-
+	if(this->result)
+	{
+		delete this->result;
+	}
 }
 }//end namespace block

@@ -33,6 +33,13 @@ void ExportMessageLink::OnResponce(BinaryReader& Reader)
 }
 ExportMessageLink::~ExportMessageLink()
 {
-
+	if(this->channel)
+	{
+		delete this->channel;
+	}
+	if(this->result)
+	{
+		delete this->result;
+	}
 }
 }//end namespace block

@@ -29,6 +29,9 @@ void UpdateChatParticipants::OnResponce(BinaryReader& Reader)
 }
 UpdateChatParticipants::~UpdateChatParticipants()
 {
-
+	if(this->participants)
+	{
+		delete this->participants;
+	}
 }
 }//end namespace block

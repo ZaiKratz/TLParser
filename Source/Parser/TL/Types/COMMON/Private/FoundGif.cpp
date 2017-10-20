@@ -44,6 +44,5 @@ void FoundGif::OnResponce(BinaryReader& Reader)
 }
 FoundGif::~FoundGif()
 {
-
 }
 }//end namespace block

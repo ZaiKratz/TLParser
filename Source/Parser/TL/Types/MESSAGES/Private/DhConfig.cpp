@@ -38,6 +38,5 @@ void DhConfig::OnResponce(BinaryReader& Reader)
 }
 DhConfig::~DhConfig()
 {
-
 }
 }//end namespace block

@@ -24,6 +24,5 @@ void InputPrivacyValueDisallowContacts::OnResponce(BinaryReader& Reader)
 }
 InputPrivacyValueDisallowContacts::~InputPrivacyValueDisallowContacts()
 {
-
 }
 }//end namespace block

@@ -26,11 +26,14 @@ void DestroySession::OnSend(BinaryWriter& Writer)
 
 void DestroySession::OnResponce(BinaryReader& Reader)
 {
-	this->result = reinterpret_cast<PRIVATE::DestroySessionRes*>(Reader.TGReadObject());
+	this->result = reinterpret_cast<TLBaseObject*>(Reader.TGReadObject());
 	this->_Responded = true;
 }
 DestroySession::~DestroySession()
 {
-
+	if(this->result)
+	{
+		delete this->result;
+	}
 }
 }//end namespace block

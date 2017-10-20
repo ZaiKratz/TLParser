@@ -2,9 +2,6 @@
 #include "Engine.h"
 #include "../../../TLObjectBase.h"
 
-#include "../../../Types/Private/InputPeer.h"
-#include "../../../Types/Private/ReportReason.h"
-
 //begin namespace block
 namespace ACCOUNT
 {
@@ -12,18 +9,18 @@ class ReportPeer : public TLBaseObject
 {
 public:
 	ReportPeer();
-	ReportPeer(PRIVATE::InputPeer* peer, PRIVATE::ReportReason* reason);
+	ReportPeer(TLBaseObject* peer, TLBaseObject* reason);
 
 	~ReportPeer();
 	virtual void OnSend(BinaryWriter& Writer) override;
 	virtual void OnResponce(BinaryReader& Reader) override;
 
-	PRIVATE::InputPeer*  Getpeer() const
+	TLBaseObject*  Getpeer() const
 	{
 		 return this->peer;
 	}
 
-	PRIVATE::ReportReason*  Getreason() const
+	TLBaseObject*  Getreason() const
 	{
 		 return this->reason;
 	}
@@ -34,8 +31,8 @@ public:
 	}
 
 private:
-	PRIVATE::InputPeer* peer;
-	 PRIVATE::ReportReason* reason;
+	TLBaseObject* peer;
+	 TLBaseObject* reason;
 	bool result;
 };
 } //end namespace block

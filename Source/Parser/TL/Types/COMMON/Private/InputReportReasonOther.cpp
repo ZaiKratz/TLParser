@@ -29,6 +29,5 @@ void InputReportReasonOther::OnResponce(BinaryReader& Reader)
 }
 InputReportReasonOther::~InputReportReasonOther()
 {
-
 }
 }//end namespace block

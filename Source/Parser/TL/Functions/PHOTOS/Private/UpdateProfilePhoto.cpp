@@ -31,6 +31,13 @@ void UpdateProfilePhoto::OnResponce(BinaryReader& Reader)
 }
 UpdateProfilePhoto::~UpdateProfilePhoto()
 {
-
+	if(this->id)
+	{
+		delete this->id;
+	}
+	if(this->result)
+	{
+		delete this->result;
+	}
 }
 }//end namespace block

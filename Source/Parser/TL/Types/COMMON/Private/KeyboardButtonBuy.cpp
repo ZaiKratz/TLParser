@@ -29,6 +29,5 @@ void KeyboardButtonBuy::OnResponce(BinaryReader& Reader)
 }
 KeyboardButtonBuy::~KeyboardButtonBuy()
 {
-
 }
 }//end namespace block

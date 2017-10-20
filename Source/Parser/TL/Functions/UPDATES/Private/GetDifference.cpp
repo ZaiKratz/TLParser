@@ -36,7 +36,7 @@ void GetDifference::OnSend(BinaryWriter& Writer)
 	Writer.WriteInt(Flags);
 
 	Writer.WriteInt(this->pts);
-	if(!this->pts_total_limit)
+	if(this->pts_total_limit)
 	{
 	Writer.WriteInt(this->pts_total_limit);
 	}
@@ -52,6 +52,9 @@ void GetDifference::OnResponce(BinaryReader& Reader)
 }
 GetDifference::~GetDifference()
 {
-
+	if(this->result)
+	{
+		delete this->result;
+	}
 }
 }//end namespace block

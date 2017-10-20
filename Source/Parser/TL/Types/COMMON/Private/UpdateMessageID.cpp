@@ -32,6 +32,5 @@ void UpdateMessageID::OnResponce(BinaryReader& Reader)
 }
 UpdateMessageID::~UpdateMessageID()
 {
-
 }
 }//end namespace block

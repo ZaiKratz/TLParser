@@ -1,14 +1,13 @@
 #pragma once
 #include "Engine.h"
-#include "../../../Types/Private/MessageMedia.h"
+#include "../../../TLObjectBase.h"
 
 #include "../../../Types/Common/Public/GeoPoint.h"
-#include "../../../Types/Private/MessageMedia.h"
 
 //begin namespace block
 namespace COMMON
 {
-class MessageMediaGeo : public PRIVATE::MessageMedia
+class MessageMediaGeo : public TLBaseObject
 {
 public:
 	MessageMediaGeo();

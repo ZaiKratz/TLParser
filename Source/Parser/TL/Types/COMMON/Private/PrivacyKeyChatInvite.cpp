@@ -24,6 +24,5 @@ void PrivacyKeyChatInvite::OnResponce(BinaryReader& Reader)
 }
 PrivacyKeyChatInvite::~PrivacyKeyChatInvite()
 {
-
 }
 }//end namespace block

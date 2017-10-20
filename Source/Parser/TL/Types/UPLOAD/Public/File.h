@@ -2,8 +2,6 @@
 #include "Engine.h"
 #include "../../../TLObjectBase.h"
 
-#include "../../../Types/Private/FileType.h"
-
 //begin namespace block
 namespace UPLOAD
 {
@@ -11,13 +9,13 @@ class File : public TLBaseObject
 {
 public:
 	File();
-	File(PRIVATE::FileType* type, int32 mtime, TArray<uint8> bytes);
+	File(TLBaseObject* type, int32 mtime, TArray<uint8> bytes);
 
 	~File();
 	virtual void OnSend(BinaryWriter& Writer) override;
 	virtual void OnResponce(BinaryReader& Reader) override;
 
-	PRIVATE::FileType*  Gettype() const
+	TLBaseObject*  Gettype() const
 	{
 		 return this->type;
 	}
@@ -33,7 +31,7 @@ public:
 	}
 
 private:
-	PRIVATE::FileType* type;
+	TLBaseObject* type;
 	 int32 mtime;
 	 TArray<uint8> bytes;
 };

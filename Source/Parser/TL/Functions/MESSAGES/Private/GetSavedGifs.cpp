@@ -31,6 +31,9 @@ void GetSavedGifs::OnResponce(BinaryReader& Reader)
 }
 GetSavedGifs::~GetSavedGifs()
 {
-
+	if(this->result)
+	{
+		delete this->result;
+	}
 }
 }//end namespace block

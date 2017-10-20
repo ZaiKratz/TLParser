@@ -71,7 +71,7 @@ void SetInlineBotResults::OnSend(BinaryWriter& Writer)
 	}
 	Writer.WriteInt(this->cache_time);
 	Writer.TGWriteString(this->next_offset);
-	if(!this->switch_pm)
+	if(this->switch_pm)
 	{
 	this->switch_pm->OnSend(Writer);
 	}
@@ -85,6 +85,9 @@ void SetInlineBotResults::OnResponce(BinaryReader& Reader)
 }
 SetInlineBotResults::~SetInlineBotResults()
 {
-
+	if(this->switch_pm)
+	{
+		delete this->switch_pm;
+	}
 }
 }//end namespace block

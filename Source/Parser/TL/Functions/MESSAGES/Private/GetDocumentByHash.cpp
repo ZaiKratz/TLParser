@@ -35,6 +35,9 @@ void GetDocumentByHash::OnResponce(BinaryReader& Reader)
 }
 GetDocumentByHash::~GetDocumentByHash()
 {
-
+	if(this->result)
+	{
+		delete this->result;
+	}
 }
 }//end namespace block

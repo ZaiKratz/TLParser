@@ -24,6 +24,5 @@ void WebPageNotModified::OnResponce(BinaryReader& Reader)
 }
 WebPageNotModified::~WebPageNotModified()
 {
-
 }
 }//end namespace block

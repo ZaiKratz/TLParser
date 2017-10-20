@@ -2,7 +2,6 @@
 #include "Engine.h"
 #include "../../../TLObjectBase.h"
 
-#include "../../../Types/Private/InputPeer.h"
 #include "../../../Types/Common/Public/InputUser.h"
 #include "../../../Types/Common/Public/Updates.h"
 
@@ -13,7 +12,7 @@ class SetGameScore : public TLBaseObject
 {
 public:
 	SetGameScore();
-	SetGameScore(bool edit_message, bool force, PRIVATE::InputPeer* peer, int32 id, COMMON::InputUser* user_id, int32 score);
+	SetGameScore(bool edit_message, bool force, TLBaseObject* peer, int32 id, COMMON::InputUser* user_id, int32 score);
 
 	~SetGameScore();
 	virtual void OnSend(BinaryWriter& Writer) override;
@@ -29,7 +28,7 @@ public:
 		 return this->force;
 	}
 
-	PRIVATE::InputPeer*  Getpeer() const
+	TLBaseObject*  Getpeer() const
 	{
 		 return this->peer;
 	}
@@ -57,7 +56,7 @@ public:
 private:
 	bool edit_message;
 	 bool force;
-	 PRIVATE::InputPeer* peer;
+	 TLBaseObject* peer;
 	 int32 id;
 	 COMMON::InputUser* user_id;
 	 int32 score;

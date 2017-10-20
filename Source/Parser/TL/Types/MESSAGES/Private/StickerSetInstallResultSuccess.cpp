@@ -24,6 +24,5 @@ void StickerSetInstallResultSuccess::OnResponce(BinaryReader& Reader)
 }
 StickerSetInstallResultSuccess::~StickerSetInstallResultSuccess()
 {
-
 }
 }//end namespace block

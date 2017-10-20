@@ -32,6 +32,5 @@ void UpdateChannelPinnedMessage::OnResponce(BinaryReader& Reader)
 }
 UpdateChannelPinnedMessage::~UpdateChannelPinnedMessage()
 {
-
 }
 }//end namespace block

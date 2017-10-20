@@ -11,7 +11,7 @@ GetGameHighScores::GetGameHighScores()
 	this->_ContentRelated = true;
 }
 
-GetGameHighScores::GetGameHighScores(PRIVATE::InputPeer*  peer, int32 id, COMMON::InputUser*  user_id)
+GetGameHighScores::GetGameHighScores(TLBaseObject*  peer, int32 id, COMMON::InputUser*  user_id)
 {
 	this->_ConstructorID = -400399203;
 	this->_ContentRelated = true;
@@ -35,6 +35,17 @@ void GetGameHighScores::OnResponce(BinaryReader& Reader)
 }
 GetGameHighScores::~GetGameHighScores()
 {
-
+	if(this->peer)
+	{
+		delete this->peer;
+	}
+	if(this->user_id)
+	{
+		delete this->user_id;
+	}
+	if(this->result)
+	{
+		delete this->result;
+	}
 }
 }//end namespace block

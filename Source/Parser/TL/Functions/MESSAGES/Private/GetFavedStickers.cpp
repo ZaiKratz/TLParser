@@ -31,6 +31,9 @@ void GetFavedStickers::OnResponce(BinaryReader& Reader)
 }
 GetFavedStickers::~GetFavedStickers()
 {
-
+	if(this->result)
+	{
+		delete this->result;
+	}
 }
 }//end namespace block

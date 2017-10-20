@@ -38,6 +38,9 @@ void UpdateUserPhoto::OnResponce(BinaryReader& Reader)
 }
 UpdateUserPhoto::~UpdateUserPhoto()
 {
-
+	if(this->photo)
+	{
+		delete this->photo;
+	}
 }
 }//end namespace block

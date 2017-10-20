@@ -1,13 +1,11 @@
 #pragma once
 #include "Engine.h"
-#include "../../../Types/Private/MessageEntity.h"
-
-#include "../../../Types/Private/MessageEntity.h"
+#include "../../../TLObjectBase.h"
 
 //begin namespace block
 namespace COMMON
 {
-class MessageEntityTextUrl : public PRIVATE::MessageEntity
+class MessageEntityTextUrl : public TLBaseObject
 {
 public:
 	MessageEntityTextUrl();

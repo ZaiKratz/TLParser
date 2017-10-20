@@ -24,6 +24,5 @@ void UpdateConfig::OnResponce(BinaryReader& Reader)
 }
 UpdateConfig::~UpdateConfig()
 {
-
 }
 }//end namespace block

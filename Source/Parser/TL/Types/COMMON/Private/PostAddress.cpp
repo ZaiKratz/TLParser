@@ -44,6 +44,5 @@ void PostAddress::OnResponce(BinaryReader& Reader)
 }
 PostAddress::~PostAddress()
 {
-
 }
 }//end namespace block

@@ -2,7 +2,6 @@
 #include "Engine.h"
 #include "../../../TLObjectBase.h"
 
-#include "../../../Types/Private/InputPeer.h"
 #include "../../../Types/Common/Public/Updates.h"
 
 //begin namespace block
@@ -12,7 +11,7 @@ class ForwardMessages : public TLBaseObject
 {
 public:
 	ForwardMessages();
-	ForwardMessages(bool silent, bool background, bool with_my_score, PRIVATE::InputPeer* from_peer, TArray<int32> id, TArray<unsigned long long> random_id, PRIVATE::InputPeer* to_peer);
+	ForwardMessages(bool silent, bool background, bool with_my_score, TLBaseObject* from_peer, TArray<int32> id, TArray<unsigned long long> random_id, TLBaseObject* to_peer);
 
 	~ForwardMessages();
 	virtual void OnSend(BinaryWriter& Writer) override;
@@ -33,7 +32,7 @@ public:
 		 return this->with_my_score;
 	}
 
-	PRIVATE::InputPeer*  GetFromPeer() const
+	TLBaseObject*  GetFromPeer() const
 	{
 		 return this->from_peer;
 	}
@@ -48,7 +47,7 @@ public:
 		 return this->random_id;
 	}
 
-	PRIVATE::InputPeer*  GetToPeer() const
+	TLBaseObject*  GetToPeer() const
 	{
 		 return this->to_peer;
 	}
@@ -62,10 +61,10 @@ private:
 	bool silent;
 	 bool background;
 	 bool with_my_score;
-	 PRIVATE::InputPeer* from_peer;
+	 TLBaseObject* from_peer;
 	 TArray<int32> id;
 	 TArray<unsigned long long> random_id;
-	 PRIVATE::InputPeer* to_peer;
+	 TLBaseObject* to_peer;
 	COMMON::Updates* result;
 };
 } //end namespace block

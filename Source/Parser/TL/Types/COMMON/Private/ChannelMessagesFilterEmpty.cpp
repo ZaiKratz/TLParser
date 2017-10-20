@@ -24,6 +24,5 @@ void ChannelMessagesFilterEmpty::OnResponce(BinaryReader& Reader)
 }
 ChannelMessagesFilterEmpty::~ChannelMessagesFilterEmpty()
 {
-
 }
 }//end namespace block

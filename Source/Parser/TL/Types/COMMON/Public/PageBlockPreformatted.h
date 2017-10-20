@@ -1,24 +1,21 @@
 #pragma once
 #include "Engine.h"
-#include "../../../Types/Private/PageBlock.h"
-
-#include "../../../Types/Private/RichText.h"
-#include "../../../Types/Private/PageBlock.h"
+#include "../../../TLObjectBase.h"
 
 //begin namespace block
 namespace COMMON
 {
-class PageBlockPreformatted : public PRIVATE::PageBlock
+class PageBlockPreformatted : public TLBaseObject
 {
 public:
 	PageBlockPreformatted();
-	PageBlockPreformatted(PRIVATE::RichText* text, FString language);
+	PageBlockPreformatted(TLBaseObject* text, FString language);
 
 	~PageBlockPreformatted();
 	virtual void OnSend(BinaryWriter& Writer) override;
 	virtual void OnResponce(BinaryReader& Reader) override;
 
-	PRIVATE::RichText*  Gettext() const
+	TLBaseObject*  Gettext() const
 	{
 		 return this->text;
 	}
@@ -29,7 +26,7 @@ public:
 	}
 
 private:
-	PRIVATE::RichText* text;
+	TLBaseObject* text;
 	 FString language;
 };
 } //end namespace block

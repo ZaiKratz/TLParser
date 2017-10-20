@@ -10,7 +10,7 @@ MessageActionPhoneCall::MessageActionPhoneCall()
 	this->_ConstructorID = -2132731265;
 }
 
-MessageActionPhoneCall::MessageActionPhoneCall(unsigned long long call_id, PRIVATE::PhoneCallDiscardReason*  reason, int32 duration)
+MessageActionPhoneCall::MessageActionPhoneCall(unsigned long long call_id, TLBaseObject*  reason, int32 duration)
 {
 	this->_ConstructorID = -2132731265;
 	this->call_id = call_id;
@@ -41,11 +41,11 @@ void MessageActionPhoneCall::OnSend(BinaryWriter& Writer)
 	Writer.WriteInt(Flags);
 
 	Writer.WriteLong(this->call_id);
-	if(!this->reason)
+	if(this->reason)
 	{
 	this->reason->OnSend(Writer);
 	}
-	if(!this->duration)
+	if(this->duration)
 	{
 	Writer.WriteInt(this->duration);
 	}
@@ -59,7 +59,7 @@ void MessageActionPhoneCall::OnResponce(BinaryReader& Reader)
 	call_id = Reader.ReadLong();
 	if((Flags & (1 << 0)) != 0) 
 	{
-	reason = reinterpret_cast<PRIVATE::PhoneCallDiscardReason* >(Reader.TGReadObject());
+	reason = reinterpret_cast<TLBaseObject* >(Reader.TGReadObject());
 	}
 	if((Flags & (1 << 1)) != 0) 
 	{
@@ -69,6 +69,9 @@ void MessageActionPhoneCall::OnResponce(BinaryReader& Reader)
 }
 MessageActionPhoneCall::~MessageActionPhoneCall()
 {
-
+	if(this->reason)
+	{
+		delete this->reason;
+	}
 }
 }//end namespace block

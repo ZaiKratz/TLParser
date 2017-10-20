@@ -24,6 +24,5 @@ void FileMov::OnResponce(BinaryReader& Reader)
 }
 FileMov::~FileMov()
 {
-
 }
 }//end namespace block

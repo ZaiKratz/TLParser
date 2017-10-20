@@ -1,13 +1,11 @@
 #pragma once
 #include "Engine.h"
-#include "../../../Types/Private/InputPrivacyRule.h"
-
-#include "../../../Types/Private/InputPrivacyRule.h"
+#include "../../../TLObjectBase.h"
 
 //begin namespace block
 namespace COMMON
 {
-class InputPrivacyValueDisallowContacts : public PRIVATE::InputPrivacyRule
+class InputPrivacyValueDisallowContacts : public TLBaseObject
 {
 public:
 	InputPrivacyValueDisallowContacts();

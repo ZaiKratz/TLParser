@@ -51,8 +51,8 @@ void UpdateStickerSetsOrder::OnResponce(BinaryReader& Reader)
 	Reader.ReadInt();
 
 	//Len concatenated with rand number to get rid of confusions with redefinition
-	int32 Len19191 = Reader.ReadInt();
-	for(int32 i = 0; i < Len19191; i++)
+	int32 Len1498 = Reader.ReadInt();
+	for(int32 i = 0; i < Len1498; i++)
 	{
 	auto X = Reader.ReadLong();
 	order.Add(X);
@@ -61,6 +61,5 @@ void UpdateStickerSetsOrder::OnResponce(BinaryReader& Reader)
 }
 UpdateStickerSetsOrder::~UpdateStickerSetsOrder()
 {
-
 }
 }//end namespace block

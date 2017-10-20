@@ -24,6 +24,5 @@ void PeerNotifySettingsEmpty::OnResponce(BinaryReader& Reader)
 }
 PeerNotifySettingsEmpty::~PeerNotifySettingsEmpty()
 {
-
 }
 }//end namespace block

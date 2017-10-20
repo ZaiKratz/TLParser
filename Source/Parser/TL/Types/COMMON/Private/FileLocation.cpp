@@ -38,6 +38,5 @@ void FileLocation::OnResponce(BinaryReader& Reader)
 }
 FileLocation::~FileLocation()
 {
-
 }
 }//end namespace block

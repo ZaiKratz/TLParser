@@ -30,11 +30,14 @@ void SetClientDHParams::OnSend(BinaryWriter& Writer)
 
 void SetClientDHParams::OnResponce(BinaryReader& Reader)
 {
-	this->result = reinterpret_cast<PRIVATE::SetClientDHParamsAnswer*>(Reader.TGReadObject());
+	this->result = reinterpret_cast<TLBaseObject*>(Reader.TGReadObject());
 	this->_Responded = true;
 }
 SetClientDHParams::~SetClientDHParams()
 {
-
+	if(this->result)
+	{
+		delete this->result;
+	}
 }
 }//end namespace block

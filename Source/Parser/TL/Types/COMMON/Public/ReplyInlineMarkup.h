@@ -1,14 +1,13 @@
 #pragma once
 #include "Engine.h"
-#include "../../../Types/Private/ReplyMarkup.h"
+#include "../../../TLObjectBase.h"
 
 #include "../../../Types/Common/Public/KeyboardButtonRow.h"
-#include "../../../Types/Private/ReplyMarkup.h"
 
 //begin namespace block
 namespace COMMON
 {
-class ReplyInlineMarkup : public PRIVATE::ReplyMarkup
+class ReplyInlineMarkup : public TLBaseObject
 {
 public:
 	ReplyInlineMarkup();

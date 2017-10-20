@@ -10,7 +10,7 @@ SentCode::SentCode()
 	this->_ConstructorID = 1577067778;
 }
 
-SentCode::SentCode(bool phone_registered, PRIVATE::SentCodeType*  type, FString phone_code_hash, PRIVATE::CodeType*  next_type, int32 timeout)
+SentCode::SentCode(bool phone_registered, TLBaseObject*  type, FString phone_code_hash, TLBaseObject*  next_type, int32 timeout)
 {
 	this->_ConstructorID = 1577067778;
 	this->phone_registered = phone_registered;
@@ -52,11 +52,11 @@ void SentCode::OnSend(BinaryWriter& Writer)
 
 	this->type->OnSend(Writer);
 	Writer.TGWriteString(this->phone_code_hash);
-	if(!this->next_type)
+	if(this->next_type)
 	{
 	this->next_type->OnSend(Writer);
 	}
-	if(!this->timeout)
+	if(this->timeout)
 	{
 	Writer.WriteInt(this->timeout);
 	}
@@ -71,11 +71,11 @@ void SentCode::OnResponce(BinaryReader& Reader)
 	{
 		phone_registered = true;
 	}
-	type = reinterpret_cast<PRIVATE::SentCodeType* >(Reader.TGReadObject());
+	type = reinterpret_cast<TLBaseObject* >(Reader.TGReadObject());
 	phone_code_hash = Reader.TGReadString();
 	if((Flags & (1 << 1)) != 0) 
 	{
-	next_type = reinterpret_cast<PRIVATE::CodeType* >(Reader.TGReadObject());
+	next_type = reinterpret_cast<TLBaseObject* >(Reader.TGReadObject());
 	}
 	if((Flags & (1 << 2)) != 0) 
 	{
@@ -85,6 +85,13 @@ void SentCode::OnResponce(BinaryReader& Reader)
 }
 SentCode::~SentCode()
 {
-
+	if(this->type)
+	{
+		delete this->type;
+	}
+	if(this->next_type)
+	{
+		delete this->next_type;
+	}
 }
 }//end namespace block

@@ -35,6 +35,5 @@ void ServerDHParamsOk::OnResponce(BinaryReader& Reader)
 }
 ServerDHParamsOk::~ServerDHParamsOk()
 {
-
 }
 }//end namespace block

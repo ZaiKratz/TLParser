@@ -31,6 +31,9 @@ void GetFullChat::OnResponce(BinaryReader& Reader)
 }
 GetFullChat::~GetFullChat()
 {
-
+	if(this->result)
+	{
+		delete this->result;
+	}
 }
 }//end namespace block

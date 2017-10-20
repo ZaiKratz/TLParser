@@ -35,8 +35,8 @@ void ChatsSlice::OnResponce(BinaryReader& Reader)
 	Reader.ReadInt();
 
 	//Len concatenated with rand number to get rid of confusions with redefinition
-	int32 Len30862 = Reader.ReadInt();
-	for(int32 i = 0; i < Len30862; i++)
+	int32 Len17249 = Reader.ReadInt();
+	for(int32 i = 0; i < Len17249; i++)
 	{
 	auto X = reinterpret_cast<COMMON::Chat*>(Reader.TGReadObject());
 	chats.Add(X);
@@ -45,6 +45,5 @@ void ChatsSlice::OnResponce(BinaryReader& Reader)
 }
 ChatsSlice::~ChatsSlice()
 {
-
 }
 }//end namespace block

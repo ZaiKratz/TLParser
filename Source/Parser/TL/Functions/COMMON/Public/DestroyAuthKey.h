@@ -1,13 +1,11 @@
 #pragma once
 #include "Engine.h"
-#include "../../../Types/Private/DestroyAuthKeyRes.h"
-
-#include "../../../Types/Private/DestroyAuthKeyRes.h"
+#include "../../../TLObjectBase.h"
 
 //begin namespace block
 namespace COMMON
 {
-class DestroyAuthKey : public PRIVATE::DestroyAuthKeyRes
+class DestroyAuthKey : public TLBaseObject
 {
 public:
 	DestroyAuthKey();
@@ -15,12 +13,12 @@ public:
 	virtual void OnSend(BinaryWriter& Writer) override;
 	virtual void OnResponce(BinaryReader& Reader) override;
 
-	PRIVATE::DestroyAuthKeyRes* GetResult() const
+	TLBaseObject* GetResult() const
 	{
 		 return this->result;
 	}
 
 private:
-	PRIVATE::DestroyAuthKeyRes* result;
+	TLBaseObject* result;
 };
 } //end namespace block

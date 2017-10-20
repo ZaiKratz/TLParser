@@ -24,6 +24,5 @@ void PageBlockUnsupported::OnResponce(BinaryReader& Reader)
 }
 PageBlockUnsupported::~PageBlockUnsupported()
 {
-
 }
 }//end namespace block

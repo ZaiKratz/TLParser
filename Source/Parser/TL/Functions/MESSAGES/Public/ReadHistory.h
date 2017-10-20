@@ -2,7 +2,6 @@
 #include "Engine.h"
 #include "../../../TLObjectBase.h"
 
-#include "../../../Types/Private/InputPeer.h"
 #include "../../../Types/Messages/Public/AffectedMessages.h"
 
 //begin namespace block
@@ -12,13 +11,13 @@ class ReadHistory : public TLBaseObject
 {
 public:
 	ReadHistory();
-	ReadHistory(PRIVATE::InputPeer* peer, int32 max_id);
+	ReadHistory(TLBaseObject* peer, int32 max_id);
 
 	~ReadHistory();
 	virtual void OnSend(BinaryWriter& Writer) override;
 	virtual void OnResponce(BinaryReader& Reader) override;
 
-	PRIVATE::InputPeer*  Getpeer() const
+	TLBaseObject*  Getpeer() const
 	{
 		 return this->peer;
 	}
@@ -34,7 +33,7 @@ public:
 	}
 
 private:
-	PRIVATE::InputPeer* peer;
+	TLBaseObject* peer;
 	 int32 max_id;
 	MESSAGES::AffectedMessages* result;
 };

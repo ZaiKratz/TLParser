@@ -1,13 +1,11 @@
 #pragma once
 #include "Engine.h"
-#include "../../../Types/Private/Update.h"
-
-#include "../../../Types/Private/Update.h"
+#include "../../../TLObjectBase.h"
 
 //begin namespace block
 namespace COMMON
 {
-class UpdateFavedStickers : public PRIVATE::Update
+class UpdateFavedStickers : public TLBaseObject
 {
 public:
 	UpdateFavedStickers();

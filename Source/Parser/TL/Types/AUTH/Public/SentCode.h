@@ -2,9 +2,6 @@
 #include "Engine.h"
 #include "../../../TLObjectBase.h"
 
-#include "../../../Types/Private/SentCodeType.h"
-#include "../../../Types/Private/CodeType.h"
-
 //begin namespace block
 namespace AUTH
 {
@@ -12,7 +9,7 @@ class SentCode : public TLBaseObject
 {
 public:
 	SentCode();
-	SentCode(bool phone_registered, PRIVATE::SentCodeType* type, FString phone_code_hash, PRIVATE::CodeType* next_type, int32 timeout);
+	SentCode(bool phone_registered, TLBaseObject* type, FString phone_code_hash, TLBaseObject* next_type, int32 timeout);
 
 	~SentCode();
 	virtual void OnSend(BinaryWriter& Writer) override;
@@ -23,7 +20,7 @@ public:
 		 return this->phone_registered;
 	}
 
-	PRIVATE::SentCodeType*  Gettype() const
+	TLBaseObject*  Gettype() const
 	{
 		 return this->type;
 	}
@@ -33,7 +30,7 @@ public:
 		 return this->phone_code_hash;
 	}
 
-	PRIVATE::CodeType*  GetNextType() const
+	TLBaseObject*  GetNextType() const
 	{
 		 return this->next_type;
 	}
@@ -45,9 +42,9 @@ public:
 
 private:
 	bool phone_registered;
-	 PRIVATE::SentCodeType* type;
+	 TLBaseObject* type;
 	 FString phone_code_hash;
-	 PRIVATE::CodeType* next_type;
+	 TLBaseObject* next_type;
 	 int32 timeout;
 };
 } //end namespace block

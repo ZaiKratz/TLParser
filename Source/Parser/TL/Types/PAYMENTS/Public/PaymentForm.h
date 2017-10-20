@@ -5,7 +5,6 @@
 #include "../../../Types/Common/Public/Invoice.h"
 #include "../../../Types/Common/Public/DataJSON.h"
 #include "../../../Types/Common/Public/PaymentRequestedInfo.h"
-#include "../../../Types/Private/PaymentSavedCredentials.h"
 #include "../../../Types/Common/Public/User.h"
 
 //begin namespace block
@@ -15,7 +14,7 @@ class PaymentForm : public TLBaseObject
 {
 public:
 	PaymentForm();
-	PaymentForm(bool can_save_credentials, bool password_missing, int32 bot_id, COMMON::Invoice* invoice, int32 provider_id, FString url, FString native_provider, COMMON::DataJSON* native_params, COMMON::PaymentRequestedInfo* saved_info, PRIVATE::PaymentSavedCredentials* saved_credentials, TArray<COMMON::User*> users);
+	PaymentForm(bool can_save_credentials, bool password_missing, int32 bot_id, COMMON::Invoice* invoice, int32 provider_id, FString url, FString native_provider, COMMON::DataJSON* native_params, COMMON::PaymentRequestedInfo* saved_info, TLBaseObject* saved_credentials, TArray<COMMON::User*> users);
 
 	~PaymentForm();
 	virtual void OnSend(BinaryWriter& Writer) override;
@@ -66,7 +65,7 @@ public:
 		 return this->saved_info;
 	}
 
-	PRIVATE::PaymentSavedCredentials*  GetSavedCredentials() const
+	TLBaseObject*  GetSavedCredentials() const
 	{
 		 return this->saved_credentials;
 	}
@@ -86,7 +85,7 @@ private:
 	 FString native_provider;
 	 COMMON::DataJSON* native_params;
 	 COMMON::PaymentRequestedInfo* saved_info;
-	 PRIVATE::PaymentSavedCredentials* saved_credentials;
+	 TLBaseObject* saved_credentials;
 	 TArray<COMMON::User*> users;
 };
 } //end namespace block

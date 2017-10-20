@@ -42,8 +42,8 @@ void ChannelParticipants::OnResponce(BinaryReader& Reader)
 	Reader.ReadInt();
 
 	//Len concatenated with rand number to get rid of confusions with redefinition
-	int32 Len21241 = Reader.ReadInt();
-	for(int32 i = 0; i < Len21241; i++)
+	int32 Len1297 = Reader.ReadInt();
+	for(int32 i = 0; i < Len1297; i++)
 	{
 	auto X = reinterpret_cast<COMMON::ChannelParticipant*>(Reader.TGReadObject());
 	participants.Add(X);
@@ -51,8 +51,8 @@ void ChannelParticipants::OnResponce(BinaryReader& Reader)
 	Reader.ReadInt();
 
 	//Len concatenated with rand number to get rid of confusions with redefinition
-	int32 Len26276 = Reader.ReadInt();
-	for(int32 i = 0; i < Len26276; i++)
+	int32 Len19994 = Reader.ReadInt();
+	for(int32 i = 0; i < Len19994; i++)
 	{
 	auto X = reinterpret_cast<COMMON::User*>(Reader.TGReadObject());
 	users.Add(X);
@@ -61,6 +61,5 @@ void ChannelParticipants::OnResponce(BinaryReader& Reader)
 }
 ChannelParticipants::~ChannelParticipants()
 {
-
 }
 }//end namespace block

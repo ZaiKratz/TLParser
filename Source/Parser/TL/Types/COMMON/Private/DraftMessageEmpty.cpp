@@ -24,6 +24,5 @@ void DraftMessageEmpty::OnResponce(BinaryReader& Reader)
 }
 DraftMessageEmpty::~DraftMessageEmpty()
 {
-
 }
 }//end namespace block

@@ -31,6 +31,13 @@ void GetFullUser::OnResponce(BinaryReader& Reader)
 }
 GetFullUser::~GetFullUser()
 {
-
+	if(this->id)
+	{
+		delete this->id;
+	}
+	if(this->result)
+	{
+		delete this->result;
+	}
 }
 }//end namespace block

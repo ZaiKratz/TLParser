@@ -10,7 +10,7 @@ InputBotInlineMessageMediaContact::InputBotInlineMessageMediaContact()
 	this->_ConstructorID = 766443943;
 }
 
-InputBotInlineMessageMediaContact::InputBotInlineMessageMediaContact(FString phone_number, FString first_name, FString last_name, PRIVATE::ReplyMarkup*  reply_markup)
+InputBotInlineMessageMediaContact::InputBotInlineMessageMediaContact(FString phone_number, FString first_name, FString last_name, TLBaseObject*  reply_markup)
 {
 	this->_ConstructorID = 766443943;
 	this->phone_number = phone_number;
@@ -36,7 +36,7 @@ void InputBotInlineMessageMediaContact::OnSend(BinaryWriter& Writer)
 	Writer.TGWriteString(this->phone_number);
 	Writer.TGWriteString(this->first_name);
 	Writer.TGWriteString(this->last_name);
-	if(!this->reply_markup)
+	if(this->reply_markup)
 	{
 	this->reply_markup->OnSend(Writer);
 	}
@@ -52,12 +52,15 @@ void InputBotInlineMessageMediaContact::OnResponce(BinaryReader& Reader)
 	last_name = Reader.TGReadString();
 	if((Flags & (1 << 2)) != 0) 
 	{
-	reply_markup = reinterpret_cast<PRIVATE::ReplyMarkup* >(Reader.TGReadObject());
+	reply_markup = reinterpret_cast<TLBaseObject* >(Reader.TGReadObject());
 	}
 	this->_Responded = true;
 }
 InputBotInlineMessageMediaContact::~InputBotInlineMessageMediaContact()
 {
-
+	if(this->reply_markup)
+	{
+		delete this->reply_markup;
+	}
 }
 }//end namespace block

@@ -24,6 +24,5 @@ void InputMessagesFilterRoundVoice::OnResponce(BinaryReader& Reader)
 }
 InputMessagesFilterRoundVoice::~InputMessagesFilterRoundVoice()
 {
-
 }
 }//end namespace block

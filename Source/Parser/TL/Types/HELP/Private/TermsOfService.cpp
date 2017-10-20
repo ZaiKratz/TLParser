@@ -29,6 +29,5 @@ void TermsOfService::OnResponce(BinaryReader& Reader)
 }
 TermsOfService::~TermsOfService()
 {
-
 }
 }//end namespace block

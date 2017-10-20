@@ -23,6 +23,9 @@ void GetSavedInfo::OnResponce(BinaryReader& Reader)
 }
 GetSavedInfo::~GetSavedInfo()
 {
-
+	if(this->result)
+	{
+		delete this->result;
+	}
 }
 }//end namespace block

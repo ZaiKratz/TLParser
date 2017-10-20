@@ -32,6 +32,5 @@ void MessageRange::OnResponce(BinaryReader& Reader)
 }
 MessageRange::~MessageRange()
 {
-
 }
 }//end namespace block

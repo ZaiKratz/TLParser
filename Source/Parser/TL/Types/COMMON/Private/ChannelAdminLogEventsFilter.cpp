@@ -214,6 +214,5 @@ void ChannelAdminLogEventsFilter::OnResponce(BinaryReader& Reader)
 }
 ChannelAdminLogEventsFilter::~ChannelAdminLogEventsFilter()
 {
-
 }
 }//end namespace block

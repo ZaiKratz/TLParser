@@ -4,7 +4,6 @@
 
 #include "../../../Types/Common/Public/Photo.h"
 #include "../../../Types/Common/Public/Document.h"
-#include "../../../Types/Private/BotInlineMessage.h"
 #include "../../../Types/Common/Public/BotInlineResult.h"
 
 //begin namespace block
@@ -14,7 +13,7 @@ class BotInlineMediaResult : public TLBaseObject
 {
 public:
 	BotInlineMediaResult();
-	BotInlineMediaResult(FString id, FString type, COMMON::Photo* photo, COMMON::Document* document, FString title, FString description, PRIVATE::BotInlineMessage* send_message);
+	BotInlineMediaResult(FString id, FString type, COMMON::Photo* photo, COMMON::Document* document, FString title, FString description, TLBaseObject* send_message);
 
 	~BotInlineMediaResult();
 	virtual void OnSend(BinaryWriter& Writer) override;
@@ -50,7 +49,7 @@ public:
 		 return this->description;
 	}
 
-	PRIVATE::BotInlineMessage*  GetSendMessage() const
+	TLBaseObject*  GetSendMessage() const
 	{
 		 return this->send_message;
 	}
@@ -62,6 +61,6 @@ private:
 	 COMMON::Document* document;
 	 FString title;
 	 FString description;
-	 PRIVATE::BotInlineMessage* send_message;
+	 TLBaseObject* send_message;
 };
 } //end namespace block

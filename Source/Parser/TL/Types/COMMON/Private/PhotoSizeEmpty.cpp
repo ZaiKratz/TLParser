@@ -29,6 +29,5 @@ void PhotoSizeEmpty::OnResponce(BinaryReader& Reader)
 }
 PhotoSizeEmpty::~PhotoSizeEmpty()
 {
-
 }
 }//end namespace block

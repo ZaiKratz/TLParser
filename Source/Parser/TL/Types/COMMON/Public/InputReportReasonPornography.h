@@ -1,13 +1,11 @@
 #pragma once
 #include "Engine.h"
-#include "../../../Types/Private/ReportReason.h"
-
-#include "../../../Types/Private/ReportReason.h"
+#include "../../../TLObjectBase.h"
 
 //begin namespace block
 namespace COMMON
 {
-class InputReportReasonPornography : public PRIVATE::ReportReason
+class InputReportReasonPornography : public TLBaseObject
 {
 public:
 	InputReportReasonPornography();

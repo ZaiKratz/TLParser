@@ -10,7 +10,7 @@ UpdateReadHistoryInbox::UpdateReadHistoryInbox()
 	this->_ConstructorID = -1721631396;
 }
 
-UpdateReadHistoryInbox::UpdateReadHistoryInbox(PRIVATE::Peer*  peer, int32 max_id, int32 pts, int32 pts_count)
+UpdateReadHistoryInbox::UpdateReadHistoryInbox(TLBaseObject*  peer, int32 max_id, int32 pts, int32 pts_count)
 {
 	this->_ConstructorID = -1721631396;
 	this->peer = peer;
@@ -30,7 +30,7 @@ void UpdateReadHistoryInbox::OnSend(BinaryWriter& Writer)
 
 void UpdateReadHistoryInbox::OnResponce(BinaryReader& Reader)
 {
-	peer = reinterpret_cast<PRIVATE::Peer* >(Reader.TGReadObject());
+	peer = reinterpret_cast<TLBaseObject* >(Reader.TGReadObject());
 	max_id = Reader.ReadInt();
 	pts = Reader.ReadInt();
 	pts_count = Reader.ReadInt();
@@ -38,6 +38,9 @@ void UpdateReadHistoryInbox::OnResponce(BinaryReader& Reader)
 }
 UpdateReadHistoryInbox::~UpdateReadHistoryInbox()
 {
-
+	if(this->peer)
+	{
+		delete this->peer;
+	}
 }
 }//end namespace block

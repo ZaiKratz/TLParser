@@ -32,6 +32,5 @@ void ChannelAdminLogEventActionChangeUsername::OnResponce(BinaryReader& Reader)
 }
 ChannelAdminLogEventActionChangeUsername::~ChannelAdminLogEventActionChangeUsername()
 {
-
 }
 }//end namespace block

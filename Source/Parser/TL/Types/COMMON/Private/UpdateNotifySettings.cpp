@@ -32,6 +32,13 @@ void UpdateNotifySettings::OnResponce(BinaryReader& Reader)
 }
 UpdateNotifySettings::~UpdateNotifySettings()
 {
-
+	if(this->peer)
+	{
+		delete this->peer;
+	}
+	if(this->notify_settings)
+	{
+		delete this->notify_settings;
+	}
 }
 }//end namespace block

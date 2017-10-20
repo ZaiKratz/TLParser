@@ -24,6 +24,5 @@ void StickersNotModified::OnResponce(BinaryReader& Reader)
 }
 StickersNotModified::~StickersNotModified()
 {
-
 }
 }//end namespace block

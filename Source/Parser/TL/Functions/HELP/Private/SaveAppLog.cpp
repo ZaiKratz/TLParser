@@ -36,6 +36,5 @@ void SaveAppLog::OnResponce(BinaryReader& Reader)
 }
 SaveAppLog::~SaveAppLog()
 {
-
 }
 }//end namespace block

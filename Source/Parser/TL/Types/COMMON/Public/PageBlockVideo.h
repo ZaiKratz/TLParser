@@ -1,18 +1,15 @@
 #pragma once
 #include "Engine.h"
-#include "../../../Types/Private/PageBlock.h"
-
-#include "../../../Types/Private/RichText.h"
-#include "../../../Types/Private/PageBlock.h"
+#include "../../../TLObjectBase.h"
 
 //begin namespace block
 namespace COMMON
 {
-class PageBlockVideo : public PRIVATE::PageBlock
+class PageBlockVideo : public TLBaseObject
 {
 public:
 	PageBlockVideo();
-	PageBlockVideo(bool autoplay, bool loop, unsigned long long video_id, PRIVATE::RichText* caption);
+	PageBlockVideo(bool autoplay, bool loop, unsigned long long video_id, TLBaseObject* caption);
 
 	~PageBlockVideo();
 	virtual void OnSend(BinaryWriter& Writer) override;
@@ -33,7 +30,7 @@ public:
 		 return this->video_id;
 	}
 
-	PRIVATE::RichText*  Getcaption() const
+	TLBaseObject*  Getcaption() const
 	{
 		 return this->caption;
 	}
@@ -42,6 +39,6 @@ private:
 	bool autoplay;
 	 bool loop;
 	 unsigned long long video_id;
-	 PRIVATE::RichText* caption;
+	 TLBaseObject* caption;
 };
 } //end namespace block

@@ -29,6 +29,5 @@ void ChannelParticipantsKicked::OnResponce(BinaryReader& Reader)
 }
 ChannelParticipantsKicked::~ChannelParticipantsKicked()
 {
-
 }
 }//end namespace block

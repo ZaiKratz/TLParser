@@ -35,6 +35,5 @@ void NearestDc::OnResponce(BinaryReader& Reader)
 }
 NearestDc::~NearestDc()
 {
-
 }
 }//end namespace block

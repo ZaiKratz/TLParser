@@ -23,6 +23,9 @@ void GetAppUpdate::OnResponce(BinaryReader& Reader)
 }
 GetAppUpdate::~GetAppUpdate()
 {
-
+	if(this->result)
+	{
+		delete this->result;
+	}
 }
 }//end namespace block

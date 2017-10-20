@@ -31,6 +31,9 @@ void ReportEncryptedSpam::OnResponce(BinaryReader& Reader)
 }
 ReportEncryptedSpam::~ReportEncryptedSpam()
 {
-
+	if(this->peer)
+	{
+		delete this->peer;
+	}
 }
 }//end namespace block

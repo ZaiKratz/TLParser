@@ -10,7 +10,7 @@ TopPeer::TopPeer()
 	this->_ConstructorID = -305282981;
 }
 
-TopPeer::TopPeer(PRIVATE::Peer*  peer, double rating)
+TopPeer::TopPeer(TLBaseObject*  peer, double rating)
 {
 	this->_ConstructorID = -305282981;
 	this->peer = peer;
@@ -26,12 +26,15 @@ void TopPeer::OnSend(BinaryWriter& Writer)
 
 void TopPeer::OnResponce(BinaryReader& Reader)
 {
-	peer = reinterpret_cast<PRIVATE::Peer* >(Reader.TGReadObject());
+	peer = reinterpret_cast<TLBaseObject* >(Reader.TGReadObject());
 	rating = Reader.ReadDouble();
 	this->_Responded = true;
 }
 TopPeer::~TopPeer()
 {
-
+	if(this->peer)
+	{
+		delete this->peer;
+	}
 }
 }//end namespace block

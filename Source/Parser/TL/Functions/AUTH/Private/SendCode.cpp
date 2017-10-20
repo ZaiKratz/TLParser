@@ -45,7 +45,7 @@ void SendCode::OnSend(BinaryWriter& Writer)
 	Writer.WriteInt(Flags);
 
 	Writer.TGWriteString(this->phone_number);
-	if(!this->current_number)
+	if(this->current_number)
 	{
 	Writer.WriteBool(this->current_number);
 	}
@@ -61,6 +61,9 @@ void SendCode::OnResponce(BinaryReader& Reader)
 }
 SendCode::~SendCode()
 {
-
+	if(this->result)
+	{
+		delete this->result;
+	}
 }
 }//end namespace block

@@ -24,6 +24,5 @@ void InputEncryptedFileEmpty::OnResponce(BinaryReader& Reader)
 }
 InputEncryptedFileEmpty::~InputEncryptedFileEmpty()
 {
-
 }
 }//end namespace block

@@ -2,7 +2,6 @@
 #include "Engine.h"
 #include "../../../TLObjectBase.h"
 
-#include "../../../Types/Private/Update.h"
 #include "../../../Types/Common/Public/Updates.h"
 
 //begin namespace block
@@ -12,13 +11,13 @@ class UpdateShort : public TLBaseObject
 {
 public:
 	UpdateShort();
-	UpdateShort(PRIVATE::Update* update, FDateTime date);
+	UpdateShort(TLBaseObject* update, FDateTime date);
 
 	~UpdateShort();
 	virtual void OnSend(BinaryWriter& Writer) override;
 	virtual void OnResponce(BinaryReader& Reader) override;
 
-	PRIVATE::Update*  Getupdate() const
+	TLBaseObject*  Getupdate() const
 	{
 		 return this->update;
 	}
@@ -29,7 +28,7 @@ public:
 	}
 
 private:
-	PRIVATE::Update* update;
+	TLBaseObject* update;
 	 FDateTime date;
 };
 } //end namespace block

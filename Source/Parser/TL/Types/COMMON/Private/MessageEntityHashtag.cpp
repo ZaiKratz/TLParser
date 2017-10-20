@@ -32,6 +32,5 @@ void MessageEntityHashtag::OnResponce(BinaryReader& Reader)
 }
 MessageEntityHashtag::~MessageEntityHashtag()
 {
-
 }
 }//end namespace block

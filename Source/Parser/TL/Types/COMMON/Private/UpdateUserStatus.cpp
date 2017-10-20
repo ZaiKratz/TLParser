@@ -10,7 +10,7 @@ UpdateUserStatus::UpdateUserStatus()
 	this->_ConstructorID = 469489699;
 }
 
-UpdateUserStatus::UpdateUserStatus(int32 user_id, PRIVATE::UserStatus*  status)
+UpdateUserStatus::UpdateUserStatus(int32 user_id, TLBaseObject*  status)
 {
 	this->_ConstructorID = 469489699;
 	this->user_id = user_id;
@@ -27,11 +27,14 @@ void UpdateUserStatus::OnSend(BinaryWriter& Writer)
 void UpdateUserStatus::OnResponce(BinaryReader& Reader)
 {
 	user_id = Reader.ReadInt();
-	status = reinterpret_cast<PRIVATE::UserStatus* >(Reader.TGReadObject());
+	status = reinterpret_cast<TLBaseObject* >(Reader.TGReadObject());
 	this->_Responded = true;
 }
 UpdateUserStatus::~UpdateUserStatus()
 {
-
+	if(this->status)
+	{
+		delete this->status;
+	}
 }
 }//end namespace block

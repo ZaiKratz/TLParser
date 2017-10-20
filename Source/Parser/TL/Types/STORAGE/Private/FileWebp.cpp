@@ -24,6 +24,5 @@ void FileWebp::OnResponce(BinaryReader& Reader)
 }
 FileWebp::~FileWebp()
 {
-
 }
 }//end namespace block

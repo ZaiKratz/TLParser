@@ -61,8 +61,8 @@ void PhoneCall::OnResponce(BinaryReader& Reader)
 	Reader.ReadInt();
 
 	//Len concatenated with rand number to get rid of confusions with redefinition
-	int32 Len24602 = Reader.ReadInt();
-	for(int32 i = 0; i < Len24602; i++)
+	int32 Len29551 = Reader.ReadInt();
+	for(int32 i = 0; i < Len29551; i++)
 	{
 	auto X = reinterpret_cast<COMMON::PhoneConnection*>(Reader.TGReadObject());
 	alternative_connections.Add(X);
@@ -72,6 +72,13 @@ void PhoneCall::OnResponce(BinaryReader& Reader)
 }
 PhoneCall::~PhoneCall()
 {
-
+	if(this->protocol)
+	{
+		delete this->protocol;
+	}
+	if(this->connection)
+	{
+		delete this->connection;
+	}
 }
 }//end namespace block

@@ -24,6 +24,5 @@ void ContactsNotModified::OnResponce(BinaryReader& Reader)
 }
 ContactsNotModified::~ContactsNotModified()
 {
-
 }
 }//end namespace block

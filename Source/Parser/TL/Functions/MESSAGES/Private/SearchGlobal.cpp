@@ -11,7 +11,7 @@ SearchGlobal::SearchGlobal()
 	this->_ContentRelated = true;
 }
 
-SearchGlobal::SearchGlobal(FString q, FDateTime offset_date, PRIVATE::InputPeer*  offset_peer, int32 offset_id, int32 limit)
+SearchGlobal::SearchGlobal(FString q, FDateTime offset_date, TLBaseObject*  offset_peer, int32 offset_id, int32 limit)
 {
 	this->_ConstructorID = -1640190800;
 	this->_ContentRelated = true;
@@ -39,6 +39,13 @@ void SearchGlobal::OnResponce(BinaryReader& Reader)
 }
 SearchGlobal::~SearchGlobal()
 {
-
+	if(this->offset_peer)
+	{
+		delete this->offset_peer;
+	}
+	if(this->result)
+	{
+		delete this->result;
+	}
 }
 }//end namespace block

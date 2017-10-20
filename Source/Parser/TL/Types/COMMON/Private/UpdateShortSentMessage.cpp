@@ -10,7 +10,7 @@ UpdateShortSentMessage::UpdateShortSentMessage()
 	this->_ConstructorID = 301019932;
 }
 
-UpdateShortSentMessage::UpdateShortSentMessage(bool out, int32 id, int32 pts, int32 pts_count, FDateTime date, PRIVATE::MessageMedia*  media, TArray<PRIVATE::MessageEntity*>  entities)
+UpdateShortSentMessage::UpdateShortSentMessage(bool out, int32 id, int32 pts, int32 pts_count, FDateTime date, TLBaseObject*  media, TArray<TLBaseObject*>  entities)
 {
 	this->_ConstructorID = 301019932;
 	this->out = out;
@@ -56,7 +56,7 @@ void UpdateShortSentMessage::OnSend(BinaryWriter& Writer)
 	Writer.WriteInt(this->pts);
 	Writer.WriteInt(this->pts_count);
 	Writer.TGWriteDate(this->date);
-	if(!this->media)
+	if(this->media)
 	{
 	this->media->OnSend(Writer);
 	}
@@ -66,7 +66,7 @@ void UpdateShortSentMessage::OnSend(BinaryWriter& Writer)
 	Writer.WriteInt(this->entities.Num());
 	for(auto X : this->entities)
 	{
-	if(!X)
+	if(X)
 	{
 	X->OnSend(Writer);
 	}
@@ -89,17 +89,17 @@ void UpdateShortSentMessage::OnResponce(BinaryReader& Reader)
 	date = Reader.TGReadDate();
 	if((Flags & (1 << 9)) != 0) 
 	{
-	media = reinterpret_cast<PRIVATE::MessageMedia* >(Reader.TGReadObject());
+	media = reinterpret_cast<TLBaseObject* >(Reader.TGReadObject());
 	}
 	if((Flags & (1 << 7)) != 0) 
 	{
 	Reader.ReadInt();
 
 	//Len concatenated with rand number to get rid of confusions with redefinition
-	int32 Len29991 = Reader.ReadInt();
-	for(int32 i = 0; i < Len29991; i++)
+	int32 Len30298 = Reader.ReadInt();
+	for(int32 i = 0; i < Len30298; i++)
 	{
-	auto X = reinterpret_cast<PRIVATE::MessageEntity*>(Reader.TGReadObject());
+	auto X = reinterpret_cast<TLBaseObject*>(Reader.TGReadObject());
 	entities.Add(X);
 	}
 	}
@@ -107,6 +107,9 @@ void UpdateShortSentMessage::OnResponce(BinaryReader& Reader)
 }
 UpdateShortSentMessage::~UpdateShortSentMessage()
 {
-
+	if(this->media)
+	{
+		delete this->media;
+	}
 }
 }//end namespace block

@@ -18,11 +18,14 @@ void DestroyAuthKey::OnSend(BinaryWriter& Writer)
 
 void DestroyAuthKey::OnResponce(BinaryReader& Reader)
 {
-	this->result = reinterpret_cast<PRIVATE::DestroyAuthKeyRes*>(Reader.TGReadObject());
+	this->result = reinterpret_cast<TLBaseObject*>(Reader.TGReadObject());
 	this->_Responded = true;
 }
 DestroyAuthKey::~DestroyAuthKey()
 {
-
+	if(this->result)
+	{
+		delete this->result;
+	}
 }
 }//end namespace block

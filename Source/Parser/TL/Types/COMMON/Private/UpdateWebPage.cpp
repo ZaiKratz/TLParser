@@ -35,6 +35,9 @@ void UpdateWebPage::OnResponce(BinaryReader& Reader)
 }
 UpdateWebPage::~UpdateWebPage()
 {
-
+	if(this->webpage)
+	{
+		delete this->webpage;
+	}
 }
 }//end namespace block

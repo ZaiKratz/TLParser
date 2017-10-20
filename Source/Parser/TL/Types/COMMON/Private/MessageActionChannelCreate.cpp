@@ -29,6 +29,5 @@ void MessageActionChannelCreate::OnResponce(BinaryReader& Reader)
 }
 MessageActionChannelCreate::~MessageActionChannelCreate()
 {
-
 }
 }//end namespace block

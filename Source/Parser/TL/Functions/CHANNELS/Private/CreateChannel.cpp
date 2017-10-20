@@ -55,6 +55,9 @@ void CreateChannel::OnResponce(BinaryReader& Reader)
 }
 CreateChannel::~CreateChannel()
 {
-
+	if(this->result)
+	{
+		delete this->result;
+	}
 }
 }//end namespace block

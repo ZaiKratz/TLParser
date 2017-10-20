@@ -29,6 +29,5 @@ void DhConfigNotModified::OnResponce(BinaryReader& Reader)
 }
 DhConfigNotModified::~DhConfigNotModified()
 {
-
 }
 }//end namespace block

@@ -40,6 +40,13 @@ void ReportSpam::OnResponce(BinaryReader& Reader)
 }
 ReportSpam::~ReportSpam()
 {
-
+	if(this->channel)
+	{
+		delete this->channel;
+	}
+	if(this->user_id)
+	{
+		delete this->user_id;
+	}
 }
 }//end namespace block
