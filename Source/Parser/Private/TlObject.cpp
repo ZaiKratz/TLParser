@@ -2,7 +2,7 @@
 #include "Regex.h"
 #include "Parse.h"
 #include <string>
-#include <iomanip>
+#include <regex>
 
 TLObject::TLObject()
 {
@@ -86,17 +86,19 @@ TLObject::TLObject(FString FullName, FString ObjectId, TArray<TLArg> Args, FStri
 			_Result[0] = toupper(_Result[0]);
 		}
 
-
 	this->_IsFunction = IsFunction; 
 
-	ObjectId.InsertAt(0, "0x");
 
-	std::string StdString(TCHAR_TO_UTF8(*ObjectId));
-
-	uint32 x = strtoul(StdString.c_str(), NULL, 16);
-	
-	/*big endian*/
-	this->_Id = x;
+	if (ObjectId.IsEmpty())
+		this->_Id = InferID(FullName, ObjectId, Args, Result);
+	else
+	{
+		ObjectId.InsertAt(0, "0x");
+		std::string StdString(TCHAR_TO_UTF8(*ObjectId));
+		uint32 x = strtoul(StdString.c_str(), NULL, 16);
+		/*big endian*/
+		this->_Id = x;
+	}
 }
 
 
@@ -223,6 +225,55 @@ bool TLObject::IsCoreType()
 	return this->_CORE_TYPES.Contains(this->_Id);
 }
 
+
+uint32 TLObject::CRC32(const void * Data, int32 Size)
+{
+	FCrc::Init();
+	return FCrc::MemCrc32(Data, Size);
+}
+
+FString TLObject::Repr(FString FullName, FString ObjectID, TArray<TLArg> Args, FString Result, bool IgnoreID /*= false*/)
+{
+	FString HexID;
+	if (ObjectID.IsEmpty() || IgnoreID)
+		HexID = TEXT("");
+	else
+		HexID = TEXT("#") + ObjectID;
+
+	FString RealArgs;
+	if (this->Args().Num())
+	{
+		
+		for (auto Arg : this->Args()) 
+		{
+			RealArgs += TEXT(" ");
+			RealArgs += Arg.Repr();
+		}
+	}
+	else
+		RealArgs = TEXT("");
+
+	return FullName + HexID + RealArgs + TEXT(" = ") + Result;
+}
+
+uint32 TLObject::InferID(FString FullName, FString ObjectID, TArray<TLArg> Args, FString Result)
+{
+	FString Representation = Repr(FullName, ObjectID, Args, Result);
+
+	Representation =
+		Representation.Replace(TEXT(":bytes"), TEXT(":string")).
+		Replace(TEXT("?bytes"), TEXT("?string")).
+		Replace(TEXT("<"), TEXT(" ")).
+		Replace(TEXT(">"), TEXT("")).
+		Replace(TEXT("{"), TEXT("")).
+		Replace(TEXT("}"), TEXT(""));
+
+	std::string StdString = TCHAR_TO_UTF8(*Representation);
+	std::regex Pattern("\\w+:flags\\.\\d+?true"); 
+	Representation = UTF8_TO_TCHAR(std::regex_replace(StdString, Pattern, "").c_str());
+
+	return CRC32(TCHAR_TO_ANSI(*Representation), Representation.Len());
+}
 
 TLArg::TLArg()
 {
@@ -394,6 +445,35 @@ TLArg::TLArg(FString Name, FString ArgType)
 
 	if (_Type.Contains(TEXT("_")))
 		_Type = ToCamalCase(_Type);
+}
+
+FString TLArg::Repr()
+{
+	auto RealType = this->Type();
+
+	if (RealType == TEXT("int32"))
+		RealType = TEXT("int");
+
+	if (this->IsFlagIndicator())
+	{
+		RealType = TEXT("#");
+	}
+
+	if (this->IsVector())
+	{
+		if (this->IsUsingVectorID())
+			RealType = TEXT("Vector<") + RealType + TEXT(">");
+		else
+			RealType = TEXT("vector<") + RealType + TEXT(">");
+	}
+
+	if (this->IsGeneric())
+		RealType = TEXT("!") + RealType;
+
+	if (this->IsFlag())
+		RealType = TEXT("flags.") + FString::FromInt(this->FlagIndex()) + TEXT("?") + RealType;
+
+	return this->Name() + TEXT(":") + RealType;
 }
 
 bool TLArg::operator==(const TLArg &RHObject)

@@ -60,6 +60,9 @@ public:
 		};
 	}
 
+	uint32 InferID(FString FullName, FString ObjectID, TArray<TLArg> Args, FString Result);
+	FString Repr(FString FullName, FString ObjectID, TArray<TLArg> Args, FString Result, bool IgnoreID = false);
+
 private:
 	TArray<uint32> _CORE_TYPES;
 	FString _Namespace;
@@ -68,6 +71,9 @@ private:
 	TArray<TLArg> _Args;
 	uint32 _Id;
 	bool _IsFunction;
+
+	uint32 CRC32(const void * Data, int32 Size);
+	
 };
 
 class TLArg
@@ -154,6 +160,8 @@ public:
 		return _IsBytes;
 	}
 
+	FString Repr();
+
 private:
 	FString _Name;
 	bool _IsVector;
@@ -165,4 +173,6 @@ private:
 	bool _IsBytes;
 	FString _Type;
 	int32 _FlagIndex;
+
+	
 };

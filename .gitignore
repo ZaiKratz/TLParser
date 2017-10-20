@@ -74,5 +74,8 @@ Intermediate/*
 # Cache files for the editor to use
 DerivedDataCache/*
 
-# Generated classes
-Plugins/Parser/*
+# Generated files
+Plugins/*
+Source/Parser/TL/Functions/*
+Source/Parser/TL/Types/*
+Source/Parser/TL/AllObjects.h

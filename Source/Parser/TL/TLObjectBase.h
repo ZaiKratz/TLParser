@@ -3,18 +3,20 @@
 #include "Engine.h"
 #include "../Public/extensions/BinaryReader.h"
 #include "../Public/extensions/BinaryWriter.h"
+#include "../Private/SafeBool.h"
 
-class TLBaseObject 
+
+class TLBaseObject : public SafeBool<>
 {
 public:
 	void OnSendSuccess();
 	void OnConfirm();
 	bool NeedResend();
 
-// 	virtual void DoDict()
-// 	{
-// 
-// 	}
+	bool IsValid() const
+	{
+		return _ConstructorID == 0;
+	}
 
 	virtual void OnSend(BinaryWriter& Writer)
 	{
@@ -37,4 +39,5 @@ private:
 	bool _Dirty;
 	FDateTime _SendTime;
 	bool _ConfirmReceived;
+
 };

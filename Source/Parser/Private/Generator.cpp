@@ -8,19 +8,8 @@
 #include "Regex.h"
 #include "FileManager.h"
 
-#include <iostream>
-#include <fstream>
 #include "../Source/Parser/TL/TLObjectBase.h"
 
-
-int writeFile(FString str, FString FileName)
-{
-	std::ofstream myfile;
-	myfile.open(std::string(TCHAR_TO_UTF8(*FileName)).c_str(), std::ios::app);
-	myfile << std::string(TCHAR_TO_UTF8(*str)).c_str();
-	myfile.close();
-	return 0;
-}
 
 FString CamalCase(FString ClassName)
 {
@@ -134,11 +123,6 @@ void TLGenerator::GenerateTLObjects(FString SchemeFile, uint32 ImportDepth)
 					AbstractTypes.AddUnique(Type);
 			}
 		}
-
-// 		for (auto AbsType : AbstractTypes)
-// 		{
-// 			this->WriteAbstractClass(AbsType, FPaths::Combine(TypesDir, FString("PRIVATE")));
-// 		}
 
 		TLSourceBuilder sb;
 		sb.WriteLine(TEXT("#pragma once"));
@@ -769,35 +753,6 @@ void TLGenerator::WriteSourceCode(FString SourceFilePath, TLObject& tl, TArray<F
 
 	//Save source file 
 	FFileHelper::SaveStringToFile(SourceCode, *FileName);
-}
-
-void TLGenerator::WriteAbstractClass(FString ClassName, FString FilePath)
-{
-	TLSourceBuilder sb;
-	
-	sb.WriteLine(TEXT("#pragma once"));
-	sb.WriteLine(TEXT("#include \"Engine.h\""));
-	sb.WriteLine(TEXT("#include \"../../TLObjectBase.h\""));
-	sb.WriteLine(TEXT("#include \"../../Public/extensions/BinaryReader.h\""));
-	sb.WriteLine(TEXT("#include \"../../Public/extensions/BinaryWriter.h\""));
-
-
-	sb.WriteLine(TEXT("\nnamespace PRIVATE \n{"));
-
-
-	sb.WriteLine(TEXT("\nclass ") + ClassName + TEXT(" : public TLBaseObject"));
-	sb.WriteLine(TEXT("{"));
-	sb.WriteLine(TEXT("public:"));
-// 	sb.WriteLine("\tvirtual void OnSend(BinaryWriter writer) ");
-// 	sb.WriteLine("\t{\n\n\t}\n");
-// 	sb.WriteLine("\tvirtual void OnResponce(BinaryReader reader) ");
-// 	sb.WriteLine("\t{\n\n\t}\n");
-	sb.WriteLine(TEXT("};"));
-
-	sb.WriteLine(TEXT("\n}"));
-
-	FString FileName = FPaths::Combine(FilePath, ClassName) + TEXT(".h");
-	FFileHelper::SaveStringToFile(sb.ReturnGeneratedCode(), *FileName);
 }
 
 void TLGenerator::WriteOnSendCode(TLSourceBuilder& sb, TLArg Arg, TArray<TLArg> Args, FString Name /*= ""*/)
