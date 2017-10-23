@@ -40,11 +40,6 @@ TLObject::TLObject(FString FullName, FString ObjectId, TArray<TLArg> Args, FStri
 		0x3fedd339  // true#3fedd339 = True;
 	};
 
-/*	if(FullName.Contains(TEXT(""))*/
-
-	if (ObjectId == "5e2ad36e")
-		_LOG("");
-
 	if (FullName.Contains(TEXT(".")))
 	{
 		FullName.Split(TEXT("."), &this->_Namespace, &this->_Name);
@@ -124,14 +119,16 @@ TLObject TLObject::FromTL(FString InStr, bool IsFunction)
 		Result = Match.GetCaptureGroup(3);
 	}
 
+	if (ObjectId == "bdf9653b")
+		_LOG("");
+
+
 	FRegexPattern ArgsPattern(
 		TEXT("(\\{)?(\\w+):([\\w\\d<>#.?!]+)(\\})?")
 	);
 	FRegexMatcher ArgsMatch(ArgsPattern, InStr);
 
 	TArray<TLArg> Args;
-	FString ArgName;
-	FString ArgType;
 
 	while (ArgsMatch.FindNext())
 	{
@@ -139,7 +136,7 @@ TLObject TLObject::FromTL(FString InStr, bool IsFunction)
 		auto Name = ArgsMatch.GetCaptureGroup(2);
 		auto Type = ArgsMatch.GetCaptureGroup(3);
 
-		if(Braces.IsEmpty())
+		if (Braces.IsEmpty())
 			if (Type == TEXT("X") || Type == TEXT("!X"))
 			{
 				Type = TEXT("TLBaseObject");
@@ -177,17 +174,17 @@ TLObject TLObject::FromTL(FString InStr, bool IsFunction)
 		else if (Result.Contains(TEXT("Bool")))
 			Result = TEXT("TArray<bool>");
 
-		else if(this->SystemTypes().Contains(Result))
+		else if (this->SystemTypes().Contains(Result))
 			Result = TEXT("TArray<") + Result + TEXT(">");
 		else
 			Result = TEXT("TArray<") + Result + TEXT(">");
 	}
-	else 
+	else
 	{
 		if (Result == TEXT("int"))
 			Result = TEXT("int32");
 
-		else if(Result == TEXT("long"))
+		else if (Result == TEXT("long"))
 			Result = TEXT("unsigned long long");
 
 		else if (Result == TEXT("int128"))
@@ -205,7 +202,6 @@ TLObject TLObject::FromTL(FString InStr, bool IsFunction)
 		else if (Result.Contains(TEXT("Bool")))
 			Result = TEXT("bool");
 	}
-	//ObjectId.InsertAt(0, TEXT("0x"));
 	return TLObject(FullName, ObjectId, Args, Result, IsFunction);
 }
 
@@ -286,16 +282,7 @@ TLArg::TLArg(FString Name, FString ArgType)
 // 		Initializes a new .tl argument
 // 		:param Name: The name of the .tl argument
 // 		:param ArgType: The type of the .tl argument
-	
-	if (ArgType.Contains("ipport"))
-		_LOG("");
-
 	this->_Name = Name;
-
-	if(!_Name.IsEmpty())
-		_Name[0] = tolower(_Name[0]);
-
-	
 	this->_IsBytes = false;
 	this->_IsVector = false;
 	this->_IsFlag = false;
@@ -344,13 +331,6 @@ TLArg::TLArg(FString Name, FString ArgType)
 
 		else if(_Type == TEXT("string"))
 			this->_Type = TEXT("FString");
-
-// 		if (this->_Type.Contains("Vector<"))
-// 		{
-// 			auto Index = this->_Type.Find("<");
-// 			this->_Type = this->_Type.RightChop(Index);
-// 			this->_Type.InsertAt(0, "TArray");
-// 		}
 	}
 
 // 	# The type may be a flag (flags.IDX?REAL_TYPE)
@@ -388,20 +368,12 @@ TLArg::TLArg(FString Name, FString ArgType)
 
 		else if (_Type == TEXT("string"))
 			this->_Type = TEXT("FString");
-		
-// 		if (this->_Type.Contains("vector<"))
-// 		{
-// 
-// 			auto Index = this->_Type.Find("<");
-// 			this->_Type = this->_Type.RightChop(Index);
-// 			this->_Type.InsertAt(0, "TArray");
-// 		}
 	}
 
 	if (_Type.Contains(TEXT(".")))
 		_Type = _Type.Replace(TEXT("."), TEXT("::"));
 
-		// Then check if the type is a Vector<REAL_TYPE>
+	// Then check if the type is a Vector<REAL_TYPE>
 	FRegexPattern VectorPattern(TEXT("[Vv]ector<(\\w+)>"));
 	FRegexMatcher VectorMatch(VectorPattern, this->_Type);
 
@@ -452,6 +424,23 @@ FString TLArg::Repr()
 	auto RealType = this->Type();
 
 	if (RealType == TEXT("int32"))
+		RealType = TEXT("int");
+	else if (RealType == TEXT("bool"))
+		RealType = TEXT("Bool");
+
+	else if (RealType == TEXT("FString"))
+		RealType = RealType.Replace(TEXT("FString"), TEXT("string"));
+
+	else if (RealType == TEXT("unsigned long long"))
+		RealType = TEXT("long");
+
+	else if (RealType == TEXT("TBigInt<128>"))
+		RealType = TEXT("int128");
+
+	else if (RealType == TEXT("TBigInt<256>"))
+		RealType = TEXT("int256");
+
+	else if (RealType == TEXT("FDateTime"))
 		RealType = TEXT("int");
 
 	if (this->IsFlagIndicator())

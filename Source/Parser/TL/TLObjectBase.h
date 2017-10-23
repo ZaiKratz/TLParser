@@ -3,10 +3,9 @@
 #include "Engine.h"
 #include "../Public/extensions/BinaryReader.h"
 #include "../Public/extensions/BinaryWriter.h"
-#include "../Private/SafeBool.h"
 
 
-class TLBaseObject : public SafeBool<>
+class TLBaseObject
 {
 public:
 	void OnSendSuccess();
