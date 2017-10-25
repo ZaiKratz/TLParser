@@ -23,7 +23,7 @@ public:
 	int32 GetOffset();
 	TArray<unsigned char> GetBytes(bool Flush = true);
 	TArray<unsigned char> TGReadBytes();
-	TLBaseObject * TGReadObject();
+	TLBaseObject* TGReadObject();
 	bool TGReadBool();
 	FString TGReadString();
 	bool ReadBool();

@@ -111,8 +111,7 @@ TArray<unsigned char> BinaryReader::TGReadBytes()
 
 TLBaseObject* BinaryReader::TGReadObject()
 {
-	TLBaseObject * Dafak = new TLBaseObject();
-	return Dafak;
+	return new TLBaseObject();
 }
 
 bool BinaryReader::TGReadBool()

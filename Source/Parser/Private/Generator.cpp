@@ -130,6 +130,7 @@ void TLGenerator::GenerateTLObjects(FString SchemeFile, uint32 ImportDepth)
 
 		for (auto tl : TLObjects)
 		{
+			Args.Empty();
 			if (/*tl.IsCoreType() ||*/ (tl.Name().IsEmpty() && tl.Namespace().IsEmpty()))
 				continue;
 
@@ -162,13 +163,29 @@ void TLGenerator::GenerateTLObjects(FString SchemeFile, uint32 ImportDepth)
 		}
 
 		sb.WriteLine(TEXT("\n"));
-		sb.WriteLine(TEXT("TMap<int32, TLBaseObject*> GetAllObjects()"));
+		sb.WriteLine(TEXT("TLBaseObject* TLObjects(uint32 ConstructorID)"));
 		sb.WriteLine(TEXT("{"));
-		sb.WriteLine(TEXT("\tTMap<int32, TLBaseObject*> AllObjects;"));
+		sb.WriteLine(TEXT("\tswitch(ConstructorID)"));
+		sb.WriteLine(TEXT("\t{"));
 		for (auto tl : TLObjects)
-			sb.WriteLine(TEXT("\tAllObjects.Add(") + FString::FromInt(tl.ID()) + TEXT(", new ") + tl.Namespace() + TEXT("::") + tl.Name() + TEXT("());"));
-		sb.WriteLine(TEXT("\treturn AllObjects;"));
+		{
+			sb.WriteLine(TEXT("\t\tcase ") + FString::Printf(TEXT("%u"), tl.ID()) + TEXT(": "));
+			sb.WriteLine(TEXT("\t\t{"));
+			sb.WriteLine(TEXT("\t\t\treturn new ") + tl.Namespace() + TEXT("::") + tl.Name() + TEXT("();"));
+			sb.WriteLine(TEXT("\t\tbreak;"));
+			sb.WriteLine(TEXT("\t\t}"));
+		}
+		sb.WriteLine(TEXT("\t\tdefault: "));
+		sb.WriteLine(TEXT("\t\t\treturn nullptr; "));
+		sb.WriteLine(TEXT("\t}"));
 		sb.WriteLine(TEXT("}"));
+
+		int32 CurrentLayer = TLParser::FindLayer(SchemeFile);
+		sb.WriteLine(TEXT("int32 CurrentLayer()"));
+		sb.WriteLine(TEXT("{"));
+		sb.WriteLine(TEXT("\treturn ") + FString::FromInt(CurrentLayer) + TEXT(";"));
+		sb.WriteLine(TEXT("}"));
+		
 		auto FilePath = FPaths::Combine(PluginContentDir, FString(TEXT("AllObjects.h")));
 		if (PlatformFile.FileExists(*FilePath))
 			PlatformFile.DeleteFile(*FilePath);
@@ -207,7 +224,7 @@ void TLGenerator::WriteHeaderCode(FString HeaderFilePath, TLObject& tl, TArray<F
 	TLSourceBuilder sb;
 
 	TArray<FString> CompareTypes;
-	FString Args;
+	
 
 
 	if (tl.Args().Num())
@@ -300,7 +317,7 @@ void TLGenerator::WriteHeaderCode(FString HeaderFilePath, TLObject& tl, TArray<F
 			else if (Arg.Type() == TEXT("true") || Type.Contains(TEXT("bool")))
 			{
 				Args += TEXT("bool ") + Arg.Name();
-				//Arg.SetType(TEXT("bool"));
+				Arg.SetType(TEXT("bool"));
 			}
 			else if (!AbstractClasses.Contains(Type) && !Arg.SystemTypes().Contains(Type) && !Arg.IsVector() && !Arg.IsBytes())
 			{
@@ -382,82 +399,85 @@ void TLGenerator::WriteHeaderCode(FString HeaderFilePath, TLObject& tl, TArray<F
 
 	if (!tl.SystemTypes().Contains(tl.Result()))
 	{
-		FString TMPName;
-		FString TMPNamespace;
-		if (tl.Result().Contains(TEXT("::")))
+		if(tl.IsFunction())
 		{
-			tl.Result().Split(TEXT("::"), &TMPNamespace, &TMPName);
-			if (AbstractClasses.Contains(TMPName))
+			FString TMPName;
+			FString TMPNamespace;
+			if (tl.Result().Contains(TEXT("::")))
 			{
-// 				if (TMPName != tl.Name())
-// 					Namespaces += TEXT("\n#include \"") + UsingDepth + TEXT("Types/Private/") + TMPName + TEXT(".h\"");
-				tl.SetResult(TEXT("TLBaseObject*"));
-			}
-			else
-			{
-				tl.SetResult(TMPNamespace.ToUpper() + "::" + TMPName + TEXT("*"));
-				if (TMPName != tl.Name())
-					Namespaces += TEXT("\n#include \"") + UsingDepth + TEXT("Types/") + TMPNamespace + TEXT("/Public/") + TMPName + TEXT(".h\"");
-			}
-		}
-		else
-		{
-			if (AbstractClasses.Contains(tl.Result()))
-			{
-// 				if (tl.Result() != tl.Name())
-// 					Namespaces += TEXT("\n#include \"") + UsingDepth + TEXT("Types/Private/") + tl.Result() + TEXT(".h\"");
-				tl.SetResult(TEXT("TLBaseObject*"));
-			}
-			else
-			{
-				if (tl.Result().Contains(TEXT("TArray<")))
+				tl.Result().Split(TEXT("::"), &TMPNamespace, &TMPName);
+				if (AbstractClasses.Contains(TMPName))
 				{
-					FRegexPattern VectorPattern(TEXT("TArray<([\\w[\\s|^\\s]]+)>"));
-					FRegexMatcher VectorMatch(VectorPattern, tl.Result());
-
-					if (VectorMatch.FindNext())
-						tl.SetResult(VectorMatch.GetCaptureGroup(1));
-
-					if (AbstractClasses.Contains(tl.Result()))
-					{
-// 						if (tl.Result() != tl.Name())
-// 							Namespaces += TEXT("\n#include \"") + UsingDepth + TEXT("Types/Private/") + tl.Result() + TEXT(".h\"");
-						tl.SetResult(TEXT("TArray<TLBaseObject*>"));
-					}
-					else if (CommonClasses.Contains(tl.Result()))
-					{
-						if (tl.Result() != tl.Name())
-							Namespaces += TEXT("\n#include \"") + UsingDepth + TEXT("Types/Common/Public/") + tl.Result() + TEXT(".h\"");
-						tl.SetResult(TEXT("TArray<COMMON::") + tl.Result() + TEXT("*>"));
-					}
-					else if (tl.SystemTypes().Contains(tl.Result()))
-						tl.SetResult(TEXT("TArray<") + tl.Result() + TEXT(">"));
-					else
-					{
-						FString _Name;
-						FString _Namespace;
-						tl.Result().Split("::", &_Namespace, &_Name);
-						if (tl.Result() != tl.Name())
-							if (!_Namespace.IsEmpty())
-								Namespaces += TEXT("\n#include \"") + UsingDepth + TEXT("Types/") + _Namespace + TEXT("/Public/") + _Name + TEXT(".h\"");
-						tl.SetResult(TEXT("TArray<") + tl.Result() + TEXT("*>"));
-					}
-
-
+					// 				if (TMPName != tl.Name())
+					// 					Namespaces += TEXT("\n#include \"") + UsingDepth + TEXT("Types/Private/") + TMPName + TEXT(".h\"");
+					tl.SetResult(TEXT("TLBaseObject*"));
 				}
 				else
 				{
-					if (CommonClasses.Contains(tl.Result()))
+					tl.SetResult(TMPNamespace.ToUpper() + "::" + TMPName + TEXT("*"));
+					if (TMPName != tl.Name())
+						Namespaces += TEXT("\n#include \"") + UsingDepth + TEXT("Types/") + TMPNamespace + TEXT("/Public/") + TMPName + TEXT(".h\"");
+				}
+			}
+			else
+			{
+				if (AbstractClasses.Contains(tl.Result()))
+				{
+					// 				if (tl.Result() != tl.Name())
+					// 					Namespaces += TEXT("\n#include \"") + UsingDepth + TEXT("Types/Private/") + tl.Result() + TEXT(".h\"");
+					tl.SetResult(TEXT("TLBaseObject*"));
+				}
+				else
+				{
+					if (tl.Result().Contains(TEXT("TArray<")))
 					{
-						if (tl.Result() != tl.Name())
-							Namespaces += TEXT("\n#include \"") + UsingDepth + TEXT("Types/Common/Public/") + tl.Result() + TEXT(".h\"");
-						tl.SetResult(TEXT("COMMON::") + tl.Result() + TEXT("*"));
+						FRegexPattern VectorPattern(TEXT("TArray<([\\w[\\s|^\\s]]+)>"));
+						FRegexMatcher VectorMatch(VectorPattern, tl.Result());
+
+						if (VectorMatch.FindNext())
+							tl.SetResult(VectorMatch.GetCaptureGroup(1));
+
+						if (AbstractClasses.Contains(tl.Result()))
+						{
+							// 						if (tl.Result() != tl.Name())
+							// 							Namespaces += TEXT("\n#include \"") + UsingDepth + TEXT("Types/Private/") + tl.Result() + TEXT(".h\"");
+							tl.SetResult(TEXT("TArray<TLBaseObject*>"));
+						}
+						else if (CommonClasses.Contains(tl.Result()))
+						{
+							if (tl.Result() != tl.Name())
+								Namespaces += TEXT("\n#include \"") + UsingDepth + TEXT("Types/Common/Public/") + tl.Result() + TEXT(".h\"");
+							tl.SetResult(TEXT("TArray<COMMON::") + tl.Result() + TEXT("*>"));
+						}
+						else if (tl.SystemTypes().Contains(tl.Result()))
+							tl.SetResult(TEXT("TArray<") + tl.Result() + TEXT(">"));
+						else
+						{
+							FString _Name;
+							FString _Namespace;
+							tl.Result().Split("::", &_Namespace, &_Name);
+							if (tl.Result() != tl.Name())
+								if (!_Namespace.IsEmpty())
+									Namespaces += TEXT("\n#include \"") + UsingDepth + TEXT("Types/") + _Namespace + TEXT("/Public/") + _Name + TEXT(".h\"");
+							tl.SetResult(TEXT("TArray<") + tl.Result() + TEXT("*>"));
+						}
+
+
 					}
-					else if (tl.SystemTypes().Contains(tl.Result()))
-						tl.SetResult(TEXT("") + tl.Result() + TEXT(""));
 					else
 					{
-						tl.SetResult(TEXT("") + tl.Result() + TEXT("*"));
+						if (CommonClasses.Contains(tl.Result()))
+						{
+							if (tl.Result() != tl.Name())
+								Namespaces += TEXT("\n#include \"") + UsingDepth + TEXT("Types/Common/Public/") + tl.Result() + TEXT(".h\"");
+							tl.SetResult(TEXT("COMMON::") + tl.Result() + TEXT("*"));
+						}
+						else if (tl.SystemTypes().Contains(tl.Result()))
+							tl.SetResult(TEXT("") + tl.Result() + TEXT(""));
+						else
+						{
+							tl.SetResult(TEXT("") + tl.Result() + TEXT("*"));
+						}
 					}
 				}
 			}
@@ -492,10 +512,6 @@ void TLGenerator::WriteHeaderCode(FString HeaderFilePath, TLObject& tl, TArray<F
 
 	}
 	sb.WriteLine(TEXT("\t~") + UpperName + TEXT("();"));
-	// 	sb.WriteLine("FString ConstructorID() const");
-	// 	sb.WriteLine("{");
-	// 	sb.WriteLine("\t return _ConstructorID;");
-	// 	sb.WriteLine("}\n");
 
 	sb.WriteLine(TEXT("\tvirtual void OnSend(BinaryWriter& Writer) override;"));
 	sb.WriteLine(TEXT("\tvirtual void OnResponce(BinaryReader& Reader) override;"));
@@ -543,15 +559,25 @@ void TLGenerator::WriteHeaderCode(FString HeaderFilePath, TLObject& tl, TArray<F
 		Args.ParseIntoArray(SplitArgs, TEXT(","));
 
 		for (auto Line : SplitArgs)
-			sb.WriteLine(TEXT("\t") + Line + TEXT(";"));
+		{
+			if(Line.Contains(TEXT("*")) && !Line.Contains(TEXT("TArray<")))
+				sb.WriteLine(TEXT("\t") + Line + TEXT(" = nullptr;"));
+			else
+				sb.WriteLine(TEXT("\t") + Line + TEXT(";"));
+		}
 	}
 
 	if (tl.IsFunction())
 	{
 		if (tl.Result() == TEXT("true"))
 			sb.WriteLine(TEXT("\tbool result;"));
-		else 
-			sb.WriteLine(TEXT("\t") + tl.Result() + TEXT(" result;"));
+		else
+		{
+			if (tl.Result().Contains(TEXT("*")) && !tl.Result().Contains(TEXT("TArray<")))
+				sb.WriteLine(TEXT("\t") + tl.Result() + TEXT(" result = nullptr;"));
+			else 
+				sb.WriteLine(TEXT("\t") + tl.Result() + TEXT(" result;"));
+		}
 	}
 
 	sb.WriteLine(TEXT("};"));
@@ -589,91 +615,129 @@ void TLGenerator::WriteSourceCode(FString SourceFilePath, TLObject& tl, TArray<F
 	if (tl.IsFunction())
 		sb.WriteLine(TEXT("\tthis->_ContentRelated = true;"));
 	sb.WriteLine(TEXT("}"));
+
 	//Detecting arguments
-	FString Args;
-	if (tl.Args().Num())
-	{
-		for (auto &Arg : tl.Args())
-		{
-			if (Arg.Type().IsEmpty())
-				continue;
 
-			auto Type = Arg.Type();
-			FString _Namespace;
-
-
-			if (!Arg.SystemTypes().Contains(Arg.Type()))
-			{
-				Type[0] = toupper(Type[0]);
-			}
-
-			if (AbstractClasses.Contains(Type) && !Arg.IsVector())
-			{
-				Args += /*TEXT("PRIVATE::") + Type + */TEXT("TLBaseObject* ") + Arg.Name();
-				//Arg.Type(TEXT("PRIVATE::") + Arg.Type());
-			}
-			else if (Arg.IsBytes())
-			{
-				Args += /*TEXT("TArray<") +*/ Type + TEXT(" ") + Arg.Name();
-				//Arg.Type(TEXT("TArray<") + Type + TEXT("> "));
-			}
-			else if (Type == TEXT("FDateTime"))
-			{
-				Args += Type + TEXT(" ") + Arg.Name();
-			}
-			else if (Arg.IsVector() && AbstractClasses.Contains(Type))
-			{
-				Args += TEXT("TArray<TLBaseOblect*>") + Arg.Name();
-				//Arg.Type(TEXT("TArray<PRIVATE::") + Type + TEXT("> "));
-			}
-			else if (Arg.IsVector() && !AbstractClasses.Contains(Type))
-			{
-				if (!Arg.SystemTypes().Contains(Type))
-				{
-					if (CommonClasses.Contains(Type) && _Namespace.IsEmpty())
-						Args += /*TEXT("TArray<COMMON::") +*/ Type + TEXT(" ") + Arg.Name();
-					else
-						Args +=/* TEXT("TArray<") + _Namespace + TEXT("::") + */Type + TEXT(" ") + Arg.Name();
-					//Arg.Type(TEXT("TArray<COMMON::") + Type + TEXT("> "));
-				}
-				else
-				{
-					Args += /*TEXT("TArray<") + */Type + TEXT(" ") + Arg.Name();
-					//Arg.Type(TEXT("TArray<") + Type + TEXT("> "));
-				}
-			}
-			else if (Arg.Type() == TEXT("true") || Type.Contains(TEXT("bool")))
-			{
-				Args += TEXT("bool ") + Arg.Name();
-				//Arg.Type(TEXT("bool"));
-			}
-			else if (!AbstractClasses.Contains(Type) && !Arg.SystemTypes().Contains(Type) && !Arg.IsVector() && !Arg.IsBytes())
-			{
-				if (CommonClasses.Contains(Type) && _Namespace.IsEmpty())
-				{
-					Args +=/* TEXT("COMMON::") + */Type + TEXT(" ") + Arg.Name();
-				}
-				else
-				{
-					Args += /*_Namespace + TEXT("::") +*/ Type + TEXT(" ") + Arg.Name();
-				}
-				//Arg.Type(TEXT("COMMON::") + Arg.Type());
-
-			}
-			else if (Arg.SystemTypes().Contains(Type) && !Arg.IsBytes())
-			{
-				Args += Type + TEXT(" ") + Arg.Name();
-			}
-
-
-			Args += TEXT(", ");
-		}
-	}
-
-	Args.RemoveFromEnd(TEXT(", "));
+// 	FString Args;
+// 	
+// 
+// 	if (tl.Args().Num())
+// 	{
+// 		for (auto &Arg : tl.Args())
+// 		{
+// 			if (Arg.Type().IsEmpty())
+// 				continue;
+// 
+// 			auto Type = Arg.Type();
+// 			FString _Namespace;
+// 
+// 
+// 			if (Type.Contains("::"))
+// 			{
+// 				Type.Split("::", &_Namespace, &Type);
+// 				_Namespace.ToUpperInline();
+// 				Type[0] = toupper(Type[0]);
+// 			}
+// 
+// 			if (Arg.SystemTypes().Contains(Arg.Name()))
+// 			{
+// 				auto Tmp = Arg.Name();
+// 				Tmp[0] = toupper(Tmp[0]);
+// 				Arg.SetName(Tmp);
+// 			}
+// 
+// 			if (!Arg.SystemTypes().Contains(Arg.Type()))
+// 			{
+// 				Type[0] = toupper(Type[0]);
+// 			}
+// 
+// 			if (AbstractClasses.Contains(Type) && !Arg.IsVector())
+// 			{
+// 				Args += /*TEXT("PRIVATE::") + Type +*/ TEXT("TLBaseObject* ") + Arg.Name();
+// 				//Arg.SetType(/*TEXT("PRIVATE::") + Arg.Type() + */TEXT("TLBaseObject* "));
+// 				// 				if (!CompareTypes.Contains(Type))
+// 				// 					Namespaces += TEXT("\n#include \"") + UsingDepth + TEXT("Types/Private/") + Type + TEXT(".h\"");
+// 			}
+// 			else if (Arg.Type() == TEXT("TLBaseObject"))
+// 			{
+// 				Args += Type + TEXT("* ") + Arg.Name();
+// 				//Arg.SetType(Arg.Type() + TEXT("* "));
+// 			}
+// 			else if (Arg.IsBytes())
+// 			{
+// 				Args += TEXT("TArray<") + Type + TEXT("> ") + Arg.Name();
+// 				//Arg.SetType(TEXT("TArray<") + Type + TEXT("> "));
+// 			}
+// 			else if (Type == TEXT("FDateTime"))
+// 			{
+// 				Args += Type + " " + Arg.Name();
+// 			}
+// 			else if (Arg.IsVector() && AbstractClasses.Contains(Type))
+// 			{
+// 				Args += TEXT("TArray<TLBaseObject*> ") + Arg.Name();
+// 				//Arg.SetType(TEXT("TArray<TLBaseObject*> "));
+// 				//Args += TEXT("TArray<PRIVATE::") + Type + TEXT("*> ") + Arg.Name();
+// 				//Arg.SetType(TEXT("TArray<PRIVATE::") + Type + TEXT("*> "));
+// 				// 				if (!CompareTypes.Contains(Type))
+// 				// 					Namespaces += TEXT("\n#include \"") + UsingDepth + TEXT("Types/Private/") + Type + TEXT(".h\"");
+// 			}
+// 			else if (Arg.IsVector() && !AbstractClasses.Contains(Type))
+// 			{
+// 				if (!Arg.SystemTypes().Contains(Type))
+// 				{
+// 					if (CommonClasses.Contains(Type) && _Namespace.IsEmpty())
+// 					{
+// 						Args += TEXT("TArray<COMMON::") + Type + TEXT("*> ") + Arg.Name();
+// 						//Arg.SetType(TEXT("TArray<COMMON::") + Type + TEXT("*> "));
+// 					}
+// 					else
+// 					{
+// 						Args += TEXT("TArray<") + _Namespace + TEXT("::") + Type + TEXT("*> ") + Arg.Name();
+// 						//Arg.SetType(TEXT("TArray<") + _Namespace + TEXT("::") + Type + TEXT("*> "));
+// 					}
+// 					//Arg.Type(TEXT("TArray<COMMON::") + Type + TEXT("> "));
+// 
+// 				}
+// 				else
+// 				{
+// 					Args += TEXT("TArray<") + Type + TEXT("> ") + Arg.Name();
+// 					//Arg.SetType(TEXT("TArray<") + Type + TEXT("> "));
+// 				}
+// 			}
+// 			else if (Arg.Type() == TEXT("true") || Type.Contains(TEXT("bool")))
+// 			{
+// 				Args += TEXT("bool ") + Arg.Name();
+// 				//Arg.SetType(TEXT("bool"));
+// 			}
+// 			else if (!AbstractClasses.Contains(Type) && !Arg.SystemTypes().Contains(Type) && !Arg.IsVector() && !Arg.IsBytes())
+// 			{
+// 				if (CommonClasses.Contains(Type) && _Namespace.IsEmpty())
+// 				{
+// 					Args += TEXT("COMMON::") + Type + TEXT("* ") + Arg.Name();
+// 					//Arg.SetType(TEXT("COMMON::") + Type + TEXT("* "));
+// 				}
+// 				else
+// 				{
+// 					Args += _Namespace + TEXT("::") + Type + TEXT("* ") + Arg.Name();
+// 					//Arg.SetType(_Namespace + TEXT("::") + Type + TEXT("* "));
+// 				}
+// 				//Arg.Type(TEXT("COMMON::") + Arg.Type());
+// 
+// 			}
+// 			else if (Arg.SystemTypes().Contains(Type) && !Arg.IsBytes())
+// 			{
+// 				if (Arg.Type() == TEXT("TBigInt<256>") || Arg.Type() == TEXT("TBigInt<128>"))
+// 				Args += Type + TEXT(" ") + Arg.Name();
+// 			}
+// 
+// 			Args += TEXT(", ");
+// 		}
+// 	}
+// 
+// 	Args.RemoveFromEnd(TEXT(", "));
 
 	//Constructor with parameters generation 
-	if (!Args.IsEmpty())
+	if (tl.Args().Num())
 	{
 		sb.WriteLine(TEXT("\n") + UpperName + TEXT("::") + UpperName + TEXT("(") + Args + TEXT(")"));
 		sb.WriteLine(TEXT("{"));
@@ -729,15 +793,36 @@ void TLGenerator::WriteSourceCode(FString SourceFilePath, TLObject& tl, TArray<F
 			sb.WriteLine(TEXT("\t\tdelete this->" + Arg.Name() + ";"));
 			sb.WriteLine(TEXT("\t}"));
 		}
+
+		if (Arg.IsVector() && Arg.Type().Contains(TEXT("*")))
+		{
+			sb.WriteLine(TEXT("\tfor(auto X : this->") + Arg.Name() + TEXT(")"));
+			sb.WriteLine(TEXT("\t{"));
+			sb.WriteLine(TEXT("\t\tdelete X;"));
+			sb.WriteLine(TEXT("\t}"));
+		}
 	}
 
-	if(tl.IsFunction() && !tl.Result().Contains(TEXT("TArray")) && !tl.SystemTypes().Contains(tl.Result()) && tl.Result().Contains(TEXT("*")))
-	{	
-		sb.WriteLine(TEXT("\tif(this->result)"));
-		sb.WriteLine(TEXT("\t{"));
-		sb.WriteLine(TEXT("\t\tdelete this->result;"));
-		sb.WriteLine(TEXT("\t}"));
+	if(tl.IsFunction())
+	{
+		if (!tl.Result().Contains(TEXT("TArray")) && !tl.SystemTypes().Contains(tl.Result()) && tl.Result().Contains(TEXT("*")))
+		{
+			sb.WriteLine(TEXT("\tif(this->result)"));
+			sb.WriteLine(TEXT("\t{"));
+			sb.WriteLine(TEXT("\t\tdelete this->result;"));
+			sb.WriteLine(TEXT("\t}"));
+		}
+
+		if (tl.Result().Contains(TEXT("TArray")) && !tl.SystemTypes().Contains(tl.Result()) && tl.Result().Contains(TEXT("*")))
+		{
+			sb.WriteLine(TEXT("\tfor(auto X : this->result)"));
+			sb.WriteLine(TEXT("\t{"));
+			sb.WriteLine(TEXT("\t\tdelete X;"));
+			sb.WriteLine(TEXT("\t}"));
+		}
 	}
+
+	
 	
 	sb.WriteLine(TEXT("}"));
 
@@ -786,7 +871,9 @@ void TLGenerator::WriteOnSendCode(TLSourceBuilder& sb, TLArg Arg, TArray<TLArg> 
 			else if (Arg.IsBytes() || Arg.IsVector())
 				sb.WriteLine(TEXT("\tif(") + Name + TEXT(".Num())\n\t{"));
 			else if (Type.Contains(TEXT("FDateTime")))
-				sb.WriteLine(TEXT("\tif(") + Arg.Name() + TEXT(" == FDateTime::MinValue())\n\t{"));
+				sb.WriteLine(TEXT("\tif(") + Name + TEXT(" == FDateTime::MinValue())\n\t{"));
+			else if (Type.Contains(TEXT("::")))
+				sb.WriteLine(TEXT("\tif(") + Name + TEXT(")\n\t{"));
 			else
 				sb.WriteLine(TEXT("\tif(") + Name + TEXT(")\n\t{"));
 		}
@@ -833,6 +920,8 @@ void TLGenerator::WriteOnSendCode(TLSourceBuilder& sb, TLArg Arg, TArray<TLArg> 
 					sb.WriteLine(TEXT("\tif(") + Flag.Name() + TEXT(".Num())\n\t{"));
 				else if (FlagType == TEXT("FDateTime"))
 					sb.WriteLine(TEXT("\tif(") + Flag.Name() + TEXT(" == FDateTime::MinValue())\n\t{"));
+				else if (Type.Contains(TEXT("::")))
+					sb.WriteLine(TEXT("\tif(") + Flag.Name() + TEXT(")\n\t{"));
 				else
 					sb.WriteLine(TEXT("\tif(") + Flag.Name() + TEXT(")\n\t{"));
 				sb.WriteLine(FString::Printf__VA(TEXT("\t\tFlags |= (1 << %d);"), Flag.FlagIndex()));
@@ -978,13 +1067,14 @@ void TLGenerator::WriteOnResponceCode(TLSourceBuilder& sb, TLObject tl, TLArg Ar
 
 		if (AbstractClasses.Contains(Type) && !Arg.IsVector())
 		{
-			sb.WriteLine(TEXT("\t") + Name + TEXT(" = reinterpret_cast<TLBaseObject*>(Reader.TGReadObject());"));
+			//sb.WriteLine(TEXT("\tStaticObject = Reader.TGReadObject();"));
+			sb.WriteLine(TEXT("\t") + Name + TEXT(" = Reader.TGReadObject();"));
 		}
 
 		else if (!AbstractClasses.Contains(Type) && !Arg.SystemTypes().Contains(Type) && !Arg.IsVector() && !Arg.IsBytes())
 		{
 			if (CommonClasses.Contains(Type) && _Namespace.IsEmpty())
-			{
+			{		
 				sb.WriteLine(TEXT("\t") + Name + TEXT(" = reinterpret_cast<") + Type + TEXT(">(Reader.TGReadObject());"));
 			}
 			else if(!_Namespace.IsEmpty())

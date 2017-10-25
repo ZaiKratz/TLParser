@@ -40,6 +40,9 @@ TLObject::TLObject(FString FullName, FString ObjectId, TArray<TLArg> Args, FStri
 		0x3fedd339  // true#3fedd339 = True;
 	};
 
+	if (FullName == "config")
+		_LOG("");
+
 	if (FullName.Contains(TEXT(".")))
 	{
 		FullName.Split(TEXT("."), &this->_Namespace, &this->_Name);
