@@ -15,14 +15,17 @@ public:
 	}
 
 	void CleanTLObjects();
-	void GenerateTLObjects(FString SchemeFile, uint32 ImportDepth);
+	void GenerateTLObjects(FString SchemeFile);
+
+	void WriteAllObjects(TArray<TLObject> TLObjects, FString FuncDir, FString TypesDir, IPlatformFile &PlatformFile, TArray<FString> AbstractTypes, TArray<FString> CommonNames, FString SchemeFile, FString PluginContentDir);
+
 	FString GetFileName(TLObject tl);
 	FString GetFile(FString Path);
 
 private:
-	void WriteHeaderCode(FString HeaderFilePath, TLObject& tl, TArray<FString> AbstractClasses, TArray<FString> CommonClasses, uint32 Depth);
-	void WriteSourceCode(FString SourceFilePath, TLObject& tl, TArray<FString> AbstractClasses, TArray<FString> CommonClasses, uint32 Depth);
-	void WriteOnSendCode(TLSourceBuilder& sb, TLArg Arg, TArray<TLArg> Args, FString Name = TEXT(""));
+	void WriteHeaderCode(FString HeaderFilePath, TLObject& tl, TArray<FString> AbstractClasses, TArray<FString> CommonClasses);
+	void WriteSourceCode(FString SourceFilePath, TLObject& tl, TArray<FString> AbstractClasses, TArray<FString> CommonClasses);
+	void WriteOnSendCode(TLSourceBuilder& sb, TLArg Arg, TArray<TLArg> Args, FString Name = TEXT(""), bool Pointer = true);
 	void WriteOnResponceCode(TLSourceBuilder& sb, TLObject tl, TLArg Arg, TArray<TLArg> Args, TArray<FString> AbstractClasses, TArray<FString> CommonClasses, FString Name = TEXT(""));
 	void WriteRequestResultCode(TLSourceBuilder& sb, TLObject tl);
 

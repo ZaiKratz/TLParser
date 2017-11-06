@@ -49,16 +49,13 @@ public:
 	{
 		return _IsFunction;
 	}
-
-	TArray<FString> SystemTypes() const
+	TArray<FString> SystemTypes
 	{
-		return TArray<FString> 
-		{ 
-			"FString", "int32", "long", "double", "bool", "uint8",
-				"unsigned long long", "TBigInt<128>", "TBigInt<256>", "FDateTime",
-				"delete", "public", "private", "static"
-		};
-	}
+		"FString", "int32", "long", "double", "bool", "uint8",
+			"unsigned long long", "TBigInt<128>", "TBigInt<256>", "FDateTime",
+			"delete", "public", "private", "static", "final"
+	};
+	
 
 	uint32 InferID(FString FullName, FString ObjectID, TArray<TLArg> Args, FString Result);
 	FString Repr(FString FullName, FString ObjectID, TArray<TLArg> Args, FString Result, bool IgnoreID = false);
@@ -145,19 +142,21 @@ public:
 		return _FlagIndex;
 	}
 
-	TArray<FString> SystemTypes() const
+	TArray<FString> SystemTypes
 	{
-		return TArray<FString>
-		{
-			"FString", "int32", "long", "double", "bool", "uint8",
-				"unsigned long long", "TBigInt<128>", "TBigInt<256>", "FDateTime",
-				"delete", "public", "private", "static"
-		};
-	}
+		"FString", "int32", "long", "double", "bool", "uint8",
+		"unsigned long long", "TBigInt<128>", "TBigInt<256>", "FDateTime",
+		"delete", "public", "private", "static", "final"
+	};
 
 	bool IsBytes() const
 	{
 		return _IsBytes;
+	}
+
+	bool IsTrueType() const
+	{
+		return _TrueType;
 	}
 
 	FString Repr();
@@ -171,6 +170,7 @@ private:
 	bool _FlagIndicator;
 	bool _UseVectorID;
 	bool _IsBytes;
+	bool _TrueType;
 	FString _Type;
 	int32 _FlagIndex;
 

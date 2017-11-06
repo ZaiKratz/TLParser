@@ -6,12 +6,6 @@
 
 TLObject::TLObject()
 {
-	_CORE_TYPES = { 
-		0x1cb5c415, // vector#1cb5c415 {t:Type} # [ t ] = Vector t
-		0xbc799737, // boolFalse#bc799737 = Bool;
-		0x997275b5, // boolTrue#997275b5 = Bool;
-		0x3fedd339  // true#3fedd339 = True;
-	};
 }
 
 FString ToCamalCase(FString ClassName)
@@ -33,16 +27,6 @@ FString ToCamalCase(FString ClassName)
 
 TLObject::TLObject(FString FullName, FString ObjectId, TArray<TLArg> Args, FString Result, bool IsFunction)
 {
-	_CORE_TYPES = {
-		0x1cb5c415, // vector#1cb5c415 {t:Type} # [ t ] = Vector t
-		0xbc799737, // boolFalse#bc799737 = Bool;
-		0x997275b5, // boolTrue#997275b5 = Bool;
-		0x3fedd339  // true#3fedd339 = True;
-	};
-
-	if (FullName == "config")
-		_LOG("");
-
 	if (FullName.Contains(TEXT(".")))
 	{
 		FullName.Split(TEXT("."), &this->_Namespace, &this->_Name);
@@ -79,7 +63,7 @@ TLObject::TLObject(FString FullName, FString ObjectId, TArray<TLArg> Args, FStri
 	}
 
 	if(!_Result.IsEmpty())
-		if (_Result != TEXT("bool") && !this->SystemTypes().Contains(_Result))
+		if (_Result != TEXT("bool") && !this->SystemTypes.Contains(_Result))
 		{
 			_Result[0] = toupper(_Result[0]);
 		}
@@ -107,13 +91,9 @@ TLObject TLObject::FromTL(FString InStr, bool IsFunction)
 	);
 	FRegexMatcher Match(Pattern, InStr);
 
-	
-
 	FString FullName;
 	FString ObjectId;
-	FString Result;
-
-	
+	FString Result;	
 
 	if (Match.FindNext())
 	{
@@ -121,9 +101,6 @@ TLObject TLObject::FromTL(FString InStr, bool IsFunction)
 		ObjectId = Match.GetCaptureGroup(2);
 		Result = Match.GetCaptureGroup(3);
 	}
-
-	if (ObjectId == "bdf9653b")
-		_LOG("");
 
 
 	FRegexPattern ArgsPattern(
@@ -177,7 +154,7 @@ TLObject TLObject::FromTL(FString InStr, bool IsFunction)
 		else if (Result.Contains(TEXT("Bool")))
 			Result = TEXT("TArray<bool>");
 
-		else if (this->SystemTypes().Contains(Result))
+		else if (this->SystemTypes.Contains(Result))
 			Result = TEXT("TArray<") + Result + TEXT(">");
 		else
 			Result = TEXT("TArray<") + Result + TEXT(">");
@@ -207,23 +184,6 @@ TLObject TLObject::FromTL(FString InStr, bool IsFunction)
 	}
 	return TLObject(FullName, ObjectId, Args, Result, IsFunction);
 }
-
-TArray<TLArg> TLObject::SortedArgs()
-{
-	auto TmpArgs = this->_Args;
-// 	TmpArgs.Sort(
-// 		[&](const TLArg &Item ) { 
-// 		return Item.IsFlag() || Item.CanBeInferred();
-// 	}
-// 	);
-	return TmpArgs;
-}
-
-bool TLObject::IsCoreType()
-{
-	return this->_CORE_TYPES.Contains(this->_Id);
-}
-
 
 uint32 TLObject::CRC32(const void * Data, int32 Size)
 {
@@ -281,21 +241,12 @@ TLArg::TLArg()
 
 TLArg::TLArg(FString Name, FString ArgType)
 {
-	
-// 		Initializes a new .tl argument
-// 		:param Name: The name of the .tl argument
-// 		:param ArgType: The type of the .tl argument
 	this->_Name = Name;
 	this->_IsBytes = false;
+	this->_TrueType = false;
 	this->_IsVector = false;
 	this->_IsFlag = false;
 	this->_FlagIndex = -1;
-
-	 
-// 	# Special case: some types can be inferred, which makes it
-// 	# less annoying to type. Currently the only type that can
-// 	# be inferred is if the name is 'random_id', to which a
-// 	# random ID will be assigned if left as None (the default)
 	
 	this->_CanBeInferred = Name == TEXT("random_id");
 
@@ -347,12 +298,18 @@ TLArg::TLArg(FString Name, FString ArgType)
 	{
 		this->_IsFlag = true;
 		this->_FlagIndex = FCString::Atoi(*FlagMatch.GetCaptureGroup(1));
+
 		// Update the type to match the exact type, not the "flagged" one
 		this->_Type = FlagMatch.GetCaptureGroup(2);
 
-
 		if (_Type == TEXT("int"))
 			this->_Type = TEXT("int32");
+
+		else if (_Type == TEXT("Bool"))
+			_Type[0] = tolower(_Type[0]);
+
+		else if (_Type == TEXT("true"))
+			_TrueType = true;
 
 		else if (_Type == TEXT("long"))
 			this->_Type = TEXT("unsigned long long");

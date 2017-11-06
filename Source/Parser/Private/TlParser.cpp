@@ -5,7 +5,7 @@
 //This method yields TLObjects from a given .tl file
 TArray<TLObject> TLParser::ParseFile(FString FilePath)
 {
-	TLObject obj;
+	TLObject Obj;
 	TArray<TLObject> Objects;
 	TArray<FString> Strings;
 
@@ -30,9 +30,9 @@ TArray<TLObject> TLParser::ParseFile(FString FilePath)
 			}
 			else
 			{
-				auto tlobj = obj.FromTL(String, IsFunction);
-				if(!tlobj.Name().IsEmpty())
-					Objects.Add(tlobj);
+				TLObject Object = Obj.FromTL(String, IsFunction);
+				if(!Object.Name().IsEmpty())
+					Objects.Add(Object);
 			}
 		}
 	}

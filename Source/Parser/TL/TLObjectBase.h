@@ -3,7 +3,7 @@
 #include "Engine.h"
 #include "../Public/extensions/BinaryReader.h"
 #include "../Public/extensions/BinaryWriter.h"
-
+#include <typeinfo>
 
 class TLBaseObject
 {
@@ -19,12 +19,19 @@ public:
 
 	virtual void OnSend(BinaryWriter& Writer)
 	{
-
+		const std::type_info& info = typeid(uint32);
+		info.hash_code();
+		
 	}
 
 	virtual void OnResponce(BinaryReader& Reader)
 	{
 
+	}
+
+	uint32 GetConstructorID() const
+	{
+		return _ConstructorID;
 	}
 
 protected:

@@ -31,7 +31,7 @@ void ASetup::BeginPlay()
 	IPlatformFile& PlatformFile = FPlatformFileManager::Get().GetPlatformFile();
 	if (PlatformFile.DirectoryExists(*FuncDir) || PlatformFile.DirectoryExists(*TypesDir))
 		Gen.CleanTLObjects();
-	Gen.GenerateTLObjects(SñhemeFile, 1);
+	Gen.GenerateTLObjects(SñhemeFile);
 }
 
 // Called every frame
