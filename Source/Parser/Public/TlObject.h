@@ -10,8 +10,6 @@ public:
 	TLObject();
 	TLObject(FString FullName, FString ObjectId, TArray<TLArg> Args, FString Result, bool IsFunction);
 	TLObject FromTL(FString InStr, bool IsFunction);
-	TArray<TLArg> SortedArgs();
-	bool IsCoreType();
 
 	FString Name() const
 	{

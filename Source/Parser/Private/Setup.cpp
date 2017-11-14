@@ -30,7 +30,7 @@ void ASetup::BeginPlay()
 
 	IPlatformFile& PlatformFile = FPlatformFileManager::Get().GetPlatformFile();
 	if (PlatformFile.DirectoryExists(*FuncDir) || PlatformFile.DirectoryExists(*TypesDir))
-		Gen.CleanTLObjects();
+		Gen.Clean();
 	Gen.GenerateTLObjects(SñhemeFile);
 }
 
