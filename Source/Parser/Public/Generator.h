@@ -16,7 +16,7 @@ public:
 
 	void Clean();
 	void GenerateTLObjects(FString SchemeFile);
-	void GenerateContainers(const TArray<TLContainer>& TLContainers, const TArray<TLObject> &TLObjects);
+	void GenerateContainers(const TArray<TLContainer>& TLContainers);
 
 private:
 	void WriteHeaderCode(FString HeaderFilePath, TLObject& tl, const TArray<TLContainer> &TLContainers, const TArray<FString> &CommonClasses);
@@ -27,4 +27,6 @@ private:
 
 	FString _OutputDir;
 	FString Args;
+	TArray<TLContainer> TLContainers;
+	TArray<TLObject> TLObjects;
 };

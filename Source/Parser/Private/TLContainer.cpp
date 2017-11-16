@@ -6,11 +6,14 @@ TLContainer::TLContainer()
 	Name = "";
 	Namespace = "";
 	Constructed = false;
+	_IsCoreType = false;
 }
 
 TLContainer TLContainer::FromTL(const TArray<FString> &PossibleContainers)
 {
-	TArray<FString> Names;
+	Constructed = false;
+	_IsCoreType = false;
+	TMap<FString, FString> Names;
 	TArray<FString> Results;
 
 	TLContainer Container;
@@ -24,6 +27,13 @@ TLContainer TLContainer::FromTL(const TArray<FString> &PossibleContainers)
 		if (Match.FindNext())
 		{
 			FString TMPName = Match.GetCaptureGroup(1);
+			FString ID = Match.GetCaptureGroup(2);
+			if (_CORE_TYPES.Contains(ID))
+			{
+				_IsCoreType = true;
+				Constructed = false;
+				return Container;
+			}
 			if (!TMPName.IsEmpty()) 
 			{
 				if (TMPName.Contains(TEXT(".")))
@@ -32,35 +42,47 @@ TLContainer TLContainer::FromTL(const TArray<FString> &PossibleContainers)
 					Container.Namespace.ToUpperInline();
 				}
 				TMPName[0] = toupper(TMPName[0]);
-				if (TMPName.Contains(TEXT("_")))
-					TMPName = ToCamalCase(TMPName);
-				Names.Add(TMPName);
+
+				Names.Add(ID, TMPName + TEXT("Array"));
 			}
 	
 			FString TMPResult = Match.GetCaptureGroup(3);
 			if (!TMPResult.IsEmpty())
 			{
 				TMPResult[0] = toupper(TMPResult[0]);
-				if (TMPResult.Contains(TEXT("_")))
-					TMPResult = ToCamalCase(TMPResult);
+
 				if (TMPResult.Contains(TEXT(".")))
-					TMPResult.ReplaceInline(TEXT("."), TEXT("_"));
-				Results.AddUnique(TMPResult);
+				{
+					FString TMPNamespace;
+					TMPResult.Split(TEXT("."), &TMPNamespace, &TMPResult);
+					Results.AddUnique(TMPResult);
+				}
+				else
+					Results.AddUnique(TMPResult);
 			}
 		}
 	}
 
-	if (Results.Num() > 1 || Results.Num() < 1)
+	if (Results.Num() != 1)
 		return Container;
 	else
 	{
-		for (FString Name : Names)
+		for (auto Name : Names)
 		{
-			if (Results[0].ToLower() == Name.ToLower())
-				Container.Name = Name;
+			if (Results[0].ToLower() == Name.Value)
+			{
+				Container.Name = Name.Value;
+				if (Container.Namespace.IsEmpty())
+					Container.Namespace = TEXT("COMMON");
+			}
+				
 		}
 		if (Container.Name.IsEmpty())
+		{
 			Container.Name = Results[0];
+			if (Container.Namespace.IsEmpty())
+				Container.Namespace = TEXT("COMMON");
+		}
 
 		Container.ContainerArrays = Names;
 		Container.Constructed = true;

@@ -7,7 +7,7 @@
 class TLParser
 {
 public:
-	static TArray<TLObject> GetTLObjectsFromTLFile(FString FilePath);
-	static TArray<TLContainer> GetTLContainersFromFile(FString FilePath);
+	static TArray<TLObject> ParseTLObjectsFromTLFile(FString FilePath);
+	static TArray<TLContainer> ParseTLContainersFromFile(FString FilePath);
 	static int32 FindLayer(FString FilePath);
 };

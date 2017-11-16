@@ -3,7 +3,7 @@
 
 
 //This method yields TLObjects from a given .tl file
-TArray<TLObject> TLParser::GetTLObjectsFromTLFile(FString FilePath)
+TArray<TLObject> TLParser::ParseTLObjectsFromTLFile(FString FilePath)
 {
 	TLObject Obj;
 	TArray<TLObject> Objects;
@@ -12,6 +12,8 @@ TArray<TLObject> TLParser::GetTLObjectsFromTLFile(FString FilePath)
 	bool IsFunction = false;
 
 	FFileHelper::LoadANSITextFileToStrings(*(FilePath), NULL, Strings);
+
+	auto TLContainers = ParseTLContainersFromFile(FilePath);
 
 	for (int32 Index = 0; Index < Strings.Num(); Index++)
 	{
@@ -33,8 +35,8 @@ TArray<TLObject> TLParser::GetTLObjectsFromTLFile(FString FilePath)
 			}
 			else
 			{
-				TLObject Object = Obj.FromTL(Strings[Index], IsFunction);
-				if (!Object.Name().IsEmpty())
+				TLObject Object = Obj.FromTL(Strings[Index], TLContainers, IsFunction);
+				if (!Object.Name().IsEmpty() && !Object.IsCoreType())
 					Objects.Add(Object);
 			}
 		}
@@ -44,8 +46,8 @@ TArray<TLObject> TLParser::GetTLObjectsFromTLFile(FString FilePath)
 }
 
 
-
-TArray<TLContainer> TLParser::GetTLContainersFromFile(FString FilePath)
+// Finds possible containers for TLObejcts
+TArray<TLContainer> TLParser::ParseTLContainersFromFile(FString FilePath)
 {
 	TMap<uint32, TArray<FString>> PossibleContainers;
 	TArray<FString> Strings;
@@ -98,11 +100,10 @@ TArray<TLContainer> TLParser::GetTLContainersFromFile(FString FilePath)
 	for (auto Cont : PossibleContainers)
 	{
 		TLContainer Container = TLCont.FromTL(Cont.Value);
-		if(Container.Constructed)
+		if(Container.IsConstructed() && !Container.IsCoreType())
 			Containers.Add(Container);
 	}
 		
-
 	return Containers;
 }
 
